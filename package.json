@@ -1,0 +1,43 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "axios": "^0.18.0",
+        "bootstrap": "^4.0.0",
+        "cross-env": "^5.1",
+        "jquery": "^3.2",
+        "laravel-mix": "^5.0.4",
+        "lodash": "^4.17.4",
+        "popper.js": "^1.12",
+        "resolve-url-loader": "^3.1.0",
+        "sass": "^1.26.10",
+        "sass-loader": "^8.0.2",
+        "vue": "^2.5.17",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "dependencies": {
+        "ajv": "^6.0.0",
+        "ajv-keywords": "^3.2.0",
+        "axios-progress-bar": "^1.2.0",
+        "bootstrap4-fullscreen-modal": "^1.0.3",
+        "imagemin": "^5.0.0",
+        "print-js": "^1.0.63",
+        "toastr": "^2.1.4",
+        "vee-validate": "^2.2.15",
+        "vue-moment": "^4.1.0",
+        "vue-search-select": "^2.6.2",
+        "vue-select": "^2.5.1",
+        "vue-the-mask": "^0.11.1",
+        "vue2-filters": "^0.7.2",
+        "vuejs-datepicker": "^1.6.2",
+        "vuex": "^3.0.1"
+    }
+}
