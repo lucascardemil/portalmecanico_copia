@@ -63,21 +63,3 @@ new Vue({
         });
     },
 });
-
-new Vue({
-    el: '#crud',
-    created: function(){
-        this.getKeeps();
-    },
-    data: {
-        keeps: []
-    },
-    methods: {
-        getKeeps: function(){
-            var urlKeeps = 'admin-marca-vehiculos';
-            Axios.get(urlKeeps).then(response => {
-                this.keeps = response.data
-            })
-        }
-    }
-})

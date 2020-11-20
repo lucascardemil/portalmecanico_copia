@@ -335,7 +335,7 @@ export default { //used for changing the state
     editVehiculoTipo(state, vehiculotipo) {
         state.fillVehiculoTipo.id = vehiculotipo.id
         state.fillVehiculoTipo.tipo_vehiculo = vehiculotipo.tipo_vehiculo.toUpperCase()
-        $("#edit").modal('show')
+        $("#edit_tipo").modal('show')
     },
     updateVehiculoTipo(state, id) {
         var url = urlVehiculoTipo + '/' + id
@@ -345,7 +345,7 @@ export default { //used for changing the state
                 tipo_vehiculo: '',
             }
             state.errorsLaravel = []
-            $('#edit').modal('hide')
+            $('#edit_tipo').modal('hide')
             toastr.success('Tipo de vehiculo actualizada con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data

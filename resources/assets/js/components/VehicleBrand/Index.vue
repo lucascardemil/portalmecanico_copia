@@ -277,6 +277,7 @@
 
         <!--<AgregarMarca></AgregarMarca>-->
         <EditarMarca></EditarMarca>
+        <EditarTipo></EditarTipo>
     </div>
 
 </template>
@@ -287,12 +288,13 @@
 import { loadProgressBar } from 'axios-progress-bar'
 //import AgregarMarca from './AgregarMarca'
 import EditarMarca from './EditarMarca'
+import EditarTipo from './EditarTipo'
 import SelectBrand from './SelectBrand'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
     //components: { AgregarMarca,EditarMarca, SelectBrand },
-    components: {EditarMarca, SelectBrand },
+    components: {EditarMarca, EditarTipo, SelectBrand },
     computed:{
         ...mapState(['newVehiculoTipo','newVehicleBrand', 'errorsLaravel' ,'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand']),
         ...mapGetters(['isActived', 'pagesNumber'])

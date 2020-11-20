@@ -134,6 +134,10 @@ export default { //data
         brand: '',
         model: ''
     },
+    fillVehiculoTipo: {
+        id: '',
+        tipo_vehiculo: '',
+    },
     searchVehicleBrand: {
         brand: '',
         model: ''

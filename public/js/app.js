@@ -10538,6 +10538,69 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillVehiculoTipo', 'errorsLaravel'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateVehiculoTipo']))
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/Index.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/Index.vue?vue&type=script&lang=js& ***!
@@ -10550,8 +10613,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios-progress-bar */ "./node_modules/axios-progress-bar/dist/index.js");
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EditarMarca__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarMarca */ "./resources/assets/js/components/VehicleBrand/EditarMarca.vue");
-/* harmony import */ var _SelectBrand__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectBrand */ "./resources/assets/js/components/VehicleBrand/SelectBrand.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _EditarTipo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditarTipo */ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue");
+/* harmony import */ var _SelectBrand__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectBrand */ "./resources/assets/js/components/VehicleBrand/SelectBrand.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -10842,7 +10906,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
  //import AgregarMarca from './AgregarMarca'
+
 
 
 
@@ -10851,10 +10917,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   //components: { AgregarMarca,EditarMarca, SelectBrand },
   components: {
     EditarMarca: _EditarMarca__WEBPACK_IMPORTED_MODULE_1__["default"],
-    SelectBrand: _SelectBrand__WEBPACK_IMPORTED_MODULE_2__["default"]
+    EditarTipo: _EditarTipo__WEBPACK_IMPORTED_MODULE_2__["default"],
+    SelectBrand: _SelectBrand__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(['newVehiculoTipo', 'newVehicleBrand', 'errorsLaravel', 'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(['createVehiculoTipo', 'createVehicleBrand', 'getVehicleBrands', 'editVehicleBrand', 'getVehiculoTipos', 'editVehiculoTipo', 'changePageVehicleBrand', 'changePageVehiculoTipo'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])(['newVehiculoTipo', 'newVehicleBrand', 'errorsLaravel', 'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapActions"])(['createVehiculoTipo', 'createVehicleBrand', 'getVehicleBrands', 'editVehicleBrand', 'getVehiculoTipos', 'editVehiculoTipo', 'changePageVehicleBrand', 'changePageVehiculoTipo'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getVehicleBrands', {
@@ -63966,6 +64033,158 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=template&id=fa5b75c8&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=template&id=fa5b75c8& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: { action: "POST" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.updateVehiculoTipo({ id: _vm.fillVehiculoTipo.id })
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "modal fade", attrs: { id: "edit_tipo" } }, [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "modal-body" },
+              [
+                _c("label", { attrs: { for: "tipo_vehiculo" } }, [
+                  _vm._v("Nombre")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|min:2|max:190",
+                      expression: "'required|min:2|max:190'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fillVehiculoTipo.tipo_vehiculo,
+                      expression: "fillVehiculoTipo.tipo_vehiculo"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  class: {
+                    input: true,
+                    "is-invalid": _vm.errors.has("tipo_vehiculo")
+                  },
+                  attrs: { type: "text", name: "tipo_vehiculo" },
+                  domProps: { value: _vm.fillVehiculoTipo.tipo_vehiculo },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fillVehiculoTipo,
+                        "tipo_vehiculo",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("tipo_vehiculo"),
+                        expression: "errors.has('tipo_vehiculo')"
+                      }
+                    ],
+                    staticClass: "text-danger"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("tipo_vehiculo")))]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.errorsLaravel, function(error, index) {
+                  return _c("div", { key: index, staticClass: "text-danger" }, [
+                    _c("p", [_vm._v(_vm._s(error.tipo_vehiculo))])
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", [_vm._v("Editar Tipo")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-warning", attrs: { type: "submit" } },
+        [
+          _c("i", { staticClass: "fas fa-edit" }),
+          _vm._v(" Editar\n                    ")
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/Index.vue?vue&type=template&id=40408cd5&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/Index.vue?vue&type=template&id=40408cd5& ***!
@@ -64644,7 +64863,9 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("EditarMarca")
+      _c("EditarMarca"),
+      _vm._v(" "),
+      _c("EditarTipo")
     ],
     1
   )
@@ -87880,25 +88101,6 @@ new Vue({
     });
   }
 });
-new Vue({
-  el: '#crud',
-  created: function created() {
-    this.getKeeps();
-  },
-  data: {
-    keeps: []
-  },
-  methods: {
-    getKeeps: function getKeeps() {
-      var _this = this;
-
-      var urlKeeps = 'admin-marca-vehiculos';
-      axios__WEBPACK_IMPORTED_MODULE_5___default.a.get(urlKeeps).then(function (response) {
-        _this.keeps = response.data;
-      });
-    }
-  }
-});
 
 /***/ }),
 
@@ -92423,6 +92625,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue":
+/*!********************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/EditarTipo.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditarTipo_vue_vue_type_template_id_fa5b75c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditarTipo.vue?vue&type=template&id=fa5b75c8& */ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=template&id=fa5b75c8&");
+/* harmony import */ var _EditarTipo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarTipo.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditarTipo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditarTipo_vue_vue_type_template_id_fa5b75c8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditarTipo_vue_vue_type_template_id_fa5b75c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/VehicleBrand/EditarTipo.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarTipo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarTipo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarTipo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=template&id=fa5b75c8&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=template&id=fa5b75c8& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarTipo_vue_vue_type_template_id_fa5b75c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./EditarTipo.vue?vue&type=template&id=fa5b75c8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/EditarTipo.vue?vue&type=template&id=fa5b75c8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarTipo_vue_vue_type_template_id_fa5b75c8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditarTipo_vue_vue_type_template_id_fa5b75c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/VehicleBrand/Index.vue":
 /*!***************************************************************!*\
   !*** ./resources/assets/js/components/VehicleBrand/Index.vue ***!
@@ -94502,7 +94773,7 @@ var urlCompany = 'companies';
   editVehiculoTipo: function editVehiculoTipo(state, vehiculotipo) {
     state.fillVehiculoTipo.id = vehiculotipo.id;
     state.fillVehiculoTipo.tipo_vehiculo = vehiculotipo.tipo_vehiculo.toUpperCase();
-    $("#edit").modal('show');
+    $("#edit_tipo").modal('show');
   },
   updateVehiculoTipo: function updateVehiculoTipo(state, id) {
     var url = urlVehiculoTipo + '/' + id;
@@ -94512,7 +94783,7 @@ var urlCompany = 'companies';
         tipo_vehiculo: ''
       };
       state.errorsLaravel = [];
-      $('#edit').modal('hide');
+      $('#edit_tipo').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Tipo de vehiculo actualizada con éxito');
     })["catch"](function (error) {
       state.errorsLaravel = error.response.data;
@@ -96905,6 +97176,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     brand_id: '',
     brand: '',
     model: ''
+  },
+  fillVehiculoTipo: {
+    id: '',
+    tipo_vehiculo: ''
   },
   searchVehicleBrand: {
     brand: '',
