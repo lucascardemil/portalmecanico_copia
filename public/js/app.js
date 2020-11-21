@@ -10907,6 +10907,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  //import AgregarMarca from './AgregarMarca'
 
 
@@ -64377,7 +64389,9 @@ var render = function() {
                             2
                           ),
                           _vm._v(" "),
-                          _vm._m(1)
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _vm._m(2)
                         ])
                       ]
                     )
@@ -64391,7 +64405,7 @@ var render = function() {
         _c("div", { staticClass: "col-xl-6 col-md-12" }, [
           _c("div", { attrs: { id: "accordion" } }, [
             _c("div", { staticClass: "card" }, [
-              _vm._m(2),
+              _vm._m(3),
               _vm._v(" "),
               _c(
                 "div",
@@ -64499,7 +64513,7 @@ var render = function() {
                             2
                           ),
                           _vm._v(" "),
-                          _vm._m(3)
+                          _vm._m(4)
                         ])
                       ]
                     )
@@ -64519,7 +64533,7 @@ var render = function() {
               "table table-hover table-striped mt-3 table-sm text-white bg-dark"
           },
           [
-            _vm._m(4),
+            _vm._m(5),
             _vm._v(" "),
             _c(
               "tbody",
@@ -64694,7 +64708,7 @@ var render = function() {
               "table table-hover table-striped mt-3 table-sm text-white bg-dark"
           },
           [
-            _vm._m(5),
+            _vm._m(6),
             _vm._v(" "),
             _c(
               "tbody",
@@ -64904,6 +64918,32 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col" }, [
+      _c("label", { attrs: { for: "model" } }, [_vm._v("Tipo de vehiculo")]),
+      _vm._v(" "),
+      _c("select", { staticClass: "form-control", attrs: { name: "select" } }, [
+        _c("option", { attrs: { value: "value1" } }, [_vm._v("CAMION")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "value2" } }, [_vm._v("MOTO")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "value3" } }, [_vm._v("CAMIONETA")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "value4" } }, [_vm._v("AUTOMOVIL")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "value5" } }, [
+          _vm._v("GRUA HORQUILLA")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "value6" } }, [
+          _vm._v("VEHICULO LIVIANO")
+        ])
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -96268,8 +96308,8 @@ var urlCompany = 'companies';
     state.checkedPermissions = [];
     state.fillRole.id = role.id;
     state.fillRole.name = role.name;
-    state.fillRole.description = role.description; //state.checkedSpecialRole = role.special
-
+    state.fillRole.description = role.description;
+    state.checkedSpecialRole = role.special;
     role.permissions.forEach(function (permission) {
       permissions.push(permission.id);
     });
@@ -96277,8 +96317,8 @@ var urlCompany = 'companies';
     $("#edit").modal('show');
   },
   updateRole: function updateRole(state, id) {
-    var url = urlRoles + '/' + id; //state.fillRole.special = state.checkedSpecialRole
-
+    var url = urlRoles + '/' + id;
+    state.fillRole.special = state.checkedSpecialRole;
     state.fillRole.permissions = state.checkedPermissions;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, state.fillRole).then(function (response) {
       state.fillRole = {
@@ -96343,9 +96383,14 @@ var urlCompany = 'companies';
     state.checkedRoles = arr;
   },
   setSpecialRole: function setSpecialRole(state, value) {
-    if (value === 'no-access' || value === 'all-access') {
+    if (value === 'no-access') {
       state.checkedPermissions = [];
       $('input[name="permission"]').prop('disabled', true);
+    } else if (value === 'all-access') {
+      state.checkedPermissions = [1, 2, 3, 4, 5, 6, 7, 9, 8, 10, 11, 12, 13, 14, 15, 16];
+      $('input[name="permission"]').prop('disabled', true);
+    } else if (value === '') {
+      state.checkedPermissions = [];
     } else {
       $('input[name="permission"]').prop('disabled', false);
     }

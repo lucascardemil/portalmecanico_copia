@@ -181,7 +181,7 @@ class UserController extends Controller
     
     public function updateRole(Request $request, User $user)
     {
-        //$user->update($reque);
+        //$user->update($request);
         //actualizar roles
         
         $user->roles()->sync($request->all());

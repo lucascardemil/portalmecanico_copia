@@ -59,6 +59,18 @@
                                             </div>
                                         </div>
 
+                                        <div class="col">
+                                            <label for="model">Tipo de vehiculo</label>
+                                            <select name="select" class="form-control">
+                                                <option value="value1">CAMION</option> 
+                                                <option value="value2">MOTO</option>
+                                                <option value="value3">CAMIONETA</option>
+                                                <option value="value4">AUTOMOVIL</option>
+                                                <option value="value5">GRUA HORQUILLA</option>
+                                                <option value="value6">VEHICULO LIVIANO</option>
+                                            </select> 
+                                        </div>
+
                                         <div class="col-lg-3 mt-2">
                                             <label></label>
                                             <button type="submit" class="btn btn-success form-control">

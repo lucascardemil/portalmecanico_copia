@@ -1842,7 +1842,7 @@ export default { //used for changing the state
         state.fillRole.id = role.id
         state.fillRole.name = role.name
         state.fillRole.description = role.description
-        //state.checkedSpecialRole = role.special
+        state.checkedSpecialRole = role.special
         role.permissions.forEach(permission => {
             permissions.push(permission.id)
         })
@@ -1851,7 +1851,7 @@ export default { //used for changing the state
     },
     updateRole(state, id) {
         var url = urlRoles + '/' + id
-        //state.fillRole.special = state.checkedSpecialRole
+        state.fillRole.special = state.checkedSpecialRole
         state.fillRole.permissions = state.checkedPermissions
         axios.put(url, state.fillRole).then(response => {
             state.fillRole = {
@@ -1916,10 +1916,15 @@ export default { //used for changing the state
         state.checkedRoles = arr
     },
     setSpecialRole(state, value) {
-        if (value === 'no-access' || value === 'all-access') {
+        if (value === 'no-access') {
             state.checkedPermissions = []
             $('input[name="permission"]').prop('disabled', true)
-        } else {
+        }else if(value === 'all-access'){
+            state.checkedPermissions = [1,2,3,4,5,6,7,9,8,10,11,12,13,14,15,16]
+            $('input[name="permission"]').prop('disabled', true)
+        }else if(value === ''){
+            state.checkedPermissions = []
+        }else {
             $('input[name="permission"]').prop('disabled', false)
         }
         state.checkedSpecialRole = value

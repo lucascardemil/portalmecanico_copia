@@ -33,6 +33,8 @@ class CreatePermissionTables extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('guard_name');
+            $table->string('special');
+            $table->string('permissions');
             $table->timestamps();
         });
 
