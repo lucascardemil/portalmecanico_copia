@@ -10612,25 +10612,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios-progress-bar */ "./node_modules/axios-progress-bar/dist/index.js");
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _EditarMarca__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditarMarca */ "./resources/assets/js/components/VehicleBrand/EditarMarca.vue");
-/* harmony import */ var _EditarTipo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditarTipo */ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue");
-/* harmony import */ var _SelectBrand__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectBrand */ "./resources/assets/js/components/VehicleBrand/SelectBrand.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _TiposSelector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TiposSelector */ "./resources/assets/js/components/VehicleBrand/TiposSelector.vue");
+/* harmony import */ var _EditarMarca__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditarMarca */ "./resources/assets/js/components/VehicleBrand/EditarMarca.vue");
+/* harmony import */ var _EditarTipo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditarTipo */ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue");
+/* harmony import */ var _SelectBrand__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SelectBrand */ "./resources/assets/js/components/VehicleBrand/SelectBrand.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -10925,15 +10917,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   //components: { AgregarMarca,EditarMarca, SelectBrand },
   components: {
-    EditarMarca: _EditarMarca__WEBPACK_IMPORTED_MODULE_1__["default"],
-    EditarTipo: _EditarTipo__WEBPACK_IMPORTED_MODULE_2__["default"],
-    SelectBrand: _SelectBrand__WEBPACK_IMPORTED_MODULE_3__["default"]
+    EditarMarca: _EditarMarca__WEBPACK_IMPORTED_MODULE_2__["default"],
+    EditarTipo: _EditarTipo__WEBPACK_IMPORTED_MODULE_3__["default"],
+    SelectBrand: _SelectBrand__WEBPACK_IMPORTED_MODULE_4__["default"],
+    TiposSelector: _TiposSelector__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])(['newVehiculoTipo', 'newVehicleBrand', 'errorsLaravel', 'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapActions"])(['createVehiculoTipo', 'createVehicleBrand', 'getVehicleBrands', 'editVehicleBrand', 'getVehiculoTipos', 'editVehiculoTipo', 'changePageVehicleBrand', 'changePageVehiculoTipo'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapState"])(['newVehiculoTipo', 'newVehicleBrand', 'errorsLaravel', 'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])(['createVehiculoTipo', 'createVehicleBrand', 'getVehicleBrands', 'editVehicleBrand', 'getVehiculoTipos', 'editVehiculoTipo', 'changePageVehicleBrand', 'changePageVehiculoTipo'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getVehicleBrands', {
@@ -10982,6 +10976,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setVehicleBrand'])),
   created: function created() {
     this.$store.dispatch('allVehicleBrands');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsTiposVehiculo', 'selectedVehiculoTipo'])),
+  created: function created() {
+    this.$store.dispatch('allTiposVehiculos');
   }
 });
 
@@ -64249,7 +64281,7 @@ var render = function() {
                         _c("div", { staticClass: "row" }, [
                           _c(
                             "div",
-                            { staticClass: "col" },
+                            { staticClass: "col-12" },
                             [
                               _c("label", { attrs: { for: "marca" } }, [
                                 _vm._v("Marca")
@@ -64320,7 +64352,7 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "col" },
+                            { staticClass: "col-12" },
                             [
                               _c("label", { attrs: { for: "model" } }, [
                                 _vm._v("Modelo")
@@ -64389,9 +64421,20 @@ var render = function() {
                             2
                           ),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _c(
+                            "div",
+                            { staticClass: "col-12" },
+                            [
+                              _c("label", { attrs: { for: "model" } }, [
+                                _vm._v("Tipo de vehiculo")
+                              ]),
+                              _vm._v(" "),
+                              _c("TiposSelector")
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
-                          _vm._m(2)
+                          _vm._m(1)
                         ])
                       ]
                     )
@@ -64405,7 +64448,7 @@ var render = function() {
         _c("div", { staticClass: "col-xl-6 col-md-12" }, [
           _c("div", { attrs: { id: "accordion" } }, [
             _c("div", { staticClass: "card" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "div",
@@ -64513,7 +64556,7 @@ var render = function() {
                             2
                           ),
                           _vm._v(" "),
-                          _vm._m(4)
+                          _vm._m(3)
                         ])
                       ]
                     )
@@ -64525,356 +64568,364 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "table-responsive" }, [
-        _c(
-          "table",
-          {
-            staticClass:
-              "table table-hover table-striped mt-3 table-sm text-white bg-dark"
-          },
-          [
-            _vm._m(5),
-            _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col" }, [
+          _c("div", { staticClass: "table-responsive" }, [
             _c(
-              "tbody",
-              _vm._l(_vm.vehiculotipos, function(vehiculoTipoLocal) {
-                return _c("tr", { key: vehiculoTipoLocal.id }, [
-                  _c("td", { attrs: { width: "10px" } }, [
-                    _vm._v(_vm._s(vehiculoTipoLocal.id))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(vehiculoTipoLocal.tipo_vehiculo))]),
-                  _vm._v(" "),
-                  _c("td", { attrs: { width: "10px" } }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-warning btn-sm",
-                        attrs: {
-                          href: "#",
-                          "data-toggle": "tooltip",
-                          "data-placement": "top",
-                          title: "Editar"
-                        },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.editVehiculoTipo({
-                              vehiculoTipoLocal: vehiculoTipoLocal
-                            })
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "far fa-edit" })]
-                    )
-                  ])
-                ])
-              }),
-              0
+              "table",
+              {
+                staticClass:
+                  "table table-hover table-striped mt-3 table-sm text-white bg-dark"
+              },
+              [
+                _vm._m(4),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.vehiclebrands, function(vehiclebrandLocal) {
+                    return _c("tr", { key: vehiclebrandLocal.id }, [
+                      _c("td", { attrs: { width: "10px" } }, [
+                        _vm._v(_vm._s(vehiclebrandLocal.id))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(vehiclebrandLocal.brand))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(vehiclebrandLocal.model))]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { width: "10px" } }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-warning btn-sm",
+                            attrs: {
+                              href: "#",
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: "Editar"
+                            },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.editVehicleBrand({
+                                  vehiclebrandLocal: vehiclebrandLocal
+                                })
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-edit" })]
+                        )
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ]
             )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("nav", [
-        _c(
-          "ul",
-          { staticClass: "pagination" },
-          [
-            _vm.pagination.current_page > 1
-              ? _c("li", { staticClass: "page-item" }, [
-                  _c(
-                    "a",
+          ]),
+          _vm._v(" "),
+          _c("nav", [
+            _c(
+              "ul",
+              { staticClass: "pagination" },
+              [
+                _vm.pagination.current_page > 1
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehicleBrand({ page: 1 })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Primera")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.pagination.current_page > 1
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehicleBrand({
+                                page: _vm.pagination.current_page - 1
+                              })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Atrás")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(_vm.pagesNumber, function(page) {
+                  return _c(
+                    "li",
                     {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehiculoTipo({ page: 1 })
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("Primera")])]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.pagination.current_page > 1
-              ? _c("li", { staticClass: "page-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehiculoTipo({
-                            page: _vm.pagination.current_page - 1
-                          })
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("Atrás")])]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm._l(_vm.pagesNumber, function(page) {
-              return _c(
-                "li",
-                {
-                  key: page,
-                  staticClass: "page-item",
-                  class: [page == _vm.isActived ? "active" : ""]
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehiculoTipo({ page: page })
-                        }
-                      }
+                      key: page,
+                      staticClass: "page-item",
+                      class: [page == _vm.isActived ? "active" : ""]
                     },
                     [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(page) +
-                          "\n                "
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehicleBrand({ page: page })
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(page) +
+                              "\n                        "
+                          )
+                        ]
                       )
                     ]
                   )
-                ]
-              )
-            }),
-            _vm._v(" "),
-            _vm.pagination.current_page < _vm.pagination.last_page
-              ? _c("li", { staticClass: "page-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehiculoTipo({
-                            page: _vm.pagination.current_page + 1
-                          })
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("Siguiente")])]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.pagination.current_page < _vm.pagination.last_page
-              ? _c("li", { staticClass: "page-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehiculoTipo({
-                            page: _vm.pagination.last_page
-                          })
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("Última")])]
-                  )
-                ])
-              : _vm._e()
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "table-responsive" }, [
-        _c(
-          "table",
-          {
-            staticClass:
-              "table table-hover table-striped mt-3 table-sm text-white bg-dark"
-          },
-          [
-            _vm._m(6),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.vehiclebrands, function(vehiclebrandLocal) {
-                return _c("tr", { key: vehiclebrandLocal.id }, [
-                  _c("td", { attrs: { width: "10px" } }, [
-                    _vm._v(_vm._s(vehiclebrandLocal.id))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(vehiclebrandLocal.brand))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(vehiclebrandLocal.model))]),
-                  _vm._v(" "),
-                  _c("td", { attrs: { width: "10px" } }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-warning btn-sm",
-                        attrs: {
-                          href: "#",
-                          "data-toggle": "tooltip",
-                          "data-placement": "top",
-                          title: "Editar"
-                        },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.editVehicleBrand({
-                              vehiclebrandLocal: vehiclebrandLocal
-                            })
+                }),
+                _vm._v(" "),
+                _vm.pagination.current_page < _vm.pagination.last_page
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehicleBrand({
+                                page: _vm.pagination.current_page + 1
+                              })
+                            }
                           }
-                        }
-                      },
-                      [_c("i", { staticClass: "far fa-edit" })]
-                    )
-                  ])
-                ])
-              }),
-              0
+                        },
+                        [_c("span", [_vm._v("Siguiente")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.pagination.current_page < _vm.pagination.last_page
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehicleBrand({
+                                page: _vm.pagination.last_page
+                              })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Última")])]
+                      )
+                    ])
+                  : _vm._e()
+              ],
+              2
             )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("nav", [
-        _c(
-          "ul",
-          { staticClass: "pagination" },
-          [
-            _vm.pagination.current_page > 1
-              ? _c("li", { staticClass: "page-item" }, [
-                  _c(
-                    "a",
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c(
+              "table",
+              {
+                staticClass:
+                  "table table-hover table-striped mt-3 table-sm text-white bg-dark"
+              },
+              [
+                _vm._m(5),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.vehiculotipos, function(vehiculoTipoLocal) {
+                    return _c("tr", { key: vehiculoTipoLocal.id }, [
+                      _c("td", { attrs: { width: "10px" } }, [
+                        _vm._v(_vm._s(vehiculoTipoLocal.id))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(vehiculoTipoLocal.tipo_vehiculo))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { width: "10px" } }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-warning btn-sm",
+                            attrs: {
+                              href: "#",
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: "Editar"
+                            },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.editVehiculoTipo({
+                                  vehiculoTipoLocal: vehiculoTipoLocal
+                                })
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-edit" })]
+                        )
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("nav", [
+            _c(
+              "ul",
+              { staticClass: "pagination" },
+              [
+                _vm.pagination.current_page > 1
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehiculoTipo({ page: 1 })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Primera")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.pagination.current_page > 1
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehiculoTipo({
+                                page: _vm.pagination.current_page - 1
+                              })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Atrás")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(_vm.pagesNumber, function(page) {
+                  return _c(
+                    "li",
                     {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehicleBrand({ page: 1 })
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("Primera")])]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.pagination.current_page > 1
-              ? _c("li", { staticClass: "page-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehicleBrand({
-                            page: _vm.pagination.current_page - 1
-                          })
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("Atrás")])]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm._l(_vm.pagesNumber, function(page) {
-              return _c(
-                "li",
-                {
-                  key: page,
-                  staticClass: "page-item",
-                  class: [page == _vm.isActived ? "active" : ""]
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehicleBrand({ page: page })
-                        }
-                      }
+                      key: page,
+                      staticClass: "page-item",
+                      class: [page == _vm.isActived ? "active" : ""]
                     },
                     [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(page) +
-                          "\n                "
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehiculoTipo({ page: page })
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(page) +
+                              "\n                        "
+                          )
+                        ]
                       )
                     ]
                   )
-                ]
-              )
-            }),
-            _vm._v(" "),
-            _vm.pagination.current_page < _vm.pagination.last_page
-              ? _c("li", { staticClass: "page-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehicleBrand({
-                            page: _vm.pagination.current_page + 1
-                          })
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("Siguiente")])]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.pagination.current_page < _vm.pagination.last_page
-              ? _c("li", { staticClass: "page-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.changePageVehicleBrand({
-                            page: _vm.pagination.last_page
-                          })
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("Última")])]
-                  )
-                ])
-              : _vm._e()
-          ],
-          2
-        )
+                }),
+                _vm._v(" "),
+                _vm.pagination.current_page < _vm.pagination.last_page
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehiculoTipo({
+                                page: _vm.pagination.current_page + 1
+                              })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Siguiente")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.pagination.current_page < _vm.pagination.last_page
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageVehiculoTipo({
+                                page: _vm.pagination.last_page
+                              })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Última")])]
+                      )
+                    ])
+                  : _vm._e()
+              ],
+              2
+            )
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("EditarMarca"),
@@ -64918,32 +64969,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("label", { attrs: { for: "model" } }, [_vm._v("Tipo de vehiculo")]),
-      _vm._v(" "),
-      _c("select", { staticClass: "form-control", attrs: { name: "select" } }, [
-        _c("option", { attrs: { value: "value1" } }, [_vm._v("CAMION")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "value2" } }, [_vm._v("MOTO")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "value3" } }, [_vm._v("CAMIONETA")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "value4" } }, [_vm._v("AUTOMOVIL")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "value5" } }, [
-          _vm._v("GRUA HORQUILLA")
-        ]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "value6" } }, [
-          _vm._v("VEHICULO LIVIANO")
-        ])
-      ])
-    ])
   },
   function() {
     var _vm = this
@@ -65027,7 +65052,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Tipo de vehiculo")]),
+        _c("th", [_vm._v("Marca")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modelo")]),
         _vm._v(" "),
         _c("th", [_vm._v(" ")])
       ])
@@ -65041,9 +65068,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Marca")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Modelo")]),
+        _c("th", [_vm._v("Tipo de vehiculo")]),
         _vm._v(" "),
         _c("th", [_vm._v(" ")])
       ])
@@ -65100,6 +65125,60 @@ var render = function() {
           staticClass: "text-danger"
         },
         [_vm._v(_vm._s(_vm.errors.first("marca")))]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=template&id=765ba07e&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=template&id=765ba07e& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("v-select", {
+        class: { input: true, "is-invalid": _vm.errors.has("select_tipo") },
+        attrs: {
+          name: "select_tipo",
+          placeholder: "Seleccione el Tipo de Vehiculo",
+          options: _vm.optionsTiposVehiculo,
+          value: _vm.selectedVehiculoTipo
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.errors.has("select_tipo"),
+              expression: "errors.has('select_tipo')"
+            }
+          ],
+          staticClass: "text-danger"
+        },
+        [_vm._v(_vm._s(_vm.errors.first("select_tipo")))]
       )
     ],
     1
@@ -92872,6 +92951,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/VehicleBrand/TiposSelector.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/TiposSelector.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TiposSelector_vue_vue_type_template_id_765ba07e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TiposSelector.vue?vue&type=template&id=765ba07e& */ "./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=template&id=765ba07e&");
+/* harmony import */ var _TiposSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TiposSelector.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TiposSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TiposSelector_vue_vue_type_template_id_765ba07e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TiposSelector_vue_vue_type_template_id_765ba07e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/VehicleBrand/TiposSelector.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TiposSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./TiposSelector.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TiposSelector_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=template&id=765ba07e&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=template&id=765ba07e& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TiposSelector_vue_vue_type_template_id_765ba07e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./TiposSelector.vue?vue&type=template&id=765ba07e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/TiposSelector.vue?vue&type=template&id=765ba07e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TiposSelector_vue_vue_type_template_id_765ba07e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TiposSelector_vue_vue_type_template_id_765ba07e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/VehicleMechanic/Agregar.vue":
 /*!********************************************************************!*\
   !*** ./resources/assets/js/components/VehicleMechanic/Agregar.vue ***!
@@ -94141,6 +94289,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   allVehicleBrands: function allVehicleBrands(context, data) {
     context.commit('allVehicleBrands', data);
   },
+  allTiposVehiculos: function allTiposVehiculos(context, data) {
+    context.commit('allTiposVehiculos', data);
+  },
   setVehicleBrand: function setVehicleBrand(context, data) {
     context.commit('setVehicleBrand', data);
     context.commit('allVehicleModels', data);
@@ -94150,6 +94301,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   setVehicleModel: function setVehicleModel(context, data) {
     context.commit('setVehicleModel', data);
+  },
+  setVehiculoTipo: function setVehiculoTipo(context, data) {
+    context.commit('setVehiculoTipo', data);
   },
 
   /*************seccion formulario de cotizacion  ****************/
@@ -94533,6 +94687,7 @@ var urlVehicleBrand = 'vehiclebrands';
 var urlAllVehicleBrand = 'vehiclebrands-all';
 var urlVehiculoTipo = 'vehiculotipos';
 var urlAllVehiculoTipo = 'vehiculotipos-all';
+var urlSelectVehiculoTipo = 'select-tipos';
 var urlVehicleModel = 'vehiclemodels';
 var urlAllVehicleModel = 'vehiclemodels-all';
 var urlVBrand = 'vbrands-all';
@@ -96389,9 +96544,8 @@ var urlCompany = 'companies';
     } else if (value === 'all-access') {
       state.checkedPermissions = [1, 2, 3, 4, 5, 6, 7, 9, 8, 10, 11, 12, 13, 14, 15, 16];
       $('input[name="permission"]').prop('disabled', true);
-    } else if (value === '') {
-      state.checkedPermissions = [];
     } else {
+      state.checkedPermissions = [];
       $('input[name="permission"]').prop('disabled', false);
     }
 
@@ -96468,6 +96622,21 @@ var urlCompany = 'companies';
   },
   setVehicleModel: function setVehicleModel(state, vehiclemodel) {
     state.selectedVehicleModel = vehiclemodel;
+  },
+  allTiposVehiculos: function allTiposVehiculos(state) {
+    var url = urlSelectVehiculoTipo;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      state.optionsTiposVehiculo = [];
+      response.data.forEach(function (vehiculotipo) {
+        state.optionsTiposVehiculo.push({
+          label: vehiculotipo.tipo_vehiculo,
+          value: vehiculotipo.id
+        });
+      });
+    });
+  },
+  setVehiculoTipo: function setVehiculoTipo(state, vehiculotipo) {
+    state.selectedVehiculoTipo = vehiculotipo;
   },
 
   /****************formulario de cotizacion ****************************************/
@@ -97095,6 +97264,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   optionsProductimport: [],
   optionsVehicleBrand: [],
   optionsVehicleModel: [],
+  optionsTiposVehiculo: [],
   optionsVBrand: [],
   optionsVModel: [],
   optionsVYear: [],

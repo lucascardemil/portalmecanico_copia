@@ -13,11 +13,10 @@ class TipoVehiculo extends Model
         'id', 'tipo_vehiculo'
      ];
  
-     /*public function vehiclemodels()
-     {
-         return $this->hasMany('App\VehicleModel','brand_id');
-     }*/
- 
+     
+
+     
+
      public function scopeTipo($query)
      {
          $keyword = request('tipo_vehiculo');

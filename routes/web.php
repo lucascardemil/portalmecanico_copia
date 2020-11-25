@@ -36,6 +36,7 @@ Route::ApiResource('vehiclebrands', 'VehicleBrandController');
 Route::ApiResource('vehiculotipos', 'VehiculoTipoController');
 Route::get('vehiclebrands-all', 'VehicleBrandController@all');
 Route::get('vehiculotipos-all', 'VehiculoTipoController@all');
+Route::get('select-tipos', 'VehiculoTipoController@selectTipos');
 
 Route::ApiResource('vehiclemodels', 'VehicleModelController');
 Route::get('vehiclemodels-all', 'VehicleModelController@all');

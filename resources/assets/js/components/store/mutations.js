@@ -21,6 +21,7 @@ var urlAllVehicleBrand = 'vehiclebrands-all'
 
 var urlVehiculoTipo = 'vehiculotipos'
 var urlAllVehiculoTipo = 'vehiculotipos-all'
+var urlSelectVehiculoTipo = 'select-tipos'
 
 var urlVehicleModel = 'vehiclemodels'
 var urlAllVehicleModel = 'vehiclemodels-all'
@@ -1922,10 +1923,9 @@ export default { //used for changing the state
         }else if(value === 'all-access'){
             state.checkedPermissions = [1,2,3,4,5,6,7,9,8,10,11,12,13,14,15,16]
             $('input[name="permission"]').prop('disabled', true)
-        }else if(value === ''){
+        }else{
             state.checkedPermissions = []
-        }else {
-            $('input[name="permission"]').prop('disabled', false)
+            $('input[name="permission"]').prop('disabled', false) 
         }
         state.checkedSpecialRole = value
     },
@@ -1997,6 +1997,23 @@ export default { //used for changing the state
     },
     setVehicleModel(state, vehiclemodel) {
         state.selectedVehicleModel = vehiclemodel
+    },
+
+    allTiposVehiculos(state) {
+        var url = urlSelectVehiculoTipo
+        axios.get(url).then(response => {
+            state.optionsTiposVehiculo = []
+            response.data.forEach((vehiculotipo) => {
+                state.optionsTiposVehiculo.push({
+                    label: vehiculotipo.tipo_vehiculo,
+                    value: vehiculotipo.id
+                })
+            });
+        });
+    },
+
+    setVehiculoTipo(state, vehiculotipo) {
+        state.selectedVehiculoTipo = vehiculotipo
     },
 
     /****************formulario de cotizacion ****************************************/

@@ -113,4 +113,10 @@ class VehiculoTipoController extends Controller
             'vehiculotipos' => $all
         ];
    }
+   public function selectTipos()
+   {
+        $vehiculotipos = TipoVehiculo::orderBy('id', 'ASC')->get();
+
+        return $vehiculotipos;
+   }
 }

@@ -30,7 +30,7 @@
                                 <form action="POST" v-on:submit.prevent="createVehicleBrand">
                                     <div class="row">
 
-                                        <div class="col">
+                                        <div class="col-12">
 
                                             <label for="marca">Marca</label>
                                             <input v-validate="'required|min:2|max:190'"
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col">
+                                        <div class="col-12">
                                             <label for="model">Modelo</label>
                                             <input v-validate="'required|min:2|max:190'"
                                                     :class="{'input': true, 'is-invalid': errors.has('model') }"
@@ -59,16 +59,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="col">
+                                        <div class="col-12">
                                             <label for="model">Tipo de vehiculo</label>
-                                            <select name="select" class="form-control">
-                                                <option value="value1">CAMION</option> 
-                                                <option value="value2">MOTO</option>
-                                                <option value="value3">CAMIONETA</option>
-                                                <option value="value4">AUTOMOVIL</option>
-                                                <option value="value5">GRUA HORQUILLA</option>
-                                                <option value="value6">VEHICULO LIVIANO</option>
-                                            </select> 
+                                            <TiposSelector></TiposSelector>
                                         </div>
 
                                         <div class="col-lg-3 mt-2">
@@ -134,7 +127,83 @@
                 </div>
             </div>
         </div>
-        
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mt-3 table-sm text-white bg-dark">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td></td>
+                                <td> 
+                                    <input type="text" class="form-control form-control-sm"
+                                            v-model="searchVehicleBrand.brand" @keyup="getVehicleBrands">
+                                </td>
+                                <td></td>
+                            </tr> -->
+
+                            <tr v-for="vehiclebrandLocal in vehiclebrands" :key="vehiclebrandLocal.id">
+                                <td width="10px">{{ vehiclebrandLocal.id }}</td>
+                                <td>{{ vehiclebrandLocal.brand }}</td>
+                                <td>{{ vehiclebrandLocal.model }}</td>
+                                
+                                <td width="10px">
+                                    <a href="#" class="btn btn-warning btn-sm"
+                                        @click.prevent="editVehicleBrand( { vehiclebrandLocal } )"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Editar">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item" v-if="pagination.current_page > 1">
+                            <a class="page-link" href="#" @click.prevent="changePageVehicleBrand({page: 1})">
+                                <span>Primera</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" v-if="pagination.current_page > 1">
+                            <a class="page-link" href="#" @click.prevent="changePageVehicleBrand({page: pagination.current_page - 1})">
+                                <span>Atrás</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" v-for="page in pagesNumber"
+                            v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
+                            <a class="page-link" href="#" @click.prevent="changePageVehicleBrand({page})">
+                                {{ page }}
+                            </a>
+                        </li>
+
+                        <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                            <a class="page-link" href="#" @click.prevent="changePageVehicleBrand({page: pagination.current_page + 1})">
+                                <span>Siguiente</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                            <a class="page-link" href="#"  @click.prevent="changePageVehicleBrand({page:pagination.last_page})">
+                                <span>Última</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col">
                 <div class="table-responsive">
                     <table class="table table-hover table-striped mt-3 table-sm text-white bg-dark">
                         <thead>
@@ -171,121 +240,43 @@
                         </tbody>
                     </table>
                 </div>
-            
-            
-
-
-
-        <nav>
-            <ul class="pagination">
-                <li class="page-item" v-if="pagination.current_page > 1">
-                    <a class="page-link" href="#" @click.prevent="changePageVehiculoTipo({page: 1})">
-                        <span>Primera</span>
-                    </a>
-                </li>
-
-                <li class="page-item" v-if="pagination.current_page > 1">
-                    <a class="page-link" href="#" @click.prevent="changePageVehiculoTipo({page: pagination.current_page - 1})">
-                        <span>Atrás</span>
-                    </a>
-                </li>
-
-                <li class="page-item" v-for="page in pagesNumber"
-                    v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
-                    <a class="page-link" href="#" @click.prevent="changePageVehiculoTipo({page})">
-                        {{ page }}
-                    </a>
-                </li>
-
-                <li class="page-item" v-if="pagination.current_page < pagination.last_page">
-                    <a class="page-link" href="#" @click.prevent="changePageVehiculoTipo({page: pagination.current_page + 1})">
-                        <span>Siguiente</span>
-                    </a>
-                </li>
-
-                <li class="page-item" v-if="pagination.current_page < pagination.last_page">
-                    <a class="page-link" href="#"  @click.prevent="changePageVehiculoTipo({page:pagination.last_page})">
-                        <span>Última</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        
-
-        <div class="table-responsive">
-            <table class="table table-hover table-striped mt-3 table-sm text-white bg-dark">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- <tr>
-                        <td></td>
-                        <td> 
-                            <input type="text" class="form-control form-control-sm"
-                                    v-model="searchVehicleBrand.brand" @keyup="getVehicleBrands">
-                        </td>
-                        <td></td>
-                    </tr> -->
-
-                    <tr v-for="vehiclebrandLocal in vehiclebrands" :key="vehiclebrandLocal.id">
-                        <td width="10px">{{ vehiclebrandLocal.id }}</td>
-                        <td>{{ vehiclebrandLocal.brand }}</td>
-                        <td>{{ vehiclebrandLocal.model }}</td>
-                        
-                        <td width="10px">
-                            <a href="#" class="btn btn-warning btn-sm"
-                                @click.prevent="editVehicleBrand( { vehiclebrandLocal } )"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Editar">
-                                <i class="far fa-edit"></i>
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item" v-if="pagination.current_page > 1">
+                            <a class="page-link" href="#" @click.prevent="changePageVehiculoTipo({page: 1})">
+                                <span>Primera</span>
                             </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </li>
+
+                        <li class="page-item" v-if="pagination.current_page > 1">
+                            <a class="page-link" href="#" @click.prevent="changePageVehiculoTipo({page: pagination.current_page - 1})">
+                                <span>Atrás</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" v-for="page in pagesNumber"
+                            v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
+                            <a class="page-link" href="#" @click.prevent="changePageVehiculoTipo({page})">
+                                {{ page }}
+                            </a>
+                        </li>
+
+                        <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                            <a class="page-link" href="#" @click.prevent="changePageVehiculoTipo({page: pagination.current_page + 1})">
+                                <span>Siguiente</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                            <a class="page-link" href="#"  @click.prevent="changePageVehiculoTipo({page:pagination.last_page})">
+                                <span>Última</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+            </div>
         </div>
-
-        <nav>
-            <ul class="pagination">
-                <li class="page-item" v-if="pagination.current_page > 1">
-                    <a class="page-link" href="#" @click.prevent="changePageVehicleBrand({page: 1})">
-                        <span>Primera</span>
-                    </a>
-                </li>
-
-                <li class="page-item" v-if="pagination.current_page > 1">
-                    <a class="page-link" href="#" @click.prevent="changePageVehicleBrand({page: pagination.current_page - 1})">
-                        <span>Atrás</span>
-                    </a>
-                </li>
-
-                <li class="page-item" v-for="page in pagesNumber"
-                    v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
-                    <a class="page-link" href="#" @click.prevent="changePageVehicleBrand({page})">
-                        {{ page }}
-                    </a>
-                </li>
-
-                <li class="page-item" v-if="pagination.current_page < pagination.last_page">
-                    <a class="page-link" href="#" @click.prevent="changePageVehicleBrand({page: pagination.current_page + 1})">
-                        <span>Siguiente</span>
-                    </a>
-                </li>
-
-                <li class="page-item" v-if="pagination.current_page < pagination.last_page">
-                    <a class="page-link" href="#"  @click.prevent="changePageVehicleBrand({page:pagination.last_page})">
-                        <span>Última</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
 
         <!--<AgregarMarca></AgregarMarca>-->
         <EditarMarca></EditarMarca>
@@ -299,6 +290,7 @@
 
 import { loadProgressBar } from 'axios-progress-bar'
 //import AgregarMarca from './AgregarMarca'
+import TiposSelector from './TiposSelector'
 import EditarMarca from './EditarMarca'
 import EditarTipo from './EditarTipo'
 import SelectBrand from './SelectBrand'
@@ -306,7 +298,7 @@ import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
     //components: { AgregarMarca,EditarMarca, SelectBrand },
-    components: {EditarMarca, EditarTipo, SelectBrand },
+    components: {EditarMarca, EditarTipo, SelectBrand, TiposSelector },
     computed:{
         ...mapState(['newVehiculoTipo','newVehicleBrand', 'errorsLaravel' ,'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand']),
         ...mapGetters(['isActived', 'pagesNumber'])

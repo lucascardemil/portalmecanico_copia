@@ -731,6 +731,9 @@ export default { //methods
     allVehicleBrands(context, data) {
         context.commit('allVehicleBrands', data)
     },
+    allTiposVehiculos(context, data) {
+        context.commit('allTiposVehiculos', data)
+    },
     setVehicleBrand(context, data) {
         context.commit('setVehicleBrand', data)
         context.commit('allVehicleModels', data)
@@ -740,6 +743,9 @@ export default { //methods
     },
     setVehicleModel(context, data) {
         context.commit('setVehicleModel', data)
+    },
+    setVehiculoTipo(context, data) {
+        context.commit('setVehiculoTipo', data)
     },
     /*************seccion formulario de cotizacion  ****************/
     allVBrands(context, data) {

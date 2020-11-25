@@ -7,6 +7,7 @@ export default { //data
     optionsProductimport: [],
     optionsVehicleBrand: [],
     optionsVehicleModel: [],
+    optionsTiposVehiculo: [],
 
     optionsVBrand: [],
     optionsVModel: [],
