@@ -43,14 +43,15 @@ class VehicleBrandController extends Controller
        $this->validate($request, [
            'brand' => 'required|min:2|max:190',
        ], [
-           'brand.required' => 'El campo nombre es obligatorio',
-           'brand.min' => 'El campo nombre debe tener al menos 4 caracteres',
-           'brand.max' => 'El campo nombre debe tener a lo más 190 caracteres',
+           'brand.required' => 'El campo marca es obligatorio',
+           'brand.min' => 'El campo marca debe tener al menos 4 caracteres',
+           'brand.max' => 'El campo marca debe tener a lo más 190 caracteres',
        ]);
 
        $data = $request->all();
 
        VehicleBrand::create($data);
+       
    }
 
    /**
@@ -100,10 +101,26 @@ class VehicleBrandController extends Controller
    }
    public function all()
    {
-       
-        $vehiclebrands = VehicleBrand::orderBy('id', 'ASC')->get();
+        $all = VehicleBrand::orderBy('id', 'ASC')->paginate(10, ['*'], 'pagina_marca');
 
-        return $vehiclebrands;
+        return [
+            'pagination' => [
+                'total'         => $all->total(),
+                'current_page'  => $all->currentPage(),
+                'per_page'      => $all->perPage(),
+                'last_page'     => $all->lastPage(),
+                'from'          => $all->firstItem(),
+                'to'            => $all->lastItem(),
+            ],
+            'vehiclebrands' => $all
+        ];
+   }
+
+   public function selectMarcas()
+   {
+        $vehiculomarcas = VehicleBrand::orderBy('id', 'ASC')->get();
+
+        return $vehiculomarcas;
    }
 
 }

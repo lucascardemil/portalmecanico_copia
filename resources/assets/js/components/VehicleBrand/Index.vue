@@ -30,7 +30,7 @@
                                 <form action="POST" v-on:submit.prevent="createVehicleBrand">
                                     <div class="row">
 
-                                        <div class="col-12">
+                                        <div class="col">
 
                                             <label for="marca">Marca</label>
                                             <input v-validate="'required|min:2|max:190'"
@@ -43,25 +43,6 @@
                                             <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
                                                 <p>{{ error.brand }}</p>
                                             </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="model">Modelo</label>
-                                            <input v-validate="'required|min:2|max:190'"
-                                                    :class="{'input': true, 'is-invalid': errors.has('model') }"
-                                                    type="text"
-                                                    name="model"
-                                                    class="form-control" v-model="newVehicleBrand.model">
-                                            <p v-show="errors.has('model')" class="text-danger">{{ errors.first('model') }}</p>
-
-                                            <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                                <p>{{ error.model }}</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="model">Tipo de vehiculo</label>
-                                            <TiposSelector></TiposSelector>
                                         </div>
 
                                         <div class="col-lg-3 mt-2">
@@ -135,7 +116,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Marca</th>
-                                <th>Modelo</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
@@ -152,8 +132,6 @@
                             <tr v-for="vehiclebrandLocal in vehiclebrands" :key="vehiclebrandLocal.id">
                                 <td width="10px">{{ vehiclebrandLocal.id }}</td>
                                 <td>{{ vehiclebrandLocal.brand }}</td>
-                                <td>{{ vehiclebrandLocal.model }}</td>
-                                
                                 <td width="10px">
                                     <a href="#" class="btn btn-warning btn-sm"
                                         @click.prevent="editVehicleBrand( { vehiclebrandLocal } )"
@@ -167,7 +145,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                
                 <nav>
                     <ul class="pagination">
                         <li class="page-item" v-if="pagination.current_page > 1">
@@ -277,6 +255,66 @@
                 
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-12">
+                <div id="accordion">
+                    <div class="card">
+
+                        <div class="card-header p-0" id="headingOne">
+                        <h5 class="mb-0">
+                            <button id="btn-type-card" class="btn btn-block text-left p-3" data-toggle="collapse" data-target="#nuevo_modelo"
+                                aria-expanded="true" aria-controls="collapseOne">
+                            Nuevo Modelo
+                            <span class="text-right"><i class="fas fa-arrows-alt-v"></i></span>
+                            </button>
+                        </h5>
+                        </div>
+
+                        <div id="nuevo_modelo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <form action="POST" v-on:submit.prevent="createVehicleModel">
+                                    <div class="row">
+
+                                        <div class="col">
+
+                                            <label for="model">Modelo</label>
+                                            <input v-validate="'required|min:2|max:190'"
+                                                    :class="{'input': true, 'is-invalid': errors.has('model') }"
+                                                    type="text"
+                                                    name="model"
+                                                    class="form-control" v-model="newVehicleModelo.model">
+                                            <p v-show="errors.has('model')" class="text-danger">{{ errors.first('model') }}</p>
+
+                                            <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
+                                                <p>{{ error.model }}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="model">Marca</label>
+                                            <SelectBrand></SelectBrand>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="model">Tipo de vehiculo</label>
+                                            <TiposSelector></TiposSelector>
+                                        </div>
+
+                                        <div class="col-lg-3 mt-2">
+                                            <label></label>
+                                            <button type="submit" class="btn btn-success form-control">
+                                                <i class="fas fa-plus-square"></i> Guardar
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--<AgregarMarca></AgregarMarca>-->
         <EditarMarca></EditarMarca>
@@ -300,11 +338,12 @@ export default {
     //components: { AgregarMarca,EditarMarca, SelectBrand },
     components: {EditarMarca, EditarTipo, SelectBrand, TiposSelector },
     computed:{
-        ...mapState(['newVehiculoTipo','newVehicleBrand', 'errorsLaravel' ,'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand']),
+        ...mapState(['newVehicleModelo','newVehiculoTipo','newVehicleBrand', 'errorsLaravel' ,'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
-        ...mapActions(['createVehiculoTipo','createVehicleBrand','getVehicleBrands', 'editVehicleBrand','getVehiculoTipos', 'editVehiculoTipo','changePageVehicleBrand', 'changePageVehiculoTipo'])
+        ...mapActions(['createVehicleModel','createVehiculoTipo','createVehicleBrand', 'editVehicleBrand', 'editVehiculoTipo','changePageVehicleBrand', 'changePageVehiculoTipo'])
+        //...mapActions(['createVehiculoTipo','createVehicleBrand','getVehicleBrands', 'editVehicleBrand','getVehiculoTipos', 'editVehiculoTipo','changePageVehicleBrand', 'changePageVehiculoTipo'])
     },
     created(){
         loadProgressBar();

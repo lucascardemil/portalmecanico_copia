@@ -10911,6 +10911,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  //import AgregarMarca from './AgregarMarca'
 
 
@@ -10926,8 +10964,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     SelectBrand: _SelectBrand__WEBPACK_IMPORTED_MODULE_4__["default"],
     TiposSelector: _TiposSelector__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapState"])(['newVehiculoTipo', 'newVehicleBrand', 'errorsLaravel', 'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])(['createVehiculoTipo', 'createVehicleBrand', 'getVehicleBrands', 'editVehicleBrand', 'getVehiculoTipos', 'editVehiculoTipo', 'changePageVehicleBrand', 'changePageVehiculoTipo'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapState"])(['newVehicleModelo', 'newVehiculoTipo', 'newVehicleBrand', 'errorsLaravel', 'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])(['createVehicleModel', 'createVehiculoTipo', 'createVehicleBrand', 'editVehicleBrand', 'editVehiculoTipo', 'changePageVehicleBrand', 'changePageVehiculoTipo'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getVehicleBrands', {
@@ -11009,9 +11047,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsTiposVehiculo', 'selectedVehiculoTipo'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsTiposVehiculo', 'selectedVehiculoTipo'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getVehiculoTipos'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setVehiculoTipo'])),
   created: function created() {
     this.$store.dispatch('allTiposVehiculos');
   }
@@ -64281,7 +64321,7 @@ var render = function() {
                         _c("div", { staticClass: "row" }, [
                           _c(
                             "div",
-                            { staticClass: "col-12" },
+                            { staticClass: "col" },
                             [
                               _c("label", { attrs: { for: "marca" } }, [
                                 _vm._v("Marca")
@@ -64348,90 +64388,6 @@ var render = function() {
                               })
                             ],
                             2
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "col-12" },
-                            [
-                              _c("label", { attrs: { for: "model" } }, [
-                                _vm._v("Modelo")
-                              ]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "validate",
-                                    rawName: "v-validate",
-                                    value: "required|min:2|max:190",
-                                    expression: "'required|min:2|max:190'"
-                                  },
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.newVehicleBrand.model,
-                                    expression: "newVehicleBrand.model"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                class: {
-                                  input: true,
-                                  "is-invalid": _vm.errors.has("model")
-                                },
-                                attrs: { type: "text", name: "model" },
-                                domProps: { value: _vm.newVehicleBrand.model },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.newVehicleBrand,
-                                      "model",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: _vm.errors.has("model"),
-                                      expression: "errors.has('model')"
-                                    }
-                                  ],
-                                  staticClass: "text-danger"
-                                },
-                                [_vm._v(_vm._s(_vm.errors.first("model")))]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(_vm.errorsLaravel, function(error, index) {
-                                return _c(
-                                  "div",
-                                  { key: index, staticClass: "text-danger" },
-                                  [_c("p", [_vm._v(_vm._s(error.model))])]
-                                )
-                              })
-                            ],
-                            2
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "col-12" },
-                            [
-                              _c("label", { attrs: { for: "model" } }, [
-                                _vm._v("Tipo de vehiculo")
-                              ]),
-                              _vm._v(" "),
-                              _c("TiposSelector")
-                            ],
-                            1
                           ),
                           _vm._v(" "),
                           _vm._m(1)
@@ -64589,8 +64545,6 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(vehiclebrandLocal.brand))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(vehiclebrandLocal.model))]),
                       _vm._v(" "),
                       _c("td", { attrs: { width: "10px" } }, [
                         _c(
@@ -64928,6 +64882,146 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xl-6 col-md-12" }, [
+          _c("div", { attrs: { id: "accordion" } }, [
+            _c("div", { staticClass: "card" }, [
+              _vm._m(6),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse",
+                  attrs: {
+                    id: "nuevo_modelo",
+                    "aria-labelledby": "headingOne",
+                    "data-parent": "#accordion"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        attrs: { action: "POST" },
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.createVehicleModel($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col" },
+                            [
+                              _c("label", { attrs: { for: "model" } }, [
+                                _vm._v("Modelo")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "validate",
+                                    rawName: "v-validate",
+                                    value: "required|min:2|max:190",
+                                    expression: "'required|min:2|max:190'"
+                                  },
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.newVehicleModelo.model,
+                                    expression: "newVehicleModelo.model"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  input: true,
+                                  "is-invalid": _vm.errors.has("model")
+                                },
+                                attrs: { type: "text", name: "model" },
+                                domProps: { value: _vm.newVehicleModelo.model },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.newVehicleModelo,
+                                      "model",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.errors.has("model"),
+                                      expression: "errors.has('model')"
+                                    }
+                                  ],
+                                  staticClass: "text-danger"
+                                },
+                                [_vm._v(_vm._s(_vm.errors.first("model")))]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.errorsLaravel, function(error, index) {
+                                return _c(
+                                  "div",
+                                  { key: index, staticClass: "text-danger" },
+                                  [_c("p", [_vm._v(_vm._s(error.model))])]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-12" },
+                            [
+                              _c("label", { attrs: { for: "model" } }, [
+                                _vm._v("Marca")
+                              ]),
+                              _vm._v(" "),
+                              _c("SelectBrand")
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-12" },
+                            [
+                              _c("label", { attrs: { for: "model" } }, [
+                                _vm._v("Tipo de vehiculo")
+                              ]),
+                              _vm._v(" "),
+                              _c("TiposSelector")
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._m(7)
+                        ])
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
       _c("EditarMarca"),
       _vm._v(" "),
       _c("EditarTipo")
@@ -65054,8 +65148,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Marca")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Modelo")]),
-        _vm._v(" "),
         _c("th", [_vm._v(" ")])
       ])
     ])
@@ -65072,6 +65164,60 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v(" ")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header p-0", attrs: { id: "headingOne" } },
+      [
+        _c("h5", { staticClass: "mb-0" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-block text-left p-3",
+              attrs: {
+                id: "btn-type-card",
+                "data-toggle": "collapse",
+                "data-target": "#nuevo_modelo",
+                "aria-expanded": "true",
+                "aria-controls": "collapseOne"
+              }
+            },
+            [
+              _vm._v(
+                "\n                        Nuevo Modelo\n                        "
+              ),
+              _c("span", { staticClass: "text-right" }, [
+                _c("i", { staticClass: "fas fa-arrows-alt-v" })
+              ])
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 mt-2" }, [
+      _c("label"),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success form-control",
+          attrs: { type: "submit" }
+        },
+        [
+          _c("i", { staticClass: "fas fa-plus-square" }),
+          _vm._v(" Guardar\n                                        ")
+        ]
+      )
     ])
   }
 ]
@@ -65162,7 +65308,8 @@ var render = function() {
           placeholder: "Seleccione el Tipo de Vehiculo",
           options: _vm.optionsTiposVehiculo,
           value: _vm.selectedVehiculoTipo
-        }
+        },
+        on: { input: _vm.setVehiculoTipo }
       }),
       _vm._v(" "),
       _c(
@@ -94685,6 +94832,7 @@ var urlDetailVehicle = 'detailvehicles';
 var urlUpload = 'upload';
 var urlVehicleBrand = 'vehiclebrands';
 var urlAllVehicleBrand = 'vehiclebrands-all';
+var urlSelectVehiculoMarcas = 'select-marcas';
 var urlVehiculoTipo = 'vehiculotipos';
 var urlAllVehiculoTipo = 'vehiculotipos-all';
 var urlSelectVehiculoTipo = 'select-tipos';
@@ -94985,21 +95133,23 @@ var urlCompany = 'companies';
     });
   },
   getVehicleBrands: function getVehicleBrands(state, page) {
-    var url = 'brands-models?page=' + page;
+    var url = 'vehiclebrands-all?page=' + page;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.vehiclebrands = response.data.vehiclebrands.data;
       state.pagination = response.data.pagination;
     });
   },
   createVehicleBrand: function createVehicleBrand(state) {
-    var url = 'newbrandmodel';
+    var url = 'newvehiclebrand';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
-      brand: state.newVehicleBrand.brand.toUpperCase(),
-      model: state.newVehicleBrand.model.toUpperCase()
+      brand: state.newVehicleBrand.brand.toUpperCase() //model: state.newVehicleBrand.model.toUpperCase(),
+      //tipo_id: state.selectedVehiculoTipo.value
+
     }).then(function (response) {
       state.newVehicleBrand = {
-        brand: '',
-        model: ''
+        brand: '' //model: '',
+        //tipo_id: ''
+
       }, state.errorsLaravel = [];
       $('#create').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Marca y Modelo generado con éxito');
@@ -95035,14 +95185,17 @@ var urlCompany = 'companies';
     });
   },
   createVehicleModel: function createVehicleModel(state) {
-    var url = urlVehicleModel;
+    var url = 'newvehiclemodelo';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
+      //brand_id: state.selectedVehicleBrand.value,
+      model: state.newVehicleModelo.model.toUpperCase(),
       brand_id: state.selectedVehicleBrand.value,
-      model: state.newVehicleBrand.model.toUpperCase()
+      tipo_id: state.selectedVehiculoTipo.value
     }).then(function (response) {
-      state.newVehicleBrand = {
-        brand: '',
-        model: ''
+      state.newVehicleModelo = {
+        model: '',
+        brand_id: '',
+        tipo_id: ''
       }, state.errorsLaravel = [];
       $('#create').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Modelo generado con éxito');
@@ -96591,7 +96744,7 @@ var urlCompany = 'companies';
     state.newQuotationclient.client_text = state.selectedClient.label;
   },
   allVehicleBrands: function allVehicleBrands(state) {
-    var url = urlAllVehicleBrand;
+    var url = urlSelectVehiculoMarcas;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.optionsVehicleBrand = [];
       response.data.forEach(function (vehiclebrand) {
@@ -97285,6 +97438,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     label: '',
     value: ''
   },
+  selectedVehiculoTipo: {
+    label: '',
+    value: ''
+  },
   pendingQuotations: [],
   selectedItem: null,
   //captura el elemento seleccionado
@@ -97379,12 +97536,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     brand: '',
     model: ''
   },
+  newVehicleModelo: {
+    model: '',
+    brand_id: '',
+    tipo_id: ''
+  },
   newVehiculoTipo: {
     tipo_vehiculo: ''
   },
   newVehicleBrand: {
-    brand: '',
-    model: ''
+    brand: '' //model: '',
+    //tipo_id: ''
+
   },
   fillVehicleBrand: {
     id: '',

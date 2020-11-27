@@ -33,10 +33,12 @@ Route::ApiResource('vehicles', 'VehicleController');
 Route::get('vehicles-user', 'VehicleController@indexByUser');
 
 Route::ApiResource('vehiclebrands', 'VehicleBrandController');
+Route::post('newvehiclebrand', 'VehicleBrandController@store');
 Route::ApiResource('vehiculotipos', 'VehiculoTipoController');
 Route::get('vehiclebrands-all', 'VehicleBrandController@all');
 Route::get('vehiculotipos-all', 'VehiculoTipoController@all');
 Route::get('select-tipos', 'VehiculoTipoController@selectTipos');
+Route::get('select-marcas', 'VehicleBrandController@selectMarcas');
 
 Route::ApiResource('vehiclemodels', 'VehicleModelController');
 Route::get('vehiclemodels-all', 'VehicleModelController@all');
@@ -48,6 +50,7 @@ Route::get('vmodels-all/{brand}', 'VehicleBrandModelController@models');
 Route::get('brands-models', 'VehicleBrandModelController@all');
 Route::post('newbrandmodel', 'VehicleBrandModelController@store');
 Route::post('newvehiculotipo', 'VehiculoTipoController@store');
+Route::post('newVehiclemodelo', 'VehicleModelController@store');
 Route::ApiResource('vyears', 'VehicleYearController');
 Route::get('vyears-all/{brand}/{model}', 'VehicleYearController@all');
 Route::ApiResource('vengines', 'VehicleEngineController');

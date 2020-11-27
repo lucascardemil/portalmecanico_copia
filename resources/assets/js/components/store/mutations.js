@@ -18,6 +18,7 @@ var urlUpload = 'upload'
 
 var urlVehicleBrand = 'vehiclebrands'
 var urlAllVehicleBrand = 'vehiclebrands-all'
+var urlSelectVehiculoMarcas = 'select-marcas'
 
 var urlVehiculoTipo = 'vehiculotipos'
 var urlAllVehiculoTipo = 'vehiculotipos-all'
@@ -353,21 +354,23 @@ export default { //used for changing the state
         })
     },
     getVehicleBrands(state, page) {
-        var url = 'brands-models?page=' + page
+        var url = 'vehiclebrands-all?page=' + page
         axios.get(url).then(response => {
             state.vehiclebrands = response.data.vehiclebrands.data
             state.pagination = response.data.pagination
         })
     },
     createVehicleBrand(state) {
-        var url = 'newbrandmodel'
+        var url = 'newvehiclebrand'
         axios.post(url, {
-            brand: state.newVehicleBrand.brand.toUpperCase(),
-            model: state.newVehicleBrand.model.toUpperCase()
+            brand: state.newVehicleBrand.brand.toUpperCase()
+            //model: state.newVehicleBrand.model.toUpperCase(),
+            //tipo_id: state.selectedVehiculoTipo.value
         }).then(response => {
             state.newVehicleBrand = {
-                    brand: '',
-                    model: ''
+                    brand: ''
+                    //model: '',
+                    //tipo_id: ''
                 },
                 state.errorsLaravel = []
             $('#create').modal('hide')
@@ -404,14 +407,17 @@ export default { //used for changing the state
         });
     },
     createVehicleModel(state) {
-        var url = urlVehicleModel
+        var url = 'newvehiclemodelo'
         axios.post(url, {
+            //brand_id: state.selectedVehicleBrand.value,
+            model: state.newVehicleModelo.model.toUpperCase(),
             brand_id: state.selectedVehicleBrand.value,
-            model: state.newVehicleBrand.model.toUpperCase()
+            tipo_id: state.selectedVehiculoTipo.value
         }).then(response => {
-            state.newVehicleBrand = {
-                    brand: '',
-                    model: ''
+            state.newVehicleModelo = {
+                    model: '',
+                    brand_id: '',
+                    tipo_id: ''
                 },
                 state.errorsLaravel = []
             $('#create').modal('hide')
@@ -1967,7 +1973,7 @@ export default { //used for changing the state
         state.newQuotationclient.client_text = state.selectedClient.label
     },
     allVehicleBrands(state) {
-        var url = urlAllVehicleBrand
+        var url = urlSelectVehiculoMarcas
         axios.get(url).then(response => {
             state.optionsVehicleBrand = []
             response.data.forEach((vehiclebrand) => {

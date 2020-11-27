@@ -30,6 +30,10 @@ export default { //data
         label: '',
         value: ''
     },
+    selectedVehiculoTipo: {
+        label: '',
+        value: ''
+    },
 
     pendingQuotations: [],
 
@@ -122,12 +126,18 @@ export default { //data
         brand: '',
         model: ''
     },
+    newVehicleModelo:{
+        model: '',
+        brand_id: '',
+        tipo_id: ''
+    },
     newVehiculoTipo: {
         tipo_vehiculo: ''
     },
     newVehicleBrand: {
-        brand: '',
-        model: ''
+        brand: ''
+        //model: '',
+        //tipo_id: ''
     },
     fillVehicleBrand: {
         id: '',

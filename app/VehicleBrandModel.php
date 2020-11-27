@@ -8,7 +8,7 @@ class VehicleBrandModel extends Model
 {
 
     protected $fillable = [
-        'id', 'brand', 'model'
+        'id', 'brand', 'model', 'tipo_id'
     ];
     
     public $timestamps = false;
