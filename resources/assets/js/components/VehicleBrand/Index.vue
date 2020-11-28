@@ -313,12 +313,53 @@
                         </div>
                     </div>
                 </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mt-3 table-sm text-white bg-dark">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Modelo</th>
+                                <th>Marca</th>
+                                <th>Tipo de vehiculo</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td></td>
+                                <td> 
+                                    <input type="text" class="form-control form-control-sm"
+                                            v-model="searchVehicleBrand.brand" @keyup="getVehicleBrands">
+                                </td>
+                                <td></td>
+                            </tr> -->
+
+                            <tr v-for="vehiclemodelLocal in vehiclemodels" :key="vehiclemodelLocal.id">
+                                <td width="10px">{{ vehiclemodelLocal.id }}</td>
+                                <td>{{ vehiclemodelLocal.model }}</td>
+                                <td>{{ vehiclemodelLocal.brand }}</td>
+                                <td>{{ vehiclemodelLocal.tipo }}</td>
+                                
+                                <td width="10px">
+                                    <a href="#" class="btn btn-warning btn-sm"
+                                        @click.prevent="editVehicleModel( { vehiclemodelLocal } )"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Editar">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <!--<AgregarMarca></AgregarMarca>-->
         <EditarMarca></EditarMarca>
         <EditarTipo></EditarTipo>
+        <EditarModelo></EditarModelo>
     </div>
 
 </template>
@@ -332,23 +373,25 @@ import TiposSelector from './TiposSelector'
 import EditarMarca from './EditarMarca'
 import EditarTipo from './EditarTipo'
 import SelectBrand from './SelectBrand'
+import EditarModelo from '../VehicleModel/EditarModelo'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
     //components: { AgregarMarca,EditarMarca, SelectBrand },
-    components: {EditarMarca, EditarTipo, SelectBrand, TiposSelector },
+    components: {EditarMarca, EditarTipo, EditarModelo, SelectBrand, TiposSelector },
     computed:{
-        ...mapState(['newVehicleModelo','newVehiculoTipo','newVehicleBrand', 'errorsLaravel' ,'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand']),
+        ...mapState(['newVehicleModelo','newVehiculoTipo','newVehicleBrand', 'errorsLaravel' ,'vehiculotipos', 'vehiclebrands', 'vehiclemodels', 'pagination', 'offset', 'searchVehicleBrand']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
-        ...mapActions(['createVehicleModel','createVehiculoTipo','createVehicleBrand', 'editVehicleBrand', 'editVehiculoTipo','changePageVehicleBrand', 'changePageVehiculoTipo'])
+        ...mapActions(['createVehicleModel','createVehiculoTipo','createVehicleBrand', 'editVehicleBrand', 'editVehiculoTipo','editVehicleModel','changePageVehicleBrand', 'changePageVehiculoTipo'])
         //...mapActions(['createVehiculoTipo','createVehicleBrand','getVehicleBrands', 'editVehicleBrand','getVehiculoTipos', 'editVehiculoTipo','changePageVehicleBrand', 'changePageVehiculoTipo'])
     },
     created(){
         loadProgressBar();
         this.$store.dispatch('getVehicleBrands', { page: 1 })
         this.$store.dispatch('getVehiculoTipos', { page: 1 })
+        this.$store.dispatch('getVehicleModels', { page: 1 })
     }
 }
 

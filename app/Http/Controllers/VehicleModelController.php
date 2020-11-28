@@ -15,8 +15,12 @@ class VehicleModelController extends Controller
     */
    public function index()
    {
-       $models = VehicleModel::select(DB::raw('vehicle_models.id as id,vehicle_brands.brand as brand,vehicle_models.model'))
+       $models = VehicleModel::select(DB::raw('vehicle_models.id as id,
+                                               vehicle_brands.brand as brand,
+                                               vehicle_tipos.tipo_vehiculo as tipo,
+                                               vehicle_models.model'))
                 ->join('vehicle_brands', 'vehicle_brands.id', '=', 'vehicle_models.brand_id')
+                ->join('vehicle_tipos', 'vehicle_tipos.id', '=', 'vehicle_models.tipo_id')
                 ->paginate(10);
 
        return [

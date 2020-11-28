@@ -50,7 +50,7 @@ Route::get('vmodels-all/{brand}', 'VehicleBrandModelController@models');
 Route::get('brands-models', 'VehicleBrandModelController@all');
 Route::post('newbrandmodel', 'VehicleBrandModelController@store');
 Route::post('newvehiculotipo', 'VehiculoTipoController@store');
-Route::post('newVehiclemodelo', 'VehicleModelController@store');
+Route::post('newvehiclemodelo', 'VehicleModelController@store');
 Route::ApiResource('vyears', 'VehicleYearController');
 Route::get('vyears-all/{brand}/{model}', 'VehicleYearController@all');
 Route::ApiResource('vengines', 'VehicleEngineController');

@@ -124,7 +124,8 @@ export default { //data
     vehiclemodel: {
         id: '',
         brand: '',
-        model: ''
+        model: '',
+        tipo: ''
     },
     newVehicleModelo:{
         model: '',
@@ -148,6 +149,12 @@ export default { //data
     fillVehiculoTipo: {
         id: '',
         tipo_vehiculo: '',
+    },
+    fillVehicleModel: {
+        id: '',
+        model: '',
+        brand_id: '',
+        tipo_id:''
     },
     searchVehicleBrand: {
         brand: '',

@@ -400,7 +400,7 @@ export default { //used for changing the state
         })
     },
     getVehicleModels(state, page) {
-        var url = urlVehicleModel + '?page=' + page + '&model=' + state.searchVehicleBrand.model
+        var url = urlVehicleModel + '?page=' + page //+ '&model=' + state.searchVehicleBrand.model
         axios.get(url).then(response => {
             state.vehiclemodels = response.data.vehiclemodels.data
             state.pagination = response.data.pagination
@@ -432,19 +432,25 @@ export default { //used for changing the state
                 state.selectedVehicleBrand = brand
             }
         })
-        state.fillVehicleBrand.id = vehiclemodel.id
-        state.fillVehicleBrand.model = vehiclemodel.model.toUpperCase()
-        $("#edit").modal('show')
+        state.optionsTiposVehiculo.forEach(tipo_vehiculo => {
+            if (tipo_vehiculo.label == vehiclemodel.tipo) {
+                state.selectedVehiculoTipo = tipo_vehiculo
+            }
+        })
+        state.fillVehicleModel.id = vehiclemodel.id
+        state.fillVehicleModel.model = vehiclemodel.model.toUpperCase()
+        $("#edit_modelo").modal('show')
     },
     updateVehicleModel(state, id) {
         var url = urlVehicleModel + '/' + id
-        state.fillVehicleBrand.brand_id = state.selectedVehicleBrand.value
-        axios.put(url, state.fillVehicleBrand).then(response => {
-            state.fillVehicleBrand = {
+        state.fillVehicleModel.brand_id = state.selectedVehicleBrand.value
+        state.fillVehicleModel.tipo_id = state.selectedVehiculoTipo.value
+        axios.put(url, state.fillVehicleModel).then(response => {
+            state.fillVehicleModel = {
                     id: '',
+                    model: '',
                     brand_id: '',
-                    brand: '',
-                    model: ''
+                    tipo_id: ''
                 },
                 state.errorsLaravel = []
             $('#edit').modal('hide')

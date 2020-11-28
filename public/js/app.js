@@ -10616,13 +10616,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EditarMarca__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditarMarca */ "./resources/assets/js/components/VehicleBrand/EditarMarca.vue");
 /* harmony import */ var _EditarTipo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditarTipo */ "./resources/assets/js/components/VehicleBrand/EditarTipo.vue");
 /* harmony import */ var _SelectBrand__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SelectBrand */ "./resources/assets/js/components/VehicleBrand/SelectBrand.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _VehicleModel_EditarModelo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../VehicleModel/EditarModelo */ "./resources/assets/js/components/VehicleModel/EditarModelo.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -10956,22 +10998,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   //components: { AgregarMarca,EditarMarca, SelectBrand },
   components: {
     EditarMarca: _EditarMarca__WEBPACK_IMPORTED_MODULE_2__["default"],
     EditarTipo: _EditarTipo__WEBPACK_IMPORTED_MODULE_3__["default"],
+    EditarModelo: _VehicleModel_EditarModelo__WEBPACK_IMPORTED_MODULE_5__["default"],
     SelectBrand: _SelectBrand__WEBPACK_IMPORTED_MODULE_4__["default"],
     TiposSelector: _TiposSelector__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapState"])(['newVehicleModelo', 'newVehiculoTipo', 'newVehicleBrand', 'errorsLaravel', 'vehiculotipos', 'vehiclebrands', 'pagination', 'offset', 'searchVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])(['createVehicleModel', 'createVehiculoTipo', 'createVehicleBrand', 'editVehicleBrand', 'editVehiculoTipo', 'changePageVehicleBrand', 'changePageVehiculoTipo'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapState"])(['newVehicleModelo', 'newVehiculoTipo', 'newVehicleBrand', 'errorsLaravel', 'vehiculotipos', 'vehiclebrands', 'vehiclemodels', 'pagination', 'offset', 'searchVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapActions"])(['createVehicleModel', 'createVehiculoTipo', 'createVehicleBrand', 'editVehicleBrand', 'editVehiculoTipo', 'editVehicleModel', 'changePageVehicleBrand', 'changePageVehiculoTipo'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getVehicleBrands', {
       page: 1
     });
     this.$store.dispatch('getVehiculoTipos', {
+      page: 1
+    });
+    this.$store.dispatch('getVehicleModels', {
       page: 1
     });
   }
@@ -11631,6 +11678,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _VehicleBrand_SelectBrand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../VehicleBrand/SelectBrand */ "./resources/assets/js/components/VehicleBrand/SelectBrand.vue");
+/* harmony import */ var _VehicleBrand_TiposSelector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../VehicleBrand/TiposSelector */ "./resources/assets/js/components/VehicleBrand/TiposSelector.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -11677,13 +11725,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SelectBrand: _VehicleBrand_SelectBrand__WEBPACK_IMPORTED_MODULE_1__["default"]
+    SelectBrand: _VehicleBrand_SelectBrand__WEBPACK_IMPORTED_MODULE_1__["default"],
+    TiposSelector: _VehicleBrand_TiposSelector__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillVehicleBrand', 'errorsLaravel'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillVehicleModel', 'errorsLaravel'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateVehicleModel']))
 });
 
@@ -65018,13 +65078,70 @@ var render = function() {
                 ]
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-responsive" }, [
+            _c(
+              "table",
+              {
+                staticClass:
+                  "table table-hover table-striped mt-3 table-sm text-white bg-dark"
+              },
+              [
+                _vm._m(8),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.vehiclemodels, function(vehiclemodelLocal) {
+                    return _c("tr", { key: vehiclemodelLocal.id }, [
+                      _c("td", { attrs: { width: "10px" } }, [
+                        _vm._v(_vm._s(vehiclemodelLocal.id))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(vehiclemodelLocal.model))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(vehiclemodelLocal.brand))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(vehiclemodelLocal.tipo))]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { width: "10px" } }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-warning btn-sm",
+                            attrs: {
+                              href: "#",
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: "Editar"
+                            },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.editVehicleModel({
+                                  vehiclemodelLocal: vehiclemodelLocal
+                                })
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-edit" })]
+                        )
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ]
+            )
           ])
         ])
       ]),
       _vm._v(" "),
       _c("EditarMarca"),
       _vm._v(" "),
-      _c("EditarTipo")
+      _c("EditarTipo"),
+      _vm._v(" "),
+      _c("EditarModelo")
     ],
     1
   )
@@ -65218,6 +65335,24 @@ var staticRenderFns = [
           _vm._v(" Guardar\n                                        ")
         ]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Modelo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Marca")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tipo de vehiculo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" ")])
+      ])
     ])
   }
 ]
@@ -66563,84 +66698,110 @@ var render = function() {
       on: {
         submit: function($event) {
           $event.preventDefault()
-          return _vm.updateVehicleModel({ id: _vm.fillVehicleBrand.id })
+          return _vm.updateVehicleModel({ id: _vm.fillVehicleModel.id })
         }
       }
     },
     [
-      _c("div", { staticClass: "modal fade", attrs: { id: "edit" } }, [
+      _c("div", { staticClass: "modal fade", attrs: { id: "edit_modelo" } }, [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body" },
-              [
-                _c("SelectBrand"),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "modelo" } }, [_vm._v("Modelo")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|min:2|max:190",
-                      expression: "'required|min:2|max:190'"
-                    },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fillVehicleBrand.model,
-                      expression: "fillVehicleBrand.model"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  class: {
-                    input: true,
-                    "is-invalid": _vm.errors.has("modelo")
-                  },
-                  attrs: { type: "text", name: "modelo" },
-                  domProps: { value: _vm.fillVehicleBrand.model },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fillVehicleBrand,
-                        "model",
-                        $event.target.value
-                      )
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "div",
+                { staticClass: "col-0" },
+                [
+                  _c("label", { attrs: { for: "modelo" } }, [_vm._v("Modelo")]),
+                  _vm._v(" "),
+                  _c("input", {
                     directives: [
                       {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("modelo"),
-                        expression: "errors.has('modelo')"
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:2|max:190",
+                        expression: "'required|min:2|max:190'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fillVehicleModel.model,
+                        expression: "fillVehicleModel.model"
                       }
                     ],
-                    staticClass: "text-danger"
-                  },
-                  [_vm._v(_vm._s(_vm.errors.first("model")))]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.errorsLaravel, function(error, index) {
-                  return _c("div", { key: index, staticClass: "text-danger" }, [
-                    _c("p", [_vm._v(_vm._s(error.model))])
-                  ])
-                })
-              ],
-              2
-            ),
+                    staticClass: "form-control",
+                    class: {
+                      input: true,
+                      "is-invalid": _vm.errors.has("modelo")
+                    },
+                    attrs: { type: "text", name: "modelo" },
+                    domProps: { value: _vm.fillVehicleModel.model },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fillVehicleModel,
+                          "model",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("modelo"),
+                          expression: "errors.has('modelo')"
+                        }
+                      ],
+                      staticClass: "text-danger"
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("model")))]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.errorsLaravel, function(error, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "text-danger" },
+                      [_c("p", [_vm._v(_vm._s(error.model))])]
+                    )
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-0" },
+                [
+                  _c("label", { attrs: { for: "model" } }, [_vm._v("Marca")]),
+                  _vm._v(" "),
+                  _c("SelectBrand")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-0" },
+                [
+                  _c("label", { attrs: { for: "model" } }, [
+                    _vm._v("Tipo de vehiculo")
+                  ]),
+                  _vm._v(" "),
+                  _c("TiposSelector")
+                ],
+                1
+              )
+            ]),
             _vm._v(" "),
             _vm._m(1)
           ])
@@ -66655,7 +66816,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
-      _c("h4", [_vm._v("Editar Marca")]),
+      _c("h4", [_vm._v("Editar Modelo")]),
       _vm._v(" "),
       _c(
         "button",
@@ -95178,7 +95339,8 @@ var urlCompany = 'companies';
     });
   },
   getVehicleModels: function getVehicleModels(state, page) {
-    var url = urlVehicleModel + '?page=' + page + '&model=' + state.searchVehicleBrand.model;
+    var url = urlVehicleModel + '?page=' + page; //+ '&model=' + state.searchVehicleBrand.model
+
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.vehiclemodels = response.data.vehiclemodels.data;
       state.pagination = response.data.pagination;
@@ -95209,19 +95371,25 @@ var urlCompany = 'companies';
         state.selectedVehicleBrand = brand;
       }
     });
-    state.fillVehicleBrand.id = vehiclemodel.id;
-    state.fillVehicleBrand.model = vehiclemodel.model.toUpperCase();
-    $("#edit").modal('show');
+    state.optionsTiposVehiculo.forEach(function (tipo_vehiculo) {
+      if (tipo_vehiculo.label == vehiclemodel.tipo) {
+        state.selectedVehiculoTipo = tipo_vehiculo;
+      }
+    });
+    state.fillVehicleModel.id = vehiclemodel.id;
+    state.fillVehicleModel.model = vehiclemodel.model.toUpperCase();
+    $("#edit_modelo").modal('show');
   },
   updateVehicleModel: function updateVehicleModel(state, id) {
     var url = urlVehicleModel + '/' + id;
-    state.fillVehicleBrand.brand_id = state.selectedVehicleBrand.value;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, state.fillVehicleBrand).then(function (response) {
-      state.fillVehicleBrand = {
+    state.fillVehicleModel.brand_id = state.selectedVehicleBrand.value;
+    state.fillVehicleModel.tipo_id = state.selectedVehiculoTipo.value;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, state.fillVehicleModel).then(function (response) {
+      state.fillVehicleModel = {
         id: '',
+        model: '',
         brand_id: '',
-        brand: '',
-        model: ''
+        tipo_id: ''
       }, state.errorsLaravel = [];
       $('#edit').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Modelo actualizado con éxito');
@@ -97534,7 +97702,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   vehiclemodel: {
     id: '',
     brand: '',
-    model: ''
+    model: '',
+    tipo: ''
   },
   newVehicleModelo: {
     model: '',
@@ -97558,6 +97727,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   fillVehiculoTipo: {
     id: '',
     tipo_vehiculo: ''
+  },
+  fillVehicleModel: {
+    id: '',
+    model: '',
+    brand_id: '',
+    tipo_id: ''
   },
   searchVehicleBrand: {
     brand: '',
