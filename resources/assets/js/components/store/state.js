@@ -610,6 +610,37 @@ export default { //data
         'to': 0,
     },
     offset: 2,
+
+    pagination_marca: {
+        'total': 0,
+        'current_page': 0,
+        'per_page': 0,
+        'last_page': 0,
+        'from': 0,
+        'to': 0,
+    },
+    offset_marca: 5,
+
+    pagination_tipo: {
+        'total': 0,
+        'current_page': 0,
+        'per_page': 0,
+        'last_page': 0,
+        'from': 0,
+        'to': 0,
+    },
+    offset_tipo: 5,
+
+    pagination_modelo: {
+        'total': 0,
+        'current_page': 0,
+        'per_page': 0,
+        'last_page': 0,
+        'from': 0,
+        'to': 0,
+    },
+    offset_modelo: 5,
+
     attachment: [],
     form: new FormData(),
     records: [],

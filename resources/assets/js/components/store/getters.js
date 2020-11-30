@@ -38,6 +38,87 @@ export default { //computed propeties
 
         return pagesArray;
     },
+
+    isActived_marca(state, getters){
+        return state.pagination_marca.current_page
+    },
+    pagesNumber_marca(state, getters){
+        if(!state.pagination_marca.to){
+            return [];
+        }
+
+        var from = state.pagination_marca.current_page - state.offset_marca
+        if(from < 1){
+            from = 1;
+        }
+
+        var to = from + (state.offset_marca * 2);
+        if(to >= state.pagination_marca.last_page){
+            to = state.pagination_marca.last_page;
+        }
+
+        var pagesArray = [];
+        while(from <= to){
+            pagesArray.push(from);
+            from++;
+        }
+
+        return pagesArray;
+    },
+
+    isActived_tipo(state, getters){
+        return state.pagination_tipo.current_page
+    },
+    pagesNumber_tipo(state, getters){
+        if(!state.pagination_tipo.to){
+            return [];
+        }
+
+        var from = state.pagination_tipo.current_page - state.offset_tipo
+        if(from < 1){
+            from = 1;
+        }
+
+        var to = from + (state.offset_tipo * 2);
+        if(to >= state.pagination_tipo.last_page){
+            to = state.pagination_tipo.last_page;
+        }
+
+        var pagesArray = [];
+        while(from <= to){
+            pagesArray.push(from);
+            from++;
+        }
+
+        return pagesArray;
+    },
+
+    isActived_modelo(state, getters){
+        return state.pagination_modelo.current_page
+    },
+    pagesNumber_modelo(state, getters){
+        if(!state.pagination_modelo.to){
+            return [];
+        }
+
+        var from = state.pagination_modelo.current_page - state.offset_modelo
+        if(from < 1){
+            from = 1;
+        }
+
+        var to = from + (state.offset_modelo * 2);
+        if(to >= state.pagination_modelo.last_page){
+            to = state.pagination_modelo.last_page;
+        }
+
+        var pagesArray = [];
+        while(from <= to){
+            pagesArray.push(from);
+            from++;
+        }
+
+        return pagesArray;
+    },
     getVehicle(state, getters){
         return state.vehicle
     },

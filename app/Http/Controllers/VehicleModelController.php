@@ -24,7 +24,7 @@ class VehicleModelController extends Controller
                 ->paginate(10);
 
        return [
-           'pagination' => [
+           'pagination_modelo' => [
                'total'         => $models->total(),
                'current_page'  => $models->currentPage(),
                'per_page'      => $models->perPage(),

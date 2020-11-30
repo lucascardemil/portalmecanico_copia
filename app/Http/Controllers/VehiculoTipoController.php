@@ -102,7 +102,7 @@ class VehiculoTipoController extends Controller
         $all = TipoVehiculo::orderBy('id', 'ASC')->paginate(10);
 
         return [
-            'pagination' => [
+            'pagination_tipo' => [
                 'total'         => $all->total(),
                 'current_page'  => $all->currentPage(),
                 'per_page'      => $all->perPage(),

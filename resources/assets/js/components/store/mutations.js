@@ -312,11 +312,11 @@ export default { //used for changing the state
             toastr.success('Imagen eliminada con éxito')
         })
     },
-    getVehiculoTipos(state, page) {
-        var url = 'vehiculotipos-all?page=' + page
+    getVehiculoTipos(state, page_tipo) {
+        var url = 'vehiculotipos-all?page=' + page_tipo
         axios.get(url).then(response => {
             state.vehiculotipos = response.data.vehiculotipos.data
-            state.pagination = response.data.pagination
+            state.pagination_tipo = response.data.pagination_tipo
         })
     },
     createVehiculoTipo(state) {
@@ -357,7 +357,7 @@ export default { //used for changing the state
         var url = 'vehiclebrands-all?page=' + page
         axios.get(url).then(response => {
             state.vehiclebrands = response.data.vehiclebrands.data
-            state.pagination = response.data.pagination
+            state.pagination_marca = response.data.pagination_marca
         })
     },
     createVehicleBrand(state) {
@@ -403,7 +403,7 @@ export default { //used for changing the state
         var url = urlVehicleModel + '?page=' + page //+ '&model=' + state.searchVehicleBrand.model
         axios.get(url).then(response => {
             state.vehiclemodels = response.data.vehiclemodels.data
-            state.pagination = response.data.pagination
+            state.pagination_modelo = response.data.pagination_modelo
         });
     },
     createVehicleModel(state) {
@@ -453,7 +453,7 @@ export default { //used for changing the state
                     tipo_id: ''
                 },
                 state.errorsLaravel = []
-            $('#edit').modal('hide')
+            $('#edit_modelo').modal('hide')
             toastr.success('Modelo actualizado con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data
