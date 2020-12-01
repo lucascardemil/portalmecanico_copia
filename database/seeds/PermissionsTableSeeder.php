@@ -41,6 +41,7 @@ class PermissionsTableSeeder extends Seeder
         $musers = Permission::create(['name' => 'mechanic-users', 'description' => 'Modulo Usuarios (Mecanico)']);
         //pagina de roles de usuario
         $roles = Permission::create(['name' => 'roles', 'description' => 'Modulo Roles']);
+        $bills = Permission::create(['name' => 'bills', 'description' => 'Modulo Boleta']);
 
         $admin->givePermissionTo([
                 $clients, 
@@ -58,7 +59,8 @@ class PermissionsTableSeeder extends Seeder
                 $imports,
                 $users,
                 $musers,
-                $roles
+                $roles,
+                $bills
         ]);
 
         $mechanic->givePermissionTo([
