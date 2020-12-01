@@ -70,12 +70,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(datos, index) in arrayBoleta">
+                     <!-- <tr v-for="(datos, index) in arrayBoleta">
                       <td>${{ datos.precio }}</td>
                       <td>
                         <button @click="borrar(index)" class="btn btn-danger">Borrar</button>
                       </td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                   <tfoot>
                     <tr>

@@ -15,10 +15,11 @@ class VehicleModelController extends Controller
     */
    public function index()
    {
-       $models = VehicleModel::select(DB::raw('vehicle_models.id as id,
-                                               vehicle_brands.brand as brand,
-                                               vehicle_tipos.tipo_vehiculo as tipo,
-                                               vehicle_models.model'))
+       
+        $models = VehicleModel::select(DB::raw('vehicle_models.id as id,
+                                                vehicle_brands.brand as brand,
+                                                vehicle_tipos.tipo_vehiculo as tipo,
+                                                vehicle_models.model'))
                 ->join('vehicle_brands', 'vehicle_brands.id', '=', 'vehicle_models.brand_id')
                 ->join('vehicle_tipos', 'vehicle_tipos.id', '=', 'vehicle_models.tipo_id')
                 ->paginate(10);
@@ -47,12 +48,13 @@ class VehicleModelController extends Controller
    {
        $this->validate($request, [
            //'brand_id' => 'required',
-           'model' => 'required|min:2|max:190',
+           'model' => 'required|unique:vehicle_models|min:2|max:190',
        ], [
            //'brand_id.required' => 'El campo brand_id es obligatorio',
+           'model.unique' => 'El modelo ya existe y debe ser único',
            'model.required' => 'El campo modelo es obligatorio',
            'model.min' => 'El campo nombre debe tener al menos 4 caracteres',
-           'model.max' => 'El campo nombre debe tener a lo más 190 caracteres',
+           'model.max' => 'El campo nombre debe tener a lo más 190 caracteres'
        ]);
 
        $data = $request->all();

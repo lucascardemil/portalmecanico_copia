@@ -75,11 +75,12 @@ class VehiculoTipoController extends Controller
    public function update(Request $request, $id)
    {
     $this->validate($request, [
-        'tipo_vehiculo' => 'required|min:2|max:190',
+        'tipo_vehiculo' => 'required|unique:vehicle_tipos|min:2|max:190',
     ], [
+        'tipo_vehiculo.unique' => 'El tipo de vehiculo ya existe y debe ser único',
         'tipo_vehiculo.required' => 'El campo marca es obligatorio',
         'tipo_vehiculo.min' => 'El campo nombre debe tener al menos 4 caracteres',
-        'tipo_vehiculo.max' => 'El campo nombre debe tener a lo más 190 caracteres',
+        'tipo_vehiculo.max' => 'El campo nombre debe tener a lo más 190 caracteres'
     ]);
 
     TipoVehiculo::find($id)->update($request->all());

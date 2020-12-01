@@ -43866,30 +43866,7 @@ var render = function() {
                   _c("table", { staticClass: "table" }, [
                     _vm._m(3),
                     _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.arrayBoleta, function(datos, index) {
-                        return _c("tr", [
-                          _c("td", [_vm._v("$" + _vm._s(datos.precio))]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.borrar(index)
-                                  }
-                                }
-                              },
-                              [_vm._v("Borrar")]
-                            )
-                          ])
-                        ])
-                      }),
-                      0
-                    ),
+                    _c("tbody"),
                     _vm._v(" "),
                     _c("tfoot", [
                       _c("tr", [

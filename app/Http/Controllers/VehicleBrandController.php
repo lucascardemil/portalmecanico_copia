@@ -40,16 +40,18 @@ class VehicleBrandController extends Controller
     */
    public function store(Request $request)
    {
+    
        $this->validate($request, [
-           'brand' => 'required|min:2|max:190',
+           'brand' => 'required|unique:vehicle_brands|min:2|max:190',
        ], [
+           'brand.unique' => 'La marca ya existe y debe ser único',
            'brand.required' => 'El campo marca es obligatorio',
            'brand.min' => 'El campo marca debe tener al menos 4 caracteres',
-           'brand.max' => 'El campo marca debe tener a lo más 190 caracteres',
+           'brand.max' => 'El campo marca debe tener a lo más 190 caracteres'
        ]);
 
-       $data = $request->all();
 
+       $data = $request->all();
        VehicleBrand::create($data);
        
    }
