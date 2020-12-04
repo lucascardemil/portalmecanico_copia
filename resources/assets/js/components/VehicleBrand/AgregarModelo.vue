@@ -18,7 +18,7 @@
                             <form action="POST" v-on:submit.prevent="createVehicleModel">
                                 <div class="row">
 
-                                    <div class="col">
+                                    <div class="col-12">
 
                                         <label for="model">Modelo</label>
                                         <input v-validate="'required|min:2|max:190'"

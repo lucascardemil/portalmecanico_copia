@@ -12,11 +12,7 @@ class TipoVehiculo extends Model
     protected $fillable = [
         'id', 'tipo_vehiculo'
      ];
- 
      
-
-     
-
      public function scopeTipo($query)
      {
          $keyword = request('tipo_vehiculo');

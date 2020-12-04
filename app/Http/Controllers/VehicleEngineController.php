@@ -34,4 +34,33 @@ class VehicleEngineController extends Controller
         return $engines;
     }
 
+     /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+   public function store(Request $request)
+   {
+       $this->validate($request, [
+           'v_engine' => 'required|min:|max:190'
+           //'year_fin' => 'required|min:4|max:4'
+           //'motor' => 'required|min:2|max:190',
+       ], [
+           'v_engine.required' => 'El campo motor de inicio es obligatorio',
+           'v_engine.min' => 'El campo motor de inicio debe tener al menos 4 caracteres',
+           'v_engine.max' => 'El campo motor de inicio debe tener a lo más 4 caracteres'
+           //'year_fin.required' => 'El campo año final es obligatorio',
+           //'year_fin.min' => 'El campo año final debe tener al menos 4 caracteres',
+           //'year_fin.max' => 'El campo año final debe tener a lo más 4 caracteres'
+           /*'motor.required' => 'El campo motor es obligatorio',
+           'motor.min' => 'El campo motor debe tener al menos 4 caracteres',
+           'motor.max' => 'El campo motor debe tener a lo más 190 caracteres'*/
+       ]);
+
+       $data = $request->all();
+
+       VehicleEngine::create($data);
+   }
+
 }

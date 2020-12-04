@@ -119,6 +119,33 @@ export default { //computed propeties
 
         return pagesArray;
     },
+
+    isActived_year(state, getters){
+        return state.pagination_year.current_page
+    },
+    pagesNumber_year(state, getters){
+        if(!state.pagination_year.to){
+            return [];
+        }
+
+        var from = state.pagination_year.current_page - state.offset_year
+        if(from < 1){
+            from = 1;
+        }
+
+        var to = from + (state.offset_year * 2);
+        if(to >= state.pagination_year.last_page){
+            to = state.pagination_year.last_page;
+        }
+
+        var pagesArray = [];
+        while(from <= to){
+            pagesArray.push(from);
+            from++;
+        }
+
+        return pagesArray;
+    },
     getVehicle(state, getters){
         return state.vehicle
     },
@@ -131,6 +158,13 @@ export default { //computed propeties
     getVehicleModel(state, getters){
         return state.vehiclebrand
     },
+    getVehicleYear(state, getters){
+        return state.vehicleyear
+    },
+    getVehicleMotor(state, getters){
+        return state.vehiclemotor
+    },
+    
     getUser(state, getters){
         return state.user
     },

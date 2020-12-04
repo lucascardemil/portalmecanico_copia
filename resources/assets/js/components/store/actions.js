@@ -142,6 +142,44 @@ export default { //methods
         context.commit('paginate', data.page)
         context.commit('getVehicleModels', data.page)
     },
+
+    createVehicleYear(context) {
+        context.commit('createVehicleYear')
+        setTimeout(function () {
+            context.commit('getVehicleYears', 1)
+        }, 1000)
+
+    },
+    editVehicleYear(context, data) {
+        context.commit('editVehicleYear', data.vehicleyearLocal)
+    },
+    updateVehicleYear(context, data) {
+        context.commit('updateVehicleYear', data.id)
+        setTimeout(function () {
+            context.commit('getVehicleYears', 1)
+        }, 1000)
+    },
+
+    getVehicleYears(context, data) {
+        context.commit('getVehicleYears', data.page)
+    },
+
+    changePageVehicleYear(context, data) {
+        context.commit('paginate', data.page)
+        context.commit('getVehicleYears', data.page)
+    },
+
+    createVehicleMotor(context, data) {
+        context.commit('createVehicleMotor', data.id)
+        setTimeout(function () {
+            context.commit('getVehicleYears', 1)
+        }, 1000)
+
+    },
+
+    AgregarVehicleMotor(context, data) {
+        context.commit('AgregarVehicleMotor', data.vehicleyearLocal)
+    },
     /********************************** */
     fileChange(context, data) {
         context.commit('fileChange', data.evt)

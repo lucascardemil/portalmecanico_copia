@@ -14,7 +14,7 @@
                 <AgregarModelo></AgregarModelo>
             </div>
             <div class="col-xl-6 col-md-12">
-                
+                <AgregarYear></AgregarYear>
             </div>
         </div>
     </div>
@@ -28,10 +28,11 @@ import { loadProgressBar } from 'axios-progress-bar'
 import AgregarMarca from './AgregarMarca'
 import AgregarTipo from './AgregarTipo'
 import AgregarModelo from './AgregarModelo'
+import AgregarYear from './AgregarYear'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-    components: {AgregarMarca, AgregarTipo, AgregarModelo}
+    components: {AgregarMarca, AgregarTipo, AgregarModelo, AgregarYear}
 }
 
 </script>

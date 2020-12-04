@@ -27,6 +27,9 @@ var urlSelectVehiculoTipo = 'select-tipos'
 var urlVehicleModel = 'vehiclemodels'
 var urlAllVehicleModel = 'vehiclemodels-all'
 
+
+var urlVehicleYear = 'vehicleyears'
+
 var urlVBrand = 'vbrands-all'
 var urlVModel = 'vmodels-all'
 var urlVYear = 'vyears-all'
@@ -458,6 +461,81 @@ export default { //used for changing the state
         }).catch(error => {
             state.errorsLaravel = error.response.data
         })
+    },
+
+    createVehicleYear(state) {
+        var url = 'newvehicleyear'
+        axios.post(url, {
+            v_id: state.selectedVehicleModel.value,
+            v_year: state.newVehicleYear.year.toUpperCase()
+        }).then(response => {
+            state.newVehicleYear = {
+                v_id: '',
+                v_year: ''
+            },
+            state.errorsLaravel = []
+            $('#create').modal('hide')
+            toastr.success('Modelo generado con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+    editVehicleYear(state, vehicleyear) {
+        state.optionsVehicleModel.forEach(model => {
+            if (model.label == vehicleyear.model) {
+                state.selectedVehicleModel = model
+            }
+        })
+        state.fillVehicleYear.id = vehicleyear.id
+        state.fillVehicleYear.v_year = vehicleyear.year
+        $("#edit_year").modal('show')
+    },
+    updateVehicleYear(state, id) {
+        var url = urlVehicleYear + '/' + id
+        state.fillVehicleYear.model = state.selectedVehicleModel.value
+        axios.put(url, state.fillVehicleYear).then(response => {
+            state.fillVehicleYear = {
+                id: '',
+                v_year: '',
+                model: ''
+            },
+                state.errorsLaravel = []
+            $('#edit_year').modal('hide')
+            toastr.success('Modelo actualizado con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    getVehicleYears(state, page) {
+        var url = 'vehicleyears-all?page=' + page
+        axios.get(url).then(response => {
+            state.vehicleyears = response.data.vehicleyears.data
+            state.pagination_year = response.data.pagination_year
+        });
+    },
+
+    createVehicleMotor(state, id) {
+        var url = 'newvehiclemotor'
+        axios.post(url, {
+            v_engine: state.newVehicleMotor.v_engine.toUpperCase(),
+            year_id: id
+        }).then(response => {
+            state.newVehicleMotor = {
+                year_id: '',
+                v_engine: ''
+            },
+            state.errorsLaravel = []
+            $('#create').modal('hide')
+            toastr.success('Motor agregado con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    AgregarVehicleMotor(state, vehicleyear) {
+        state.fillVehicleYear.id = vehicleyear.id
+        $("#edit_motor").modal('show')
     },
 
     /******************************* */

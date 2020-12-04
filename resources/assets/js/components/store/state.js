@@ -135,6 +135,22 @@ export default { //data
     newVehiculoTipo: {
         tipo_vehiculo: ''
     },
+
+    newVehicleYear:{
+        v_id: '',
+        v_year: ''
+        //motor: ''
+    },
+    vehicleyears: [],
+    vehicleyear: {
+        id: '',
+        v_year: '',
+        model: ''
+    },
+    newVehicleMotor: {
+        year_id: '',
+        v_engine: ''
+    },
     newVehicleBrand: {
         brand: ''
         //model: '',
@@ -155,6 +171,11 @@ export default { //data
         model: '',
         brand_id: '',
         tipo_id:''
+    },
+    fillVehicleYear: {
+        id: '',
+        v_year: '',
+        model: ''
     },
     searchVehicleBrand: {
         brand: '',
@@ -640,6 +661,16 @@ export default { //data
         'to': 0,
     },
     offset_modelo: 5,
+
+    pagination_year: {
+        'total': 0,
+        'current_page': 0,
+        'per_page': 0,
+        'last_page': 0,
+        'from': 0,
+        'to': 0,
+    },
+    offset_year: 5,
 
     attachment: [],
     form: new FormData(),

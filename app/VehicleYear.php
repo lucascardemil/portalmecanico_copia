@@ -10,6 +10,7 @@ class VehicleYear extends Model
         'id', 'v_id', 'v_year'
     ];
 
+    
     public function vehicleBrandModel(){
         return $this->belongsTo('App\VehicleBrandModel');
     }
