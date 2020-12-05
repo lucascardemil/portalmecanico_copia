@@ -18,7 +18,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
     computed:{
         ...mapState(['optionsTiposVehiculo', 'selectedVehiculoTipo']),
-        ...mapGetters(['getVehiculoTipos'])
+        //...mapGetters(['getVehiculoTipos'])
     },
     methods:{
         ...mapActions(['setVehiculoTipo'])

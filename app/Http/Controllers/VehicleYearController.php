@@ -85,10 +85,8 @@ class VehicleYearController extends Controller
        
         $years = VehicleYear::select(DB::raw('vehicle_years.id as id,
                                               vehicle_years.v_year as year,
-                                              vehicle_models.model as model,
-                                              vehicle_engines.v_engine as motor'))
+                                              vehicle_models.model as model'))
                 ->join('vehicle_models', 'vehicle_models.id', '=', 'vehicle_years.v_id')
-                ->join('vehicle_engines', 'vehicle_engines.year_id', '=', 'vehicle_years.id')
                 ->paginate(10);
 
        return [
@@ -103,6 +101,13 @@ class VehicleYearController extends Controller
            'vehicleyears' => $years
        ];
 
+   }
+
+   public function selectYears()
+   {
+        $years = VehicleYear::orderBy('id', 'ASC')->get();
+
+        return $years;
    }
 
 }

@@ -8,6 +8,8 @@ export default { //data
     optionsVehicleBrand: [],
     optionsVehicleModel: [],
     optionsTiposVehiculo: [],
+    optionsMotores: [],
+    optionsYear: [],
 
     optionsVBrand: [],
     optionsVModel: [],
@@ -34,6 +36,16 @@ export default { //data
         label: '',
         value: ''
     },
+    selectedVehicleMotor: {
+        label: '',
+        value: ''
+    },
+
+    selectedVehicleYear: {
+        label: '',
+        value: ''
+    },
+
 
     pendingQuotations: [],
 
@@ -127,6 +139,11 @@ export default { //data
         model: '',
         tipo: ''
     },
+    vehiclemotors: [],
+    vehiclemotor: {
+        id: '',
+        v_engine: ''
+    },
     newVehicleModelo:{
         model: '',
         brand_id: '',
@@ -139,6 +156,7 @@ export default { //data
     newVehicleYear:{
         v_id: '',
         v_year: ''
+        //v_engine: ''
         //motor: ''
     },
     vehicleyears: [],
@@ -176,6 +194,11 @@ export default { //data
         id: '',
         v_year: '',
         model: ''
+    },
+    fillVehicleMotor: {
+        id: '',
+        year_id: '',
+        v_engine: ''
     },
     searchVehicleBrand: {
         brand: '',
@@ -671,6 +694,16 @@ export default { //data
         'to': 0,
     },
     offset_year: 5,
+
+    pagination_motor: {
+        'total': 0,
+        'current_page': 0,
+        'per_page': 0,
+        'last_page': 0,
+        'from': 0,
+        'to': 0,
+    },
+    offset_motor: 5,
 
     attachment: [],
     form: new FormData(),

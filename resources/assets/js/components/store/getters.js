@@ -146,6 +146,32 @@ export default { //computed propeties
 
         return pagesArray;
     },
+    isActived_motor(state, getters){
+        return state.pagination_motor.current_page
+    },
+    pagesNumber_motor(state, getters){
+        if(!state.pagination_motor.to){
+            return [];
+        }
+
+        var from = state.pagination_motor.current_page - state.offset_year
+        if(from < 1){
+            from = 1;
+        }
+
+        var to = from + (state.offset_year * 2);
+        if(to >= state.pagination_motor.last_page){
+            to = state.pagination_motor.last_page;
+        }
+
+        var pagesArray = [];
+        while(from <= to){
+            pagesArray.push(from);
+            from++;
+        }
+
+        return pagesArray;
+    },
     getVehicle(state, getters){
         return state.vehicle
     },

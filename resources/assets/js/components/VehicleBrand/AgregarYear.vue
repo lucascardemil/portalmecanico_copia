@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header p-0" id="headingOne">
                     <h5 class="mb-0">
-                        <button id="btn-type-card" class="btn btn-block text-left p-3" data-toggle="collapse" data-target="#nuevo_motor"
+                        <button id="btn-type-card" class="btn btn-block text-left p-3" data-toggle="collapse" data-target="#nuevo_year"
                             aria-expanded="true" aria-controls="collapseOne">
                         Nuevo Año
                         <span class="text-right"><i class="fas fa-arrows-alt-v"></i></span>
@@ -13,7 +13,7 @@
                     </h5>
                     </div>
 
-                    <div id="nuevo_motor" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="nuevo_year" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <form action="POST" v-on:submit.prevent="createVehicleYear">
                                 <div class="row">
@@ -38,7 +38,13 @@
                                         </div>
                                     </div>
 
-                                    <!--<div class="col-6">
+                                    <!--<div class="col-12">
+
+                                        <label for="motor">Motor</label>
+                                        <SelectMotor></SelectMotor>
+                                    </div>
+
+                                    <div class="col-6">
 
                                         <label for="year_fin">Año Final</label>
                                         <input v-validate="'required|numeric|max:9999'"
@@ -92,7 +98,7 @@
                             <th>ID</th>
                             <th>Modelo</th>
                             <th>Año</th>
-                            <th>Motor</th>
+                            <!--<th>Motor</th>-->
                             <th></th>
                         </tr>
                     </thead>
@@ -101,9 +107,9 @@
                             <td width="10px">{{ vehicleyearLocal.id }}</td>
                             <td>{{ vehicleyearLocal.model }}</td>
                             <td>{{ vehicleyearLocal.year }}</td>
-                            <td>{{ vehicleyearLocal.motor }}</td>
-                            <td>
-                                <div class="form-group text-right mb-0">
+                            <!--<td>{{ vehicleyearLocal.motor }}</td>-->
+                            <td width="10px">
+                                <!--<div class="form-group text-right mb-0">
                                     <a href="#" class="btn btn-success btn-sm"
                                         @click.prevent="AgregarVehicleMotor( { vehicleyearLocal } )"
                                         data-toggle="tooltip"
@@ -118,7 +124,14 @@
                                         title="Editar">
                                         <i class="far fa-edit"></i>
                                     </a>    
-                                </div>
+                                </div>-->
+                                <a href="#" class="btn btn-warning btn-sm"
+                                        @click.prevent="editVehicleYear( { vehicleyearLocal } )"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Editar">
+                                        <i class="far fa-edit"></i>
+                                    </a> 
                             </td>
                         </tr>
                     </tbody>
@@ -160,19 +173,18 @@
             </nav>
         </div>
         <EditarYear></EditarYear>
-        <AgregarMotor></AgregarMotor>
     </div>
 </template>
 <script>
 
 import { loadProgressBar } from 'axios-progress-bar'
 import SelectModel from '../VehicleModel/SelectModel'
+import SelectMotor from './SelectMotor'
 import EditarYear from './EditarYear'
-import AgregarMotor from './AgregarMotor'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-    components: {SelectModel, EditarYear, AgregarMotor},
+    components: {SelectModel, SelectMotor ,EditarYear},
     computed:{
         ...mapState(['newVehicleYear', 'errorsLaravel', 'vehicleyears', 'pagination_year', 'offset_year']),
         ...mapGetters(['isActived_year', 'pagesNumber_year'])

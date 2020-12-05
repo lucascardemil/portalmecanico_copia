@@ -172,13 +172,26 @@ export default { //methods
     createVehicleMotor(context, data) {
         context.commit('createVehicleMotor', data.id)
         setTimeout(function () {
-            context.commit('getVehicleYears', 1)
+            context.commit('getVehiculoMotors', 1)
         }, 1000)
 
     },
+    editVehiculoMotor(context, data) {
+        context.commit('editVehiculoMotor', data.vehiculoMotorLocal)
+    },
+    updateVehicleMotor(context, data) {
+        context.commit('updateVehicleMotor', data.id)
+        setTimeout(function () {
+            context.commit('getVehiculoMotors', 1)
+        }, 1000)
+    },
+    getVehiculoMotors(context, data) {
+        context.commit('getVehiculoMotors', data)
+    },
 
-    AgregarVehicleMotor(context, data) {
-        context.commit('AgregarVehicleMotor', data.vehicleyearLocal)
+    changePageVehiculoMotor(context, data) {
+        context.commit('paginate', data.page)
+        context.commit('getVehiculoMotors', data.page)
     },
     /********************************** */
     fileChange(context, data) {
@@ -772,6 +785,12 @@ export default { //methods
     allTiposVehiculos(context, data) {
         context.commit('allTiposVehiculos', data)
     },
+    allVehicleMotors(context, data) {
+        context.commit('allVehicleMotors', data)
+    },
+    allVehicleYears(context, data) {
+        context.commit('allVehicleYears', data)
+    },
     setVehicleBrand(context, data) {
         context.commit('setVehicleBrand', data)
         context.commit('allVehicleModels', data)
@@ -784,6 +803,12 @@ export default { //methods
     },
     setVehiculoTipo(context, data) {
         context.commit('setVehiculoTipo', data)
+    },
+    setVehicleMotor(context, data) {
+        context.commit('setVehicleMotor', data)
+    },
+    setVehicleYear(context, data) {
+        context.commit('setVehicleYear', data)
     },
     /*************seccion formulario de cotizacion  ****************/
     allVBrands(context, data) {

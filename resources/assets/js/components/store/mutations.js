@@ -29,6 +29,9 @@ var urlAllVehicleModel = 'vehiclemodels-all'
 
 
 var urlVehicleYear = 'vehicleyears'
+var urlVehicleMotor = 'vehiclemotors'
+var urlSelectVehiculoMotor = 'select-motor'
+var urlSelectVehiculoYear = 'select-year'
 
 var urlVBrand = 'vbrands-all'
 var urlVModel = 'vmodels-all'
@@ -467,11 +470,13 @@ export default { //used for changing the state
         var url = 'newvehicleyear'
         axios.post(url, {
             v_id: state.selectedVehicleModel.value,
-            v_year: state.newVehicleYear.year.toUpperCase()
+            v_year: state.newVehicleYear.year.toUpperCase(),
+            v_engine: state.selectedVehicleMotor.label
         }).then(response => {
             state.newVehicleYear = {
                 v_id: '',
-                v_year: ''
+                v_year: '',
+                v_engine: ''
             },
             state.errorsLaravel = []
             $('#create').modal('hide')
@@ -515,11 +520,11 @@ export default { //used for changing the state
         });
     },
 
-    createVehicleMotor(state, id) {
+    createVehicleMotor(state) {
         var url = 'newvehiclemotor'
         axios.post(url, {
-            v_engine: state.newVehicleMotor.v_engine.toUpperCase(),
-            year_id: id
+            v_engine: state.newVehicleMotor.motor.toUpperCase(),
+            year_id: state.selectedVehicleYear.value
         }).then(response => {
             state.newVehicleMotor = {
                 year_id: '',
@@ -533,10 +538,42 @@ export default { //used for changing the state
         })
     },
 
-    AgregarVehicleMotor(state, vehicleyear) {
-        state.fillVehicleYear.id = vehicleyear.id
+    updateVehicleMotor(state, id) {
+        var url = urlVehicleMotor + '/' + id
+        state.fillVehicleMotor.year_id = state.selectedVehicleYear.value
+        axios.put(url, state.fillVehicleMotor).then(response => {
+            state.fillVehicleMotor = {
+                    id: '',
+                    year_id: '',
+                    v_engine: ''
+                },
+                state.errorsLaravel = []
+            $('#edit_motor').modal('hide')
+            toastr.success('Motor actualizado con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    editVehiculoMotor(state, vehiclemotor) {
+        state.optionsYear.forEach(year => {
+            if (year.label == vehiclemotor.year) {
+                state.selectedVehicleYear = year
+            }
+        })
+        state.fillVehicleMotor.id = vehiclemotor.id
+        state.fillVehicleMotor.v_engine = vehiclemotor.motor
         $("#edit_motor").modal('show')
     },
+
+    getVehiculoMotors(state, page) {
+        var url = 'vehiclemotors-all?page=' + page
+        axios.get(url).then(response => {
+            state.vehiclemotors = response.data.vehiclemotors.data
+            state.pagination_motor = response.data.pagination_motor
+        });
+    },
+
 
     /******************************* */
     /****** sección notas **** */
@@ -2104,6 +2141,41 @@ export default { //used for changing the state
 
     setVehiculoTipo(state, vehiculotipo) {
         state.selectedVehiculoTipo = vehiculotipo
+    },
+
+
+    allVehicleMotors(state) {
+        var url = urlSelectVehiculoMotor
+        axios.get(url).then(response => {
+            state.optionsMotores = []
+            response.data.forEach((vehiclemotor) => {
+                state.optionsMotores.push({
+                    label: vehiclemotor.v_engine,
+                    value: vehiclemotor.id
+                })
+            });
+        });
+    },
+
+    setVehicleMotor(state, vehiclemotor) {
+        state.selectedVehicleMotor = vehiclemotor
+    },
+
+    allVehicleYears(state) {
+        var url = urlSelectVehiculoYear
+        axios.get(url).then(response => {
+            state.optionsYear = []
+            response.data.forEach((vehicleyear) => {
+                state.optionsYear.push({
+                    label: vehicleyear.v_year,
+                    value: vehicleyear.id
+                })
+            });
+        });
+    },
+
+    setVehicleYear(state, vehicleyear) {
+        state.selectedVehicleYear = vehicleyear
     },
 
     /****************formulario de cotizacion ****************************************/
