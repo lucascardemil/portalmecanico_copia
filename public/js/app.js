@@ -10953,6 +10953,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -65761,9 +65763,11 @@ var render = function() {
                       _vm._v(_vm._s(vehiculoMotorLocal.id))
                     ]),
                     _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.motor))]),
+                    _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.year))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.motor))]),
+                    _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.model))]),
                     _vm._v(" "),
                     _c("td", { attrs: { width: "10px" } }, [
                       _c(
@@ -65987,9 +65991,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Motor")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Año")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Motor")]),
+        _c("th", [_vm._v("Modelo")]),
         _vm._v(" "),
         _c("th", [_vm._v(" ")])
       ])

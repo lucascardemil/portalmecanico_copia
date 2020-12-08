@@ -59,16 +59,18 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Año</th>
                             <th>Motor</th>
+                            <th>Año</th>
+                            <th>Modelo</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="vehiculoMotorLocal in vehiclemotors" :key="vehiculoMotorLocal.id">
                             <td width="10px">{{ vehiculoMotorLocal.id }}</td>
-                            <td>{{ vehiculoMotorLocal.year }}</td>
                             <td>{{ vehiculoMotorLocal.motor }}</td>
+                            <td>{{ vehiculoMotorLocal.year }}</td>
+                            <td>{{ vehiculoMotorLocal.model }}</td>
                             <td width="10px">
                                 <a href="#" class="btn btn-warning btn-sm"
                                     @click.prevent="editVehiculoMotor( { vehiculoMotorLocal } )"

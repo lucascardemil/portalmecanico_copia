@@ -92,8 +92,10 @@ class VehicleEngineController extends Controller
        
         $motors = VehicleEngine::select(DB::raw('vehicle_engines.id as id,
                                               vehicle_years.v_year as year,
-                                              vehicle_engines.v_engine as motor'))
+                                              vehicle_engines.v_engine as motor,
+                                              vehicle_models.model as model'))
                 ->join('vehicle_years', 'vehicle_years.id', '=', 'vehicle_engines.year_id')
+                ->join('vehicle_models', 'vehicle_models.id', '=', 'vehicle_years.v_id')
                 ->paginate(10);
 
        return [
