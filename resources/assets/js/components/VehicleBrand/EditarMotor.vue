@@ -11,10 +11,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="col-0">
-                            <label for="model">Año</label>
-                            <SelectYear></SelectYear>
-                        </div>
+                        
                         <div class="col-0">
                             <label for="v_engine">Motor</label>
                             <input v-validate="'required|min:2|max:190'"
@@ -43,11 +40,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
-
-import SelectYear from './SelectYear'
-
 export default {
-    components: { SelectYear},
     computed:{
         ...mapState(['fillVehicleMotor', 'errorsLaravel'])
     },

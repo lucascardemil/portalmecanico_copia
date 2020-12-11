@@ -121,4 +121,18 @@ class VehicleModelController extends Controller
         return $vehiclemodels;
    }
 
+
+   public function vmr($brand)
+    {
+        $models = VehicleModel::select('id','model')->where('brand_id', '=', $brand)->get();
+
+        return $models;
+    }
+
+    public function mm()
+    {
+        $models = VehicleModel::select('id', 'model')->groupBy('model')->get();
+        return $models;
+    }
+
 }

@@ -38,6 +38,13 @@ var urlVModel = 'vmodels-all'
 var urlVYear = 'vyears-all'
 var urlVEngine = 'vengines-all'
 
+
+var urlVBR = 'vbr-all'
+var urlVMR = 'vmr-all'
+
+var urlMM = 'mm-all'
+var urlYM = 'ym-all'
+
 var urlCreateQuotationUser = 'quotationuser'
 var urlPendingQuotations = 'pendingquotations'
 
@@ -469,14 +476,12 @@ export default { //used for changing the state
     createVehicleYear(state) {
         var url = 'newvehicleyear'
         axios.post(url, {
-            v_id: state.selectedVehicleModel.value,
-            v_year: state.newVehicleYear.year.toUpperCase(),
-            v_engine: state.selectedVehicleMotor.label
+            v_id: state.selectedVMR.value,
+            v_year: state.newVehicleYear.v_year.toUpperCase()
         }).then(response => {
             state.newVehicleYear = {
                 v_id: '',
-                v_year: '',
-                v_engine: ''
+                v_year: ''
             },
             state.errorsLaravel = []
             $('#create').modal('hide')
@@ -486,23 +491,23 @@ export default { //used for changing the state
         })
     },
     editVehicleYear(state, vehicleyear) {
-        state.optionsVehicleModel.forEach(model => {
+        /*state.optionsVehicleModel.forEach(model => {
             if (model.label == vehicleyear.model) {
                 state.selectedVehicleModel = model
             }
-        })
+        })*/
         state.fillVehicleYear.id = vehicleyear.id
         state.fillVehicleYear.v_year = vehicleyear.year
         $("#edit_year").modal('show')
     },
     updateVehicleYear(state, id) {
         var url = urlVehicleYear + '/' + id
-        state.fillVehicleYear.model = state.selectedVehicleModel.value
+        //state.fillVehicleYear.model = state.selectedVehicleModel.value
         axios.put(url, state.fillVehicleYear).then(response => {
             state.fillVehicleYear = {
                 id: '',
-                v_year: '',
-                model: ''
+                v_year: ''
+                //model: ''
             },
                 state.errorsLaravel = []
             $('#edit_year').modal('hide')
@@ -523,8 +528,8 @@ export default { //used for changing the state
     createVehicleMotor(state) {
         var url = 'newvehiclemotor'
         axios.post(url, {
-            v_engine: state.newVehicleMotor.motor.toUpperCase(),
-            year_id: state.selectedVehicleYear.value
+            v_engine: state.newVehicleMotor.v_engine.toUpperCase(),
+            year_id: state.selectedYM.value
         }).then(response => {
             state.newVehicleMotor = {
                 year_id: '',
@@ -540,11 +545,11 @@ export default { //used for changing the state
 
     updateVehicleMotor(state, id) {
         var url = urlVehicleMotor + '/' + id
-        state.fillVehicleMotor.year_id = state.selectedVehicleYear.value
+        //state.fillVehicleMotor.year_id = state.selectedVehicleYear.value
         axios.put(url, state.fillVehicleMotor).then(response => {
             state.fillVehicleMotor = {
                     id: '',
-                    year_id: '',
+                    //year_id: '',
                     v_engine: ''
                 },
                 state.errorsLaravel = []
@@ -556,11 +561,11 @@ export default { //used for changing the state
     },
 
     editVehiculoMotor(state, vehiclemotor) {
-        state.optionsYear.forEach(year => {
+        /*state.optionsYear.forEach(year => {
             if (year.label == vehiclemotor.year) {
                 state.selectedVehicleYear = year
             }
-        })
+        })*/
         state.fillVehicleMotor.id = vehiclemotor.id
         state.fillVehicleMotor.v_engine = vehiclemotor.motor
         $("#edit_motor").modal('show')
@@ -2177,6 +2182,83 @@ export default { //used for changing the state
     setVehicleYear(state, vehicleyear) {
         state.selectedVehicleYear = vehicleyear
     },
+    /****************SELECT RELACIONADOS ****************************************/
+    allVBR(state) {
+        var url = urlVBR
+        axios.get(url).then(response => {
+            state.optionsVBR = []
+            response.data.forEach((vbr) => {
+                state.optionsVBR.push({
+                    label: vbr.brand,
+                    value: vbr.id
+                })
+            });
+        });
+    },
+    setVBR(state, brand) {
+        state.selectedVBR = brand
+    },
+    allVMR(state) {
+        if (state.selectedVBR.label != '') {
+            var url = urlVMR + '/' + state.selectedVBR.value
+            axios.get(url).then(response => {
+                state.optionsVMR = []
+                if (response.data != null) {
+                    response.data.forEach((vmr) => {
+                        state.optionsVMR.push({
+                            label: vmr.model,
+                            value: vmr.id
+                        })
+                    });
+                }
+            }).catch(error => {
+
+            })
+        }
+    },
+    setVMR(state, model) {
+        state.selectedVMR = model
+    },
+
+    allMM(state) {
+        var url = urlMM
+        axios.get(url).then(response => {
+            state.optionsMM = []
+            response.data.forEach((mm) => {
+                state.optionsMM.push({
+                    label: mm.model,
+                    value: mm.id
+                })
+            });
+        });
+    },
+    setMM(state, model) {
+        state.selectedMM = model
+    },
+    allYM(state) {
+        if (state.selectedMM.label != '') {
+            var url = urlYM + '/' + state.selectedMM.value
+            axios.get(url).then(response => {
+                state.optionsYM = []
+                if (response.data != null) {
+                    response.data.forEach((ym) => {
+                        state.optionsYM.push({
+                            label: ym.v_year,
+                            value: ym.id
+                        })
+                    });
+                }
+            }).catch(error => {
+
+            })
+        }
+    },
+    setYM(state, v_year) {
+        state.selectedYM = v_year
+    },
+
+
+
 
     /****************formulario de cotizacion ****************************************/
 

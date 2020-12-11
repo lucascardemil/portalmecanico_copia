@@ -10822,9 +10822,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios-progress-bar */ "./node_modules/axios-progress-bar/dist/index.js");
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _SelectYear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectYear */ "./resources/assets/js/components/VehicleBrand/SelectYear.vue");
-/* harmony import */ var _EditarMotor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditarMotor */ "./resources/assets/js/components/VehicleBrand/EditarMotor.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _SelectModelMotor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectModelMotor */ "./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue");
+/* harmony import */ var _SelectYearMotor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectYearMotor */ "./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue");
+/* harmony import */ var _EditarMotor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditarMotor */ "./resources/assets/js/components/VehicleBrand/EditarMotor.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -10955,17 +10956,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SelectYear: _SelectYear__WEBPACK_IMPORTED_MODULE_1__["default"],
-    EditarMotor: _EditarMotor__WEBPACK_IMPORTED_MODULE_2__["default"]
+    SelectModelMotor: _SelectModelMotor__WEBPACK_IMPORTED_MODULE_1__["default"],
+    SelectYearMotor: _SelectYearMotor__WEBPACK_IMPORTED_MODULE_2__["default"],
+    EditarMotor: _EditarMotor__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(['newVehicleMotor', 'errorsLaravel', 'vehiclemotors', 'pagination_motor', 'offset_motor'])), Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapGetters"])(['isActived_motor', 'pagesNumber_motor'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(['createVehicleMotor', 'editVehiculoMotor', 'changePageVehiculoMotor'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])(['newVehicleMotor', 'errorsLaravel', 'vehiclemotors', 'pagination_motor', 'offset_motor'])), Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapGetters"])(['isActived_motor', 'pagesNumber_motor'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapActions"])(['createVehicleMotor', 'editVehiculoMotor', 'changePageVehiculoMotor'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getVehiculoMotors', {
@@ -11141,8 +11150,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios-progress-bar */ "./node_modules/axios-progress-bar/dist/index.js");
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _VehicleModel_SelectModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../VehicleModel/SelectModel */ "./resources/assets/js/components/VehicleModel/SelectModel.vue");
-/* harmony import */ var _SelectMotor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectMotor */ "./resources/assets/js/components/VehicleBrand/SelectMotor.vue");
+/* harmony import */ var _SelectBrandYear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectBrandYear */ "./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue");
+/* harmony import */ var _SelectModelYear__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectModelYear */ "./resources/assets/js/components/VehicleBrand/SelectModelYear.vue");
 /* harmony import */ var _EditarYear__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditarYear */ "./resources/assets/js/components/VehicleBrand/EditarYear.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -11296,38 +11305,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -11335,8 +11312,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SelectModel: _VehicleModel_SelectModel__WEBPACK_IMPORTED_MODULE_1__["default"],
-    SelectMotor: _SelectMotor__WEBPACK_IMPORTED_MODULE_2__["default"],
+    SelectBrandYear: _SelectBrandYear__WEBPACK_IMPORTED_MODULE_1__["default"],
+    SelectModelYear: _SelectModelYear__WEBPACK_IMPORTED_MODULE_2__["default"],
     EditarYear: _EditarYear__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])(['newVehicleYear', 'errorsLaravel', 'vehicleyears', 'pagination_year', 'offset_year'])), Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapGetters"])(['isActived_year', 'pagesNumber_year'])),
@@ -11424,7 +11401,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _SelectYear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectYear */ "./resources/assets/js/components/VehicleBrand/SelectYear.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -11471,15 +11447,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    SelectYear: _SelectYear__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillVehicleMotor', 'errorsLaravel'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateVehicleMotor']))
 });
@@ -11559,7 +11528,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _VehicleModel_SelectModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../VehicleModel/SelectModel */ "./resources/assets/js/components/VehicleModel/SelectModel.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -11605,16 +11573,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    SelectModel: _VehicleModel_SelectModel__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillVehicleYear', 'errorsLaravel'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateVehicleYear']))
 });
@@ -11726,10 +11686,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11753,23 +11713,59 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsMotores', 'selectedVehicleMotor'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setVehicleMotor'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['errorsLaravel', 'optionsVBR', 'selectedVBR'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setVBR'])),
   created: function created() {
-    this.$store.dispatch('allVehicleMotors');
+    this.$store.dispatch('allVBR');
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['errorsLaravel', 'optionsMM', 'selectedMM'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setMM'])),
+  created: function created() {
+    this.$store.dispatch('allMM');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11794,14 +11790,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['errorsLaravel', 'optionsVMR', 'selectedVMR', 'selectedVBR'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setVMR']))
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsYear', 'selectedVehicleYear'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setVehicleYear'])),
-  created: function created() {
-    this.$store.dispatch('allVehicleYears');
-  }
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['errorsLaravel', 'optionsYM', 'selectedYM', 'selectedMM'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setYM']))
 });
 
 /***/ }),
@@ -12615,47 +12643,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.$store.dispatch('getVehicleModels', {
       page: 1
     });
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsVehicleModel', 'selectedVehicleModel', 'selectedVehicleBrand'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getVehicleModel'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setVehicleModel'])),
-  created: function created() {
-    this.$store.dispatch('allVehicleModels');
   }
 });
 
@@ -65653,11 +65640,24 @@ var render = function() {
                           "div",
                           { staticClass: "col-12" },
                           [
+                            _c("label", { attrs: { for: "model" } }, [
+                              _vm._v("Modelo")
+                            ]),
+                            _vm._v(" "),
+                            _c("SelectModelMotor")
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12" },
+                          [
                             _c("label", { attrs: { for: "year" } }, [
                               _vm._v("Año")
                             ]),
                             _vm._v(" "),
-                            _c("SelectYear")
+                            _c("SelectYearMotor")
                           ],
                           1
                         ),
@@ -65763,11 +65763,11 @@ var render = function() {
                       _vm._v(_vm._s(vehiculoMotorLocal.id))
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.motor))]),
+                    _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.model))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.year))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.model))]),
+                    _c("td", [_vm._v(_vm._s(vehiculoMotorLocal.motor))]),
                     _vm._v(" "),
                     _c("td", { attrs: { width: "10px" } }, [
                       _c(
@@ -65991,11 +65991,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Motor")]),
+        _c("th", [_vm._v("Modelo")]),
         _vm._v(" "),
         _c("th", [_vm._v("Año")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Modelo")]),
+        _c("th", [_vm._v("Motor")]),
         _vm._v(" "),
         _c("th", [_vm._v(" ")])
       ])
@@ -66457,10 +66457,10 @@ var render = function() {
                           { staticClass: "col-12" },
                           [
                             _c("label", { attrs: { for: "model" } }, [
-                              _vm._v("Modelo")
+                              _vm._v("Marca")
                             ]),
                             _vm._v(" "),
-                            _c("SelectModel")
+                            _c("SelectBrandYear")
                           ],
                           1
                         ),
@@ -66469,7 +66469,20 @@ var render = function() {
                           "div",
                           { staticClass: "col-12" },
                           [
-                            _c("label", { attrs: { for: "year" } }, [
+                            _c("label", { attrs: { for: "model" } }, [
+                              _vm._v("Modelo")
+                            ]),
+                            _vm._v(" "),
+                            _c("SelectModelYear")
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-12" },
+                          [
+                            _c("label", { attrs: { for: "v_year" } }, [
                               _vm._v("Año")
                             ]),
                             _vm._v(" "),
@@ -66484,17 +66497,17 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.newVehicleYear.year,
-                                  expression: "newVehicleYear.year"
+                                  value: _vm.newVehicleYear.v_year,
+                                  expression: "newVehicleYear.v_year"
                                 }
                               ],
                               staticClass: "form-control",
                               class: {
                                 input: true,
-                                "is-invalid": _vm.errors.has("year")
+                                "is-invalid": _vm.errors.has("v_year")
                               },
-                              attrs: { type: "number", name: "year" },
-                              domProps: { value: _vm.newVehicleYear.year },
+                              attrs: { type: "number", name: "v_year" },
+                              domProps: { value: _vm.newVehicleYear.v_year },
                               on: {
                                 input: function($event) {
                                   if ($event.target.composing) {
@@ -66502,7 +66515,7 @@ var render = function() {
                                   }
                                   _vm.$set(
                                     _vm.newVehicleYear,
-                                    "year",
+                                    "v_year",
                                     $event.target.value
                                   )
                                 }
@@ -66516,20 +66529,20 @@ var render = function() {
                                   {
                                     name: "show",
                                     rawName: "v-show",
-                                    value: _vm.errors.has("year"),
-                                    expression: "errors.has('year')"
+                                    value: _vm.errors.has("v_year"),
+                                    expression: "errors.has('v_year')"
                                   }
                                 ],
                                 staticClass: "text-danger"
                               },
-                              [_vm._v(_vm._s(_vm.errors.first("year")))]
+                              [_vm._v(_vm._s(_vm.errors.first("v_year")))]
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.errorsLaravel, function(error, index) {
                               return _c(
                                 "div",
                                 { key: index, staticClass: "text-danger" },
-                                [_c("p", [_vm._v(_vm._s(error.year))])]
+                                [_c("p", [_vm._v(_vm._s(error.v_year))])]
                               )
                             })
                           ],
@@ -66565,6 +66578,8 @@ var render = function() {
                     _c("td", { attrs: { width: "10px" } }, [
                       _vm._v(_vm._s(vehicleyearLocal.id))
                     ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(vehicleyearLocal.brand))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(vehicleyearLocal.model))]),
                     _vm._v(" "),
@@ -66792,6 +66807,8 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Marca")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Modelo")]),
         _vm._v(" "),
         _c("th", [_vm._v("Año")]),
@@ -66987,17 +67004,6 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "div",
-                { staticClass: "col-0" },
-                [
-                  _c("label", { attrs: { for: "model" } }, [_vm._v("Año")]),
-                  _vm._v(" "),
-                  _c("SelectYear")
-                ],
-                1
-              ),
-              _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "col-0" },
@@ -67310,17 +67316,6 @@ var render = function() {
                 "div",
                 { staticClass: "col-0" },
                 [
-                  _c("label", { attrs: { for: "model" } }, [_vm._v("Modelo")]),
-                  _vm._v(" "),
-                  _c("SelectModel")
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-0" },
-                [
                   _c("label", { attrs: { for: "year" } }, [_vm._v("Año")]),
                   _vm._v(" "),
                   _c("input", {
@@ -67539,10 +67534,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=template&id=466f1d1c&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=template&id=466f1d1c& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=template&id=cc68bbea&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=template&id=cc68bbea& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -67554,39 +67549,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "pl-0" },
-    [
-      _c("v-select", {
-        class: { input: true, "is-invalid": _vm.errors.has("motor") },
-        attrs: {
-          name: "motor",
-          placeholder: "Seleccionar Motor",
-          options: _vm.optionsMotores,
-          value: _vm.selectedVehicleMotor
-        },
-        on: { input: _vm.setVehicleMotor }
-      }),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.errors.has("motor"),
-              expression: "errors.has('motor')"
-            }
-          ],
-          staticClass: "text-danger"
-        },
-        [_vm._v(_vm._s(_vm.errors.first("motor")))]
-      )
-    ],
-    1
-  )
+  return _c("v-select", {
+    attrs: {
+      name: "marca",
+      placeholder: "Seleccionar Marca",
+      options: _vm.optionsVBR,
+      searchable: false,
+      value: _vm.selectedVBR
+    },
+    on: { input: _vm.setVBR }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -67595,10 +67567,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=template&id=549f11e6&":
-/*!*********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=template&id=549f11e6& ***!
-  \*********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=template&id=0d295835&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=template&id=0d295835& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -67610,39 +67582,84 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "pl-0" },
-    [
-      _c("v-select", {
-        class: { input: true, "is-invalid": _vm.errors.has("select_year") },
-        attrs: {
-          name: "select_year",
-          placeholder: "Seleccionar Año",
-          options: _vm.optionsYear,
-          value: _vm.selectedVehicleYear
-        },
-        on: { input: _vm.setVehicleYear }
-      }),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.errors.has("select_year"),
-              expression: "errors.has('select_year')"
-            }
-          ],
-          staticClass: "text-danger"
-        },
-        [_vm._v(_vm._s(_vm.errors.first("select_year")))]
-      )
-    ],
-    1
-  )
+  return _c("v-select", {
+    attrs: {
+      name: "modelo",
+      placeholder: "Seleccionar Modelo...",
+      options: _vm.optionsMM,
+      searchable: false,
+      value: _vm.selectedMM
+    },
+    on: { input: _vm.setMM }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=template&id=e6d6e0a6&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=template&id=e6d6e0a6& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("v-select", {
+    attrs: {
+      name: "modelo",
+      placeholder: "Seleccionar Modelo...",
+      disabled: _vm.selectedVBR.label == "",
+      options: _vm.optionsVMR,
+      searchable: false,
+      value: _vm.selectedVMR
+    },
+    on: { input: _vm.setVMR }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=template&id=4146c9df&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=template&id=4146c9df& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("v-select", {
+    attrs: {
+      name: "año",
+      placeholder: "Seleccionar año...",
+      disabled: _vm.selectedMM.label == "",
+      options: _vm.optionsYM,
+      searchable: false,
+      value: _vm.selectedYM
+    },
+    on: { input: _vm.setYM }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -69349,62 +69366,6 @@ var staticRenderFns = [
     ])
   }
 ]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=template&id=80fedd1c&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=template&id=80fedd1c& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "pl-0" },
-    [
-      _c("v-select", {
-        class: { input: true, "is-invalid": _vm.errors.has("Modelo") },
-        attrs: {
-          name: "modelo",
-          placeholder: "Seleccionar Modelo",
-          options: _vm.optionsVehicleModel,
-          value: _vm.selectedVehicleModel
-        },
-        on: { input: _vm.setVehicleModel }
-      }),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.errors.has("Modelo"),
-              expression: "errors.has('Modelo')"
-            }
-          ],
-          staticClass: "text-danger"
-        },
-        [_vm._v(_vm._s(_vm.errors.first("Modelo")))]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
 render._withStripped = true
 
 
@@ -96031,17 +95992,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/VehicleBrand/SelectMotor.vue":
-/*!*********************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleBrand/SelectMotor.vue ***!
-  \*********************************************************************/
+/***/ "./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SelectMotor_vue_vue_type_template_id_466f1d1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectMotor.vue?vue&type=template&id=466f1d1c& */ "./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=template&id=466f1d1c&");
-/* harmony import */ var _SelectMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectMotor.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=script&lang=js&");
+/* harmony import */ var _SelectBrandYear_vue_vue_type_template_id_cc68bbea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectBrandYear.vue?vue&type=template&id=cc68bbea& */ "./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=template&id=cc68bbea&");
+/* harmony import */ var _SelectBrandYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectBrandYear.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -96051,9 +96012,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SelectMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SelectMotor_vue_vue_type_template_id_466f1d1c___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SelectMotor_vue_vue_type_template_id_466f1d1c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _SelectBrandYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SelectBrandYear_vue_vue_type_template_id_cc68bbea___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SelectBrandYear_vue_vue_type_template_id_cc68bbea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -96063,54 +96024,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/assets/js/components/VehicleBrand/SelectMotor.vue"
+component.options.__file = "resources/assets/js/components/VehicleBrand/SelectBrandYear.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************/
+/***/ "./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectMotor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectBrandYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectBrandYear.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectBrandYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=template&id=466f1d1c&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=template&id=466f1d1c& ***!
-  \****************************************************************************************************/
+/***/ "./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=template&id=cc68bbea&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=template&id=cc68bbea& ***!
+  \********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectMotor_vue_vue_type_template_id_466f1d1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectMotor.vue?vue&type=template&id=466f1d1c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectMotor.vue?vue&type=template&id=466f1d1c&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectMotor_vue_vue_type_template_id_466f1d1c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectBrandYear_vue_vue_type_template_id_cc68bbea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectBrandYear.vue?vue&type=template&id=cc68bbea& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectBrandYear.vue?vue&type=template&id=cc68bbea&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectBrandYear_vue_vue_type_template_id_cc68bbea___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectMotor_vue_vue_type_template_id_466f1d1c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectBrandYear_vue_vue_type_template_id_cc68bbea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/VehicleBrand/SelectYear.vue":
-/*!********************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleBrand/SelectYear.vue ***!
-  \********************************************************************/
+/***/ "./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SelectYear_vue_vue_type_template_id_549f11e6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectYear.vue?vue&type=template&id=549f11e6& */ "./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=template&id=549f11e6&");
-/* harmony import */ var _SelectYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectYear.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=script&lang=js&");
+/* harmony import */ var _SelectModelMotor_vue_vue_type_template_id_0d295835___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectModelMotor.vue?vue&type=template&id=0d295835& */ "./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=template&id=0d295835&");
+/* harmony import */ var _SelectModelMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectModelMotor.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -96120,9 +96081,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SelectYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SelectYear_vue_vue_type_template_id_549f11e6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SelectYear_vue_vue_type_template_id_549f11e6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _SelectModelMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SelectModelMotor_vue_vue_type_template_id_0d295835___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SelectModelMotor_vue_vue_type_template_id_0d295835___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -96132,38 +96093,176 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/assets/js/components/VehicleBrand/SelectYear.vue"
+component.options.__file = "resources/assets/js/components/VehicleBrand/SelectModelMotor.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectYear.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=template&id=549f11e6&":
+/***/ "./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=template&id=549f11e6& ***!
+  !*** ./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectModelMotor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=template&id=0d295835&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=template&id=0d295835& ***!
+  \*********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYear_vue_vue_type_template_id_549f11e6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectYear.vue?vue&type=template&id=549f11e6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectYear.vue?vue&type=template&id=549f11e6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYear_vue_vue_type_template_id_549f11e6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelMotor_vue_vue_type_template_id_0d295835___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectModelMotor.vue?vue&type=template&id=0d295835& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectModelMotor.vue?vue&type=template&id=0d295835&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelMotor_vue_vue_type_template_id_0d295835___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYear_vue_vue_type_template_id_549f11e6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelMotor_vue_vue_type_template_id_0d295835___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/SelectModelYear.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectModelYear.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SelectModelYear_vue_vue_type_template_id_e6d6e0a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectModelYear.vue?vue&type=template&id=e6d6e0a6& */ "./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=template&id=e6d6e0a6&");
+/* harmony import */ var _SelectModelYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectModelYear.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SelectModelYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SelectModelYear_vue_vue_type_template_id_e6d6e0a6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SelectModelYear_vue_vue_type_template_id_e6d6e0a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/VehicleBrand/SelectModelYear.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectModelYear.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelYear_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=template&id=e6d6e0a6&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=template&id=e6d6e0a6& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelYear_vue_vue_type_template_id_e6d6e0a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectModelYear.vue?vue&type=template&id=e6d6e0a6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectModelYear.vue?vue&type=template&id=e6d6e0a6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelYear_vue_vue_type_template_id_e6d6e0a6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModelYear_vue_vue_type_template_id_e6d6e0a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SelectYearMotor_vue_vue_type_template_id_4146c9df___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectYearMotor.vue?vue&type=template&id=4146c9df& */ "./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=template&id=4146c9df&");
+/* harmony import */ var _SelectYearMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectYearMotor.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SelectYearMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SelectYearMotor_vue_vue_type_template_id_4146c9df___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SelectYearMotor_vue_vue_type_template_id_4146c9df___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/VehicleBrand/SelectYearMotor.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYearMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectYearMotor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYearMotor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=template&id=4146c9df&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=template&id=4146c9df& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYearMotor_vue_vue_type_template_id_4146c9df___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectYearMotor.vue?vue&type=template&id=4146c9df& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleBrand/SelectYearMotor.vue?vue&type=template&id=4146c9df&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYearMotor_vue_vue_type_template_id_4146c9df___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectYearMotor_vue_vue_type_template_id_4146c9df___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -96716,75 +96815,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_b6f6cc12___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_b6f6cc12___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/VehicleModel/SelectModel.vue":
-/*!*********************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleModel/SelectModel.vue ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SelectModel_vue_vue_type_template_id_80fedd1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectModel.vue?vue&type=template&id=80fedd1c& */ "./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=template&id=80fedd1c&");
-/* harmony import */ var _SelectModel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectModel.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SelectModel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SelectModel_vue_vue_type_template_id_80fedd1c___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SelectModel_vue_vue_type_template_id_80fedd1c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/assets/js/components/VehicleModel/SelectModel.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectModel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=template&id=80fedd1c&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=template&id=80fedd1c& ***!
-  \****************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModel_vue_vue_type_template_id_80fedd1c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectModel.vue?vue&type=template&id=80fedd1c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/VehicleModel/SelectModel.vue?vue&type=template&id=80fedd1c&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModel_vue_vue_type_template_id_80fedd1c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectModel_vue_vue_type_template_id_80fedd1c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -97649,6 +97679,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     context.commit('setVehicleYear', data);
   },
 
+  /*************SELECT RELACIONADOS ****************/
+  allVBR: function allVBR(context, data) {
+    context.commit('allVBR', data);
+  },
+  setVBR: function setVBR(context, data) {
+    context.commit('setVBR', data);
+    context.commit('setVMR', {
+      label: '',
+      value: ''
+    });
+    context.commit('allVMR', data);
+  },
+  allVMR: function allVMR(context, data) {
+    context.commit('allVMR', data);
+  },
+  setVMR: function setVMR(context, data) {
+    context.commit('setVMR', data);
+    context.commit('allVMR', data);
+  },
+  allMM: function allMM(context, data) {
+    context.commit('allMM', data);
+  },
+  setMM: function setMM(context, data) {
+    context.commit('setMM', data);
+    context.commit('setYM', {
+      label: '',
+      value: ''
+    });
+    context.commit('allYM', data);
+  },
+  allYM: function allYM(context, data) {
+    context.commit('allYM', data);
+  },
+  setYM: function setYM(context, data) {
+    context.commit('setYM', data);
+    context.commit('allYM', data);
+  },
+
   /*************seccion formulario de cotizacion  ****************/
   allVBrands: function allVBrands(context, data) {
     context.commit('allVBrands', data);
@@ -98193,6 +98261,10 @@ var urlVBrand = 'vbrands-all';
 var urlVModel = 'vmodels-all';
 var urlVYear = 'vyears-all';
 var urlVEngine = 'vengines-all';
+var urlVBR = 'vbr-all';
+var urlVMR = 'vmr-all';
+var urlMM = 'mm-all';
+var urlYM = 'ym-all';
 var urlCreateQuotationUser = 'quotationuser';
 var urlPendingQuotations = 'pendingquotations';
 var urlNote = 'notes';
@@ -98590,14 +98662,12 @@ var urlCompany = 'companies';
   createVehicleYear: function createVehicleYear(state) {
     var url = 'newvehicleyear';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
-      v_id: state.selectedVehicleModel.value,
-      v_year: state.newVehicleYear.year.toUpperCase(),
-      v_engine: state.selectedVehicleMotor.label
+      v_id: state.selectedVMR.value,
+      v_year: state.newVehicleYear.v_year.toUpperCase()
     }).then(function (response) {
       state.newVehicleYear = {
         v_id: '',
-        v_year: '',
-        v_engine: ''
+        v_year: ''
       }, state.errorsLaravel = [];
       $('#create').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Modelo generado con éxito');
@@ -98606,23 +98676,23 @@ var urlCompany = 'companies';
     });
   },
   editVehicleYear: function editVehicleYear(state, vehicleyear) {
-    state.optionsVehicleModel.forEach(function (model) {
-      if (model.label == vehicleyear.model) {
-        state.selectedVehicleModel = model;
-      }
-    });
+    /*state.optionsVehicleModel.forEach(model => {
+        if (model.label == vehicleyear.model) {
+            state.selectedVehicleModel = model
+        }
+    })*/
     state.fillVehicleYear.id = vehicleyear.id;
     state.fillVehicleYear.v_year = vehicleyear.year;
     $("#edit_year").modal('show');
   },
   updateVehicleYear: function updateVehicleYear(state, id) {
-    var url = urlVehicleYear + '/' + id;
-    state.fillVehicleYear.model = state.selectedVehicleModel.value;
+    var url = urlVehicleYear + '/' + id; //state.fillVehicleYear.model = state.selectedVehicleModel.value
+
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, state.fillVehicleYear).then(function (response) {
       state.fillVehicleYear = {
         id: '',
-        v_year: '',
-        model: ''
+        v_year: '' //model: ''
+
       }, state.errorsLaravel = [];
       $('#edit_year').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Modelo actualizado con éxito');
@@ -98640,8 +98710,8 @@ var urlCompany = 'companies';
   createVehicleMotor: function createVehicleMotor(state) {
     var url = 'newvehiclemotor';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
-      v_engine: state.newVehicleMotor.motor.toUpperCase(),
-      year_id: state.selectedVehicleYear.value
+      v_engine: state.newVehicleMotor.v_engine.toUpperCase(),
+      year_id: state.selectedYM.value
     }).then(function (response) {
       state.newVehicleMotor = {
         year_id: '',
@@ -98654,12 +98724,12 @@ var urlCompany = 'companies';
     });
   },
   updateVehicleMotor: function updateVehicleMotor(state, id) {
-    var url = urlVehicleMotor + '/' + id;
-    state.fillVehicleMotor.year_id = state.selectedVehicleYear.value;
+    var url = urlVehicleMotor + '/' + id; //state.fillVehicleMotor.year_id = state.selectedVehicleYear.value
+
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, state.fillVehicleMotor).then(function (response) {
       state.fillVehicleMotor = {
         id: '',
-        year_id: '',
+        //year_id: '',
         v_engine: ''
       }, state.errorsLaravel = [];
       $('#edit_motor').modal('hide');
@@ -98669,11 +98739,11 @@ var urlCompany = 'companies';
     });
   },
   editVehiculoMotor: function editVehiculoMotor(state, vehiclemotor) {
-    state.optionsYear.forEach(function (year) {
-      if (year.label == vehiclemotor.year) {
-        state.selectedVehicleYear = year;
-      }
-    });
+    /*state.optionsYear.forEach(year => {
+        if (year.label == vehiclemotor.year) {
+            state.selectedVehicleYear = year
+        }
+    })*/
     state.fillVehicleMotor.id = vehiclemotor.id;
     state.fillVehicleMotor.v_engine = vehiclemotor.motor;
     $("#edit_motor").modal('show');
@@ -100278,6 +100348,78 @@ var urlCompany = 'companies';
     state.selectedVehicleYear = vehicleyear;
   },
 
+  /****************SELECT RELACIONADOS ****************************************/
+  allVBR: function allVBR(state) {
+    var url = urlVBR;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      state.optionsVBR = [];
+      response.data.forEach(function (vbr) {
+        state.optionsVBR.push({
+          label: vbr.brand,
+          value: vbr.id
+        });
+      });
+    });
+  },
+  setVBR: function setVBR(state, brand) {
+    state.selectedVBR = brand;
+  },
+  allVMR: function allVMR(state) {
+    if (state.selectedVBR.label != '') {
+      var url = urlVMR + '/' + state.selectedVBR.value;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+        state.optionsVMR = [];
+
+        if (response.data != null) {
+          response.data.forEach(function (vmr) {
+            state.optionsVMR.push({
+              label: vmr.model,
+              value: vmr.id
+            });
+          });
+        }
+      })["catch"](function (error) {});
+    }
+  },
+  setVMR: function setVMR(state, model) {
+    state.selectedVMR = model;
+  },
+  allMM: function allMM(state) {
+    var url = urlMM;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      state.optionsMM = [];
+      response.data.forEach(function (mm) {
+        state.optionsMM.push({
+          label: mm.model,
+          value: mm.id
+        });
+      });
+    });
+  },
+  setMM: function setMM(state, model) {
+    state.selectedMM = model;
+  },
+  allYM: function allYM(state) {
+    if (state.selectedMM.label != '') {
+      var url = urlYM + '/' + state.selectedMM.value;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+        state.optionsYM = [];
+
+        if (response.data != null) {
+          response.data.forEach(function (ym) {
+            state.optionsYM.push({
+              label: ym.v_year,
+              value: ym.id
+            });
+          });
+        }
+      })["catch"](function (error) {});
+    }
+  },
+  setYM: function setYM(state, v_year) {
+    state.selectedYM = v_year;
+  },
+
   /****************formulario de cotizacion ****************************************/
   allVBrands: function allVBrands(state) {
     var url = urlVBrand;
@@ -100926,6 +101068,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     label: '',
     value: ''
   },
+  optionsVBR: [],
+  optionsVMR: [],
+  optionsMM: [],
+  optionsYM: [],
+  selectedVBR: {
+    label: '',
+    value: ''
+  },
+  selectedVMR: {
+    label: '',
+    value: ''
+  },
+  selectedMM: {
+    label: '',
+    value: ''
+  },
+  selectedYM: {
+    label: '',
+    value: ''
+  },
   selectedVehiculoTipo: {
     label: '',
     value: ''
@@ -101048,9 +101210,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   newVehicleYear: {
     v_id: '',
-    v_year: '' //v_engine: ''
-    //motor: ''
-
+    v_year: ''
   },
   vehicleyears: [],
   vehicleyear: {
@@ -101085,12 +101245,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   fillVehicleYear: {
     id: '',
-    v_year: '',
-    model: ''
+    v_year: '' //model: ''
+
   },
   fillVehicleMotor: {
     id: '',
-    year_id: '',
+    //year_id: '',
     v_engine: ''
   },
   searchVehicleBrand: {

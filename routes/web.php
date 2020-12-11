@@ -47,6 +47,13 @@ Route::get('select-marcas', 'VehicleBrandController@selectMarcas');
 Route::get('select-motor', 'VehicleEngineController@selectMotores');
 Route::get('select-year', 'VehicleYearController@selectYears');
 
+Route::get('vbr-all', 'VehicleBrandController@vbr');
+Route::get('vmr-all/{brand}', 'VehicleModelController@vmr');
+
+Route::get('mm-all', 'VehicleModelController@mm');
+Route::get('ym-all/{model}', 'VehicleYearController@ym');
+
+
 Route::ApiResource('vehiclemodels', 'VehicleModelController');
 Route::get('vehiclemodels-all', 'VehicleModelController@all');
 

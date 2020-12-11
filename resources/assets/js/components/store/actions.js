@@ -810,6 +810,44 @@ export default { //methods
     setVehicleYear(context, data) {
         context.commit('setVehicleYear', data)
     },
+    /*************SELECT RELACIONADOS ****************/
+    allVBR(context, data) {
+        context.commit('allVBR', data)
+    },
+    setVBR(context, data) {
+        context.commit('setVBR', data)
+        context.commit('setVMR', {
+            label: '',
+            value: ''
+        })
+        context.commit('allVMR', data)
+    },
+    allVMR(context, data) {
+        context.commit('allVMR', data)
+    },
+    setVMR(context, data) {
+        context.commit('setVMR', data)
+        context.commit('allVMR', data)
+    },
+
+    allMM(context, data) {
+        context.commit('allMM', data)
+    },
+    setMM(context, data) {
+        context.commit('setMM', data)
+        context.commit('setYM', {
+            label: '',
+            value: ''
+        })
+        context.commit('allYM', data)
+    },
+    allYM(context, data) {
+        context.commit('allYM', data)
+    },
+    setYM(context, data) {
+        context.commit('setYM', data)
+        context.commit('allYM', data)
+    },
     /*************seccion formulario de cotizacion  ****************/
     allVBrands(context, data) {
         context.commit('allVBrands', data)

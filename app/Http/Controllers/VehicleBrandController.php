@@ -79,8 +79,9 @@ class VehicleBrandController extends Controller
    public function update(Request $request, $id)
    {
     $this->validate($request, [
-        'brand' => 'required|min:2|max:190',
+        'brand' => 'required|unique:vehicle_brands|min:2|max:190',
     ], [
+        'brand.unique' => 'La marca ya existe y debe ser único',
         'brand.required' => 'El campo marca es obligatorio',
         'brand.min' => 'El campo nombre debe tener al menos 4 caracteres',
         'brand.max' => 'El campo nombre debe tener a lo más 190 caracteres',
@@ -124,5 +125,14 @@ class VehicleBrandController extends Controller
 
         return $vehiculomarcas;
    }
+
+
+
+
+   public function vbr()
+    {
+        $brands = VehicleBrand::select('id', 'brand')->groupBy('brand')->get();
+        return $brands;
+    }
 
 }

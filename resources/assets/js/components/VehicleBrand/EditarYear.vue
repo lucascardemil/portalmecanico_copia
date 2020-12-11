@@ -12,10 +12,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="col-0">
-                            <label for="model">Modelo</label>
-                            <SelectModel></SelectModel>
-                        </div>
-                        <div class="col-0">
                             <label for="year">Año</label>
                             <input v-validate="'required|numeric|max:9999'"
                                     :class="{'input': true, 'is-invalid': errors.has('year') }"
@@ -43,11 +39,8 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
-
-import SelectModel from '../VehicleModel/SelectModel'
-
 export default {
-    components: { SelectModel},
+    
     computed:{
         ...mapState(['fillVehicleYear', 'errorsLaravel'])
     },

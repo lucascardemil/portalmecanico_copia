@@ -19,62 +19,29 @@
                                 <div class="row">
 
                                     <div class="col-12">
+                                        <label for="model">Marca</label>
+                                        <SelectBrandYear></SelectBrandYear>
+                                    </div>
+
+                                    <div class="col-12">
                                         <label for="model">Modelo</label>
-                                        <SelectModel></SelectModel>
+                                        <SelectModelYear></SelectModelYear>
                                     </div>
 
                                     <div class="col-12">
 
-                                        <label for="year">Año</label>
+                                        <label for="v_year">Año</label>
                                         <input v-validate="'required|numeric|max:9999'"
-                                                :class="{'input': true, 'is-invalid': errors.has('year') }"
+                                                :class="{'input': true, 'is-invalid': errors.has('v_year') }"
                                                 type="number"
-                                                name="year"
-                                                class="form-control" v-model="newVehicleYear.year">
-                                        <p v-show="errors.has('year')" class="text-danger">{{ errors.first('year') }}</p>
+                                                name="v_year"
+                                                class="form-control" v-model="newVehicleYear.v_year">
+                                        <p v-show="errors.has('v_year')" class="text-danger">{{ errors.first('v_year') }}</p>
 
                                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.year }}</p>
+                                            <p>{{ error.v_year }}</p>
                                         </div>
                                     </div>
-
-                                    <!--<div class="col-12">
-
-                                        <label for="motor">Motor</label>
-                                        <SelectMotor></SelectMotor>
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <label for="year_fin">Año Final</label>
-                                        <input v-validate="'required|numeric|max:9999'"
-                                                :class="{'input': true, 'is-invalid': errors.has('year_fin') }"
-                                                type="number"
-                                                name="year_fin"
-                                                class="form-control" v-model="newVehicleMotor.year_fin">
-                                        <p v-show="errors.has('year_fin')" class="text-danger">{{ errors.first('year_fin') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.year_fin }}</p>
-                                        </div>
-                                    </div>
-
-                                    
-
-                                    <div class="col-12">
-
-                                        <label for="motor">Motor</label>
-                                        <input v-validate="'required|min:2|max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('motor') }"
-                                                type="text"
-                                                name="motor"
-                                                class="form-control" v-model="newVehicleMotor.motor">
-                                        <p v-show="errors.has('motor')" class="text-danger">{{ errors.first('motor') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.motor }}</p>
-                                        </div>
-                                    </div>-->
 
                                     <div class="col-lg-3 mt-2">
                                         <label></label>
@@ -96,15 +63,16 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Marca</th>
                             <th>Modelo</th>
                             <th>Año</th>
-                            <!--<th>Motor</th>-->
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="vehicleyearLocal in vehicleyears" :key="vehicleyearLocal.id">
                             <td width="10px">{{ vehicleyearLocal.id }}</td>
+                            <td>{{ vehicleyearLocal.brand }}</td>
                             <td>{{ vehicleyearLocal.model }}</td>
                             <td>{{ vehicleyearLocal.year }}</td>
                             <!--<td>{{ vehicleyearLocal.motor }}</td>-->
@@ -178,13 +146,13 @@
 <script>
 
 import { loadProgressBar } from 'axios-progress-bar'
-import SelectModel from '../VehicleModel/SelectModel'
-import SelectMotor from './SelectMotor'
+import SelectBrandYear from './SelectBrandYear'
+import SelectModelYear from './SelectModelYear'
 import EditarYear from './EditarYear'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-    components: {SelectModel, SelectMotor ,EditarYear},
+    components: {SelectBrandYear, SelectModelYear, EditarYear},
     computed:{
         ...mapState(['newVehicleYear', 'errorsLaravel', 'vehicleyears', 'pagination_year', 'offset_year']),
         ...mapGetters(['isActived_year', 'pagesNumber_year'])

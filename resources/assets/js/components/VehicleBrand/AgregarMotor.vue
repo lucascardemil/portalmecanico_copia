@@ -20,8 +20,13 @@
                                 <div class="row">
 
                                     <div class="col-12">
+                                        <label for="model">Modelo</label>
+                                        <SelectModelMotor></SelectModelMotor>
+                                    </div>
+
+                                    <div class="col-12">
                                         <label for="year">Año</label>
-                                        <SelectYear></SelectYear>
+                                        <SelectYearMotor></SelectYearMotor>
                                     </div>
 
                                     <div class="col-12">
@@ -59,18 +64,19 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Motor</th>
-                            <th>Año</th>
                             <th>Modelo</th>
+                            <th>Año</th>
+                            <th>Motor</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="vehiculoMotorLocal in vehiclemotors" :key="vehiculoMotorLocal.id">
                             <td width="10px">{{ vehiculoMotorLocal.id }}</td>
-                            <td>{{ vehiculoMotorLocal.motor }}</td>
-                            <td>{{ vehiculoMotorLocal.year }}</td>
                             <td>{{ vehiculoMotorLocal.model }}</td>
+                            <td>{{ vehiculoMotorLocal.year }}</td>
+                            <td>{{ vehiculoMotorLocal.motor }}</td>
+                            
                             <td width="10px">
                                 <a href="#" class="btn btn-warning btn-sm"
                                     @click.prevent="editVehiculoMotor( { vehiculoMotorLocal } )"
@@ -125,12 +131,13 @@
 <script>
 
 import { loadProgressBar } from 'axios-progress-bar'
-import SelectYear from './SelectYear'
+import SelectModelMotor from './SelectModelMotor'
+import SelectYearMotor from './SelectYearMotor'
 import EditarMotor from './EditarMotor'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-    components: {SelectYear, EditarMotor},
+    components: {SelectModelMotor, SelectYearMotor, EditarMotor},
     computed:{
         ...mapState(['newVehicleMotor', 'errorsLaravel' ,'vehiclemotors', 'pagination_motor', 'offset_motor']),
         ...mapGetters(['isActived_motor', 'pagesNumber_motor'])

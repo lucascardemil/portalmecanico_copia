@@ -32,6 +32,29 @@ export default { //data
         label: '',
         value: ''
     },
+
+    optionsVBR: [],
+    optionsVMR: [],
+    optionsMM: [],
+    optionsYM: [],
+    
+    selectedVBR: {
+        label: '',
+        value: ''
+    },
+    selectedVMR: {
+        label: '',
+        value: ''
+    },
+    selectedMM: {
+        label: '',
+        value: ''
+    },
+    selectedYM: {
+        label: '',
+        value: ''
+    },
+    
     selectedVehiculoTipo: {
         label: '',
         value: ''
@@ -156,8 +179,6 @@ export default { //data
     newVehicleYear:{
         v_id: '',
         v_year: ''
-        //v_engine: ''
-        //motor: ''
     },
     vehicleyears: [],
     vehicleyear: {
@@ -193,11 +214,11 @@ export default { //data
     fillVehicleYear: {
         id: '',
         v_year: '',
-        model: ''
+        //model: ''
     },
     fillVehicleMotor: {
         id: '',
-        year_id: '',
+        //year_id: '',
         v_engine: ''
     },
     searchVehicleBrand: {
