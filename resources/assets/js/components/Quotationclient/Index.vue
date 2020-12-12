@@ -38,7 +38,7 @@
                                         <p v-show="errors.has('cliente')" class="text-danger">{{ errors.first('cliente') }}</p>
                                     </div>
 
-                                    <div class="col-lg-3">
+                                    <!--<div class="col-lg-3">
                                         <label for="vehiculo">Vehículo</label>
                                         <input v-validate="'min:2'"
                                                 :class="{'input': true, 'is-invalid': errors.has('vehiculo') }"
@@ -46,6 +46,11 @@
                                                 name="vehiculo"
                                                 class="form-control" v-model="newQuotationclient.vehicle">
                                         <p v-show="errors.has('vehiculo')" class="text-danger">{{ errors.first('vehiculo') }}</p>
+                                    </div>-->
+
+                                    <div class="col-lg-3">
+                                        <label for="vehiculo">Vehículo</label>
+                                        <SelectModel></SelectModel>
                                     </div>
 
                                     <div class="col-lg-3">
@@ -123,7 +128,7 @@
                         <td>{{ quotationLocal.client.razonSocial }}</td>
                         <td>{{ quotationLocal.client_text }}</td>
                         <td>{{ quotationLocal.vehicle }}</td>
-                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY') }}</td>
+                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY H:mm A') }}</td>
                         <td>
                             <a href="#" class="btn btn-info btn-sm"
                                 @click.prevent="showModalDetailclient({ id: quotationLocal.id })"
@@ -200,13 +205,14 @@
 
 import { loadProgressBar } from 'axios-progress-bar'
 import SelectClient from '../Client/Select'
+import SelectModel from '../VehicleModel/SelectModel'
 import Detalle from './Detalle'
 import DetalleEditarC from './DetalleEditar'
 import EliminarCotizacionCliente from './Eliminar'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-    components: { SelectClient, Detalle, DetalleEditarC, EliminarCotizacionCliente  },
+    components: { SelectClient, SelectModel, Detalle, DetalleEditarC, EliminarCotizacionCliente  },
     computed:{
         ...mapState(['quotationclients', 'newQuotationclient', 'searchQuotationClient', 'newQuotationclient',
                         'pagination', 'offset', 'errorsLaravel']),
