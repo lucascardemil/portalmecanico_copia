@@ -939,7 +939,7 @@ export default { //used for changing the state
             state: 'Pendiente',
             payment: state.newQuotationclient.payment,
             client_text: state.newQuotationclient.client_text,
-            vehicle: state.newQuotationclient.vehicle,
+            vehicle: state.selectedVehicleModel.label
         }).then(response => {
             state.newQuotationclient = {
                 client_id: '',

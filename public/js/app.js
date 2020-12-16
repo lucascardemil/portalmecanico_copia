@@ -66533,8 +66533,8 @@ var render = function() {
                                   {
                                     name: "show",
                                     rawName: "v-show",
-                                    value: _vm.errors.has("v_year"),
-                                    expression: "errors.has('v_year')"
+                                    value: _vm.errors.has("v_id"),
+                                    expression: "errors.has('v_id')"
                                   }
                                 ],
                                 staticClass: "text-danger"
@@ -99255,7 +99255,7 @@ var urlCompany = 'companies';
       state: 'Pendiente',
       payment: state.newQuotationclient.payment,
       client_text: state.newQuotationclient.client_text,
-      vehicle: state.newQuotationclient.vehicle
+      vehicle: state.selectedVehicleModel.label
     }).then(function (response) {
       state.newQuotationclient = {
         client_id: '',

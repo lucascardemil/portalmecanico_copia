@@ -6,13 +6,16 @@ use App\VehicleYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class VehicleYearController extends Controller
 {
     public function all($brand, $model){
             $years = VehicleYear::select(DB::raw('vehicle_years.id as id, vehicle_years.v_year as year'))
                                     ->join('vehicle_brand_models', 'vehicle_brand_models.id', '=', 'vehicle_years.v_id')
-                                    ->where([['vehicle_brand_models.brand', '=', $brand],
-                                            ['vehicle_brand_models.model', '=', $model]])
+                                    ->where([
+                                        ['vehicle_brand_models.brand', '=', $brand],
+                                        ['vehicle_brand_models.model', '=', $model]
+                                        ])
                                     ->orderBy('v_year', 'DESC')
                                     ->get();
 
@@ -36,36 +39,39 @@ class VehicleYearController extends Controller
     */
    public function store(Request $request)
    {
-       $this->validate($request, [
-           'v_year' => 'required|unique:vehicle_years|min:4|max:4'
-       ], [
-           'v_year.unique' => 'El modelo y año ya existen',
-           'v_year.required' => 'El campo año de inicio es obligatorio',
-           'v_year.min' => 'El campo año de inicio debe tener al menos 4 caracteres',
-           'v_year.max' => 'El campo año de inicio debe tener a lo más 4 caracteres'
-       ]);
-
-       $data = $request->all();
-
-       VehicleYear::create($data);
+        $this->validate($request, [
+            'v_year' => 'required|max:4|min:4'
+        ], [
+            'v_year.required' => 'El campo año de inicio es obligatorio',
+            'v_year.min' => 'El campo año de inicio debe tener al menos 4 caracteres',
+            'v_year.max' => 'El campo año de inicio debe tener a lo más 4 caracteres'
+        ]);
+    
+       
+        $years = DB::table('vehicle_years')->where([
+                                                     ['v_id', '=', $request->v_id],
+                                                     ['v_year', '=', $request->v_year]])
+                                                     ->get();
+        if (!$years->isEmpty()) {
+            return response()->json([
+                'errors' => [
+                    'v_year' => 'El año y modelo, ya existen'
+                ]
+            ], 422);
+        }else{
+            $data = $request->all();
+            VehicleYear::create($data);
+        }
    }
 
    public function update(Request $request, $id)
    {
         $this->validate($request, [
             'v_year' => 'required|min:4|max:4'
-            //'year_fin' => 'required|min:4|max:4'
-            //'motor' => 'required|min:2|max:190',
         ], [
             'v_year.required' => 'El campo año de inicio es obligatorio',
             'v_year.min' => 'El campo año de inicio debe tener al menos 4 caracteres',
             'v_year.max' => 'El campo año de inicio debe tener a lo más 4 caracteres'
-            //'year_fin.required' => 'El campo año final es obligatorio',
-            //'year_fin.min' => 'El campo año final debe tener al menos 4 caracteres',
-            //'year_fin.max' => 'El campo año final debe tener a lo más 4 caracteres'
-            /*'motor.required' => 'El campo motor es obligatorio',
-            'motor.min' => 'El campo motor debe tener al menos 4 caracteres',
-            'motor.max' => 'El campo motor debe tener a lo más 190 caracteres'*/
         ]);
 
         VehicleYear::find($id)->update($request->all());

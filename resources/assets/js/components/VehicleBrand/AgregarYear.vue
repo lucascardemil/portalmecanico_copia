@@ -36,7 +36,7 @@
                                                 type="number"
                                                 name="v_year"
                                                 class="form-control" v-model="newVehicleYear.v_year">
-                                        <p v-show="errors.has('v_year')" class="text-danger">{{ errors.first('v_year') }}</p>
+                                        <p v-show="errors.has('v_id')" class="text-danger">{{ errors.first('v_year') }}</p>
 
                                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
                                             <p>{{ error.v_year }}</p>
