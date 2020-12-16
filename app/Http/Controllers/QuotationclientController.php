@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\Quotationclient;
+use App\VehicleModel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -141,4 +143,19 @@ class QuotationclientController extends Controller
 
         return $pdf->download('cotizacion N° '.$id.'.pdf');
     }
+
+
+    public function all()
+   {
+
+        $vehiclemodels = VehicleModel::select(DB::raw('vehicle_models.id as id,
+                                                        vehicle_models.model as model,
+                                                        vehicle_years.v_year as year,
+                                                        vehicle_engines.v_engine as motor'))
+                                                ->join('vehicle_years', 'vehicle_models.id', '=', 'vehicle_years.v_id')
+                                                ->join('vehicle_engines', 'vehicle_years.id', '=', 'vehicle_engines.year_id')
+                                                ->get();
+        
+        return $vehiclemodels;
+   }
 }

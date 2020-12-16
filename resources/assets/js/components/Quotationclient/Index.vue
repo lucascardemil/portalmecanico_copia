@@ -50,7 +50,7 @@
 
                                     <div class="col-lg-3">
                                         <label for="vehiculo">Vehículo</label>
-                                        <SelectModel></SelectModel>
+                                        <SelectVehicleClient></SelectVehicleClient>
                                     </div>
 
                                     <div class="col-lg-3">
@@ -205,14 +205,14 @@
 
 import { loadProgressBar } from 'axios-progress-bar'
 import SelectClient from '../Client/Select'
-import SelectModel from '../VehicleModel/SelectModel'
+import SelectVehicleClient from './SelectVehicleClient'
 import Detalle from './Detalle'
 import DetalleEditarC from './DetalleEditar'
 import EliminarCotizacionCliente from './Eliminar'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-    components: { SelectClient, SelectModel, Detalle, DetalleEditarC, EliminarCotizacionCliente  },
+    components: { SelectClient, SelectVehicleClient, Detalle, DetalleEditarC, EliminarCotizacionCliente  },
     computed:{
         ...mapState(['quotationclients', 'newQuotationclient', 'searchQuotationClient', 'newQuotationclient',
                         'pagination', 'offset', 'errorsLaravel']),

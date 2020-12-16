@@ -92,6 +92,8 @@ Route::get('quotation-pdf/{id}', 'QuotationController@pdf');
 Route::get('quotationclient-pdf/{id}', 'QuotationclientController@pdf');
 Route::get('quotationclient-pdf-iva/{id}', 'QuotationclientController@pdfIva');
 
+Route::get('vehicleclients-all', 'QuotationclientController@all');
+
 Route::ApiResource('imports', 'ImportController');
 Route::get('import-details/{id}', 'ImportController@details');
 Route::ApiResource('detailimports', 'DetailimportController');

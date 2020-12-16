@@ -16,6 +16,8 @@ export default { //data
     optionsVYear: [],
     optionsVEngine: [],
 
+    optionsVehicleClient: [],
+
     selectedVBrand: {
         label: '',
         value: ''
@@ -260,6 +262,10 @@ export default { //data
     /********************************* */
     /************************************ */
     /*** sección componentes de cotizaciones */
+    selectedVehicleClient: {
+        label: '',
+        value: ''
+    },
     quotations: [],
     newQuotation: {
         client: '',

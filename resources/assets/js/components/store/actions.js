@@ -849,6 +849,12 @@ export default { //methods
         context.commit('allYM', data)
     },
     /*************seccion formulario de cotizacion  ****************/
+    allVehicleClients(context, data) {
+        context.commit('allVehicleClients', data)
+    },
+    setVehicleClient(context, data) {
+        context.commit('setVehicleClient', data)
+    },
     allVBrands(context, data) {
         context.commit('allVBrands', data)
     },
