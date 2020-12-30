@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Alvaro Perez',
             'email' => 'comercialsupra4@gmail.com',
             'password' => bcrypt('suprajapan'),
+            'url' => substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20)
         ]);
 
         $luis = User::create([

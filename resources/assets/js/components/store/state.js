@@ -754,6 +754,7 @@ export default { //data
         name: '',
         email: '',
         password: '',
+        url: '',
         logo: ''
     },
     fillUser: {
@@ -761,6 +762,8 @@ export default { //data
         name: '',
         email: '',
         password: '',
+        url: '',
+        ip_acceso: '',
         logo: ''
     },
     searchUser: {

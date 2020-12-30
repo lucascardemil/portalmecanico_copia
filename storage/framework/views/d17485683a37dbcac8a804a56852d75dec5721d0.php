@@ -51,9 +51,6 @@
         <ul class="navbar-nav ml-auto ml-md-0">
             <!-- Authentication Links -->
             <?php if(auth()->guard()->guest()): ?>
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
-            </li>
             
             <?php else: ?>
             <li class="nav-item dropdown">
@@ -68,7 +65,7 @@
 
                     </a>
 
-                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
+                    <a class="dropdown-item" href="#" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                         <span class="iconify" data-icon="mdi:logout" data-inline="false"></span> <?php echo e(__('Cerrar Sesión')); ?>
 

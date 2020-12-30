@@ -25,7 +25,7 @@ Route::ApiResource('permissions', 'Permission\PermissionController')->only('inde
 //administrador de recursos para los usuarios
 Route::ApiResource('users', 'User\UserController');
 Route::get('users-all', 'User\UserController@all');
-Route::get('user-id', 'User\UserController@getId');
+
 
 Route::ApiResource('companies', 'CompanyController');
 
@@ -144,19 +144,33 @@ Route::get('client-vehicles', 'VehicleController@clientvehicles');
 
 //seccion cotizacion
 Route::get('/cotizar', 'QuotationUserController@cotizar');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::post('/upload', 'ImageController@upload');
 
+Route::get('/', function(){
+    return view('error_ip');
+});
 
-Auth::routes();
 
-//////////////////////////////////
-///////////////////////////////////
+//Route::middleware(['checkip'])->group(function () {
+    Route::get('login/{url?}', 'Auth\LoginController@showLoginForm')->name('login')->middleware('checkip');
+    Route::post('login/{url}', 'Auth\LoginController@login')->middleware('checkip');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::get('acceso/{url}', 'AccesoController@index')->name('acceso');
+
+    Route::get('error_ip', function () {
+        return view('error_ip');
+    });
+
+    
+    Route::put('acceso/user-id/{url}', 'AccesoController@update');
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    
+//});
+
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('admin-roles', function () {
@@ -227,9 +241,8 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.importaciones');
     })->name('admin-importaciones'); //->middleware('permission:importaciones');
 
-    Route::get('/', 'HomeController@index')->name('home');
-
-
+    Route::get('home', 'HomeController@index')->name('home');
+    
     /**
      * Administrador de Boletas y Facturas
      */

@@ -2,7 +2,7 @@
 
     <form action="POST" v-on:submit.prevent="updateUser({ id: fillUser.id })">
         <div id="edit" class="modal fade">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4>Editar Usuario</h4>
@@ -54,6 +54,11 @@
                             <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
                                 <p>{{ error.password }}</p>
                             </div>
+                        </div>
+
+                        <div class="">
+                            <label for="url">URL</label>
+                            <input type="text" name="url" class="form-control" v-model="fillUser.url" readonly=readonly>
                         </div>
 
 

@@ -12,6 +12,8 @@ import {
 import Vue2Filters from 'vue2-filters'
 import Datepicker from 'vuejs-datepicker'
 
+
+
 // Register it globally
 // main.js or any entry file.
 
@@ -49,10 +51,13 @@ Vue.component('inventario-component', require('./components/Inventario/Index.vue
 
 Vue.component('detalle-usuario-component', require('./components/User/Detalle.vue').default)
 Vue.component('sales-component', require('./components/Sales/Index.vue').default)
+
 /**
  * Boleta components
  */
 Vue.component('boleta-component', require('./components/Boleta/Index.vue').default);
+
+
 
 new Vue({
     el: '#app',
@@ -61,5 +66,8 @@ new Vue({
         this.$nextTick(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
-    },
+    }
 });
+
+
+

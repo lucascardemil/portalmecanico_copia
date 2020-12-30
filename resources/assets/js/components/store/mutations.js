@@ -369,9 +369,11 @@ export default { //used for changing the state
     },
     getVehicleBrands(state, page) {
         var url = 'vehiclebrands-all?page=' + page
+    
         axios.get(url).then(response => {
             state.vehiclebrands = response.data.vehiclebrands.data
             state.pagination_marca = response.data.pagination_marca
+
         })
     },
     createVehicleBrand(state) {
@@ -1841,11 +1843,13 @@ export default { //used for changing the state
             name: state.newUser.name,
             email: state.newUser.email,
             password: state.newUser.password,
+            //url: window.location.host + "/acceso/" + md5(state.newUser.password)
         }).then(response => {
             state.newUser = {
                 name: '',
                 email: '',
-                password: ''
+                password: '',
+                url: ''
             }
             state.errorsLaravel = []
             $('#create').modal('hide')
@@ -1861,6 +1865,7 @@ export default { //used for changing the state
         state.fillUser.name = user.name
         state.fillUser.email = user.email
         state.fillUser.password = user.password
+        state.fillUser.url = window.location.host + "/acceso/" + user.url
         state.fillUser.logo = user.logo
         $("#edit").modal('show')
     },
