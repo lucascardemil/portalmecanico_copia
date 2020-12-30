@@ -50,10 +50,10 @@ class LoginController extends Controller
                     if($user->ip_acceso == request()->ip()){
                         return view('auth.login', ['url' => $url]);
                     }else{
-                        return view('acceso', ['url' => $user->url, 'name' => $user->name]);
+                        return redirect()->route('acceso', ['url' => $user->url, 'name' => $user->name]);
                     }
                 }else{
-                    return view('acceso', ['url' => $user->url, 'name' => $user->name]);
+                    return redirect()->route('acceso', ['url' => $user->url, 'name' => $user->name]);
                 }
             }
         
