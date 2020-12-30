@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
 
+
+    public function showLoginForm($url)
+    {
+       
+            $users = User::where('url', $url)->get();
+            foreach ($users as $user) {
+                if(!empty($user->ip_acceso)){
+                    if($user->ip_acceso == request()->ip()){
+                        return view('auth.login', ['url' => $url]);
+                    }else{
+                        return view('acceso', ['url' => $user->url, 'name' => $user->name]);
+                    }
+                }else{
+                    return view('acceso', ['url' => $user->url, 'name' => $user->name]);
+                }
+            }
+        
+    }
 }
