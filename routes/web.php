@@ -150,25 +150,23 @@ Route::get('/', function(){
     return view('error_ip');
 });
 
+Route::get('login/{url}', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login/{url}', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::get('acceso/{url}', 'AccesoController@index')->name('acceso');
 
-//Route::middleware(['checkip'])->group(function () {
-    Route::get('login/{url?}', 'Auth\LoginController@showLoginForm')->name('login')->middleware('checkip');
-    Route::post('login/{url}', 'Auth\LoginController@login')->middleware('checkip');
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::get('acceso/{url}', 'AccesoController@index')->name('acceso');
+Route::get('error_ip', function () {
+    return view('error_ip');
+});
 
-    Route::get('error_ip', function () {
-        return view('error_ip');
-    });
 
-    
-    Route::put('acceso/user-id/{url}', 'AccesoController@update');
+Route::put('acceso/user-id/{url}', 'AccesoController@update');
 
-    Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
     
-//});
+
 
 
 Route::middleware(['auth'])->group(function () {

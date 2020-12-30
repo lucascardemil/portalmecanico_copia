@@ -10,11 +10,19 @@ use Illuminate\Routing\Redirector;
 class AccesoController extends Controller
 {
 
-    public function index($url)
+    public function index(Request $request, $url)
     {
         $users = User::where('url', $url)->get();
         foreach ($users as $user) {
-            return view('acceso', ['url' => $user->url, 'name' => $user->name]);
+            if(!empty($user->ip_acceso)){
+                if($user->ip_acceso == request()->ip()){
+                    return view('acceso', ['url' => $user->url, 'name' => $user->name]);
+                }else{
+                    return redirect('error_ip');
+                }
+            }else{
+                return view('acceso', ['url' => $user->url, 'name' => $user->name]);
+            }
         }
     }
     
@@ -22,11 +30,17 @@ class AccesoController extends Controller
     {
         $users = User::where('url', $url)->get();
         foreach ($users as $user) {
-            $user->ip_acceso = $request->ip();
-            //$user->url = $request->url();
-
-            $user->save();
-            return redirect()->route('login', ['url' => $user->url]);
+            if(!empty($user->ip_acceso)){
+                if($user->ip_acceso == request()->ip()){
+                    return redirect()->route('login', ['url' => $user->url]);
+                }else{
+                    return redirect('error_ip');
+                }
+            }else{
+                $user->ip_acceso = $request->ip();
+                $user->save();
+                return redirect()->route('login', ['url' => $user->url]);
+            }
         }
     }
 }
