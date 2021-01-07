@@ -5,7 +5,6 @@
         @input="setVModel"
         :disabled="selectedVBrand.label==''"
         :options="optionsVModel"
-        :searchable="false"
         :value="selectedVModel">
     </v-select>
 </template>

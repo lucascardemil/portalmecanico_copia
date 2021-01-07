@@ -2433,63 +2433,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(["resultado", "data1", "data2", "arrayBoleta"])), {}, {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['resultado', 'data1', 'data2', 'arrayBoleta', 'errorsLaravel'])), {}, {
     totalBoleta: function totalBoleta() {
       var sumaTotal;
       var sumaTotalBoleta = 0;
@@ -2504,7 +2452,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     Datepicker: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(["juntarDatos", "crearArreglo"])), {}, {
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['juntarDatos', 'crearArreglo'])), {}, {
     /*Este procedimiento no se pudo realizar en el archivo mutations.js, por ende lo he realizado aquí*/
     borrar: function borrar(borrar_id) {
       this.arrayBoleta.splice(borrar_id, 1);
@@ -7347,7 +7295,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['errorsLaravel', 'formCotizacion', 'optionsVBrand', 'selectedVBrand'])),
@@ -7375,7 +7322,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -7611,7 +7557,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['errorsLaravel', 'optionsVModel', 'selectedVModel', 'selectedVBrand'])),
@@ -7636,7 +7581,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -43721,7 +43665,7 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "row mb-5" }, [
                   _c(
                     "div",
                     { staticClass: "col-lg-3" },
@@ -43776,8 +43720,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "number",
+                        name: "precio",
                         min: "0",
+                        type: "number",
                         placeholder: "Ej: Precio"
                       },
                       domProps: { value: _vm.data2.precio },
@@ -43807,9 +43752,7 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-3" }, [
-                    _vm._m(2),
-                    _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-3 align-self-end" }, [
                     _c(
                       "button",
                       {
@@ -43819,19 +43762,15 @@ var render = function() {
                       },
                       [
                         _c("i", { staticClass: "fas fa-plus-square" }),
-                        _vm._v(" Agregar\n                ")
+                        _vm._v(" Agregar")
                       ]
                     )
                   ])
                 ]),
                 _vm._v(" "),
-                _c("label"),
-                _vm._v(" "),
                 _c("section", { staticClass: "data" }, [
                   _c("table", { staticClass: "table" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c("tbody"),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("tfoot", [
                       _c("tr", [
@@ -43839,9 +43778,7 @@ var render = function() {
                           _vm._v("Monto Total")
                         ]),
                         _vm._v(" "),
-                        _c("th", [
-                          _c("p", [_vm._v("$ " + _vm._s(_vm.totalBoleta))])
-                        ])
+                        _c("th", [_vm._v("$ " + _vm._s(_vm.totalBoleta))])
                       ])
                     ])
                   ])
@@ -43849,8 +43786,6 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-lg-3" }, [
-                    _c("label"),
-                    _vm._v(" "),
                     _c("input", {
                       staticClass: "btn btn-success form-control",
                       attrs: { type: "button", value: "Generar Boleta" },
@@ -43858,18 +43793,9 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("label"),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-3" }, [
+                  _c("div", { staticClass: "col-lg-3 align-self-center" }, [
                     _c("a", { attrs: { href: "/invoice/" + _vm.resultado } }, [
-                      _c("p"),
-                      _vm._v(" "),
-                      _vm._m(4),
-                      _vm._v(
-                        "\n                  " +
-                          _vm._s(_vm.resultado) +
-                          "\n                "
-                      )
+                      _vm._v(_vm._s(_vm.resultado))
                     ])
                   ])
                 ])
@@ -43912,7 +43838,7 @@ var staticRenderFns = [
               }
             },
             [
-              _vm._v("\n              Nueva Boleta\n              "),
+              _vm._v("Nueva Boleta"),
               _c("span", { staticClass: "text-right" }, [
                 _c("i", { staticClass: "fas fa-arrows-alt-v" })
               ])
@@ -43926,12 +43852,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("p")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Valor Ingresado")]),
@@ -43939,12 +43859,6 @@ var staticRenderFns = [
         _c("th")
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("p")])
   }
 ]
 render._withStripped = true
@@ -56691,7 +56605,6 @@ var render = function() {
       name: "marca",
       placeholder: "Seleccionar Marca...",
       options: _vm.optionsVBrand,
-      searchable: false,
       value: _vm.selectedVBrand
     },
     on: { input: _vm.setVBrand }
@@ -56725,7 +56638,6 @@ var render = function() {
       placeholder: "Seleccionar motor...",
       disabled: _vm.selectedVYear.label == "",
       options: _vm.optionsVEngine,
-      searchable: false,
       value: _vm.selectedVEngine
     },
     on: { input: _vm.setVEngine }
@@ -57247,7 +57159,6 @@ var render = function() {
       placeholder: "Seleccionar Modelo...",
       disabled: _vm.selectedVBrand.label == "",
       options: _vm.optionsVModel,
-      searchable: false,
       value: _vm.selectedVModel
     },
     on: { input: _vm.setVModel }
@@ -57281,7 +57192,6 @@ var render = function() {
       placeholder: "Seleccionar año...",
       disabled: _vm.selectedVModel.label == "",
       options: _vm.optionsVYear,
-      searchable: false,
       value: _vm.selectedVYear
     },
     on: { input: _vm.setVYear }
@@ -99889,7 +99799,7 @@ var urlCompany = 'companies';
   },
   allVModels: function allVModels(state) {
     if (state.selectedVBrand.label != '') {
-      var url = urlVModel + '/' + state.selectedVBrand.label;
+      var url = urlVModel + '/' + state.selectedVBrand.value;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
         state.optionsVModel = [];
 
@@ -99909,7 +99819,7 @@ var urlCompany = 'companies';
   },
   allVYears: function allVYears(state) {
     if (state.selectedVModel.label != '') {
-      var url = urlVYear + '/' + state.selectedVBrand.label + '/' + state.selectedVModel.label;
+      var url = urlVYear + '/' + state.selectedVModel.value;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
         state.optionsVYear = [];
 
@@ -99929,7 +99839,7 @@ var urlCompany = 'companies';
   },
   allVEngines: function allVEngines(state) {
     if (state.selectedVYear.label != '') {
-      var url = urlVEngine + '/' + state.selectedVBrand.label + '/' + state.selectedVModel.label + '/' + state.selectedVYear.label;
+      var url = urlVEngine + '/' + state.selectedVYear.value;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
         state.optionsVEngine = [];
 
@@ -100454,19 +100364,22 @@ var urlCompany = 'companies';
   crearArreglo: function crearArreglo(state) {
     var sumaTotal = 0;
     var sumaTotalBoleta = 0;
-    state.arrayBoleta.push({
-      precio: state.data2.precio,
-      total: sumaTotalBoleta == 0 ? state.data2.precio : sumaTotalBoleta
-    });
-    state.arrayBoleta.map(function (bar) {
-      sumaTotal = 1 * bar.precio;
-      sumaTotalBoleta = sumaTotalBoleta + sumaTotal;
-      sumaTotal = 0;
-    });
 
-    sumaTotalBoleta: state.sumaTotalBoleta;
+    if (state.data2.precio >= 180) {
+      state.arrayBoleta.push({
+        precio: state.data2.precio,
+        total: sumaTotalBoleta == 0 ? state.data2.precio : sumaTotalBoleta
+      });
+      state.arrayBoleta.map(function (bar) {
+        sumaTotal = 1 * bar.precio;
+        sumaTotalBoleta = sumaTotalBoleta + sumaTotal;
+        sumaTotal = 0;
+      });
 
-    state.data2.precio = '';
+      sumaTotalBoleta: state.sumaTotalBoleta;
+
+      state.data2.precio = '';
+    }
   }
 });
 

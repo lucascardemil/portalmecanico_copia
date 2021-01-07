@@ -5,7 +5,6 @@
         @input="setVYear"
         :disabled="selectedVModel.label==''"
         :options="optionsVYear"
-        :searchable="false"
         :value="selectedVYear">
     </v-select>
 </template>

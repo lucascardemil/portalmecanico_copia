@@ -10,15 +10,10 @@ use Illuminate\Support\Facades\DB;
 class VehicleEngineController extends Controller
 {
 
-    public function all($brand, $model, $year){
+    public function all($year){
         $engines = VehicleEngine::select(DB::raw('vehicle_engines.id as id, vehicle_engines.v_engine as engine'))
                                     ->join('vehicle_years', 'vehicle_years.id', '=', 'vehicle_engines.year_id')
-                                    ->join('vehicle_brand_models', 'vehicle_brand_models.id', '=', 'vehicle_years.v_id')
-                                    ->where([
-                                        ['vehicle_years.v_year', '=', $year],
-                                        ['vehicle_brand_models.brand', '=', $brand],
-                                        ['vehicle_brand_models.model', '=', $model]
-                                    ])->get();
+                                    ->where('vehicle_years.id', '=', $year)->get();
 
         /*     
         SELECT v_engine

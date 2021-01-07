@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\VehicleBrandModel;
+use App\VehicleBrand;
+use App\VehicleModel;
 
 class VehicleBrandModelController extends Controller
 {
@@ -19,13 +21,13 @@ class VehicleBrandModelController extends Controller
 
     public function brands()
     {
-        $brands = VehicleBrandModel::select('id', 'brand')->groupBy('brand')->get();
+        $brands = VehicleBrand::select('id', 'brand')->groupBy('brand')->get();
         return $brands;
     }
 
     public function models($brand)
     {
-        $models = VehicleBrandModel::select('id','model')->where('brand', '=', $brand)->get();
+        $models = VehicleModel::select('id','model')->where('brand_id', '=', $brand)->get();
 
         return $models;
     }

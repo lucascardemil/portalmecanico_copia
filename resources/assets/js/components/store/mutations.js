@@ -2310,7 +2310,7 @@ export default { //used for changing the state
     },
     allVModels(state) {
         if (state.selectedVBrand.label != '') {
-            var url = urlVModel + '/' + state.selectedVBrand.label
+            var url = urlVModel + '/' + state.selectedVBrand.value
             axios.get(url).then(response => {
                 state.optionsVModel = []
                 if (response.data != null) {
@@ -2331,7 +2331,7 @@ export default { //used for changing the state
     },
     allVYears(state) {
         if (state.selectedVModel.label != '') {
-            var url = urlVYear + '/' + state.selectedVBrand.label + '/' + state.selectedVModel.label
+            var url = urlVYear + '/' + state.selectedVModel.value
             axios.get(url).then(response => {
                 state.optionsVYear = []
                 if (response.data != null) {
@@ -2352,7 +2352,7 @@ export default { //used for changing the state
     },
     allVEngines(state) {
         if (state.selectedVYear.label != '') {
-            var url = urlVEngine + '/' + state.selectedVBrand.label + '/' + state.selectedVModel.label + '/' + state.selectedVYear.label
+            var url = urlVEngine + '/' + state.selectedVYear.value
             axios.get(url).then(response => {
                 state.optionsVEngine = []
                 if (response.data != null) {
@@ -3012,16 +3012,18 @@ export default { //used for changing the state
     crearArreglo(state) {
         var sumaTotal = 0
         var sumaTotalBoleta = 0
-        state.arrayBoleta.push({
-            precio: state.data2.precio,
-            total: sumaTotalBoleta == 0 ? state.data2.precio : sumaTotalBoleta
-        })
-        state.arrayBoleta.map(function (bar) {
-            sumaTotal = 1 * bar.precio
-            sumaTotalBoleta = sumaTotalBoleta + sumaTotal
-            sumaTotal = 0
-        })
-        sumaTotalBoleta: state.sumaTotalBoleta
-        state.data2.precio = ''
+        if(state.data2.precio >= 180){
+            state.arrayBoleta.push({
+                precio: state.data2.precio,
+                total: sumaTotalBoleta == 0 ? state.data2.precio : sumaTotalBoleta
+            })
+            state.arrayBoleta.map(function (bar) {
+                sumaTotal = 1 * bar.precio
+                sumaTotalBoleta = sumaTotalBoleta + sumaTotal
+                sumaTotal = 0
+            })
+            sumaTotalBoleta: state.sumaTotalBoleta
+            state.data2.precio = ''
+        }
     },
 }

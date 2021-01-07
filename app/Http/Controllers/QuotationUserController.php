@@ -78,9 +78,9 @@ class QuotationUserController extends Controller
             'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
         ]);
 
-        // $user = new User();
-        // $user->email = 'comercialsupra4@gmail.com';
-        // $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        $user = new User();
+        $user->email = 'comercialsupra4@gmail.com';
+        $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
 
         return response()->json(
         [

@@ -68,9 +68,9 @@ Route::post('newvehiclemodelo', 'VehicleModelController@store');
 Route::post('newvehicleyear', 'VehicleYearController@store');
 Route::post('newvehiclemotor', 'VehicleEngineController@store');
 Route::ApiResource('vyears', 'VehicleYearController');
-Route::get('vyears-all/{brand}/{model}', 'VehicleYearController@all');
+Route::get('vyears-all/{model}', 'VehicleYearController@all');
 Route::ApiResource('vengines', 'VehicleEngineController');
-Route::get('vengines-all/{brand}/{model}/{year}', 'VehicleEngineController@all');
+Route::get('vengines-all/{year}', 'VehicleEngineController@all');
 Route::ApiResource('quotationuser', 'QuotationUserController');
 Route::post('quotation-mechanic', 'QuotationUserController@storeMechanic');
 Route::ApiResource('pendingquotations', 'QuotationUserDescriptionController');
@@ -150,7 +150,7 @@ Route::get('/', function(){
     return view('error_ip');
 });
 
-Route::get('login/{url}', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('login/{url?}', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login/{url}', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -166,9 +166,6 @@ Route::put('acceso/user-id/{url}', 'AccesoController@update');
 Route::get('/home', 'HomeController@index')->name('home');
 
     
-
-
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('admin-roles', function () {

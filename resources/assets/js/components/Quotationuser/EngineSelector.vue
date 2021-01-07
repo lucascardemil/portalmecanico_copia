@@ -5,7 +5,6 @@
         @input="setVEngine"
         :disabled="selectedVYear.label==''"
         :options="optionsVEngine"
-        :searchable="false"
         :value="selectedVEngine">
     </v-select>
 </template>

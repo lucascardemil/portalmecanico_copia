@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','url', 'ip_acceso','logo',
+        'name', 'email', 'password','url', 'mac','logo',
     ];
 
     /**
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'ip_acceso'
+        'password', 'remember_token', 'mac'
     ];
 
     public function vehicles()

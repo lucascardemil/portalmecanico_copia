@@ -190,11 +190,15 @@ class InvoiceGenerateService
         $date = $this->date;
         $rut = $this->rut;
         $total = $this->total;
+        $neto = round(($this->total / 119) * 100);
+        $iva = round(($this->total / 119) * 19);
 
-        header("Content-Type: application/json");
+        
+        header('Content-Type: application/json');
         header('Access-Control-Allow-Origin: *');
-        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+        
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -206,58 +210,72 @@ class InvoiceGenerateService
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "{\"response\":[\"PDF\" , \"80MM\"],
-                \"dte\":{
+            CURLOPT_POSTFIELDS =>"{
+                \"response\":[
+                    \"PDF\" , 
+                    \"80MM\"
+                ],
+                \"dte\": {
                     \"Encabezado\":{
-                        \"IdDoc\":{
-                            \"TipoDTE\":39,
-                            \"Folio\":0,
-                            \"FchEmis\":\"{$date}\",
-                            \"IndServicio\":\"3\"
+                        \"IdDoc\": {
+                            \"TipoDTE\": 39,
+                            \"Folio\": 0,
+                            \"FchEmis\": \"{$date}\",
+                            \"IndServicio\": \"3\"
                         },
-                    \"Emisor\":{
-                        \"RUTEmisor\":\"76795561-8\",
-                        \"RznSocEmisor\":\"HAULMER SPA\",
-                        \"GiroEmisor\":\"Hola mundo;COMERCIOELEC\",
-                        \"CdgSIISucur\":\"81303347\",
-                        \"DirOrigen\":\"Calle 11\",
-                        \"CmnaOrigen\":\"Curicó\"},
-                    \"Receptor\":{
-                        \"RUTRecep\":\"66666666-6\"},
-                    \"Totales\":{
-                        \"MntTotal\":{$total},
-                        \"TotalPeriodo\":{$total},
-                        \"VlrPagar\":{$total}}},
-                    \"Detalle\":[{
-                        \"NroLinDet\":\"1\",
-                        \"NmbItem\":\"Ventas\",
-                        \"QtyItem\":\"1\",
-                        \"PrcItem\":{$total},
-                        \"MontoItem\":{$total}}]}}",
+                        \"Emisor\": {
+                            \"RUTEmisor\": \"76795561-8\",
+                            \"RznSocEmisor\": \"HAULMER SPA\",
+                            \"GiroEmisor\": \"VENTA AL POR MENOR EN EMPRESAS DE VENTA A DISTANCIA VÍA INTERNET\",
+                            \"CdgSIISucur\": \"81303347\",
+                            \"DirOrigen\": \"ARTURO PRAT 527 CURICO\",
+                            \"CmnaOrigen\": \"Curicó\"
+                        },
+                        \"Receptor\": {
+                            \"RUTRecep\": \"66666666-6\"
+                        },
+                        \"Totales\": {
+                            \"MntNeto\": {$neto},
+                            \"IVA\": {$iva},
+                            \"MntTotal\": {$total},
+                            \"VlrPagar\": {$total}
+                        }
+                    },
+                    \"Detalle\": [
+                        {
+                            \"NroLinDet\": 1,
+                            \"NmbItem\": \"Ventas\",
+                            \"QtyItem\": 1,
+                            \"PrcItem\": {$total},
+                            \"MontoItem\": {$total}
+                        }
+                    ]
+                }
+            }",
             CURLOPT_HTTPHEADER => array(
                 "apikey: 928e15a2d14d4a6292345f04960f4bd3",
                 "Content-Type: application/json"
             ),
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYPEER => false,
         ));
         $response = curl_exec($curl);
         curl_close($curl);
 
-        $response;
         $created = new DateTime();
 
         $time = $created->format('G.i.s');
         $month = $created->format('d-m-Y');
         $fileName = "Boleta-" . $rut . "-" . $month . "-" . $time . ".pdf";
-
         $pdf_decoded = base64_decode($response);
 
         $path = realpath('invoice');
         $pdf = fopen($path . "/" . $fileName, "w");
+        
         fwrite($pdf, $pdf_decoded);
         fclose($pdf);
 
         $this->saveFile($fileName);
-
         return $fileName;
     }
 
@@ -274,10 +292,10 @@ class InvoiceGenerateService
         $products = $this->products;
         $total = $this->total;
 
-        header("Content-Type: application/json");
+        header('Content-Type: application/json');
         header('Access-Control-Allow-Origin: *');
-        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 
         $curl = curl_init();
         curl_setopt_array($curl, array(

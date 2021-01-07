@@ -9,14 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class VehicleYearController extends Controller
 {
-    public function all($brand, $model){
-            $years = VehicleYear::select(DB::raw('vehicle_years.id as id, vehicle_years.v_year as year'))
-                                    ->join('vehicle_brand_models', 'vehicle_brand_models.id', '=', 'vehicle_years.v_id')
-                                    ->where([
-                                        ['vehicle_brand_models.brand', '=', $brand],
-                                        ['vehicle_brand_models.model', '=', $model]
-                                        ])
-                                    ->orderBy('v_year', 'DESC')
+    public function all($model){
+            $years = VehicleYear::select(DB::raw('vehicle_years.id as id, 
+                                                  vehicle_years.v_year as year'))
+                                    ->join('vehicle_models', 'vehicle_models.id', '=', 'vehicle_years.v_id')
+                                    ->where('vehicle_models.id', '=', $model)
+                                    ->orderBy('v_year', 'ASC')
                                     ->get();
 
         /*    

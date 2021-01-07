@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class QuotationUser extends Model
 {
     protected $fillable = [
-        'name', 'email'
+        'name', 'email', 'phone'
     ];
 
     public function vehicles(){

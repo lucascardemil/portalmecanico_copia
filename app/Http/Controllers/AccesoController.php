@@ -14,8 +14,8 @@ class AccesoController extends Controller
     {
         $users = User::where('url', $url)->get();
         foreach ($users as $user) {
-            if(!empty($user->ip_acceso)){
-                if($user->ip_acceso == request()->ip()){
+            if(!empty($user->mac)){
+                if($user->mac == $this->mac()){
                     return view('acceso', ['url' => $user->url, 'name' => $user->name]);
                 }else{
                     return redirect('error_ip');
@@ -30,17 +30,26 @@ class AccesoController extends Controller
     {
         $users = User::where('url', $url)->get();
         foreach ($users as $user) {
-            if(!empty($user->ip_acceso)){
-                if($user->ip_acceso == request()->ip()){
+            if(!empty($user->mac)){
+                if($user->mac == $this->mac()){
                     return redirect()->route('login', ['url' => $user->url]);
                 }else{
                     return redirect('error_ip');
                 }
             }else{
-                $user->ip_acceso = $request->ip();
+                
+                $user->mac = $this->mac();
                 $user->save();
                 return redirect()->route('login', ['url' => $user->url]);
             }
         }
     }
+
+    public function mac(){
+        $mac='UNKNOWN';
+        foreach(explode("\n",str_replace(' ','',trim(`getmac`,"\n"))) as $i)
+        if(strpos($i,'Tcpip')>-1){$mac=substr($i,0,17);break;}
+        return $mac;
+    }
+    
 }

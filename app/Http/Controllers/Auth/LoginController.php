@@ -41,13 +41,13 @@ class LoginController extends Controller
     }
 
 
-    public function showLoginForm($url)
+    public function showLoginForm($url = null)
     {
-       
+        if(isset($url)){
             $users = User::where('url', $url)->get();
             foreach ($users as $user) {
-                if(!empty($user->ip_acceso)){
-                    if($user->ip_acceso == request()->ip()){
+                if(!empty($user->mac)){
+                    if($user->mac == $this->mac()){
                         return view('auth.login', ['url' => $url]);
                     }else{
                         return redirect()->route('acceso', ['url' => $user->url, 'name' => $user->name]);
@@ -56,6 +56,29 @@ class LoginController extends Controller
                     return redirect()->route('acceso', ['url' => $user->url, 'name' => $user->name]);
                 }
             }
-        
+        }else{
+            return redirect('error_ip');
+        }
+    }
+
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $users = User::where('mac', $this->mac())->get();
+        foreach ($users as $user) {
+            return $this->loggedOut($request) ?: redirect()->route('acceso', ['url' => $user->url]);
+        }
+    }
+
+
+    public function mac(){
+        $mac='UNKNOWN';
+        foreach(explode("\n",str_replace(' ','',trim(`getmac`,"\n"))) as $i)
+        if(strpos($i,'Tcpip')>-1){$mac=substr($i,0,17);break;}
+        return $mac;
     }
 }
