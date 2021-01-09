@@ -161,10 +161,11 @@ Route::get('error_ip', function () {
 });
 
 
-Route::put('acceso/user-id/{url}', 'AccesoController@update');
+Route::put('acceso/user-id/{url}', 'AccesoController@acceso');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/login-two-factor/{user}', 'Auth\LoginController@login2FA')->name('login.2fa');
     
 Route::middleware(['auth'])->group(function () {
 

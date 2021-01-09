@@ -82,4 +82,5 @@ body {
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
 </body>
 </html>
+
 <?php /**PATH C:\wamp64\www\portalmecanico_copia\resources\views/acceso.blade.php ENDPATH**/ ?>
