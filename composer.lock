@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c919645b9871785c41fc6bd2fb98c3b",
+    "content-hash": "5c5aa8252d38b2d0f7cb3f2ed3a37082",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1376,60 +1376,6 @@
             "time": "2020-04-07T15:01:31+00:00"
         },
         {
-            "name": "laravel/ui",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/ui.git",
-                "reference": "21dc7e58896db977aad246e710b4810aaab9a968"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/21dc7e58896db977aad246e710b4810aaab9a968",
-                "reference": "21dc7e58896db977aad246e710b4810aaab9a968",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "~5.8|^6.0",
-                "illuminate/filesystem": "~5.8|^6.0",
-                "illuminate/support": "~5.8|^6.0",
-                "php": "^7.1.3|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Ui\\UiServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Ui\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Laravel UI utilities and presets.",
-            "keywords": [
-                "laravel",
-                "ui"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/ui/issues",
-                "source": "https://github.com/laravel/ui/tree/v1.3.0"
-            },
-            "time": "2020-11-03T19:38:34+00:00"
-        },
-        {
             "name": "league/flysystem",
             "version": "1.0.67",
             "source": {
@@ -2119,11 +2065,6 @@
                 "pseudorandom",
                 "random"
             ],
-            "support": {
-                "email": "info@paragonie.com",
-                "issues": "https://github.com/paragonie/random_compat/issues",
-                "source": "https://github.com/paragonie/random_compat"
-            },
             "time": "2018-07-02T15:55:56+00:00"
         },
         {
@@ -6685,7 +6626,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4"
+        "php": "^7.2"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

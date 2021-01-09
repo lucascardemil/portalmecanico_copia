@@ -45,35 +45,35 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request)
-    {
-        $this->validateLogin($request);
+    // public function login(Request $request)
+    // {
+    //     $this->validateLogin($request);
 
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
+    //     if ($this->hasTooManyLoginAttempts($request)) {
+    //         $this->fireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
-        }
+    //         return $this->sendLockoutResponse($request);
+    //     }
 
-        $user = User::where($this->username(), '=', $request->email)->first();
+    //     $user = User::where($this->username(), '=', $request->email)->first();
 
-        if (password_verify($request->password, optional($user)->password)) {
-            $this->clearLoginAttempts($request);
+    //     if (password_verify($request->password, optional($user)->password)) {
+    //         $this->clearLoginAttempts($request);
             
             
 
-                $user->update(['token' => (new Google2FA)->generateSecretKey()]);
+    //             $user->update(['token' => (new Google2FA)->generateSecretKey()]);
 
-                $urlQR = $this->createUserUrlQR($user);
+    //             $urlQR = $this->createUserUrlQR($user);
             
             
-            return view("auth.2fa", compact('urlQR', 'user'));
-        }
+    //         return view("auth.2fa", compact('urlQR', 'user'));
+    //     }
         
-        $this->incrementLoginAttempts($request);
+    //     $this->incrementLoginAttempts($request);
         
-        return $this->sendFailedLoginResponse($request);
-    }
+    //     return $this->sendFailedLoginResponse($request);
+    // }
 
 
     public function showLoginForm($url = null)
@@ -111,36 +111,36 @@ class LoginController extends Controller
         return $this->loggedOut($request) ?: redirect('error_ip');
     }
 
-    public function createUserUrlQR($user)
-    {
-        $bacon = new BaconQrCodeWriter(new ImageRenderer(
-            new RendererStyle(200),
-            new ImagickImageBackEnd()
-        ));
+    // public function createUserUrlQR($user)
+    // {
+    //     $bacon = new BaconQrCodeWriter(new ImageRenderer(
+    //         new RendererStyle(200),
+    //         new ImagickImageBackEnd()
+    //     ));
 
-        $data = $bacon->writeString(
-            (new Google2FA)->getQRCodeUrl(
-                config('app.name'),
-                $user->email,
-                $user->token 
-            ), 'utf-8');
+    //     $data = $bacon->writeString(
+    //         (new Google2FA)->getQRCodeUrl(
+    //             config('app.name'),
+    //             $user->email,
+    //             $user->token 
+    //         ), 'utf-8');
 
-        return 'data:image/png;base64,' . base64_encode($data);
-    }
+    //     return 'data:image/png;base64,' . base64_encode($data);
+    // }
 
 
-    public function login2FA(Request $request, User $user)
-    {
-        $request->validate(['code_verification' => 'required']);
+    // public function login2FA(Request $request, User $user)
+    // {
+    //     $request->validate(['code_verification' => 'required']);
 
-        if ((new Google2FA())->verifyKey($user->token, $request->code_verification)) {
-            $request->session()->regenerate();
+    //     if ((new Google2FA())->verifyKey($user->token, $request->code_verification)) {
+    //         $request->session()->regenerate();
 
-            Auth::login($user);
+    //         Auth::login($user);
 
-            return redirect()->intended($this->redirectPath());
-        }
+    //         return redirect()->intended($this->redirectPath());
+    //     }
 
-        return redirect()->back()->withErrors(['error'=> 'Código de verificación incorrecto']);
-    }
+    //     return redirect()->back()->withErrors(['error'=> 'Código de verificación incorrecto']);
+    // }
 }
