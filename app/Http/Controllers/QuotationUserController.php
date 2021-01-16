@@ -40,13 +40,14 @@ class QuotationUserController extends Controller
         $year         = $data['year'];
         $engine       = $data['engine'];
         $description  = $data['description'];
+        //$user_id = Auth::id();
 
         $user_id = QuotationUser::firstOrCreate( 
-                        [ 'email' => $email ],
-                        [ 
-                            'name' => $name,
-                            'phone' => $phone 
-                        ])->id;
+            [ 'email' => $email ],
+            [ 
+                'name' => $name,
+                'phone' => $phone 
+            ])->id;
 
         $vehicle_id = QuotationUserVehicle::firstOrCreate(
             [ 'patentchasis' => $patentchasis ],
@@ -68,10 +69,22 @@ class QuotationUserController extends Controller
             'is_completed' => 0
         ]);
 
+        $client_id = Client::firstOrCreate( 
+            [ 
+                'user_id' => $user_id,
+                'name' => $name,
+                'rut' => 'CLIENTE PARTICULAR',
+                'razonSocial' => 'CLIENTE PARTICULAR',
+                'giro' => 'CLIENTE PARTICULAR',
+                'email' => $email,
+                'phone' => $phone,
+                'type' => 'Cliente'
+            ])->id;
+
         Quotationclient::create(
         [
             'user_id' => 2, //usuario alvaro por defecto
-            'client_id' => 1, //usuario particular
+            'client_id' => $client_id, //usuario particular
             'state' => 'Pendiente',
             'payment' => 'CONTADO',
             'client_text' => $name,

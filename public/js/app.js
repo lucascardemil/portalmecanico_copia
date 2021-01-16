@@ -7245,11 +7245,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios-progress-bar */ "./node_modules/axios-progress-bar/dist/index.js");
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Client_Select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Client/Select */ "./resources/assets/js/components/Client/Select.vue");
-/* harmony import */ var _SelectVehicleClient__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectVehicleClient */ "./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue");
-/* harmony import */ var _Detalle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Detalle */ "./resources/assets/js/components/Quotationclient/Detalle.vue");
-/* harmony import */ var _DetalleEditar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DetalleEditar */ "./resources/assets/js/components/Quotationclient/DetalleEditar.vue");
-/* harmony import */ var _Eliminar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Eliminar */ "./resources/assets/js/components/Quotationclient/Eliminar.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _Detalle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Detalle */ "./resources/assets/js/components/Quotationclient/Detalle.vue");
+/* harmony import */ var _DetalleEditar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DetalleEditar */ "./resources/assets/js/components/Quotationclient/DetalleEditar.vue");
+/* harmony import */ var _Eliminar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Eliminar */ "./resources/assets/js/components/Quotationclient/Eliminar.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _Quotationuser_BrandSelector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Quotationuser/BrandSelector */ "./resources/assets/js/components/Quotationuser/BrandSelector.vue");
+/* harmony import */ var _Quotationuser_ModelSelector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Quotationuser/ModelSelector */ "./resources/assets/js/components/Quotationuser/ModelSelector.vue");
+/* harmony import */ var _Quotationuser_YearSelector__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Quotationuser/YearSelector */ "./resources/assets/js/components/Quotationuser/YearSelector.vue");
+/* harmony import */ var _Quotationuser_EngineSelector__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Quotationuser/EngineSelector */ "./resources/assets/js/components/Quotationuser/EngineSelector.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -7459,6 +7462,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 
 
 
@@ -7469,59 +7501,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     SelectClient: _Client_Select__WEBPACK_IMPORTED_MODULE_1__["default"],
-    SelectVehicleClient: _SelectVehicleClient__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Detalle: _Detalle__WEBPACK_IMPORTED_MODULE_3__["default"],
-    DetalleEditarC: _DetalleEditar__WEBPACK_IMPORTED_MODULE_4__["default"],
-    EliminarCotizacionCliente: _Eliminar__WEBPACK_IMPORTED_MODULE_5__["default"]
+    BrandSelector: _Quotationuser_BrandSelector__WEBPACK_IMPORTED_MODULE_6__["default"],
+    ModelSelector: _Quotationuser_ModelSelector__WEBPACK_IMPORTED_MODULE_7__["default"],
+    YearSelector: _Quotationuser_YearSelector__WEBPACK_IMPORTED_MODULE_8__["default"],
+    EngineSelector: _Quotationuser_EngineSelector__WEBPACK_IMPORTED_MODULE_9__["default"],
+    Detalle: _Detalle__WEBPACK_IMPORTED_MODULE_2__["default"],
+    DetalleEditarC: _DetalleEditar__WEBPACK_IMPORTED_MODULE_3__["default"],
+    EliminarCotizacionCliente: _Eliminar__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapState"])(['quotationclients', 'newQuotationclient', 'searchQuotationClient', 'newQuotationclient', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_6__["mapActions"])(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient', 'showModalDeleteQuotationclient', 'changePageQuotationclient'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapState"])(['quotationclients', 'newQuotationclient', 'searchQuotationClient', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient', 'showModalDeleteQuotationclient', 'changePageQuotationclient'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getQuotationclients', {
       page: 1
     });
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsVehicleClient', 'selectedVehicleClient'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setVehicleClient'])),
-  created: function created() {
-    this.$store.dispatch('allVehicleClients');
   }
 });
 
@@ -56126,151 +56120,202 @@ var render = function() {
                     },
                     [
                       _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-3" },
-                          [
+                        _c("div", { staticClass: "col-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-12 mb-3" },
+                            [
+                              _c("label", { attrs: { for: "cliente" } }, [
+                                _vm._v("Cliente")
+                              ]),
+                              _vm._v(" "),
+                              _c("SelectClient")
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-12 mb-3" }, [
                             _c("label", { attrs: { for: "cliente" } }, [
-                              _vm._v("Cliente")
+                              _vm._v("Nombre Cliente")
                             ]),
                             _vm._v(" "),
-                            _c("SelectClient")
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-3" }, [
-                          _c("label", { attrs: { for: "cliente" } }, [
-                            _vm._v("Nombre Cliente")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: "min:2",
-                                expression: "'min:2'"
-                              },
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.newQuotationclient.client_text,
-                                expression: "newQuotationclient.client_text"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              input: true,
-                              "is-invalid": _vm.errors.has("cliente")
-                            },
-                            attrs: { type: "text", name: "cliente" },
-                            domProps: {
-                              value: _vm.newQuotationclient.client_text
-                            },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.newQuotationclient,
-                                  "client_text",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
+                            _c("input", {
                               directives: [
                                 {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.errors.has("cliente"),
-                                  expression: "errors.has('cliente')"
+                                  name: "validate",
+                                  rawName: "v-validate",
+                                  value: "min:2",
+                                  expression: "'min:2'"
+                                },
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.newQuotationclient.client_text,
+                                  expression: "newQuotationclient.client_text"
                                 }
                               ],
-                              staticClass: "text-danger"
-                            },
-                            [_vm._v(_vm._s(_vm.errors.first("cliente")))]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-3" },
-                          [
-                            _c("label", { attrs: { for: "vehiculo" } }, [
-                              _vm._v("Vehículo")
+                              staticClass: "form-control",
+                              class: {
+                                input: true,
+                                "is-invalid": _vm.errors.has("cliente")
+                              },
+                              attrs: { type: "text", name: "cliente" },
+                              domProps: {
+                                value: _vm.newQuotationclient.client_text
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.newQuotationclient,
+                                    "client_text",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.errors.has("cliente"),
+                                    expression: "errors.has('cliente')"
+                                  }
+                                ],
+                                staticClass: "text-danger"
+                              },
+                              [_vm._v(_vm._s(_vm.errors.first("cliente")))]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-12 mb-3" }, [
+                            _c("label", { attrs: { for: "pago" } }, [
+                              _vm._v("Forma de Pago")
                             ]),
                             _vm._v(" "),
-                            _c("SelectVehicleClient")
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-3" }, [
-                          _c("label", { attrs: { for: "pago" } }, [
-                            _vm._v("Forma de Pago")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: "min:4",
-                                expression: "'min:4'"
-                              },
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.newQuotationclient.payment,
-                                expression: "newQuotationclient.payment"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              input: true,
-                              "is-invalid": _vm.errors.has("pago")
-                            },
-                            attrs: { type: "text", name: "pago" },
-                            domProps: { value: _vm.newQuotationclient.payment },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.newQuotationclient,
-                                  "payment",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
+                            _c("input", {
                               directives: [
                                 {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.errors.has("pago"),
-                                  expression: "errors.has('pago')"
+                                  name: "validate",
+                                  rawName: "v-validate",
+                                  value: "min:4",
+                                  expression: "'min:4'"
+                                },
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.newQuotationclient.payment,
+                                  expression: "newQuotationclient.payment"
                                 }
                               ],
-                              staticClass: "text-danger"
-                            },
-                            [_vm._v(_vm._s(_vm.errors.first("pago")))]
-                          )
+                              staticClass: "form-control",
+                              class: {
+                                input: true,
+                                "is-invalid": _vm.errors.has("pago")
+                              },
+                              attrs: { type: "text", name: "pago" },
+                              domProps: {
+                                value: _vm.newQuotationclient.payment
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.newQuotationclient,
+                                    "payment",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.errors.has("pago"),
+                                    expression: "errors.has('pago')"
+                                  }
+                                ],
+                                staticClass: "text-danger"
+                              },
+                              [_vm._v(_vm._s(_vm.errors.first("pago")))]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(1)
                         ]),
                         _vm._v(" "),
-                        _vm._m(1)
+                        _c("div", { staticClass: "col-6" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col mb-3" },
+                              [
+                                _c("label", { attrs: { for: "marca" } }, [
+                                  _vm._v("Marca")
+                                ]),
+                                _vm._v(" "),
+                                _c("BrandSelector")
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col-6 mb-3" },
+                              [
+                                _c("label", { attrs: { for: "modelo" } }, [
+                                  _vm._v("Modelo")
+                                ]),
+                                _vm._v(" "),
+                                _c("ModelSelector")
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-6" },
+                              [
+                                _c("label", { attrs: { for: "anio" } }, [
+                                  _vm._v("Año")
+                                ]),
+                                _vm._v(" "),
+                                _c("YearSelector")
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col mb-3" },
+                              [
+                                _c("label", { attrs: { for: "engine" } }, [
+                                  _vm._v("Motor")
+                                ]),
+                                _vm._v(" "),
+                                _c("EngineSelector")
+                              ],
+                              1
+                            )
+                          ])
+                        ])
                       ])
                     ]
                   )
@@ -56718,7 +56763,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 mt-2" }, [
+    return _c("div", { staticClass: "col-12" }, [
       _c("label"),
       _vm._v(" "),
       _c(
@@ -56729,7 +56774,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "fas fa-plus-square" }),
-          _vm._v(" Guardar\n                                    ")
+          _vm._v(" Guardar\n                                        ")
         ]
       )
     ])
@@ -56759,62 +56804,6 @@ var staticRenderFns = [
     ])
   }
 ]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=template&id=5d5bcbbc&":
-/*!*********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=template&id=5d5bcbbc& ***!
-  \*********************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "pl-0" },
-    [
-      _c("v-select", {
-        class: { input: true, "is-invalid": _vm.errors.has("Modelo") },
-        attrs: {
-          name: "modelo",
-          placeholder: "Seleccionar Modelo",
-          options: _vm.optionsVehicleClient,
-          value: _vm.selectedVehicleClient
-        },
-        on: { input: _vm.setVehicleClient }
-      }),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.errors.has("Modelo"),
-              expression: "errors.has('Modelo')"
-            }
-          ],
-          staticClass: "text-danger"
-        },
-        [_vm._v(_vm._s(_vm.errors.first("Modelo")))]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
 render._withStripped = true
 
 
@@ -92346,7 +92335,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotation/Index.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -92639,75 +92628,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_4c1d2a53___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_4c1d2a53___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue":
-/*!********************************************************************************!*\
-  !*** ./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SelectVehicleClient_vue_vue_type_template_id_5d5bcbbc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectVehicleClient.vue?vue&type=template&id=5d5bcbbc& */ "./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=template&id=5d5bcbbc&");
-/* harmony import */ var _SelectVehicleClient_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectVehicleClient.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SelectVehicleClient_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SelectVehicleClient_vue_vue_type_template_id_5d5bcbbc___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SelectVehicleClient_vue_vue_type_template_id_5d5bcbbc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/assets/js/components/Quotationclient/SelectVehicleClient.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************!*\
-  !*** ./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectVehicleClient_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectVehicleClient.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectVehicleClient_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=template&id=5d5bcbbc&":
-/*!***************************************************************************************************************!*\
-  !*** ./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=template&id=5d5bcbbc& ***!
-  \***************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectVehicleClient_vue_vue_type_template_id_5d5bcbbc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SelectVehicleClient.vue?vue&type=template&id=5d5bcbbc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/SelectVehicleClient.vue?vue&type=template&id=5d5bcbbc&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectVehicleClient_vue_vue_type_template_id_5d5bcbbc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectVehicleClient_vue_vue_type_template_id_5d5bcbbc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -93744,7 +93664,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSale_vue_vue_type_style_index_0_id_242e053d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./NewSale.vue?vue&type=style&index=0&id=242e053d&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Sales/NewSale.vue?vue&type=style&index=0&id=242e053d&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSale_vue_vue_type_style_index_0_id_242e053d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSale_vue_vue_type_style_index_0_id_242e053d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSale_vue_vue_type_style_index_0_id_242e053d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSale_vue_vue_type_style_index_0_id_242e053d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSale_vue_vue_type_style_index_0_id_242e053d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -97286,12 +97206,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
 
   /*************seccion formulario de cotizacion  ****************/
-  allVehicleClients: function allVehicleClients(context, data) {
-    context.commit('allVehicleClients', data);
-  },
-  setVehicleClient: function setVehicleClient(context, data) {
-    context.commit('setVehicleClient', data);
-  },
   allVBrands: function allVBrands(context, data) {
     context.commit('allVBrands', data);
   },
@@ -98652,25 +98566,6 @@ var urlCompany = 'companies';
   /****** sección cotizaciones clientes**** */
 
   /******************************* */
-  allVehicleClients: function allVehicleClients(state) {
-    var url = urlAllVehicleClient; //+ '?brand_id=' + state.selectedVehicleBrand.value
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
-      state.optionsVehicleClient = [];
-
-      if (response.data != null) {
-        response.data.forEach(function (vehicleclient) {
-          state.optionsVehicleClient.push({
-            label: vehicleclient.model + " " + vehicleclient.year + " " + vehicleclient.motor,
-            value: vehicleclient.id
-          });
-        });
-      }
-    });
-  },
-  setVehicleClient: function setVehicleClient(state, vehicleclient) {
-    state.selectedVehicleClient = vehicleclient;
-  },
   getQuotationclients: function getQuotationclients(state, page) {
     var day = state.searchQuotationClient.day;
     var month = state.searchQuotationClient.month;
@@ -98720,7 +98615,7 @@ var urlCompany = 'companies';
       state: 'Pendiente',
       payment: state.newQuotationclient.payment,
       client_text: state.newQuotationclient.client_text,
-      vehicle: state.selectedVehicleClient.label
+      vehicle: state.selectedVBrand.label + ' ' + state.selectedVModel.label + ' ' + state.selectedVYear.label + ' ' + state.selectedVEngine.label
     }).then(function (response) {
       state.newQuotationclient = {
         client_id: '',

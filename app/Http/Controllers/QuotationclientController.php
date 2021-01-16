@@ -20,9 +20,9 @@ class QuotationclientController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        /*if($user_id == 1 || $user_id == 2)
+        if($user_id == 1 || $user_id == 2)
             $quotationclients = Quotationclient::with('client')->orderBy('id', 'DESC')->paginate(10);
-        else*/
+        else
         $quotationclients = Quotationclient::with('client')
                                 ->whereHas('client', function ($q) {
                                     $q->razonsocial();
@@ -124,7 +124,9 @@ class QuotationclientController extends Controller
 
         $pdf = PDF::loadView('pdf.quotationclient', compact(['user', 'quotation', 'client', 'products']) );
 
-        return $pdf->download('cotizacion N° '.$id.'.pdf');
+        return $pdf->stream('cotizacion N° '.$id.'.pdf');
+
+        ///return $pdf->download('cotizacion N° '.$id.'.pdf');
     }
 
     public function pdfIva($id)
@@ -141,12 +143,12 @@ class QuotationclientController extends Controller
 
         $pdf = PDF::loadView('pdf.quotationclientiva', compact(['user', 'quotation', 'client', 'products']) );
 
-        return $pdf->download('cotizacion N° '.$id.'.pdf');
+        //return $pdf->download('cotizacion N° '.$id.'.pdf');
+        return $pdf->stream('cotizacion N° '.$id.'.pdf');
     }
-
-
+    
     public function all()
-   {
+    {
 
         $vehiclemodels = VehicleModel::select(DB::raw('vehicle_models.id as id,
                                                         vehicle_models.model as model,
@@ -157,5 +159,5 @@ class QuotationclientController extends Controller
                                                 ->get();
         
         return $vehiclemodels;
-   }
+    }
 }

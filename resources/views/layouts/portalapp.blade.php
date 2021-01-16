@@ -23,6 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app-principal.css') }}" rel="stylesheet">
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+     
 </head>
 
 <body id="page-top" class="sidebar-toggled">
@@ -182,7 +183,7 @@
 
             @can('quotations')
             <li id="cotizaciones" class="nav-item">
-                <a class="nav-link" href="{{ route('admin-cotizacionesformales') }}">
+                <a class="nav-link" href="{{ route('admin-cotizaciones-formales') }}">
                     <i class="fas fa-file-signature"></i>
                     <span>Cotizaciones</span></a>
             </li>

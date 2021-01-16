@@ -229,9 +229,9 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.cotizaciones');
     })->name('admin-cotizaciones'); //->middleware('permission:cotizaciones');
 
-    Route::get('admin-cotizacionesformales', function () {
+    Route::get('admin-cotizaciones-formales', function () {
         return view('admin.cotizaciones-formales');
-    })->name('admin-cotizacionesformales'); //->middleware('permission:cotizaciones');
+    })->name('admin-cotizaciones-formales'); //->middleware('permission:cotizaciones');
 
     Route::get('admin-importaciones', function () {
         return view('admin.importaciones');

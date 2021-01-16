@@ -22,54 +22,80 @@
                         <div class="card-body">
                             <form action="POST" v-on:submit.prevent="createQuotationclient">
                                 <div class="row">
+                                    
+                                    <div class="col-6">
 
-                                    <div class="col-lg-3">
-                                        <label for="cliente">Cliente</label>
-                                        <SelectClient></SelectClient>
+                                        <div class="col-12 mb-3">
+                                            <label for="cliente">Cliente</label>
+                                            <SelectClient></SelectClient>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <label for="cliente">Nombre Cliente</label>
+                                            <input v-validate="'min:2'"
+                                                    :class="{'input': true, 'is-invalid': errors.has('cliente') }"
+                                                    type="text"
+                                                    name="cliente"
+                                                    class="form-control" v-model="newQuotationclient.client_text">
+                                            <p v-show="errors.has('cliente')" class="text-danger">{{ errors.first('cliente') }}</p>
+                                        </div>
+
+                                        <div class="col-12 mb-3">
+                                            <label for="pago">Forma de Pago</label>
+                                            <input v-validate="'min:4'"
+                                                    :class="{'input': true, 'is-invalid': errors.has('pago') }"
+                                                    type="text"
+                                                    name="pago"
+                                                    class="form-control" v-model="newQuotationclient.payment">
+                                            <p v-show="errors.has('pago')" class="text-danger">{{ errors.first('pago') }}</p>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label></label>
+                                            <button type="submit" class="btn btn-success form-control">
+                                                <i class="fas fa-plus-square"></i> Guardar
+                                            </button>
+                                        </div>
                                     </div>
+                                    <div class="col-6">
 
-                                    <div class="col-lg-3">
-                                        <label for="cliente">Nombre Cliente</label>
-                                        <input v-validate="'min:2'"
-                                                :class="{'input': true, 'is-invalid': errors.has('cliente') }"
-                                                type="text"
-                                                name="cliente"
-                                                class="form-control" v-model="newQuotationclient.client_text">
-                                        <p v-show="errors.has('cliente')" class="text-danger">{{ errors.first('cliente') }}</p>
+                                        <!--<div class="col-lg-3">
+                                            <label for="vehiculo">Vehículo</label>
+                                            <input v-validate="'min:2'"
+                                                    :class="{'input': true, 'is-invalid': errors.has('vehiculo') }"
+                                                    type="text"
+                                                    name="vehiculo"
+                                                    class="form-control" v-model="newQuotationclient.vehicle">
+                                            <p v-show="errors.has('vehiculo')" class="text-danger">{{ errors.first('vehiculo') }}</p>
+                                        </div>-->
+
+
+                                        <div class="row">
+                                            <div class="col mb-3">
+                                                <label for="marca">Marca</label>
+                                                <BrandSelector/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <label for="modelo">Modelo</label>
+                                                <ModelSelector/>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <label for="anio">Año</label>
+                                                <YearSelector/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col mb-3">
+                                                <label for="engine">Motor</label>
+                                                <EngineSelector/>
+                                            </div>
+
+                                        </div>
                                     </div>
-
-                                    <!--<div class="col-lg-3">
-                                        <label for="vehiculo">Vehículo</label>
-                                        <input v-validate="'min:2'"
-                                                :class="{'input': true, 'is-invalid': errors.has('vehiculo') }"
-                                                type="text"
-                                                name="vehiculo"
-                                                class="form-control" v-model="newQuotationclient.vehicle">
-                                        <p v-show="errors.has('vehiculo')" class="text-danger">{{ errors.first('vehiculo') }}</p>
-                                    </div>-->
-
-                                    <div class="col-lg-3">
-                                        <label for="vehiculo">Vehículo</label>
-                                        <SelectVehicleClient></SelectVehicleClient>
-                                    </div>
-
-                                    <div class="col-lg-3">
-                                        <label for="pago">Forma de Pago</label>
-                                        <input v-validate="'min:4'"
-                                                :class="{'input': true, 'is-invalid': errors.has('pago') }"
-                                                type="text"
-                                                name="pago"
-                                                class="form-control" v-model="newQuotationclient.payment">
-                                        <p v-show="errors.has('pago')" class="text-danger">{{ errors.first('pago') }}</p>
-                                    </div>
-
-                                    <div class="col-lg-3 mt-2">
-                                        <label></label>
-                                        <button type="submit" class="btn btn-success form-control">
-                                            <i class="fas fa-plus-square"></i> Guardar
-                                        </button>
-                                    </div>
-
                                 </div>
                             </form>
                         </div>
@@ -205,17 +231,21 @@
 
 import { loadProgressBar } from 'axios-progress-bar'
 import SelectClient from '../Client/Select'
-import SelectVehicleClient from './SelectVehicleClient'
 import Detalle from './Detalle'
 import DetalleEditarC from './DetalleEditar'
 import EliminarCotizacionCliente from './Eliminar'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
+
+import BrandSelector from '../Quotationuser/BrandSelector'
+import ModelSelector from '../Quotationuser/ModelSelector'
+import YearSelector from '../Quotationuser/YearSelector'
+import EngineSelector from '../Quotationuser/EngineSelector'
+
 export default {
-    components: { SelectClient, SelectVehicleClient, Detalle, DetalleEditarC, EliminarCotizacionCliente  },
+    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , Detalle, DetalleEditarC, EliminarCotizacionCliente  },
     computed:{
-        ...mapState(['quotationclients', 'newQuotationclient', 'searchQuotationClient', 'newQuotationclient',
-                        'pagination', 'offset', 'errorsLaravel']),
+        ...mapState(['quotationclients', 'newQuotationclient', 'searchQuotationClient','pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
@@ -227,9 +257,5 @@ export default {
         this.$store.dispatch('getQuotationclients', { page: 1 })
     }
 }
-
 </script>
 
-<style>
-
-</style>

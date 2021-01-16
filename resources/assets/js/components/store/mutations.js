@@ -892,26 +892,6 @@ export default { //used for changing the state
     /****** sección cotizaciones clientes**** */
     /******************************* */
 
-    allVehicleClients(state) {
-        var url = urlAllVehicleClient //+ '?brand_id=' + state.selectedVehicleBrand.value
-        axios.get(url).then(response => {
-            state.optionsVehicleClient = []
-            if (response.data != null) {
-                response.data.forEach((vehicleclient) => {
-                    state.optionsVehicleClient.push({
-                        label: vehicleclient.model + " " + vehicleclient.year + " " + vehicleclient.motor,
-                        value: vehicleclient.id
-                    })
-                });
-            }
-        });
-    },
-    setVehicleClient(state, vehicleclient) {
-        state.selectedVehicleClient = vehicleclient
-    },
-
-
-
 
     getQuotationclients(state, page) {
         var day = state.searchQuotationClient.day
@@ -964,7 +944,7 @@ export default { //used for changing the state
             state: 'Pendiente',
             payment: state.newQuotationclient.payment,
             client_text: state.newQuotationclient.client_text,
-            vehicle: state.selectedVehicleClient.label
+            vehicle: state.selectedVBrand.label + ' ' + state.selectedVModel.label + ' ' +  state.selectedVYear.label + ' ' +  state.selectedVEngine.label,
         }).then(response => {
             state.newQuotationclient = {
                 client_id: '',
