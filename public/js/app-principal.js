@@ -151,8 +151,8 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\portalmecanico_copia\resources\assets\js\sbAdmin\sb-admin.js */"./resources/assets/js/sbAdmin/sb-admin.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\portalmecanico_copia\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\portalmecanico_copia\resources\assets\js\sbAdmin\sb-admin.js */"./resources/assets/js/sbAdmin/sb-admin.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\portalmecanico_copia\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })

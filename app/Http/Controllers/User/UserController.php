@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
+
+use Auth;
 use App\User;
 use App\Service;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Freshwork\ChileanBundle\Rut;
@@ -29,19 +32,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'DESC')->with('roles')->paginate(10);
+       
+            $users = User::orderBy('id', 'DESC')->with('roles')->paginate(10);
 
-        return [
-            'pagination' => [
-                'total'         => $users->total(),
-                'current_page'  => $users->currentPage(),
-                'per_page'      => $users->perPage(),
-                'last_page'     => $users->lastPage(),
-                'from'          => $users->firstItem(),
-                'to'            => $users->lastItem(),
-            ],
-            'users' => $users
-        ];
+            return [
+                'pagination' => [
+                    'total'         => $users->total(),
+                    'current_page'  => $users->currentPage(),
+                    'per_page'      => $users->perPage(),
+                    'last_page'     => $users->lastPage(),
+                    'from'          => $users->firstItem(),
+                    'to'            => $users->lastItem(),
+                ],
+                'users' => $users
+            ];
+        
     }
 
     /**
@@ -52,6 +57,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $id = request('id');
         $this->validate($request, [
             'name' => 'required|min:6|max:190',
             'email' => 'required|email|unique:users,email|min:6|max:150',
@@ -73,6 +79,12 @@ class UserController extends Controller
         $data['url'] = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20); 
 
         $user = User::create($data);
+
+        DB::table('quotationclients')->where('id', $id)->update(
+            [
+                'generado_client' => 1, 
+            ]
+        );
 
         return $user;
     }
@@ -163,7 +175,7 @@ class UserController extends Controller
         $clients = DB::table('users')
             ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
             ->where('mechanic_client.mechanic_id', '=', $user_id)
-            ->select('users.id', 'users.name', 'users.email', 'users.password')
+            ->select('users.id', 'users.name', 'users.email', 'users.password', 'users.url')
             ->get();
 
         return $clients;
@@ -171,12 +183,23 @@ class UserController extends Controller
 
     public function storeclient(Request $request)
     {
+        $id = request('id');
         $user = $this->store($request);
 
         $user->roles()->sync(array(0 => '3'));
 
         DB::table('mechanic_client')->insertOrIgnore(
-            ['user_id' => $user->id, 'mechanic_id' => \Auth::user()->id ]
+            [
+                'user_id' => $user->id, 
+                'mechanic_id' => \Auth::user()->id,
+                //'quotation_id' => request('id')
+            ]
+        );
+
+        DB::table('quotationclients')->where('id', $id)->update(
+            [
+                'generado_client' => 1, 
+            ]
         );
     }
     
@@ -187,6 +210,4 @@ class UserController extends Controller
         
         $user->roles()->sync($request->all());
     }
-
-
 }

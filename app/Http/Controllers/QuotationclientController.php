@@ -20,9 +20,9 @@ class QuotationclientController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        if($user_id == 1 || $user_id == 2)
-            $quotationclients = Quotationclient::with('client')->orderBy('id', 'DESC')->paginate(10);
-        else
+        // if($user_id == 1 || $user_id == 2)
+        //     $quotationclients = Quotationclient::with('client')->orderBy('id', 'DESC')->paginate(10);
+        // else
         $quotationclients = Quotationclient::with('client')
                                 ->whereHas('client', function ($q) {
                                     $q->razonsocial();
@@ -43,6 +43,7 @@ class QuotationclientController extends Controller
             ],
             'quotationclients' => $quotationclients
         ];
+
     }
 
 
@@ -57,6 +58,21 @@ class QuotationclientController extends Controller
         $data = $request->all();
 
         $data['user_id'] = \Auth::user()->id;
+
+        $roles = DB::table('roles')
+            ->join('model_has_roles', 'roles.id', '=', 'model_has_roles.role_id')
+            ->join('users', 'model_has_roles.model_id', '=', 'users.id')
+            ->where('users.id', '=', \Auth::user()->id)
+            ->select('roles.id')
+            ->get();
+
+        foreach ($roles as $rol) {
+            if($rol->id == 2){
+                $data['generado'] = 1;
+            }else{
+                $data['generado'] = 2;
+            }  
+        }
 
         $quotationclient = Quotationclient::create($data);
 
@@ -159,5 +175,34 @@ class QuotationclientController extends Controller
                                                 ->get();
         
         return $vehiclemodels;
+    }
+
+
+
+    public function forms()
+    {
+        $id = request('id');
+        $quotationform = DB::table('quotation_users')
+                        ->join('quotationclients', 'quotation_users.quotation_id', '=', 'quotationclients.id')
+                        ->join('quotation_user_vehicles', 'quotation_users.id', '=', 'quotation_user_vehicles.user_id')
+                        ->select(
+                            'quotation_users.id',
+                            'quotation_users.name',
+                            'quotation_users.email',
+                            'quotation_users.phone',
+                            'quotation_user_vehicles.patentchasis',
+                            'quotation_user_vehicles.brand',
+                            'quotation_user_vehicles.model',
+                            'quotation_user_vehicles.year',
+                            'quotation_user_vehicles.engine',
+                            'quotation_user_vehicles.description',
+                            'quotation_users.created_at',
+                            'quotationclients.generado',
+                            'quotationclients.generado_client',
+                            'quotationclients.payment'
+                        )
+                        ->where('quotation_users.quotation_id', '=', $id )->get();
+        return $quotationform;
+        
     }
 }

@@ -10,6 +10,7 @@ var urlRoles = 'roles'
 var urlAllRoles = 'roles-all'
 var urlUserRoles = 'usersRoles'
 var urlAllPermissions = 'permissions'
+var urlQuotationusers = 'quotationusers'
 
 var urlVehicle = 'vehicles'
 var urlVehicleUser = 'vehicles-user'
@@ -55,6 +56,7 @@ var urlQuotationDetails = 'quotation-details'
 var urlQuotationclient = 'quotationclients'
 var urlQuotationclientDetails = 'quotationclient-details'
 var urlQuotationPdf = 'quotation-pdf'
+var urlQuotationforms = 'quotationforms'
 var urlAllVehicleClient = 'vehicleclients-all'
 
 var urlQuotationimport = 'quotationimports'
@@ -717,10 +719,7 @@ export default { //used for changing the state
     /******************************* */
     /****** sección detalles **** */
     /******************************* */
-    showModalDetail(state, id) {
-        state.idQuotation = id
-        $('#modalQuotation').modal('show')
-    },
+    
     createDetail(state) {
         var url = urlDetail
         var priceSet = state.newDetail.price
@@ -906,6 +905,25 @@ export default { //used for changing the state
             state.pagination = response.data.pagination
         });
     },
+    showModalDetail(state, id) {
+        state.idforms = id
+        $('#detalleCliente').modal('show')
+    },
+
+    showModalDetailUserMechanic(state, id) {
+        state.idforms = id
+        $('#modalCreateUserMechanic').modal('show')
+    },
+    getQuotationforms(state) {
+        var url =  urlQuotationforms + '/' + state.idforms
+        axios.get(url).then(response => {
+            state.quotationforms = response.data
+        });
+    },
+    showModalDetailclient(state, id) {
+        state.idQuotationclient = id
+        $('#modalQuotationclient').modal('show')
+    },
     getQuotationclientDetails(state) {
         var url = urlQuotationclientDetails + '/' + state.idQuotationclient
         axios.get(url).then(response => {
@@ -944,7 +962,7 @@ export default { //used for changing the state
             state: 'Pendiente',
             payment: state.newQuotationclient.payment,
             client_text: state.newQuotationclient.client_text,
-            vehicle: state.selectedVBrand.label + ' ' + state.selectedVModel.label + ' ' +  state.selectedVYear.label + ' ' +  state.selectedVEngine.label,
+            vehicle: state.selectedVBrand.label + ' ' + state.selectedVModel.label + ' ' +  state.selectedVYear.label + ' ' +  state.selectedVEngine.label
         }).then(response => {
             state.newQuotationclient = {
                 client_id: '',
@@ -952,8 +970,6 @@ export default { //used for changing the state
                 payment: ''
             }
             state.errorsLaravel = []
-            $('#create').modal('hide')
-            $('#btn-quotation-card').click()
             toastr.success('Cotización formal generada con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data
@@ -1003,10 +1019,7 @@ export default { //used for changing the state
     /******************************* */
     /****** sección detalles de cotizaciones de clientes**** */
     /******************************* */
-    showModalDetailclient(state, id) {
-        state.idQuotationclient = id
-        $('#modalQuotationclient').modal('show')
-    },
+    
     createDetailclient(state) {
         var url = urlDetailclient
 
@@ -1832,8 +1845,7 @@ export default { //used for changing the state
                 url: ''
             }
             state.errorsLaravel = []
-            $('#create').modal('hide')
-            $('#btn-user-card').click()
+            
             $('#modalCreateUser').modal('hide')
             toastr.success('Usuario generado con éxito')
         }).catch(error => {
@@ -2394,7 +2406,12 @@ export default { //used for changing the state
     },
 
     getPendingQuotations(state, page) {
-        var url = urlPendingQuotations + '?page=' + page
+        var day = state.searchQuotationClient.day
+        var month = state.searchQuotationClient.month
+        var year = state.searchQuotationClient.year
+
+        var url = urlPendingQuotations + '?page=' + page + '&id=' + state.searchQuotationClient.id + '&client=' + state.searchQuotationClient.client_text + '&day=' + day + '&month=' + month + '&year=' + year
+        
         axios.get(url).then(response => {
             state.pendingQuotations = response.data.quotations.data
             state.pagination = response.data.pagination
@@ -2867,20 +2884,20 @@ export default { //used for changing the state
             })
     },
 
-    createMechanicClient(state, data) {
-        axios.post('mechanic-client', {
+    createMechanicClient(state) {
+        axios.post('mechanic-client/' + state.idforms,{
             name: state.newUser.name,
             email: state.newUser.email,
             password: state.newUser.password,
         }).then(response => {
             state.newUser = {
+                id: '',
                 name: '',
                 email: '',
                 password: ''
             }
             state.errorsLaravel = []
-            $('#create').modal('hide')
-            $('#btn-user-card').click()
+            $('#modalCreateUserMechanic').modal('hide')
             toastr.success('Usuario generado con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data
@@ -2930,11 +2947,25 @@ export default { //used for changing the state
         }
     },
 
-    modalCreateUserFromQuotation(state, data) {
-        state.newUser.name = data.name
-        state.newUser.email = data.email
+    getQuotationUsers(state) {
+        var url =  urlQuotationusers + '/' + state.idUser
+        axios.get(url).then(response => {
+            state.quotationusers = response.data
+        });
+    },
+
+    getQuotationUsersMechanic(state) {
+        var url =  'quotationUserMechanic/' + state.idforms
+        axios.get(url).then(response => {
+            state.quotationUserMechanic = response.data
+        });
+    },
+
+    modalCreateUserFromQuotation(state, id) {
+        state.idUser = id
         $('#modalCreateUser').modal('show')
     },
+
 
 
     //AQUI COMENZAR EL EVENTO:

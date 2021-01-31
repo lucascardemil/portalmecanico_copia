@@ -9,13 +9,13 @@
                             <span>&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" v-for="QuotationUsersLocal in quotationusers" :key="QuotationUsersLocal.id">
                         <label for="name">Nombre</label>
                         <input v-validate="'required|min:4|max:190'"
                                 :class="{'input': true, 'is-invalid': errors.has('name') }"
                                 type="text"
                                 name="name"
-                                class="form-control" v-model="newUser.name">
+                                class="form-control" v-model="QuotationUsersLocal.name">
                         <p v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</p>
 
                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
@@ -27,7 +27,7 @@
                                 :class="{'input': true, 'is-invalid': errors.has('email') }"
                                 type="email"
                                 name="email"
-                                class="form-control" v-model="newUser.email">
+                                class="form-control" v-model="QuotationUsersLocal.email">
                         <p v-show="errors.has('email')"
                             class="text-danger">{{ errors.first('email') }}</p>
 
@@ -69,7 +69,7 @@ import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
     computed: {
-        ...mapState(['newUser', 'errorsLaravel'])
+        ...mapState(['quotationusers','newUser', 'errorsLaravel'])
     },
     methods: {
         ...mapActions(['createUser'])

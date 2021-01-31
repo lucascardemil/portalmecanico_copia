@@ -73,7 +73,7 @@ Route::ApiResource('vengines', 'VehicleEngineController');
 Route::get('vengines-all/{year}', 'VehicleEngineController@all');
 Route::ApiResource('quotationuser', 'QuotationUserController');
 Route::post('quotation-mechanic', 'QuotationUserController@storeMechanic');
-Route::ApiResource('pendingquotations', 'QuotationUserDescriptionController');
+Route::ApiResource('pendingquotations', 'QuotationUserController');
 
 Route::ApiResource('detailvehicles', 'DetailVehicleController');
 
@@ -84,6 +84,8 @@ Route::get('quotation-details/{id}', 'QuotationController@details');
 
 Route::ApiResource('quotationclients', 'QuotationclientController');
 Route::get('quotationclient-details/{id}', 'QuotationclientController@details');
+Route::get('quotationforms/{id}', 'QuotationclientController@forms');
+Route::get('quotationusers/{id}', 'QuotationclientController@forms');
 
 Route::ApiResource('quotationimports', 'QuotationimportController');
 Route::get('quotationimport-pdf/{id}', 'QuotationimportController@pdf');
@@ -138,7 +140,7 @@ Route::get('sale-products/{sale}', 'SaleController@products');
 Route::get('code-search/{code}', 'CodeController@search');
 Route::get('product-search/{code}', 'CodeController@product');
 Route::get('mechanic-clients', 'User\UserController@clients');
-Route::post('mechanic-client', 'User\UserController@storeclient');
+Route::post('mechanic-client/{id}', 'User\UserController@storeclient');
 Route::get('client-vehicles', 'VehicleController@clientvehicles');
 
 
@@ -225,9 +227,9 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.notas');
     })->name('admin-notas'); //->middleware('permission:notas');
 
-    Route::get('admin-cotizaciones', function () {
-        return view('admin.cotizaciones');
-    })->name('admin-cotizaciones'); //->middleware('permission:cotizaciones');
+    // Route::get('admin-cotizaciones', function () {
+    //     return view('admin.cotizaciones');
+    // })->name('admin-cotizaciones'); //->middleware('permission:cotizaciones');
 
     Route::get('admin-cotizaciones-formales', function () {
         return view('admin.cotizaciones-formales');

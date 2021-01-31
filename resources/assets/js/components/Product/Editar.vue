@@ -14,25 +14,25 @@
 
                         <label for="nombre">Nombre</label>
                         <input v-validate="'required|min:1'"
-                                :class="{'input': true, 'is-invalid': errors.has('nombre') }"
+                                :class="{'input': true, 'is-invalid': errors.has('nombre_edit') }"
                                 type="text"
                                 name="nombre"
                                 class="form-control" v-model="fillProduct.name">
-                        <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
+                        <p v-show="errors.has('nombre_edit')" class="text-danger">{{ errors.first('nombre_edit') }}</p>
 
                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.name }}</p>
+                            <p>{{ error.nombre_edit }}</p>
                         </div>
 
                         <label for="detalle">Detalle</label>
                         <input v-validate="'required|min:1'"
-                                :class="{'input': true, 'is-invalid': errors.has('detalle') }"
+                                :class="{'input': true, 'is-invalid': errors.has('detalle_edit') }"
                                 name="detalle"
                                 class="form-control" v-model="fillProduct.detail">
-                        <p v-show="errors.has('detalle')" class="text-danger">{{ errors.first('detalle') }}</p>
+                        <p v-show="errors.has('detalle_edit')" class="text-danger">{{ errors.first('detalle_edit') }}</p>
 
                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.detail }}</p>
+                            <p>{{ error.detalle_edit }}</p>
                         </div>
 
 

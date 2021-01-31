@@ -103,12 +103,14 @@
                 </div>
             </div>
         </div>
+        
 
         <div class="table-responsive">
-            <table class="table table-hover table-striped mt-3 table-sm text-white bg-dark">
+            <table class="table table-striped mt-3 text-white bg-dark">
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Generado</th>
                         <th>Estado</th>
                         <th>Rut</th>
                         <th>Razón Social</th>
@@ -121,47 +123,75 @@
                 <tbody>
                     <tr>
                         <td>
-                            <input type="text" class="form-control form-control-sm"
+                            <input type="text" class="form-control" style="width : 60px"
                                     v-model="searchQuotationClient.id" @keyup="getQuotationclients">
                         </td>
                         <td></td>
                         <td></td>
+                        <td></td>
                         <td>    
-                            <input type="text" class="form-control form-control-sm"
+                            <input type="text" class="form-control"
                                     v-model="searchQuotationClient.client_text" @keyup="getQuotationclients">
                         </td>
                         <td></td>
                         <td></td>
                         <td>
                             <div class="form-inline">
-                                <input type="text" class="form-control form-control-sm" style="width : 35px"
+                                <input type="text" class="form-control" style="width : 50px"
                                     v-model="searchQuotationClient.day" @keyup="getQuotationclients">
                                 <h5>/</h5>
-                                <input type="text" class="form-control form-control-sm" style="width : 35px" 
+                                <input type="text" class="form-control" style="width : 50px" 
                                     v-model="searchQuotationClient.month" @keyup="getQuotationclients">
                                 <h5>/</h5>
-                                <input type="text" class="form-control form-control-sm" style="width : 60px"
+                                <input type="text" class="form-control" style="width : 60px"
                                     v-model="searchQuotationClient.year" @keyup="getQuotationclients">
                             </div>
                         </td>
                         <td></td>
+                        <td></td>
                     </tr>
 
                     <tr v-for="quotationLocal in quotationclients" :key="quotationLocal.id">
+
                         <td width="10px">{{ quotationLocal.id }}</td>
+                        <td>
+                            <a v-if="quotationLocal.generado == 1" class="btn btn-warning btn-sm font-weight-bold">Sin Giro Comercial</a>
+                            <a v-if="quotationLocal.generado == 2" class="btn btn-primary btn-sm font-weight-bold">Con Giro Comercial</a>
+                            <a v-if="quotationLocal.generado == 3" class="btn btn-success btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationLocal.id })">Formulario Cotizar</a>
+                        </td>
                         <td>{{ quotationLocal.state }}</td>
                         <td>{{ quotationLocal.client.rut }}</td>
                         <td>{{ quotationLocal.client.razonSocial }}</td>
                         <td>{{ quotationLocal.client_text }}</td>
                         <td>{{ quotationLocal.vehicle }}</td>
-                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY H:mm A') }}</td>
+                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY') }}</td>
                         <td>
+
+                            
+                           
+                            <a href="#" v-if="quotationLocal.generado == 3" class="btn btn-light btn-sm"
+                                @click.prevent="modalCreateUserFromQuotation({ id: quotationLocal.id })"
+                                data-toggle="tooltip"
+                                data-placeemnt="top"
+                                title="Crear Usuario">
+                                <i class="fas fa-user"></i>
+                            </a>
+                            
+                            <a href="#" v-if="quotationLocal.generado_client == 0 && quotationLocal.generado == 1 || quotationLocal.generado == 2" class="btn btn-light btn-sm"
+                                @click.prevent="showModalDetailUserMechanic({ id: quotationLocal.id })"
+                                data-toggle="tooltip"
+                                data-placeemnt="top"
+                                title="Crear Usuario">
+                                <i class="fas fa-user"></i>
+                            </a>
+                             
+            
                             <a href="#" class="btn btn-info btn-sm"
                                 @click.prevent="showModalDetailclient({ id: quotationLocal.id })"
                                 data-toggle="tooltip"
                                 data-placement="top"
-                                title="Editar">
-                                <i class="fas fa-info-circle"></i>
+                                title="Detalle">
+                                <i class="far fa-plus-square"></i>
                                 Detalle
                             </a>
 
@@ -170,7 +200,7 @@
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Eliminar">
-                                <i class="fas fa-ban"></i>
+                                <i class="far fa-trash-alt"></i>
                             </a>
                         </td>
                     </tr>
@@ -217,7 +247,9 @@
                 </li>
             </ul>
         </nav>
-
+        <CreateUser></CreateUser>
+        <CreateUserMechanic></CreateUserMechanic>
+        <DetalleCliente></DetalleCliente>
         <Detalle></Detalle>
         <DetalleEditarC></DetalleEditarC>
         <EliminarCotizacionCliente></EliminarCotizacionCliente>
@@ -231,9 +263,12 @@
 
 import { loadProgressBar } from 'axios-progress-bar'
 import SelectClient from '../Client/Select'
+import DetalleCliente from './DetalleCliente'
 import Detalle from './Detalle'
 import DetalleEditarC from './DetalleEditar'
+import CreateUserMechanic from './CreateUserMechanic'
 import EliminarCotizacionCliente from './Eliminar'
+import CreateUser from '../Quotation/CreateUser'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 
@@ -243,14 +278,14 @@ import YearSelector from '../Quotationuser/YearSelector'
 import EngineSelector from '../Quotationuser/EngineSelector'
 
 export default {
-    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , Detalle, DetalleEditarC, EliminarCotizacionCliente  },
+    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, EliminarCotizacionCliente, CreateUser, CreateUserMechanic },
     computed:{
-        ...mapState(['quotationclients', 'newQuotationclient', 'searchQuotationClient','pagination', 'offset', 'errorsLaravel']),
+        ...mapState(['quotationclients','newQuotationclient', 'searchQuotationClient','pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
-        ...mapActions(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient',
-                        'showModalDeleteQuotationclient', 'changePageQuotationclient'])
+        ...mapActions(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailUserMechanic',
+                        'showModalDeleteQuotationclient', 'changePageQuotationclient', 'modalCreateUserFromQuotation'])
     },
     created(){
         loadProgressBar();
@@ -258,4 +293,10 @@ export default {
     }
 }
 </script>
+
+<style>
+  .table th, .table td {
+    vertical-align: middle;
+}
+</style>
 

@@ -28,29 +28,29 @@
                                     <div class="col-lg-5">
                                         <label for="nombre">*Nombre</label>
                                         <input v-validate="'min:4|max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('nombre') }"
+                                                :class="{'input': true, 'is-invalid': errors.has('nombre_product') }"
                                                 type="text"
                                                 name="nombre"
                                                 class="form-control" v-model="newProduct.name">
-                                        <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
+                                        <p v-show="errors.has('nombre_product')" class="text-danger">{{ errors.first('nombre_product') }}</p>
 
                                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.name }}</p>
+                                            <p>{{ error.nombre_product }}</p>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-5">
                                         <label for="detalle">*Detalle</label>
                                         <input v-validate="'max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('detalle') }"
+                                                :class="{'input': true, 'is-invalid': errors.has('detalle_product') }"
                                                 type="text"
                                                 name="detalle"
                                                 class="form-control" v-model="newProduct.detail">
-                                        <p v-show="errors.has('detalle')"
-                                            class="text-danger">{{ errors.first('detalle') }}</p>
+                                        <p v-show="errors.has('detalle_product')"
+                                            class="text-danger">{{ errors.first('detalle_product') }}</p>
 
                                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.detail }}</p>
+                                            <p>{{ error.detalle_product }}</p>
                                         </div>
                                     </div>
 
@@ -62,14 +62,14 @@
                                     <div class="col-lg-5">
                                         <label for="codigo">*Código</label>
                                         <input v-validate="'min:2|max:100'"
-                                                :class="{'input': true, 'is-invalid': errors.has('codigo') }"
+                                                :class="{'input': true, 'is-invalid': errors.has('codigo_product') }"
                                                 type="text"
                                                 name="codigo"
                                                 class="form-control" v-model="newCode.codebar">
-                                        <p v-show="errors.has('codigo')" class="text-danger">{{ errors.first('codigo') }}</p>
+                                        <p v-show="errors.has('codigo_product')" class="text-danger">{{ errors.first('codigo_product') }}</p>
 
                                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.codebar }}</p>
+                                            <p>{{ error.codigo_product }}</p>
                                         </div>
                                     </div>
 
@@ -121,7 +121,7 @@
 
                         <td width="100px">
                             <a href="#" class="btn btn-warning btn-sm"
-                                @click.prevent="editProduct( { producto: productLocal } )"
+                                @click.prevent="editProduct( { productLocal } )"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Editar">

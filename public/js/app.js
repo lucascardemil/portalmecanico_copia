@@ -6248,9 +6248,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsClient', 'selectedClient'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getClient'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsClient', 'selectedClient', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getClient'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setClient'])),
   created: function created() {
     this.$store.dispatch('allClients', {
@@ -6345,7 +6348,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['newUser', 'errorsLaravel'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['quotationusers', 'newUser', 'errorsLaravel'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['createUser']))
 });
 
@@ -6702,6 +6705,96 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['newUser', 'errorsLaravel'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['createMechanicClient']))
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/Detalle.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/Detalle.vue?vue&type=script&lang=js& ***!
@@ -6995,6 +7088,105 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['quotationforms'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])([])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])([]))
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/DetalleEditar.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/DetalleEditar.vue?vue&type=script&lang=js& ***!
@@ -7245,14 +7437,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios-progress-bar */ "./node_modules/axios-progress-bar/dist/index.js");
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Client_Select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Client/Select */ "./resources/assets/js/components/Client/Select.vue");
-/* harmony import */ var _Detalle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Detalle */ "./resources/assets/js/components/Quotationclient/Detalle.vue");
-/* harmony import */ var _DetalleEditar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DetalleEditar */ "./resources/assets/js/components/Quotationclient/DetalleEditar.vue");
-/* harmony import */ var _Eliminar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Eliminar */ "./resources/assets/js/components/Quotationclient/Eliminar.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _Quotationuser_BrandSelector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Quotationuser/BrandSelector */ "./resources/assets/js/components/Quotationuser/BrandSelector.vue");
-/* harmony import */ var _Quotationuser_ModelSelector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Quotationuser/ModelSelector */ "./resources/assets/js/components/Quotationuser/ModelSelector.vue");
-/* harmony import */ var _Quotationuser_YearSelector__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Quotationuser/YearSelector */ "./resources/assets/js/components/Quotationuser/YearSelector.vue");
-/* harmony import */ var _Quotationuser_EngineSelector__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Quotationuser/EngineSelector */ "./resources/assets/js/components/Quotationuser/EngineSelector.vue");
+/* harmony import */ var _DetalleCliente__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DetalleCliente */ "./resources/assets/js/components/Quotationclient/DetalleCliente.vue");
+/* harmony import */ var _Detalle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Detalle */ "./resources/assets/js/components/Quotationclient/Detalle.vue");
+/* harmony import */ var _DetalleEditar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DetalleEditar */ "./resources/assets/js/components/Quotationclient/DetalleEditar.vue");
+/* harmony import */ var _CreateUserMechanic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CreateUserMechanic */ "./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue");
+/* harmony import */ var _Eliminar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Eliminar */ "./resources/assets/js/components/Quotationclient/Eliminar.vue");
+/* harmony import */ var _Quotation_CreateUser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Quotation/CreateUser */ "./resources/assets/js/components/Quotation/CreateUser.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _Quotationuser_BrandSelector__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Quotationuser/BrandSelector */ "./resources/assets/js/components/Quotationuser/BrandSelector.vue");
+/* harmony import */ var _Quotationuser_ModelSelector__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Quotationuser/ModelSelector */ "./resources/assets/js/components/Quotationuser/ModelSelector.vue");
+/* harmony import */ var _Quotationuser_YearSelector__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Quotationuser/YearSelector */ "./resources/assets/js/components/Quotationuser/YearSelector.vue");
+/* harmony import */ var _Quotationuser_EngineSelector__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Quotationuser/EngineSelector */ "./resources/assets/js/components/Quotationuser/EngineSelector.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -7488,6 +7683,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 
 
 
@@ -7501,16 +7731,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     SelectClient: _Client_Select__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BrandSelector: _Quotationuser_BrandSelector__WEBPACK_IMPORTED_MODULE_6__["default"],
-    ModelSelector: _Quotationuser_ModelSelector__WEBPACK_IMPORTED_MODULE_7__["default"],
-    YearSelector: _Quotationuser_YearSelector__WEBPACK_IMPORTED_MODULE_8__["default"],
-    EngineSelector: _Quotationuser_EngineSelector__WEBPACK_IMPORTED_MODULE_9__["default"],
-    Detalle: _Detalle__WEBPACK_IMPORTED_MODULE_2__["default"],
-    DetalleEditarC: _DetalleEditar__WEBPACK_IMPORTED_MODULE_3__["default"],
-    EliminarCotizacionCliente: _Eliminar__WEBPACK_IMPORTED_MODULE_4__["default"]
+    BrandSelector: _Quotationuser_BrandSelector__WEBPACK_IMPORTED_MODULE_9__["default"],
+    ModelSelector: _Quotationuser_ModelSelector__WEBPACK_IMPORTED_MODULE_10__["default"],
+    YearSelector: _Quotationuser_YearSelector__WEBPACK_IMPORTED_MODULE_11__["default"],
+    EngineSelector: _Quotationuser_EngineSelector__WEBPACK_IMPORTED_MODULE_12__["default"],
+    DetalleCliente: _DetalleCliente__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Detalle: _Detalle__WEBPACK_IMPORTED_MODULE_3__["default"],
+    DetalleEditarC: _DetalleEditar__WEBPACK_IMPORTED_MODULE_4__["default"],
+    EliminarCotizacionCliente: _Eliminar__WEBPACK_IMPORTED_MODULE_6__["default"],
+    CreateUser: _Quotation_CreateUser__WEBPACK_IMPORTED_MODULE_7__["default"],
+    CreateUserMechanic: _CreateUserMechanic__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapState"])(['quotationclients', 'newQuotationclient', 'searchQuotationClient', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient', 'showModalDeleteQuotationclient', 'changePageQuotationclient'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_8__["mapState"])(['quotationclients', 'newQuotationclient', 'searchQuotationClient', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_8__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_8__["mapActions"])(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailUserMechanic', 'showModalDeleteQuotationclient', 'changePageQuotationclient', 'modalCreateUserFromQuotation'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getQuotationclients', {
@@ -9695,6 +9928,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -17331,6 +17569,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "\ntable, nav {\n    font-size: 13px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.table th, .table td {\n    vertical-align: middle;\n}\n", ""]);
 
 // exports
 
@@ -31618,6 +31875,36 @@ process.umask = function() { return 0; };
 
 
 var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotation/Index.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -52118,7 +52405,7 @@ var render = function() {
                   staticClass: "form-control",
                   class: {
                     input: true,
-                    "is-invalid": _vm.errors.has("nombre")
+                    "is-invalid": _vm.errors.has("nombre_edit")
                   },
                   attrs: { type: "text", name: "nombre" },
                   domProps: { value: _vm.fillProduct.name },
@@ -52139,18 +52426,18 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.errors.has("nombre"),
-                        expression: "errors.has('nombre')"
+                        value: _vm.errors.has("nombre_edit"),
+                        expression: "errors.has('nombre_edit')"
                       }
                     ],
                     staticClass: "text-danger"
                   },
-                  [_vm._v(_vm._s(_vm.errors.first("nombre")))]
+                  [_vm._v(_vm._s(_vm.errors.first("nombre_edit")))]
                 ),
                 _vm._v(" "),
                 _vm._l(_vm.errorsLaravel, function(error, index) {
                   return _c("div", { key: index, staticClass: "text-danger" }, [
-                    _c("p", [_vm._v(_vm._s(error.name))])
+                    _c("p", [_vm._v(_vm._s(error.nombre_edit))])
                   ])
                 }),
                 _vm._v(" "),
@@ -52174,7 +52461,7 @@ var render = function() {
                   staticClass: "form-control",
                   class: {
                     input: true,
-                    "is-invalid": _vm.errors.has("detalle")
+                    "is-invalid": _vm.errors.has("detalle_edit")
                   },
                   attrs: { name: "detalle" },
                   domProps: { value: _vm.fillProduct.detail },
@@ -52195,18 +52482,18 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.errors.has("detalle"),
-                        expression: "errors.has('detalle')"
+                        value: _vm.errors.has("detalle_edit"),
+                        expression: "errors.has('detalle_edit')"
                       }
                     ],
                     staticClass: "text-danger"
                   },
-                  [_vm._v(_vm._s(_vm.errors.first("detalle")))]
+                  [_vm._v(_vm._s(_vm.errors.first("detalle_edit")))]
                 ),
                 _vm._v(" "),
                 _vm._l(_vm.errorsLaravel, function(error, index) {
                   return _c("div", { key: index, staticClass: "text-danger" }, [
-                    _c("p", [_vm._v(_vm._s(error.detail))])
+                    _c("p", [_vm._v(_vm._s(error.detalle_edit))])
                   ])
                 })
               ],
@@ -52343,7 +52630,7 @@ var render = function() {
                               staticClass: "form-control",
                               class: {
                                 input: true,
-                                "is-invalid": _vm.errors.has("nombre")
+                                "is-invalid": _vm.errors.has("nombre_product")
                               },
                               attrs: { type: "text", name: "nombre" },
                               domProps: { value: _vm.newProduct.name },
@@ -52368,20 +52655,28 @@ var render = function() {
                                   {
                                     name: "show",
                                     rawName: "v-show",
-                                    value: _vm.errors.has("nombre"),
-                                    expression: "errors.has('nombre')"
+                                    value: _vm.errors.has("nombre_product"),
+                                    expression: "errors.has('nombre_product')"
                                   }
                                 ],
                                 staticClass: "text-danger"
                               },
-                              [_vm._v(_vm._s(_vm.errors.first("nombre")))]
+                              [
+                                _vm._v(
+                                  _vm._s(_vm.errors.first("nombre_product"))
+                                )
+                              ]
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.errorsLaravel, function(error, index) {
                               return _c(
                                 "div",
                                 { key: index, staticClass: "text-danger" },
-                                [_c("p", [_vm._v(_vm._s(error.name))])]
+                                [
+                                  _c("p", [
+                                    _vm._v(_vm._s(error.nombre_product))
+                                  ])
+                                ]
                               )
                             })
                           ],
@@ -52414,7 +52709,7 @@ var render = function() {
                               staticClass: "form-control",
                               class: {
                                 input: true,
-                                "is-invalid": _vm.errors.has("detalle")
+                                "is-invalid": _vm.errors.has("detalle_product")
                               },
                               attrs: { type: "text", name: "detalle" },
                               domProps: { value: _vm.newProduct.detail },
@@ -52439,20 +52734,28 @@ var render = function() {
                                   {
                                     name: "show",
                                     rawName: "v-show",
-                                    value: _vm.errors.has("detalle"),
-                                    expression: "errors.has('detalle')"
+                                    value: _vm.errors.has("detalle_product"),
+                                    expression: "errors.has('detalle_product')"
                                   }
                                 ],
                                 staticClass: "text-danger"
                               },
-                              [_vm._v(_vm._s(_vm.errors.first("detalle")))]
+                              [
+                                _vm._v(
+                                  _vm._s(_vm.errors.first("detalle_product"))
+                                )
+                              ]
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.errorsLaravel, function(error, index) {
                               return _c(
                                 "div",
                                 { key: index, staticClass: "text-danger" },
-                                [_c("p", [_vm._v(_vm._s(error.detail))])]
+                                [
+                                  _c("p", [
+                                    _vm._v(_vm._s(error.detalle_product))
+                                  ])
+                                ]
                               )
                             })
                           ],
@@ -52498,7 +52801,7 @@ var render = function() {
                               staticClass: "form-control",
                               class: {
                                 input: true,
-                                "is-invalid": _vm.errors.has("codigo")
+                                "is-invalid": _vm.errors.has("codigo_product")
                               },
                               attrs: { type: "text", name: "codigo" },
                               domProps: { value: _vm.newCode.codebar },
@@ -52523,20 +52826,28 @@ var render = function() {
                                   {
                                     name: "show",
                                     rawName: "v-show",
-                                    value: _vm.errors.has("codigo"),
-                                    expression: "errors.has('codigo')"
+                                    value: _vm.errors.has("codigo_product"),
+                                    expression: "errors.has('codigo_product')"
                                   }
                                 ],
                                 staticClass: "text-danger"
                               },
-                              [_vm._v(_vm._s(_vm.errors.first("codigo")))]
+                              [
+                                _vm._v(
+                                  _vm._s(_vm.errors.first("codigo_product"))
+                                )
+                              ]
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.errorsLaravel, function(error, index) {
                               return _c(
                                 "div",
                                 { key: index, staticClass: "text-danger" },
-                                [_c("p", [_vm._v(_vm._s(error.codebar))])]
+                                [
+                                  _c("p", [
+                                    _vm._v(_vm._s(error.codigo_product))
+                                  ])
+                                ]
                               )
                             })
                           ],
@@ -52643,7 +52954,9 @@ var render = function() {
                           on: {
                             click: function($event) {
                               $event.preventDefault()
-                              return _vm.editProduct({ producto: productLocal })
+                              return _vm.editProduct({
+                                productLocal: productLocal
+                              })
                             }
                           }
                         },
@@ -53024,7 +53337,7 @@ var render = function() {
     { staticClass: "pl-0" },
     [
       _c("v-select", {
-        class: { input: true, "is-invalid": _vm.errors.has("cliente") },
+        class: { input: true, "is-invalid": _vm.errors.has("cliente_product") },
         attrs: {
           name: "cliente",
           placeholder: "Seleccionar Cliente",
@@ -53041,16 +53354,22 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.errors.has("cliente"),
-              expression: "errors.has('cliente')"
+              value: _vm.errors.has("cliente_product"),
+              expression: "errors.has('cliente_product')"
             }
           ],
           staticClass: "text-danger"
         },
-        [_vm._v(_vm._s(_vm.errors.first("cliente")))]
-      )
+        [_vm._v(_vm._s(_vm.errors.first("cliente_product")))]
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.errorsLaravel, function(error, index) {
+        return _c("div", { key: index, staticClass: "text-danger" }, [
+          _c("p", [_vm._v(_vm._s(error.cliente_product))])
+        ])
+      })
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -53092,194 +53411,217 @@ var render = function() {
         { staticClass: "modal fade", attrs: { id: "modalCreateUser" } },
         [
           _c("div", { staticClass: "modal-dialog" }, [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-body" },
-                [
-                  _c("label", { attrs: { for: "name" } }, [_vm._v("Nombre")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|min:4|max:190",
-                        expression: "'required|min:4|max:190'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newUser.name,
-                        expression: "newUser.name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: {
-                      input: true,
-                      "is-invalid": _vm.errors.has("name")
-                    },
-                    attrs: { type: "text", name: "name" },
-                    domProps: { value: _vm.newUser.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+            _c(
+              "div",
+              { staticClass: "modal-content" },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._l(_vm.quotationusers, function(QuotationUsersLocal) {
+                  return _c(
+                    "div",
+                    { key: QuotationUsersLocal.id, staticClass: "modal-body" },
+                    [
+                      _c("label", { attrs: { for: "name" } }, [
+                        _vm._v("Nombre")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required|min:4|max:190",
+                            expression: "'required|min:4|max:190'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: QuotationUsersLocal.name,
+                            expression: "QuotationUsersLocal.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          input: true,
+                          "is-invalid": _vm.errors.has("name")
+                        },
+                        attrs: { type: "text", name: "name" },
+                        domProps: { value: QuotationUsersLocal.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              QuotationUsersLocal,
+                              "name",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(_vm.newUser, "name", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      directives: [
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "p",
                         {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("name"),
-                          expression: "errors.has('name')"
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.errors.has("name"),
+                              expression: "errors.has('name')"
+                            }
+                          ],
+                          staticClass: "text-danger"
+                        },
+                        [_vm._v(_vm._s(_vm.errors.first("name")))]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.errorsLaravel, function(error, index) {
+                        return _c(
+                          "div",
+                          { key: index, staticClass: "text-danger" },
+                          [_c("p", [_vm._v(_vm._s(error.name))])]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "email" } }, [
+                        _vm._v("Correo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required|min:6|max:190",
+                            expression: "'required|min:6|max:190'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: QuotationUsersLocal.email,
+                            expression: "QuotationUsersLocal.email"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          input: true,
+                          "is-invalid": _vm.errors.has("email")
+                        },
+                        attrs: { type: "email", name: "email" },
+                        domProps: { value: QuotationUsersLocal.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              QuotationUsersLocal,
+                              "email",
+                              $event.target.value
+                            )
+                          }
                         }
-                      ],
-                      staticClass: "text-danger"
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("name")))]
-                  ),
-                  _vm._v(" "),
-                  _vm._l(_vm.errorsLaravel, function(error, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "text-danger" },
-                      [_c("p", [_vm._v(_vm._s(error.name))])]
-                    )
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "email" } }, [_vm._v("Correo")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|min:6|max:190",
-                        expression: "'required|min:6|max:190'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newUser.email,
-                        expression: "newUser.email"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: {
-                      input: true,
-                      "is-invalid": _vm.errors.has("email")
-                    },
-                    attrs: { type: "email", name: "email" },
-                    domProps: { value: _vm.newUser.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.newUser, "email", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      directives: [
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "p",
                         {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("email"),
-                          expression: "errors.has('email')"
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.errors.has("email"),
+                              expression: "errors.has('email')"
+                            }
+                          ],
+                          staticClass: "text-danger"
+                        },
+                        [_vm._v(_vm._s(_vm.errors.first("email")))]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.errorsLaravel, function(error, index) {
+                        return _c(
+                          "div",
+                          { key: index, staticClass: "text-danger" },
+                          [_c("p", [_vm._v(_vm._s(error.email))])]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "password" } }, [
+                        _vm._v("Contraseña")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.newUser.password,
+                            expression: "newUser.password"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          input: true,
+                          "is-invalid": _vm.errors.has("password")
+                        },
+                        attrs: { type: "password", name: "password" },
+                        domProps: { value: _vm.newUser.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.newUser,
+                              "password",
+                              $event.target.value
+                            )
+                          }
                         }
-                      ],
-                      staticClass: "text-danger"
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("email")))]
-                  ),
-                  _vm._v(" "),
-                  _vm._l(_vm.errorsLaravel, function(error, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "text-danger" },
-                      [_c("p", [_vm._v(_vm._s(error.email))])]
-                    )
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "password" } }, [
-                    _vm._v("Contraseña")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required",
-                        expression: "'required'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newUser.password,
-                        expression: "newUser.password"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: {
-                      input: true,
-                      "is-invalid": _vm.errors.has("password")
-                    },
-                    attrs: { type: "password", name: "password" },
-                    domProps: { value: _vm.newUser.password },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.newUser, "password", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      directives: [
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "p",
                         {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("password"),
-                          expression: "errors.has('password')"
-                        }
-                      ],
-                      staticClass: "text-danger"
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("password")))]
-                  ),
-                  _vm._v(" "),
-                  _vm._l(_vm.errorsLaravel, function(error, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "text-danger" },
-                      [_c("p", [_vm._v(_vm._s(error.password))])]
-                    )
-                  })
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _vm._m(1)
-            ])
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.errors.has("password"),
+                              expression: "errors.has('password')"
+                            }
+                          ],
+                          staticClass: "text-danger"
+                        },
+                        [_vm._v(_vm._s(_vm.errors.first("password")))]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.errorsLaravel, function(error, index) {
+                        return _c(
+                          "div",
+                          { key: index, staticClass: "text-danger" },
+                          [_c("p", [_vm._v(_vm._s(error.password))])]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ],
+              2
+            )
           ])
         ]
       )
@@ -54255,6 +54597,286 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=template&id=adcfe14c&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=template&id=adcfe14c& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: { action: "POST" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.createMechanicClient($event)
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "modal fade", attrs: { id: "modalCreateUserMechanic" } },
+        [
+          _c("div", { staticClass: "modal-dialog" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _c("label", { attrs: { for: "name" } }, [_vm._v("Nombre")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:4|max:190",
+                        expression: "'required|min:4|max:190'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newUser.name,
+                        expression: "newUser.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      input: true,
+                      "is-invalid": _vm.errors.has("name")
+                    },
+                    attrs: { type: "text", name: "name" },
+                    domProps: { value: _vm.newUser.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newUser, "name", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("name"),
+                          expression: "errors.has('name')"
+                        }
+                      ],
+                      staticClass: "text-danger"
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("name")))]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.errorsLaravel, function(error, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "text-danger" },
+                      [_c("p", [_vm._v(_vm._s(error.name))])]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "email" } }, [_vm._v("Correo")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:6|max:190",
+                        expression: "'required|min:6|max:190'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newUser.email,
+                        expression: "newUser.email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      input: true,
+                      "is-invalid": _vm.errors.has("email")
+                    },
+                    attrs: { type: "email", name: "email" },
+                    domProps: { value: _vm.newUser.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newUser, "email", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("email"),
+                          expression: "errors.has('email')"
+                        }
+                      ],
+                      staticClass: "text-danger"
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("email")))]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.errorsLaravel, function(error, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "text-danger" },
+                      [_c("p", [_vm._v(_vm._s(error.email))])]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "password" } }, [
+                    _vm._v("Contraseña")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newUser.password,
+                        expression: "newUser.password"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      input: true,
+                      "is-invalid": _vm.errors.has("password")
+                    },
+                    attrs: { type: "password", name: "password" },
+                    domProps: { value: _vm.newUser.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newUser, "password", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("password"),
+                          expression: "errors.has('password')"
+                        }
+                      ],
+                      staticClass: "text-danger"
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("password")))]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.errorsLaravel, function(error, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "text-danger" },
+                      [_c("p", [_vm._v(_vm._s(error.password))])]
+                    )
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", [_vm._v("Crear Usuario")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "close"
+          }
+        },
+        [_c("span", [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-outline-primary",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "close"
+          }
+        },
+        [_vm._v("\n                        Cancelar\n                    ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("\n                        Crear\n                    ")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/Detalle.vue?vue&type=template&id=65b86390&":
 /*!*********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/Detalle.vue?vue&type=template&id=65b86390& ***!
@@ -55181,6 +55803,159 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Acción")])
       ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=template&id=3fe2385c&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=template&id=3fe2385c& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("form", [
+    _c("div", { staticClass: "modal fade", attrs: { id: "detalleCliente" } }, [
+      _c("div", { staticClass: "modal-dialog modal-fullscreen" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-body" },
+            _vm._l(_vm.quotationforms, function(quotationLocalForm) {
+              return _c(
+                "div",
+                { key: quotationLocalForm.id, staticClass: "table-responsive" },
+                [
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-bordered table-striped mt-3 text-white bg-dark"
+                    },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Cliente")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(quotationLocalForm.name))])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Email")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(quotationLocalForm.email))])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Teléfono")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(quotationLocalForm.phone))])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Pago")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(quotationLocalForm.payment))])
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-bordered table-striped mt-3 text-white bg-dark"
+                    },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Patente o Chasis")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(quotationLocalForm.patentchasis))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Marca")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(quotationLocalForm.brand))])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Modelo")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(quotationLocalForm.model))])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Año")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(quotationLocalForm.year))])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Motor")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(quotationLocalForm.engine))])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Descripción")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(quotationLocalForm.description))
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", [_vm._v("Formulario de la cotización")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", [_vm._v("×")])]
+      )
     ])
   }
 ]
@@ -56329,10 +57104,7 @@ var render = function() {
       _c("div", { staticClass: "table-responsive" }, [
         _c(
           "table",
-          {
-            staticClass:
-              "table table-hover table-striped mt-3 table-sm text-white bg-dark"
-          },
+          { staticClass: "table table-striped mt-3 text-white bg-dark" },
           [
             _vm._m(2),
             _vm._v(" "),
@@ -56350,7 +57122,8 @@ var render = function() {
                           expression: "searchQuotationClient.id"
                         }
                       ],
-                      staticClass: "form-control form-control-sm",
+                      staticClass: "form-control",
+                      staticStyle: { width: "60px" },
                       attrs: { type: "text" },
                       domProps: { value: _vm.searchQuotationClient.id },
                       on: {
@@ -56373,6 +57146,8 @@ var render = function() {
                   _vm._v(" "),
                   _c("td"),
                   _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
                   _c("td", [
                     _c("input", {
                       directives: [
@@ -56383,7 +57158,7 @@ var render = function() {
                           expression: "searchQuotationClient.client_text"
                         }
                       ],
-                      staticClass: "form-control form-control-sm",
+                      staticClass: "form-control",
                       attrs: { type: "text" },
                       domProps: {
                         value: _vm.searchQuotationClient.client_text
@@ -56419,8 +57194,8 @@ var render = function() {
                             expression: "searchQuotationClient.day"
                           }
                         ],
-                        staticClass: "form-control form-control-sm",
-                        staticStyle: { width: "35px" },
+                        staticClass: "form-control",
+                        staticStyle: { width: "50px" },
                         attrs: { type: "text" },
                         domProps: { value: _vm.searchQuotationClient.day },
                         on: {
@@ -56449,8 +57224,8 @@ var render = function() {
                             expression: "searchQuotationClient.month"
                           }
                         ],
-                        staticClass: "form-control form-control-sm",
-                        staticStyle: { width: "35px" },
+                        staticClass: "form-control",
+                        staticStyle: { width: "50px" },
                         attrs: { type: "text" },
                         domProps: { value: _vm.searchQuotationClient.month },
                         on: {
@@ -56479,7 +57254,7 @@ var render = function() {
                             expression: "searchQuotationClient.year"
                           }
                         ],
-                        staticClass: "form-control form-control-sm",
+                        staticClass: "form-control",
                         staticStyle: { width: "60px" },
                         attrs: { type: "text" },
                         domProps: { value: _vm.searchQuotationClient.year },
@@ -56500,6 +57275,8 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
                   _c("td")
                 ]),
                 _vm._v(" "),
@@ -56507,6 +57284,50 @@ var render = function() {
                   return _c("tr", { key: quotationLocal.id }, [
                     _c("td", { attrs: { width: "10px" } }, [
                       _vm._v(_vm._s(quotationLocal.id))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      quotationLocal.generado == 1
+                        ? _c(
+                            "a",
+                            {
+                              staticClass:
+                                "btn btn-warning btn-sm font-weight-bold"
+                            },
+                            [_vm._v("Sin Giro Comercial")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      quotationLocal.generado == 2
+                        ? _c(
+                            "a",
+                            {
+                              staticClass:
+                                "btn btn-primary btn-sm font-weight-bold"
+                            },
+                            [_vm._v("Con Giro Comercial")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      quotationLocal.generado == 3
+                        ? _c(
+                            "a",
+                            {
+                              staticClass:
+                                "btn btn-success btn-sm font-weight-bold",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.showModalDetail({
+                                    id: quotationLocal.id
+                                  })
+                                }
+                              }
+                            },
+                            [_vm._v("Formulario Cotizar")]
+                          )
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(quotationLocal.state))]),
@@ -56526,13 +57347,63 @@ var render = function() {
                         _vm._s(
                           _vm._f("moment")(
                             quotationLocal.created_at,
-                            "DD/MM/YYYY H:mm A"
+                            "DD/MM/YYYY"
                           )
                         )
                       )
                     ]),
                     _vm._v(" "),
                     _c("td", [
+                      quotationLocal.generado == 3
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-light btn-sm",
+                              attrs: {
+                                href: "#",
+                                "data-toggle": "tooltip",
+                                "data-placeemnt": "top",
+                                title: "Crear Usuario"
+                              },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.modalCreateUserFromQuotation({
+                                    id: quotationLocal.id
+                                  })
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-user" })]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      (quotationLocal.generado_client == 0 &&
+                        quotationLocal.generado == 1) ||
+                      quotationLocal.generado == 2
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-light btn-sm",
+                              attrs: {
+                                href: "#",
+                                "data-toggle": "tooltip",
+                                "data-placeemnt": "top",
+                                title: "Crear Usuario"
+                              },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.showModalDetailUserMechanic({
+                                    id: quotationLocal.id
+                                  })
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-user" })]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c(
                         "a",
                         {
@@ -56541,7 +57412,7 @@ var render = function() {
                             href: "#",
                             "data-toggle": "tooltip",
                             "data-placement": "top",
-                            title: "Editar"
+                            title: "Detalle"
                           },
                           on: {
                             click: function($event) {
@@ -56553,7 +57424,7 @@ var render = function() {
                           }
                         },
                         [
-                          _c("i", { staticClass: "fas fa-info-circle" }),
+                          _c("i", { staticClass: "far fa-plus-square" }),
                           _vm._v(
                             "\n                            Detalle\n                        "
                           )
@@ -56579,7 +57450,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_c("i", { staticClass: "fas fa-ban" })]
+                        [_c("i", { staticClass: "far fa-trash-alt" })]
                       )
                     ])
                   ])
@@ -56715,6 +57586,12 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
+      _c("CreateUser"),
+      _vm._v(" "),
+      _c("CreateUserMechanic"),
+      _vm._v(" "),
+      _c("DetalleCliente"),
+      _vm._v(" "),
       _c("Detalle"),
       _vm._v(" "),
       _c("DetalleEditarC"),
@@ -56786,6 +57663,8 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Generado")]),
         _vm._v(" "),
         _c("th", [_vm._v("Estado")]),
         _vm._v(" "),
@@ -61895,7 +62774,33 @@ var render = function() {
                   })
                 ],
                 2
-              )
+              ),
+              _vm._v(" "),
+              _c("div", {}, [
+                _c("label", { attrs: { for: "url" } }, [_vm._v("URL")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fillUser.url,
+                      expression: "fillUser.url"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "url", readonly: "readonly" },
+                  domProps: { value: _vm.fillUser.url },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.fillUser, "url", $event.target.value)
+                    }
+                  }
+                })
+              ])
             ]),
             _vm._v(" "),
             _vm._m(1)
@@ -92357,6 +93262,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue":
+/*!*******************************************************************************!*\
+  !*** ./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateUserMechanic_vue_vue_type_template_id_adcfe14c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateUserMechanic.vue?vue&type=template&id=adcfe14c& */ "./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=template&id=adcfe14c&");
+/* harmony import */ var _CreateUserMechanic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateUserMechanic.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CreateUserMechanic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateUserMechanic_vue_vue_type_template_id_adcfe14c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateUserMechanic_vue_vue_type_template_id_adcfe14c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/Quotationclient/CreateUserMechanic.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUserMechanic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateUserMechanic.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUserMechanic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=template&id=adcfe14c&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=template&id=adcfe14c& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUserMechanic_vue_vue_type_template_id_adcfe14c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateUserMechanic.vue?vue&type=template&id=adcfe14c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/CreateUserMechanic.vue?vue&type=template&id=adcfe14c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUserMechanic_vue_vue_type_template_id_adcfe14c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUserMechanic_vue_vue_type_template_id_adcfe14c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/Quotationclient/Detalle.vue":
 /*!********************************************************************!*\
   !*** ./resources/assets/js/components/Quotationclient/Detalle.vue ***!
@@ -92421,6 +93395,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_template_id_65b86390___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_template_id_65b86390___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Quotationclient/DetalleCliente.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/assets/js/components/Quotationclient/DetalleCliente.vue ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DetalleCliente_vue_vue_type_template_id_3fe2385c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DetalleCliente.vue?vue&type=template&id=3fe2385c& */ "./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=template&id=3fe2385c&");
+/* harmony import */ var _DetalleCliente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DetalleCliente.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DetalleCliente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DetalleCliente_vue_vue_type_template_id_3fe2385c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DetalleCliente_vue_vue_type_template_id_3fe2385c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/Quotationclient/DetalleCliente.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DetalleCliente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./DetalleCliente.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DetalleCliente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=template&id=3fe2385c&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=template&id=3fe2385c& ***!
+  \**********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DetalleCliente_vue_vue_type_template_id_3fe2385c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./DetalleCliente.vue?vue&type=template&id=3fe2385c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/DetalleCliente.vue?vue&type=template&id=3fe2385c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DetalleCliente_vue_vue_type_template_id_3fe2385c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DetalleCliente_vue_vue_type_template_id_3fe2385c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -92575,7 +93618,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Index_vue_vue_type_template_id_4c1d2a53___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=4c1d2a53& */ "./resources/assets/js/components/Quotationclient/Index.vue?vue&type=template&id=4c1d2a53&");
 /* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/Quotationclient/Index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Index.vue?vue&type=style&index=0&lang=css& */ "./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -92583,7 +93628,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Index_vue_vue_type_template_id_4c1d2a53___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Index_vue_vue_type_template_id_4c1d2a53___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -92612,6 +93657,22 @@ component.options.__file = "resources/assets/js/components/Quotationclient/Index
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/Index.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Quotationclient/Index.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -96608,9 +97669,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   getQuotationclients: function getQuotationclients(context, data) {
     context.commit('getQuotationclients', data.page);
   },
-  getQuotationclientDetails: function getQuotationclientDetails(context) {
-    context.commit('getQuotationclientDetails');
-  },
   createQuotationclient: function createQuotationclient(context) {
     context.commit('createQuotationclient');
     setTimeout(function () {
@@ -96700,11 +97758,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   /******************************* */
 
   /******seccion de detalle****** */
+  getQuotationforms: function getQuotationforms(context) {
+    context.commit('getQuotationforms');
+  },
   showModalDetail: function showModalDetail(context, data) {
     context.commit('showModalDetail', data.id);
-    setTimeout(function () {
-      context.commit('getQuotationDetails');
-    }, 1000);
+    context.commit('getQuotationforms');
+  },
+  showModalDetailUserMechanic: function showModalDetailUserMechanic(context, data) {
+    context.commit('showModalDetailUserMechanic', data.id);
   },
   createDetail: function createDetail(context) {
     context.commit('createDetail');
@@ -96733,6 +97795,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   /******************************* */
 
   /******seccion de detalle de un cliente****** */
+  getQuotationclientDetails: function getQuotationclientDetails(context) {
+    context.commit('getQuotationclientDetails');
+  },
   showModalDetailclient: function showModalDetailclient(context, data) {
     context.commit('showModalDetailclient', data.id);
     setTimeout(function () {
@@ -97376,8 +98441,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   getMechanicClients: function getMechanicClients(context) {
     context.commit('getMechanicClients');
   },
-  createMechanicClient: function createMechanicClient(context, data) {
-    context.commit('createMechanicClient', data);
+  createMechanicClient: function createMechanicClient(context) {
+    context.commit('createMechanicClient');
     setTimeout(function () {
       context.commit('getMechanicClients');
     }, 500);
@@ -97408,8 +98473,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   setTimeout(function () {
     context.commit('getClientVehicles');
   }, 500);
+}), _defineProperty(_getVehicles$getVehic, "getQuotationUsers", function getQuotationUsers(context, data) {
+  context.commit('getQuotationUsers');
+}), _defineProperty(_getVehicles$getVehic, "getQuotationUsersMechanic", function getQuotationUsersMechanic(context) {
+  context.commit('getQuotationUsersMechanic');
 }), _defineProperty(_getVehicles$getVehic, "modalCreateUserFromQuotation", function modalCreateUserFromQuotation(context, data) {
-  context.commit('modalCreateUserFromQuotation', data);
+  context.commit('modalCreateUserFromQuotation', data.id);
+  context.commit('getQuotationUsers');
 }), _defineProperty(_getVehicles$getVehic, "juntarDatos", function juntarDatos(context) {
   context.commit('juntarDatos');
 }), _defineProperty(_getVehicles$getVehic, "crearArreglo", function crearArreglo(context) {
@@ -97729,6 +98799,7 @@ var urlRoles = 'roles';
 var urlAllRoles = 'roles-all';
 var urlUserRoles = 'usersRoles';
 var urlAllPermissions = 'permissions';
+var urlQuotationusers = 'quotationusers';
 var urlVehicle = 'vehicles';
 var urlVehicleUser = 'vehicles-user';
 var urlDetailVehicle = 'detailvehicles';
@@ -97761,6 +98832,7 @@ var urlQuotationDetails = 'quotation-details';
 var urlQuotationclient = 'quotationclients';
 var urlQuotationclientDetails = 'quotationclient-details';
 var urlQuotationPdf = 'quotation-pdf';
+var urlQuotationforms = 'quotationforms';
 var urlAllVehicleClient = 'vehicleclients-all';
 var urlQuotationimport = 'quotationimports';
 var urlQuotationimportPdf = 'quotationimport-pdf';
@@ -98387,10 +99459,6 @@ var urlCompany = 'companies';
   /****** sección detalles **** */
 
   /******************************* */
-  showModalDetail: function showModalDetail(state, id) {
-    state.idQuotation = id;
-    $('#modalQuotation').modal('show');
-  },
   createDetail: function createDetail(state) {
     var url = urlDetail;
     var priceSet = state.newDetail.price;
@@ -98576,6 +99644,24 @@ var urlCompany = 'companies';
       state.pagination = response.data.pagination;
     });
   },
+  showModalDetail: function showModalDetail(state, id) {
+    state.idforms = id;
+    $('#detalleCliente').modal('show');
+  },
+  showModalDetailUserMechanic: function showModalDetailUserMechanic(state, id) {
+    state.idforms = id;
+    $('#modalCreateUserMechanic').modal('show');
+  },
+  getQuotationforms: function getQuotationforms(state) {
+    var url = urlQuotationforms + '/' + state.idforms;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      state.quotationforms = response.data;
+    });
+  },
+  showModalDetailclient: function showModalDetailclient(state, id) {
+    state.idQuotationclient = id;
+    $('#modalQuotationclient').modal('show');
+  },
   getQuotationclientDetails: function getQuotationclientDetails(state) {
     var url = urlQuotationclientDetails + '/' + state.idQuotationclient;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
@@ -98623,8 +99709,6 @@ var urlCompany = 'companies';
         payment: ''
       };
       state.errorsLaravel = [];
-      $('#create').modal('hide');
-      $('#btn-quotation-card').click();
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Cotización formal generada con éxito');
     })["catch"](function (error) {
       state.errorsLaravel = error.response.data;
@@ -98677,10 +99761,6 @@ var urlCompany = 'companies';
   /****** sección detalles de cotizaciones de clientes**** */
 
   /******************************* */
-  showModalDetailclient: function showModalDetailclient(state, id) {
-    state.idQuotationclient = id;
-    $('#modalQuotationclient').modal('show');
-  },
   createDetailclient: function createDetailclient(state) {
     var url = urlDetailclient;
     var priceSet = "" + state.newDetailclient.price;
@@ -99478,8 +100558,6 @@ var urlCompany = 'companies';
         url: ''
       };
       state.errorsLaravel = [];
-      $('#create').modal('hide');
-      $('#btn-user-card').click();
       $('#modalCreateUser').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Usuario generado con éxito');
     })["catch"](function (error) {
@@ -100032,7 +101110,10 @@ var urlCompany = 'companies';
     });
   },
   getPendingQuotations: function getPendingQuotations(state, page) {
-    var url = urlPendingQuotations + '?page=' + page;
+    var day = state.searchQuotationClient.day;
+    var month = state.searchQuotationClient.month;
+    var year = state.searchQuotationClient.year;
+    var url = urlPendingQuotations + '?page=' + page + '&id=' + state.searchQuotationClient.id + '&client=' + state.searchQuotationClient.client_text + '&day=' + day + '&month=' + month + '&year=' + year;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.pendingQuotations = response.data.quotations.data;
       state.pagination = response.data.pagination;
@@ -100378,20 +101459,20 @@ var urlCompany = 'companies';
       });
     });
   },
-  createMechanicClient: function createMechanicClient(state, data) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('mechanic-client', {
+  createMechanicClient: function createMechanicClient(state) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('mechanic-client/' + state.idforms, {
       name: state.newUser.name,
       email: state.newUser.email,
       password: state.newUser.password
     }).then(function (response) {
       state.newUser = {
+        id: '',
         name: '',
         email: '',
         password: ''
       };
       state.errorsLaravel = [];
-      $('#create').modal('hide');
-      $('#btn-user-card').click();
+      $('#modalCreateUserMechanic').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Usuario generado con éxito');
     })["catch"](function (error) {
       state.errorsLaravel = error.response.data;
@@ -100438,9 +101519,20 @@ var urlCompany = 'companies';
       });
     }
   },
-  modalCreateUserFromQuotation: function modalCreateUserFromQuotation(state, data) {
-    state.newUser.name = data.name;
-    state.newUser.email = data.email;
+  getQuotationUsers: function getQuotationUsers(state) {
+    var url = urlQuotationusers + '/' + state.idUser;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      state.quotationusers = response.data;
+    });
+  },
+  getQuotationUsersMechanic: function getQuotationUsersMechanic(state) {
+    var url = 'quotationUserMechanic/' + state.idforms;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      state.quotationUserMechanic = response.data;
+    });
+  },
+  modalCreateUserFromQuotation: function modalCreateUserFromQuotation(state, id) {
+    state.idUser = id;
     $('#modalCreateUser').modal('show');
   },
   //AQUI COMENZAR EL EVENTO:
@@ -100794,6 +101886,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   /************************************ */
 
   /*** sección componentes de cotizaciones */
+  idforms: null,
+  quotationforms: [],
   selectedVehicleClient: {
     label: '',
     value: ''
@@ -100831,7 +101925,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     state: '',
     payment: '',
     client_text: '',
-    vehicle: ''
+    vehicle: '',
+    generado: '',
+    generado_client: ''
   },
   fillQuotationclient: {
     id: '',
@@ -101184,12 +102280,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   'last_page': 0,
   'from': 0,
   'to': 0
-}), _defineProperty(_options$optionsUser$, "offset_motor", 5), _defineProperty(_options$optionsUser$, "attachment", []), _defineProperty(_options$optionsUser$, "form", new FormData()), _defineProperty(_options$optionsUser$, "records", []), _defineProperty(_options$optionsUser$, "images", []), _defineProperty(_options$optionsUser$, "docs", []), _defineProperty(_options$optionsUser$, "links", []), _defineProperty(_options$optionsUser$, "idUser", null), _defineProperty(_options$optionsUser$, "users", []), _defineProperty(_options$optionsUser$, "user", {
+}), _defineProperty(_options$optionsUser$, "offset_motor", 5), _defineProperty(_options$optionsUser$, "attachment", []), _defineProperty(_options$optionsUser$, "form", new FormData()), _defineProperty(_options$optionsUser$, "records", []), _defineProperty(_options$optionsUser$, "images", []), _defineProperty(_options$optionsUser$, "docs", []), _defineProperty(_options$optionsUser$, "links", []), _defineProperty(_options$optionsUser$, "idUser", null), _defineProperty(_options$optionsUser$, "quotationusers", []), _defineProperty(_options$optionsUser$, "quotationUserMechanic", []), _defineProperty(_options$optionsUser$, "users", []), _defineProperty(_options$optionsUser$, "user", {
   name: '',
   email: '',
   password: '',
   logo: ''
 }), _defineProperty(_options$optionsUser$, "newUser", {
+  id: '',
   name: '',
   email: '',
   password: '',
@@ -101261,7 +102358,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\portalmecanico_copia\resources\assets\js\app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\portalmecanico_copia\resources\assets\js\app.js */"./resources/assets/js/app.js");
 
 
 /***/ })

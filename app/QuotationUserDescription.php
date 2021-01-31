@@ -10,7 +10,8 @@ class QuotationUserDescription extends Model
         'user_id',
         'vehicle_id',
         'description',
-        'is_completed'
+        'is_completed',
+        'email'
     ];
 
     public function user(){

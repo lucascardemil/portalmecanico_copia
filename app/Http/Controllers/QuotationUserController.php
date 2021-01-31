@@ -21,7 +21,64 @@ class QuotationUserController extends Controller
 
     public function index(){
 
+        // $id = request('id');
+        // $client = request('client');
+        // $day = request('day');
+        // $month = request('month');
+        // $year = request('year');
+ 
+        // $quotations = DB::table('quotation_users')
+        //                 ->join('quotation_user_vehicles', 'quotation_users.id', '=', 'quotation_user_vehicles.user_id')
+        //                 ->join('clients', 'quotation_users.client_id', '=', 'clients.id')
+        //                 ->select(
+        //                     'quotation_users.id',
+        //                     'quotation_users.state',
+        //                     'clients.rut',
+        //                     'clients.razonSocial',
+        //                     'quotation_users.name',
+        //                     'quotation_users.email',
+        //                     'quotation_users.phone',
+        //                     'quotation_users.payment',
+        //                     'quotation_user_vehicles.patentchasis',
+        //                     'quotation_user_vehicles.brand',
+        //                     'quotation_user_vehicles.model',
+        //                     'quotation_user_vehicles.year',
+        //                     'quotation_user_vehicles.engine',
+        //                     'quotation_user_vehicles.description',
+        //                     'quotation_users.created_at'
+        //                 )
+        //                 ->where('quotation_users.id', 'LIKE', '%'. $id . '%')
+        //                 ->where('quotation_users.name', 'LIKE', '%'. $client . '%')
+        //                 ->where(function($query) use ($day,$month,$year){
+        //                     if($day!=''){
+        //                         $query->whereDay('quotation_users.created_at', $day);
+        //                     }
+        //                     if($month!=''){
+        //                         $query->whereMonth('quotation_users.created_at', $month);
+        //                     }
+        //                     if($year!=''){
+        //                         $query->whereYear('quotation_users.created_at', $year);
+        //                     }
+        //                 })
+                        
+
+        //                 ->orderBy('quotation_user_vehicles.created_at', 'DESC')
+        //                 ->paginate(20);
+        // return [
+        //     'pagination' => [
+        //         'total'         => $quotations->total(),
+        //         'current_page'  => $quotations->currentPage(),
+        //         'per_page'      => $quotations->perPage(),
+        //         'last_page'     => $quotations->lastPage(),
+        //         'from'          => $quotations->firstItem(),
+        //         'to'            => $quotations->lastItem(),
+        //     ],
+        //     'quotations' => $quotations
+        // ];
+
     }
+
+    
 
     public function cotizar(){
         return view('quotation');
@@ -40,60 +97,70 @@ class QuotationUserController extends Controller
         $year         = $data['year'];
         $engine       = $data['engine'];
         $description  = $data['description'];
-        //$user_id = Auth::id();
+        $user_id_logeado = Auth::id();
 
-        $user_id = QuotationUser::firstOrCreate( 
-            [ 'email' => $email ],
+
+        $quotation_id = Quotationclient::firstOrCreate(
+        [
+            'user_id' => $user_id_logeado, //usuario alvaro por defecto
+            'client_id' => 1, //usuario particular
+            'state' => 'Pendiente',
+            'payment' => 'Contado',
+            'client_text' => $name,
+            'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
+            'generado' => 3
+        ])->id;
+
+        $user_id = QuotationUser::firstOrCreate(
             [ 
                 'name' => $name,
-                'phone' => $phone 
-            ])->id;
+                'email' => $email,
+                'phone' => $phone,
+                'quotation_id' => $quotation_id
+            ]
+        )->id;
 
-        $vehicle_id = QuotationUserVehicle::firstOrCreate(
-            [ 'patentchasis' => $patentchasis ],
-            [
+        QuotationUserVehicle::create(
+            [ 
+                'patentchasis' => $patentchasis,
                 'user_id' => $user_id,
                 'brand' => $brand,
                 'model' => $model,
                 'year' => $year,
                 'engine' => $engine,
-            ]
-        )->id;
-
-        QuotationUserDescription::create(
-        [
-            'user_id' => $user_id,
-            'vehicle_id' => $vehicle_id,
-            'patentchasis' => $patentchasis,
-            'description' => $description,
-            'is_completed' => 0
-        ]);
-
-        $client_id = Client::firstOrCreate( 
-            [ 
-                'user_id' => $user_id,
-                'name' => $name,
-                'rut' => 'CLIENTE PARTICULAR',
-                'razonSocial' => 'CLIENTE PARTICULAR',
-                'giro' => 'CLIENTE PARTICULAR',
                 'email' => $email,
-                'phone' => $phone,
-                'type' => 'Cliente'
-            ])->id;
+                'description' => $description
+            ]
+        );
 
-        Quotationclient::create(
-        [
-            'user_id' => 2, //usuario alvaro por defecto
-            'client_id' => $client_id, //usuario particular
-            'state' => 'Pendiente',
-            'payment' => 'CONTADO',
-            'client_text' => $name,
-            'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
-        ]);
+        // QuotationUserDescription::create(
+        //     [
+        //         'user_id' => $user_id,
+        //         'vehicle_id' => $vehicle_id,
+        //         'patentchasis' => $patentchasis,
+        //         'description' => $description,
+        //         'is_completed' => 0,
+        //         'email' => $email
+        //     ]);
 
-        $user = new User();
-        $user->email = 'comercialsupra4@gmail.com';
-        $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        // $client_id = Client::firstOrCreate( 
+        //     [ 
+        //         'user_id' => $user_id,
+        //         'name' => $name,
+        //         'rut' => 'CLIENTE PARTICULAR',
+        //         'razonSocial' => 'CLIENTE PARTICULAR',
+        //         'giro' => 'CLIENTE PARTICULAR',
+        //         'email' => $email,
+        //         'phone' => $phone,
+        //         'type' => 'Cliente'
+        //     ]
+        // )->id;
+
+        
+
+        // $user = new User();
+        // $user->email = 'comercialsupra4@gmail.com';
+        // $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
 
         return response()->json(
         [

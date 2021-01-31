@@ -52,6 +52,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre_product' => 'required',
+            'detalle_product' => 'required',
+            'codigo_product' => 'required',
+            'cliente_product' => 'required'
+        ], [
+            'nombre_product.required' => 'El campo nombre es obligatorio',
+            'detalle_product.required' => 'El campo detalle electrónico es obligatorio',
+            'codigo_product.required' => 'El campo codigo electrónico es obligatorio',
+            'cliente_product.required' => 'El campo cliente electrónico es obligatorio'
+        ]);
+
         $data = $request->all();
 
         $product = Product::create($data);
@@ -81,6 +93,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre_edit' => 'required',
+            'detalle_edit' => 'required'
+        ], [
+            'nombre_edit.required' => 'El campo nombre es obligatorio',
+            'detalle_edit.required' => 'El campo detalle electrónico es obligatorio'
+        ]);
+
         Product::find($id)->update($request->all());
 
         return;

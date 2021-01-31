@@ -189,13 +189,7 @@
             </li>
             @endcan
 
-            @can('simple-quotations')
-            <li id="simple-quotations" class="nav-item">
-                <a class="nav-link" href="{{ route('admin-cotizaciones') }}">
-                    <i class="fas fa-file-signature"></i>
-                    <span>Cotizaciones Simples</span></a>
-            </li>
-            @endcan
+            
 
             @can('bills')
             <li id="bills" class="nav-item">

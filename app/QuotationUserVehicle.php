@@ -12,7 +12,9 @@ class QuotationUserVehicle extends Model
         'brand',
         'model',
         'year',
-        'engine'
+        'engine',
+        'email',
+        'description'
     ];
 
     public function user(){

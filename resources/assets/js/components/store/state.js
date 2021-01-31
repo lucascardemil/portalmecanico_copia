@@ -262,6 +262,8 @@ export default { //data
     /********************************* */
     /************************************ */
     /*** sección componentes de cotizaciones */
+    idforms: null,
+    quotationforms: [],
     selectedVehicleClient: {
         label: '',
         value: ''
@@ -296,7 +298,9 @@ export default { //data
         state: '',
         payment: '',
         client_text: '',
-        vehicle: ''
+        vehicle: '',
+        generado: '',
+        generado_client: ''
     },
     fillQuotationclient: {
         id: '',
@@ -743,6 +747,8 @@ export default { //data
     /************************************ */
     /*** sección componentes de usuarios */
     idUser: null,
+    quotationusers:[],
+    quotationUserMechanic:[],
     users: [],
     user: {
         name: '',
@@ -751,6 +757,7 @@ export default { //data
         logo: ''
     },
     newUser: {
+        id: '',
         name: '',
         email: '',
         password: '',

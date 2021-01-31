@@ -284,9 +284,7 @@ export default { //methods
     getQuotationclients(context, data) {
         context.commit('getQuotationclients', data.page)
     },
-    getQuotationclientDetails(context) {
-        context.commit('getQuotationclientDetails')
-    },
+    
     createQuotationclient(context) {
         context.commit('createQuotationclient')
         setTimeout(function () {
@@ -372,11 +370,15 @@ export default { //methods
     /******************************** */
     /******************************* */
     /******seccion de detalle****** */
+    getQuotationforms(context) {
+        context.commit('getQuotationforms')
+    },
     showModalDetail(context, data) {
         context.commit('showModalDetail', data.id)
-        setTimeout(function () {
-            context.commit('getQuotationDetails')
-        }, 1000)
+        context.commit('getQuotationforms')
+    },
+    showModalDetailUserMechanic(context, data) {
+        context.commit('showModalDetailUserMechanic' , data.id)
     },
     createDetail(context) {
         context.commit('createDetail')
@@ -402,6 +404,9 @@ export default { //methods
     /******************************** */
     /******************************* */
     /******seccion de detalle de un cliente****** */
+    getQuotationclientDetails(context) {
+        context.commit('getQuotationclientDetails')
+    },
     showModalDetailclient(context, data) {
         context.commit('showModalDetailclient', data.id)
         setTimeout(function () {
@@ -1031,8 +1036,8 @@ export default { //methods
         context.commit('getMechanicClients');
     },
 
-    createMechanicClient(context, data) {
-        context.commit('createMechanicClient', data)
+    createMechanicClient(context) {
+        context.commit('createMechanicClient')
         setTimeout(function () {
             context.commit('getMechanicClients')
         }, 500)
@@ -1071,8 +1076,15 @@ export default { //methods
         }, 500)
     },
 
+    getQuotationUsers(context, data) {
+        context.commit('getQuotationUsers')
+    },
+    getQuotationUsersMechanic(context) {
+        context.commit('getQuotationUsersMechanic')
+    },
     modalCreateUserFromQuotation(context, data) {
-        context.commit('modalCreateUserFromQuotation', data)
+        context.commit('modalCreateUserFromQuotation', data.id)
+        context.commit('getQuotationUsers')
     },
 
     /******************************************************************PROCESO DE BOLETA*/
