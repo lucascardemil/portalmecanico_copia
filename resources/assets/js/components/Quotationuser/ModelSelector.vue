@@ -7,6 +7,7 @@
         :options="optionsVModel"
         :value="selectedVModel">
     </v-select>
+    
 </template>
 
 <script>

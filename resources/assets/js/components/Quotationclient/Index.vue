@@ -158,6 +158,7 @@
                             <a v-if="quotationLocal.generado == 1" class="btn btn-warning btn-sm font-weight-bold">Sin Giro Comercial</a>
                             <a v-if="quotationLocal.generado == 2" class="btn btn-primary btn-sm font-weight-bold">Con Giro Comercial</a>
                             <a v-if="quotationLocal.generado == 3" class="btn btn-success btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationLocal.id })">Formulario Cotizar</a>
+                            <a v-if="quotationLocal.generado == 4" class="btn btn-danger btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationLocal.id })">Mecanico</a>
                         </td>
                         <td>{{ quotationLocal.state }}</td>
                         <td>{{ quotationLocal.client.rut }}</td>

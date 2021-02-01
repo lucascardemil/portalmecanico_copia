@@ -18,6 +18,7 @@
                         <th>Cliente</th>
                         <th>Patente</th>
                         <th>Chasis</th>
+                        <th>Marca</th>
                         <th>Modelo</th>
                         <th>Año</th>
                         <th>Motor</th>
@@ -35,7 +36,8 @@
                         <td>{{ vehicleLocal.user.name }}</td>
                         <td>{{ vehicleLocal.patent }}</td>
                         <td>{{ vehicleLocal.chasis }}</td>
-                        <td>{{ vehicleLocal.name }}</td>
+                        <td>{{ vehicleLocal.brand }}</td>
+                        <td>{{ vehicleLocal.model }}</td>
                         <td>{{ vehicleLocal.year }}</td>
                         <td>{{ vehicleLocal.engine }}</td>
                         <td>{{ vehicleLocal.color }}</td>

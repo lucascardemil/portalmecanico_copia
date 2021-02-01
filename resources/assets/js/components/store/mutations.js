@@ -127,18 +127,15 @@ export default { //used for changing the state
             user_id: id_user,
             patent: state.newVehicle.patent,
             chasis: state.newVehicle.chasis,
-            name: state.selectedVBrand.label + ' ' + state.selectedVModel.label,
+            brand: state.selectedVBrand.label,
+            model: state.selectedVModel.label,
             year: state.selectedVYear.label,
-            // name: state.selectedVehicleBrand.label+' | '+state.selectedVehicleModel.label,
-            // year: state.newVehicle.year,
             engine: state.selectedVEngine.label,
             color: state.newVehicle.color,
             km: state.newVehicle.km,
         }).then(response => {
             state.newVehicle.patent = ''
             state.newVehicle.chasis = ''
-            // state.newVehicle.name = ''
-            // state.newVehicle.year = ''
             state.newVehicle.color = ''
             state.newVehicle.km = ''
             state.errorsLaravel = []
@@ -175,8 +172,8 @@ export default { //used for changing the state
         // state.formCotizacion.email = vehicle.user.email
         // state.formCotizacion.phone = vehicle.user.phone
         state.formCotizacion.patentchasis = vehicle.patent + '/' + vehicle.chasis
-        state.formCotizacion.brand = vehicle.name
-        state.formCotizacion.model = ''
+        state.formCotizacion.brand = vehicle.brand
+        state.formCotizacion.model = vehicle.model
         state.formCotizacion.year = vehicle.year
         state.formCotizacion.engine = vehicle.engine
 
@@ -2920,15 +2917,16 @@ export default { //used for changing the state
         if (state.selectedMechanicClient != null) {
             id_user = state.selectedMechanicClient.value
 
-            if (!state.selectedVYear.label) {
-                state.selectedVYear.label = '1'
-                state.selectedVEngine.label = 'INDEFINIDO'
-            }
+            // if (!state.selectedVYear.label) {
+            //     state.selectedVYear.label = '1'
+            //     state.selectedVEngine.label = 'INDEFINIDO'
+            // }
             axios.post('vehicles', {
                 user_id: id_user,
                 patent: state.newVehicle.patent,
                 chasis: state.newVehicle.chasis,
-                name: state.selectedVBrand.label + ' ' + state.selectedVModel.label,
+                brand: state.selectedVBrand.label,
+                model: state.selectedVModel.label,
                 year: state.selectedVYear.label,
                 engine: state.selectedVEngine.label,
                 color: state.newVehicle.color,

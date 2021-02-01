@@ -158,9 +158,9 @@ class QuotationUserController extends Controller
 
         
 
-        // $user = new User();
-        // $user->email = 'comercialsupra4@gmail.com';
-        // $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        $user = new User();
+        $user->email = 'comercialsupra4@gmail.com';
+        $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
 
         return response()->json(
         [
@@ -179,55 +179,53 @@ class QuotationUserController extends Controller
         
         $name = Auth::user()->name;
         $email = Auth::user()->email;
-        $user_id = QuotationUser::firstOrCreate([ 'email' => $email ], [ 'name' => $name])->id;
-        //$user_id = Auth::user()->id;
+        $user_id_logeado = Auth::id();
         
         $patentchasis = $data['patentchasis'];
         $brand = $data['brand'];
-        $model = ' ';
+        $model = $data['model'];
         $year = $data['year'];
         $engine = $data['engine'];
-        if (is_null($engine))
-            $engine = ' ';
         $description = $data['description'];
-
         
 
-        $vehicle_id = QuotationUserVehicle::firstOrCreate(
-            [
-                'patentchasis' => $patentchasis,
-            ],
-            [
+
+        $quotation_id = Quotationclient::firstOrCreate(
+        [
+            'user_id' => $user_id_logeado, //usuario alvaro por defecto
+            'client_id' => 1, //usuario particular
+            'state' => 'Pendiente',
+            'payment' => 'Contado',
+            'client_text' => $name,
+            'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
+            'generado' => 4
+        ])->id;
+
+        $user_id = QuotationUser::firstOrCreate(
+            [ 
+                'name' => $name,
                 'email' => $email,
+                
+                'quotation_id' => $quotation_id
+            ]
+        )->id;
+
+        QuotationUserVehicle::create(
+            [ 
+                'patentchasis' => $patentchasis,
                 'user_id' => $user_id,
                 'brand' => $brand,
                 'model' => $model,
                 'year' => $year,
                 'engine' => $engine,
+                'email' => $email,
+                'description' => $description
             ]
-        )->id;
+        );
 
-        QuotationUserDescription::create([
-            'email' => $email,
-            'user_id' => $user_id,
-            'vehicle_id' => $vehicle_id,
-            'patentchasis' => $patentchasis,
-            'description' => $description,
-            'is_completed' => 0
-        ]);
-
-        Quotationclient::create([
-            'user_id' => 2, //usuario alvaro por defecto
-            'client_id' => 1, //usuario particular
-            'state' => 'Pendiente',
-            'payment' => 'CONTADO',
-            'client_text' => $name,
-            'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
-        ]);
-
-        // $user = new User();
-        // $user->email = 'lcuelloalfa@gmail.com';
-        // $user->notify(new EmailNotificator($name, $email, 0, $patentchasis, $description));
+        $user = new User();
+        $user->email = 'comercialsupra4@gmail.com';
+        $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
 
         return response()->json([
             'valid'=> true,

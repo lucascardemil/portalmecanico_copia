@@ -7715,6 +7715,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -8031,6 +8032,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -10879,6 +10881,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -12653,6 +12657,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -57327,6 +57333,26 @@ var render = function() {
                             },
                             [_vm._v("Formulario Cotizar")]
                           )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      quotationLocal.generado == 4
+                        ? _c(
+                            "a",
+                            {
+                              staticClass:
+                                "btn btn-danger btn-sm font-weight-bold",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.showModalDetail({
+                                    id: quotationLocal.id
+                                  })
+                                }
+                              }
+                            },
+                            [_vm._v("Mecanico")]
+                          )
                         : _vm._e()
                     ]),
                     _vm._v(" "),
@@ -64751,7 +64777,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(vehicleLocal.chasis))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(vehicleLocal.name))]),
+                    _c("td", [_vm._v(_vm._s(vehicleLocal.brand))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(vehicleLocal.model))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(vehicleLocal.year))]),
                     _vm._v(" "),
@@ -65024,6 +65052,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Patente")]),
         _vm._v(" "),
         _c("th", [_vm._v("Chasis")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Marca")]),
         _vm._v(" "),
         _c("th", [_vm._v("Modelo")]),
         _vm._v(" "),
@@ -68814,7 +68844,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(vehicleLocal.chasis))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(vehicleLocal.name))]),
+                  _c("td", [_vm._v(_vm._s(vehicleLocal.brand))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(vehicleLocal.model))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(vehicleLocal.year))]),
                   _vm._v(" "),
@@ -69083,6 +69115,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Patente")]),
         _vm._v(" "),
         _c("th", [_vm._v("Chasis")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Marca")]),
         _vm._v(" "),
         _c("th", [_vm._v("Modelo")]),
         _vm._v(" "),
@@ -98894,18 +98928,15 @@ var urlCompany = 'companies';
       user_id: id_user,
       patent: state.newVehicle.patent,
       chasis: state.newVehicle.chasis,
-      name: state.selectedVBrand.label + ' ' + state.selectedVModel.label,
+      brand: state.selectedVBrand.label,
+      model: state.selectedVModel.label,
       year: state.selectedVYear.label,
-      // name: state.selectedVehicleBrand.label+' | '+state.selectedVehicleModel.label,
-      // year: state.newVehicle.year,
       engine: state.selectedVEngine.label,
       color: state.newVehicle.color,
       km: state.newVehicle.km
     }).then(function (response) {
       state.newVehicle.patent = '';
-      state.newVehicle.chasis = ''; // state.newVehicle.name = ''
-      // state.newVehicle.year = ''
-
+      state.newVehicle.chasis = '';
       state.newVehicle.color = '';
       state.newVehicle.km = '';
       state.errorsLaravel = [];
@@ -98943,8 +98974,8 @@ var urlCompany = 'companies';
     // state.formCotizacion.email = vehicle.user.email
     // state.formCotizacion.phone = vehicle.user.phone
     state.formCotizacion.patentchasis = vehicle.patent + '/' + vehicle.chasis;
-    state.formCotizacion.brand = vehicle.name;
-    state.formCotizacion.model = '';
+    state.formCotizacion.brand = vehicle.brand;
+    state.formCotizacion.model = vehicle.model;
     state.formCotizacion.year = vehicle.year;
     state.formCotizacion.engine = vehicle.engine;
     $('#requestParts').modal('show');
@@ -101490,18 +101521,17 @@ var urlCompany = 'companies';
     var id_user = null;
 
     if (state.selectedMechanicClient != null) {
-      id_user = state.selectedMechanicClient.value;
-
-      if (!state.selectedVYear.label) {
-        state.selectedVYear.label = '1';
-        state.selectedVEngine.label = 'INDEFINIDO';
-      }
+      id_user = state.selectedMechanicClient.value; // if (!state.selectedVYear.label) {
+      //     state.selectedVYear.label = '1'
+      //     state.selectedVEngine.label = 'INDEFINIDO'
+      // }
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('vehicles', {
         user_id: id_user,
         patent: state.newVehicle.patent,
         chasis: state.newVehicle.chasis,
-        name: state.selectedVBrand.label + ' ' + state.selectedVModel.label,
+        brand: state.selectedVBrand.label,
+        model: state.selectedVModel.label,
         year: state.selectedVYear.label,
         engine: state.selectedVEngine.label,
         color: state.newVehicle.color,
@@ -101738,7 +101768,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     user_id: '',
     patent: '',
     chasis: '',
-    name: '',
+    brand: '',
+    model: '',
     year: '',
     color: '',
     km: ''

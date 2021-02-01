@@ -120,7 +120,8 @@ export default { //data
         user_id: '',
         patent: '',
         chasis: '',
-        name: '',
+        brand: '',
+        model: '',
         year: '',
         color: '',
         km: ''

@@ -78,11 +78,24 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:2|max:190',
+            'patent' => 'required|min:2|max:190',
+            'chasis' => 'required|min:2|max:190',
+            'color' => 'required|min:2|max:190',
+            'km' => 'required|min:2|max:190',
+
         ], [
-            'name.required' => 'El campo nombre es obligatorio',
-            'name.min' => 'El campo nombre debe tener al menos 4 caracteres',
-            'name.max' => 'El campo nombre debe tener a lo más 190 caracteres',
+            'patent.required' => 'El campo patente es obligatorio',
+            'patent.min' => 'El campo patente debe tener al menos 4 caracteres',
+            'patent.max' => 'El campo patente debe tener a lo más 190 caracteres',
+            'chasis.required' => 'El campo chasis es obligatorio',
+            'chasis.min' => 'El campo chasis debe tener al menos 4 caracteres',
+            'chasis.max' => 'El campo chasis debe tener a lo más 190 caracteres',
+            'color.required' => 'El campo color es obligatorio',
+            'color.min' => 'El campo color debe tener al menos 4 caracteres',
+            'color.max' => 'El campo color debe tener a lo más 190 caracteres',
+            'km.required' => 'El campo km es obligatorio',
+            'km.min' => 'El campo km debe tener al menos 4 caracteres',
+            'km.max' => 'El campo km debe tener a lo más 190 caracteres',
         ]);
 
         $data = $request->all();

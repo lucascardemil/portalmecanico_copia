@@ -70,7 +70,11 @@ class QuotationclientController extends Controller
             if($rol->id == 2){
                 $data['generado'] = 1;
             }else{
-                $data['generado'] = 2;
+                if($data['client_id'] == 1){
+                    $data['generado'] = 1;
+                }else{
+                    $data['generado'] = 2;
+                }
             }  
         }
 
