@@ -101491,7 +101491,8 @@ var urlCompany = 'companies';
     });
   },
   createMechanicClient: function createMechanicClient(state) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('mechanic-client/' + state.idforms, {
+    // axios.post('mechanic-client/' + state.idforms,{
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('mechanic-client', {
       name: state.newUser.name,
       email: state.newUser.email,
       password: state.newUser.password

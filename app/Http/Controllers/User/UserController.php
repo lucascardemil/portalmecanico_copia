@@ -183,7 +183,7 @@ class UserController extends Controller
 
     public function storeclient(Request $request)
     {
-        $id = request('id');
+        //$id = request('id');
         $user = $this->store($request);
 
         $user->roles()->sync(array(0 => '3'));

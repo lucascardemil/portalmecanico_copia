@@ -140,7 +140,7 @@ Route::get('sale-products/{sale}', 'SaleController@products');
 Route::get('code-search/{code}', 'CodeController@search');
 Route::get('product-search/{code}', 'CodeController@product');
 Route::get('mechanic-clients', 'User\UserController@clients');
-Route::post('mechanic-client/{id}', 'User\UserController@storeclient');
+Route::post('mechanic-client/{id?}', 'User\UserController@storeclient');
 Route::get('client-vehicles', 'VehicleController@clientvehicles');
 
 

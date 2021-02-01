@@ -2882,7 +2882,9 @@ export default { //used for changing the state
     },
 
     createMechanicClient(state) {
-        axios.post('mechanic-client/' + state.idforms,{
+          
+        // axios.post('mechanic-client/' + state.idforms,{
+        axios.post('mechanic-client',{
             name: state.newUser.name,
             email: state.newUser.email,
             password: state.newUser.password,
