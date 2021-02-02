@@ -377,6 +377,10 @@ export default { //methods
         context.commit('showModalDetail', data.id)
         context.commit('getQuotationforms')
     },
+    showModalDetailMechanic(context, data) {
+        context.commit('showModalDetailMechanic', data.id)
+        context.commit('getQuotationforms')
+    },
     showModalDetailUserMechanic(context, data) {
         context.commit('showModalDetailUserMechanic' , data.id)
     },
@@ -413,6 +417,12 @@ export default { //methods
             context.commit('getQuotationclientDetails')
         }, 500)
     },
+    showModalDetailclientMechanic(context, data) {
+        context.commit('showModalDetailclientMechanic', data.id)
+        setTimeout(function () {
+            context.commit('getQuotationclientDetails')
+        }, 500)
+    },
     createDetailclient(context) {
         context.commit('createDetailclient')
         setTimeout(function () {
@@ -421,6 +431,9 @@ export default { //methods
     },
     editDetailclient(context, data) {
         context.commit('editDetailclient', data.detailLocal)
+    },
+    editDetailclientMechanic(context, data) {
+        context.commit('editDetailclientMechanic', data.detailLocal)
     },
     updateDetailclient(context, data) {
         context.commit('updateDetailclient', data.id)

@@ -11,7 +11,8 @@
                     </div>
                     <div class="modal-body">
                         <label for="parts">Repuestos a Solicitar</label>
-                        <textarea 
+                        <textarea
+                            :class="{'input': true, 'is-invalid': errors.has('description') }" 
                             class="form-control" 
                             v-model="formCotizacion.description"
                             style="resize:none"
@@ -19,6 +20,7 @@
                             cols="30"
                             rows="9">
                         </textarea>
+                        <p v-show="errors.has('description')" class="text-danger">{{ errors.first('description') }}</p>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">

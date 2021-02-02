@@ -198,7 +198,8 @@ class QuotationUserController extends Controller
             'payment' => 'Contado',
             'client_text' => $name,
             'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
-            'generado' => 4
+            'generado' => 4,
+            'tipo_detalle' => 1
         ])->id;
 
         $user_id = QuotationUser::firstOrCreate(
@@ -225,7 +226,7 @@ class QuotationUserController extends Controller
 
         $user = new User();
         $user->email = 'comercialsupra4@gmail.com';
-        $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        $user->notify(new EmailNotificator($name, $email, $patentchasis, $description));
 
         return response()->json([
             'valid'=> true,

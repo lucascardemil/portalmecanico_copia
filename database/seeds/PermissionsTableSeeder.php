@@ -32,7 +32,7 @@ class PermissionsTableSeeder extends Seeder
         //pagina de cotizaciones
         $quotations = Permission::create(['name' => 'quotations', 'description' => 'Modulo Cotizaciones']);
         //pagina de cotizaciones simples
-        $squotations = Permission::create(['name' => 'simple-quotations', 'description' => 'Modulo Cotizaciones Simples']);
+        //$squotations = Permission::create(['name' => 'simple-quotations', 'description' => 'Modulo Cotizaciones Simples']);
         //pagina de importaciones
         $imports = Permission::create(['name' => 'imports', 'description' => 'Modulo Importaciones']);
         //pagina de usuarios
@@ -55,7 +55,7 @@ class PermissionsTableSeeder extends Seeder
                 $notes,
                 $sales,
                 $quotations,
-                $squotations,
+                //$squotations,
                 $imports,
                 $users,
                 $musers,

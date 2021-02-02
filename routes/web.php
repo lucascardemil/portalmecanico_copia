@@ -104,6 +104,7 @@ Route::ApiResource('archiveimports', 'ArchiveimportController');
 Route::ApiResource('details', 'DetailController');
 Route::ApiResource('detailclients', 'DetailclientController');
 
+
 Route::ApiResource('clients', 'ClientController');
 Route::get('clients-all', 'ClientController@all');
 

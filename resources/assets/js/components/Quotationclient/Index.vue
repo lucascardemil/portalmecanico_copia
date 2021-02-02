@@ -158,7 +158,7 @@
                             <a v-if="quotationLocal.generado == 1" class="btn btn-warning btn-sm font-weight-bold">Sin Giro Comercial</a>
                             <a v-if="quotationLocal.generado == 2" class="btn btn-primary btn-sm font-weight-bold">Con Giro Comercial</a>
                             <a v-if="quotationLocal.generado == 3" class="btn btn-success btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationLocal.id })">Formulario Cotizar</a>
-                            <a v-if="quotationLocal.generado == 4" class="btn btn-danger btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationLocal.id })">Mecanico</a>
+                            <a v-if="quotationLocal.generado == 4" class="btn btn-danger btn-sm font-weight-bold" type="button" @click.prevent="showModalDetailMechanic({ id: quotationLocal.id })">Repuestos A Solicitar</a>
                         </td>
                         <td>{{ quotationLocal.state }}</td>
                         <td>{{ quotationLocal.client.rut }}</td>
@@ -187,8 +187,17 @@
                             </a>
                              
             
-                            <a href="#" class="btn btn-info btn-sm"
+                            <a href="#" v-if="quotationLocal.tipo_detalle == 0" class="btn btn-info btn-sm"
                                 @click.prevent="showModalDetailclient({ id: quotationLocal.id })"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Detalle">
+                                <i class="far fa-plus-square"></i>
+                                Detalle
+                            </a>
+
+                            <a href="#" v-if="quotationLocal.tipo_detalle == 1" class="btn btn-info btn-sm"
+                                @click.prevent="showModalDetailclientMechanic({ id: quotationLocal.id })"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Detalle">
@@ -252,7 +261,10 @@
         <CreateUserMechanic></CreateUserMechanic>
         <DetalleCliente></DetalleCliente>
         <Detalle></Detalle>
+        <DetalleMechanic></DetalleMechanic>
+        <DetalleClienteMechanic></DetalleClienteMechanic>
         <DetalleEditarC></DetalleEditarC>
+        <DetalleEditarCM></DetalleEditarCM>
         <EliminarCotizacionCliente></EliminarCotizacionCliente>
 
     </div>
@@ -265,8 +277,11 @@
 import { loadProgressBar } from 'axios-progress-bar'
 import SelectClient from '../Client/Select'
 import DetalleCliente from './DetalleCliente'
+import DetalleMechanic from './DetalleMechanic'
+import DetalleClienteMechanic from './DetalleClienteMechanic'
 import Detalle from './Detalle'
 import DetalleEditarC from './DetalleEditar'
+import DetalleEditarCM from './DetalleEditarMechanic'
 import CreateUserMechanic from './CreateUserMechanic'
 import EliminarCotizacionCliente from './Eliminar'
 import CreateUser from '../Quotation/CreateUser'
@@ -279,13 +294,13 @@ import YearSelector from '../Quotationuser/YearSelector'
 import EngineSelector from '../Quotationuser/EngineSelector'
 
 export default {
-    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, EliminarCotizacionCliente, CreateUser, CreateUserMechanic },
+    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, DetalleEditarCM, EliminarCotizacionCliente, CreateUser, CreateUserMechanic, DetalleMechanic, DetalleClienteMechanic },
     computed:{
         ...mapState(['quotationclients','newQuotationclient', 'searchQuotationClient','pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
-        ...mapActions(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailUserMechanic',
+        ...mapActions(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailMechanic', 'showModalDetailUserMechanic', 'showModalDetailclientMechanic',
                         'showModalDeleteQuotationclient', 'changePageQuotationclient', 'modalCreateUserFromQuotation'])
     },
     created(){

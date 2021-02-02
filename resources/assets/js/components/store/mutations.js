@@ -906,6 +906,10 @@ export default { //used for changing the state
         state.idforms = id
         $('#detalleCliente').modal('show')
     },
+    showModalDetailMechanic(state, id) {
+        state.idforms = id
+        $('#detalleClienteMechanic').modal('show')
+    },
 
     showModalDetailUserMechanic(state, id) {
         state.idforms = id
@@ -920,6 +924,10 @@ export default { //used for changing the state
     showModalDetailclient(state, id) {
         state.idQuotationclient = id
         $('#modalQuotationclient').modal('show')
+    },
+    showModalDetailclientMechanic(state, id) {
+        state.idQuotationclient = id
+        $('#modalQuotationclientMechanic').modal('show')
     },
     getQuotationclientDetails(state) {
         var url = urlQuotationclientDetails + '/' + state.idQuotationclient
@@ -1076,6 +1084,23 @@ export default { //used for changing the state
         state.fillDetailclient.days = detailclient.days
 
         $("#editDetailClient").modal('show')
+    },
+    editDetailclientMechanic(state, detailclient) {
+        state.fillDetailclient.id = detailclient.id
+        state.fillDetailclient.quotationclient_id = detailclient.quotationclient_id
+        state.fillDetailclient.product = detailclient.product
+        state.fillDetailclient.detail = detailclient.detail
+        state.fillDetailclient.price = detailclient.price
+        // state.fillDetailclient.quantity = detailclient.quantity
+        // state.fillDetailclient.percentage = detailclient.percentage
+        // state.fillDetailclient.aditional = detailclient.aditional
+        // state.fillDetailclient.transport = detailclient.transport
+        // state.fillDetailclient.utility = detailclient.utility
+        state.fillDetailclient.total = detailclient.total
+        state.fillDetailclient.totalIVA = Math.round(detailclient.total * 1.19)
+        state.fillDetailclient.days = detailclient.days
+
+        $("#editDetailClientMechanic").modal('show')
     },
     updateDetailclient(state, id) {
         var url = urlDetailclient + '/' + id

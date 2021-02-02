@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\Quotationclient;
+use App\QuotationUser;
+use App\QuotationUserVehicle;
 use App\VehicleModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -20,29 +22,36 @@ class QuotationclientController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        // if($user_id == 1 || $user_id == 2)
-        //     $quotationclients = Quotationclient::with('client')->orderBy('id', 'DESC')->paginate(10);
-        // else
-        $quotationclients = Quotationclient::with('client')
-                                ->whereHas('client', function ($q) {
-                                    $q->razonsocial();
-                                })
-                                ->id()
-                                ->date()
-                                ->orderBy('id', 'DESC')->where('user_id', '=', $user_id)
-                                ->paginate(10);
+        if($user_id == 1)
+            $quotationclients = Quotationclient::with('client')
+                                    ->whereHas('client', function ($q) {
+                                        $q->razonsocial();
+                                    })
+                                    ->id()
+                                    ->date()
+                                    ->orderBy('id', 'DESC')
+                                    ->paginate(10);
+        else
+            $quotationclients = Quotationclient::with('client')
+                                    ->whereHas('client', function ($q) {
+                                        $q->razonsocial();
+                                    })
+                                    ->id()
+                                    ->date()
+                                    ->orderBy('id', 'DESC')->where('user_id', '=', $user_id)
+                                    ->paginate(10);
 
-        return [
-            'pagination' => [
-                'total'         => $quotationclients->total(),
-                'current_page'  => $quotationclients->currentPage(),
-                'per_page'      => $quotationclients->perPage(),
-                'last_page'     => $quotationclients->lastPage(),
-                'from'          => $quotationclients->firstItem(),
-                'to'            => $quotationclients->lastItem(),
-            ],
-            'quotationclients' => $quotationclients
-        ];
+            return [
+                'pagination' => [
+                    'total'         => $quotationclients->total(),
+                    'current_page'  => $quotationclients->currentPage(),
+                    'per_page'      => $quotationclients->perPage(),
+                    'last_page'     => $quotationclients->lastPage(),
+                    'from'          => $quotationclients->firstItem(),
+                    'to'            => $quotationclients->lastItem(),
+                ],
+                'quotationclients' => $quotationclients
+            ];
 
     }
 
@@ -69,6 +78,7 @@ class QuotationclientController extends Controller
         foreach ($roles as $rol) {
             if($rol->id == 2){
                 $data['generado'] = 1;
+                $data['tipo_detalle'] = 1;
             }else{
                 if($data['client_id'] == 1){
                     $data['generado'] = 1;
@@ -120,6 +130,11 @@ class QuotationclientController extends Controller
     public function destroy($id)
     {
         $quotationclient = Quotationclient::findOrFail($id);
+        $quotationuser = QuotationUser::where('quotation_id', '=' , $quotationclient->id)->firstOrFail();
+        $quotationuservehicle = QuotationUserVehicle::where('user_id', '=' , $quotationuser->id)->firstOrFail();
+        
+        $quotationuservehicle->delete();
+        $quotationuser->delete();
         $quotationclient->delete();
 
         return;
@@ -209,4 +224,6 @@ class QuotationclientController extends Controller
         return $quotationform;
         
     }
+
+    
 }
