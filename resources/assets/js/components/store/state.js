@@ -299,6 +299,7 @@ export default { //data
         state: '',
         payment: '',
         client_text: '',
+        cliente_part: '',
         vehicle: '',
         generado: '',
         generado_client: ''

@@ -100,16 +100,19 @@ class QuotationUserController extends Controller
         $user_id_logeado = Auth::id();
 
 
-        $quotation_id = Quotationclient::firstOrCreate(
-        [
-            'user_id' => $user_id_logeado, //usuario alvaro por defecto
-            'client_id' => 1, //usuario particular
-            'state' => 'Pendiente',
-            'payment' => 'Contado',
-            'client_text' => $name,
-            'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
-            'generado' => 3
-        ])->id;
+        $clients = Client::where('user_id', '=', $user_id_logeado)->where('type', '=', 'Cliente Particular')->get();
+        foreach ($clients as $client) {
+            $quotation_id = Quotationclient::firstOrCreate(
+            [
+                'user_id' => $user_id_logeado, //usuario alvaro por defecto
+                'client_id' => $client->id, //usuario particular
+                'state' => 'Pendiente',
+                'payment' => 'Contado',
+                'client_text' => $name,
+                'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
+                'generado' => 3
+            ])->id;
+        }
 
         $user_id = QuotationUser::firstOrCreate(
             [ 
@@ -187,20 +190,24 @@ class QuotationUserController extends Controller
         $year = $data['year'];
         $engine = $data['engine'];
         $description = $data['description'];
-        
+        $phone = '';
 
 
-        $quotation_id = Quotationclient::firstOrCreate(
-        [
-            'user_id' => $user_id_logeado, //usuario alvaro por defecto
-            'client_id' => 1, //usuario particular
-            'state' => 'Pendiente',
-            'payment' => 'Contado',
-            'client_text' => $name,
-            'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
-            'generado' => 4,
-            'tipo_detalle' => 1
-        ])->id;
+
+        $clients = Client::where('user_id', '=', $user_id_logeado)->where('type', '=', 'Cliente Particular')->get();
+        foreach ($clients as $client) {
+            $quotation_id = Quotationclient::firstOrCreate(
+            [
+                'user_id' => $user_id_logeado, //usuario alvaro por defecto
+                'client_id' => $client->id, //usuario particular
+                'state' => 'Pendiente',
+                'payment' => 'Contado',
+                'client_text' => $name,
+                'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
+                'generado' => 4,
+                'tipo_detalle' => 1
+            ])->id;
+        }
 
         $user_id = QuotationUser::firstOrCreate(
             [ 
@@ -226,7 +233,7 @@ class QuotationUserController extends Controller
 
         $user = new User();
         $user->email = 'comercialsupra4@gmail.com';
-        $user->notify(new EmailNotificator($name, $email, $patentchasis, $description));
+        $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
 
         return response()->json([
             'valid'=> true,

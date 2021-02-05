@@ -3,6 +3,7 @@
         <v-select
             :class="{'input': true, 'is-invalid': errors.has('cliente') }"
             name="cliente"
+            v-bind:disabled="newQuotationclient.cliente_part === true ? true : false"
             placeholder="Seleccionar Cliente"
             @input="setClient"
             :options="optionsClient"
@@ -17,7 +18,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
     computed:{
-        ...mapState(['optionsClient', 'selectedClient']),
+        ...mapState(['optionsClient', 'newQuotationclient','selectedClient']),
         ...mapGetters(['getClient'])
     },
     methods:{

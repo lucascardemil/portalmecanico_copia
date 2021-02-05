@@ -17,7 +17,8 @@ class ClientController extends Controller
     {
         $idUser = Auth::id();
         $clients = Client::whereHas('user', function ($query) use($idUser) {
-            $query->where('id', '=', $idUser);
+            $query->where('id', '=', $idUser)
+                  ->where('clients.type', '<>', 'Cliente Particular');
         })->orderBy('id', 'DESC')
         ->with('activities')
         ->paginate(10);
@@ -96,7 +97,8 @@ class ClientController extends Controller
     {
         $idUser = Auth::id();
         $client = Client::whereHas('user', function ($query) use($idUser) {
-            $query->where('id', '=', $idUser);
+            $query->where('id', '=', $idUser)
+                  ->where('clients.type', '<>', 'Cliente Particular');
         })->type()->orderBy('id', 'DESC')->get();
 
         return $client;

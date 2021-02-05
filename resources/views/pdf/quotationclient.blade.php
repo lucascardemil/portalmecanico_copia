@@ -17,9 +17,16 @@
                     style="border-top-color:white!important;
                     border-left-color:white!important;
                     paddding-top:10px;">
-                    <span style="font-size:14px">COMERCIAL SUPRA E.I.R.L</span>
+                    <span style="font-size:14px">
+                    @if($client->type == 'Cliente Particular')
+                    {{ 'COMERCIAL SUPRA E.I.R.L' }}</span>
                     <br>
-                    <span>Repuestos Automotrices, Repuestos Maquinarias, Importaciones</span>
+                    <span>{{ $client->giro ? $client->giro : 'Repuestos Automotrices, Repuestos Maquinarias, Importaciones'}}</span>
+                    @else
+                    {{ $client->razonSocial ? $client->razonSocial :  'COMERCIAL SUPRA E.I.R.L' }}</span>
+                    <br>
+                    <span>{{ $client->giro ? $client->giro : 'Repuestos Automotrices, Repuestos Maquinarias, Importaciones'}}</span>
+                    @endif
                     <br>
                     <br>
                 </td>
@@ -44,6 +51,9 @@
             <tr>
                 <td COLSPAN="12"
                     style="font-size:14px;padding:10px!important;border-radius:10px">
+                    @if($client->type == 'Cliente Particular')
+                    <span>Sr: </span> <b><span>{{ $quotation->client_text }}</span></b>
+                    @else
                     <span>Sr: </span> <b><span>{{ $client->name }}</span></b>
                     <br>
                     <span>Empresa: </span> <b><span>{{ $client->razonSocial }}</span></b>
@@ -57,6 +67,7 @@
                     <span>E-mail: </span> <b><span>{{ $client->email }}</span></b>
                     <br>
                     <span>Teléfono: </span> <b><span>{{ $client->phone }}</span></b>
+                    @endif
                 </td>
                 <!--<td COLSPAN="2" style="font-size:13px">
                     <span>Sr: </span> <b><span>Álvaro Pérez</span></b>

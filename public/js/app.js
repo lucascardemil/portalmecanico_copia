@@ -3350,9 +3350,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsClient', 'selectedClient'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getClient'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsClient', 'newQuotationclient', 'selectedClient'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getClient'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['setClient'])),
   created: function created() {
     this.$store.dispatch('allClients', {
@@ -8032,9 +8033,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
 //
 //
 //
@@ -46759,6 +46757,7 @@ var render = function() {
         class: { input: true, "is-invalid": _vm.errors.has("cliente") },
         attrs: {
           name: "cliente",
+          disabled: _vm.newQuotationclient.cliente_part === true ? true : false,
           placeholder: "Seleccionar Cliente",
           options: _vm.optionsClient,
           value: _vm.selectedClient
@@ -58632,6 +58631,88 @@ var render = function() {
                     [
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "col-6" }, [
+                          _c("div", { staticClass: "col-12 mb-3" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.newQuotationclient.cliente_part,
+                                  expression: "newQuotationclient.cliente_part"
+                                }
+                              ],
+                              class: {
+                                input: true,
+                                "is-invalid": _vm.errors.has("cliente_part")
+                              },
+                              attrs: { type: "checkbox", name: "cliente_part" },
+                              domProps: {
+                                checked: Array.isArray(
+                                  _vm.newQuotationclient.cliente_part
+                                )
+                                  ? _vm._i(
+                                      _vm.newQuotationclient.cliente_part,
+                                      null
+                                    ) > -1
+                                  : _vm.newQuotationclient.cliente_part
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.newQuotationclient.cliente_part,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.newQuotationclient,
+                                          "cliente_part",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.newQuotationclient,
+                                          "cliente_part",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(
+                                      _vm.newQuotationclient,
+                                      "cliente_part",
+                                      $$c
+                                    )
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: "cliente" } }, [
+                              _vm._v("Cliente Particular")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.errors.has("cliente_part"),
+                                    expression: "errors.has('cliente_part')"
+                                  }
+                                ],
+                                staticClass: "text-danger"
+                              },
+                              [_vm._v(_vm._s(_vm.errors.first("cliente_part")))]
+                            )
+                          ]),
+                          _vm._v(" "),
                           _c(
                             "div",
                             { staticClass: "col-12 mb-3" },
@@ -101742,11 +101823,17 @@ var urlCompany = 'companies';
   },
   createQuotationclient: function createQuotationclient(state) {
     var url = urlQuotationclient;
+
+    if (state.newQuotationclient.cliente_part == true) {
+      state.selectedClient.value = 1;
+    }
+
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
       client_id: state.selectedClient.value,
       state: 'Pendiente',
       payment: state.newQuotationclient.payment,
       client_text: state.newQuotationclient.client_text,
+      cliente_part: state.newQuotationclient.cliente_part,
       vehicle: state.selectedVBrand.label + ' ' + state.selectedVModel.label + ' ' + state.selectedVYear.label + ' ' + state.selectedVEngine.label
     }).then(function (response) {
       state.newQuotationclient = {
@@ -103988,6 +104075,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     state: '',
     payment: '',
     client_text: '',
+    cliente_part: '',
     vehicle: '',
     generado: '',
     generado_client: ''

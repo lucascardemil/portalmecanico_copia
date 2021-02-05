@@ -15,9 +15,16 @@
                     style="border-top-color:white!important;
                     border-left-color:white!important;
                     paddding-top:10px;">
-                    <span style="font-size:14px">COMERCIAL SUPRA E.I.R.L</span>
+                    <span style="font-size:14px">
+                    <?php if($client->type == 'Cliente Particular'): ?>
+                    <?php echo e('COMERCIAL SUPRA E.I.R.L'); ?></span>
                     <br>
-                    <span>Repuestos Automotrices, Repuestos Maquinarias, Importaciones</span>
+                    <span><?php echo e($client->giro ? $client->giro : 'Repuestos Automotrices, Repuestos Maquinarias, Importaciones'); ?></span>
+                    <?php else: ?>
+                    <?php echo e($client->razonSocial ? $client->razonSocial :  'COMERCIAL SUPRA E.I.R.L'); ?></span>
+                    <br>
+                    <span><?php echo e($client->giro ? $client->giro : 'Repuestos Automotrices, Repuestos Maquinarias, Importaciones'); ?></span>
+                    <?php endif; ?>
                     <br>
                     <br>
                 </td>
@@ -42,6 +49,9 @@
             <tr>
                 <td COLSPAN="12"
                     style="font-size:14px;padding:10px!important;border-radius:10px">
+                    <?php if($client->type == 'Cliente Particular'): ?>
+                    <span>Sr: </span> <b><span><?php echo e($quotation->client_text); ?></span></b>
+                    <?php else: ?>
                     <span>Sr: </span> <b><span><?php echo e($client->name); ?></span></b>
                     <br>
                     <span>Empresa: </span> <b><span><?php echo e($client->razonSocial); ?></span></b>
@@ -55,6 +65,7 @@
                     <span>E-mail: </span> <b><span><?php echo e($client->email); ?></span></b>
                     <br>
                     <span>Teléfono: </span> <b><span><?php echo e($client->phone); ?></span></b>
+                    <?php endif; ?>
                 </td>
                 <!--<td COLSPAN="2" style="font-size:13px">
                     <span>Sr: </span> <b><span>Álvaro Pérez</span></b>

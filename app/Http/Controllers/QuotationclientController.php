@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\User;
+use App\Client;
 use App\Quotationclient;
 use App\QuotationUser;
 use App\QuotationUserVehicle;
@@ -66,7 +67,7 @@ class QuotationclientController extends Controller
     {
         $data = $request->all();
 
-        $data['user_id'] = \Auth::user()->id;
+        //$data['user_id'] = \Auth::user()->id;
 
         $roles = DB::table('roles')
             ->join('model_has_roles', 'roles.id', '=', 'model_has_roles.role_id')
@@ -76,7 +77,7 @@ class QuotationclientController extends Controller
             ->get();
 
         foreach ($roles as $rol) {
-            if($rol->id == 2){
+            if($rol->id == 2 && $data['cliente_part'] == true){
                 $data['generado'] = 1;
                 $data['tipo_detalle'] = 1;
             }else{
@@ -88,9 +89,74 @@ class QuotationclientController extends Controller
             }  
         }
 
-        $quotationclient = Quotationclient::create($data);
+        
 
-        return $quotationclient->id;
+
+        $client = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->first();
+        if ($client === null) {
+            if($data['cliente_part'] == true){
+                $client_id = Client::create(
+                    [
+                        'user_id' => \Auth::user()->id,
+                        'name' => 'CLIENTE PARTICULAR',
+                        'razonSocial' => 'CLIENTE PARTICULAR',
+                        'type' => 'Cliente Particular'
+                    ])->id;
+                
+                $quotation_id = Quotationclient::create(
+                    [
+                        'user_id' => \Auth::user()->id,
+                        'client_id' => $client_id,
+                        'state' => 'Pendiente',
+                        'payment' => 'Contado',
+                        'client_text' => $data['client_text'],
+                        'vehicle' => $data['vehicle'],
+                        'generado' => $data['generado']
+                    ])->id; 
+            }else{
+                $quotation_id = Quotationclient::create(
+                    [
+                        'user_id' => \Auth::user()->id,
+                        'client_id' => $data['client_id'],
+                        'state' => 'Pendiente',
+                        'payment' => 'Contado',
+                        'client_text' => $data['client_text'],
+                        'vehicle' => $data['vehicle'],
+                        'generado' => $data['generado']
+                    ])->id; 
+            }
+        }else{
+            if($data['cliente_part'] == true){
+                $clients = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
+                foreach ($clients as $client) {
+                    $quotation_id = Quotationclient::create(
+                        [
+                            'user_id' => \Auth::user()->id,
+                            'client_id' => $client->id,
+                            'state' => 'Pendiente',
+                            'payment' => 'Contado',
+                            'client_text' => $data['client_text'],
+                            'vehicle' => $data['vehicle'],
+                            'generado' => $data['generado']
+                        ])->id;
+                }
+            }else{
+                $quotation_id = Quotationclient::create(
+                    [
+                        'user_id' => \Auth::user()->id,
+                        'client_id' => $data['client_id'],
+                        'state' => 'Pendiente',
+                        'payment' => 'Contado',
+                        'client_text' => $data['client_text'],
+                        'vehicle' => $data['vehicle'],
+                        'generado' => $data['generado']
+                    ])->id; 
+            }   
+        }
+        
+        return $quotation_id;
+
+        //$quotationclient = Quotationclient::create($data);
     }
 
     /**
@@ -130,13 +196,18 @@ class QuotationclientController extends Controller
     public function destroy($id)
     {
         $quotationclient = Quotationclient::findOrFail($id);
-        $quotationuser = QuotationUser::where('quotation_id', '=' , $quotationclient->id)->firstOrFail();
-        $quotationuservehicle = QuotationUserVehicle::where('user_id', '=' , $quotationuser->id)->firstOrFail();
-        
-        $quotationuservehicle->delete();
-        $quotationuser->delete();
-        $quotationclient->delete();
+        $quotationuser = QuotationUser::where('quotation_id', '=' , $quotationclient->id)->first();
 
+        if($quotationuser === null){
+            $quotationclient->delete();
+        }else{
+            $quotationuser = QuotationUser::where('quotation_id', '=' , $quotationclient->id)->firstOrFail();
+            $quotationuservehicle = QuotationUserVehicle::where('user_id', '=' , $quotationuser->id)->firstOrFail();
+            $quotationuservehicle->delete();
+            $quotationuser->delete();
+            $quotationclient->delete();
+        }
+    
         return;
     }
 

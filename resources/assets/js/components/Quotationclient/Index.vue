@@ -24,12 +24,23 @@
                                 <div class="row">
                                     
                                     <div class="col-6">
+                                        <div class="col-12 mb-3">
+                                            <input 
+                                                   :class="{'input': true, 'is-invalid': errors.has('cliente_part') }"
+                                                   type="checkbox" 
+                                                   name="cliente_part"
+                                                   v-model="newQuotationclient.cliente_part">
+                                            <label for="cliente">Cliente Particular</label>
+                                            <p v-show="errors.has('cliente_part')" class="text-danger">{{ errors.first('cliente_part') }}</p>
+                                        </div>
 
                                         <div class="col-12 mb-3">
                                             <label for="cliente">Cliente</label>
                                             <SelectClient></SelectClient>
                                         </div>
 
+                                        
+                                    
                                         <div class="col-12 mb-3">
                                             <label for="cliente">Nombre Cliente</label>
                                             <input v-validate="'min:2'"
@@ -58,18 +69,6 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-
-                                        <!--<div class="col-lg-3">
-                                            <label for="vehiculo">Vehículo</label>
-                                            <input v-validate="'min:2'"
-                                                    :class="{'input': true, 'is-invalid': errors.has('vehiculo') }"
-                                                    type="text"
-                                                    name="vehiculo"
-                                                    class="form-control" v-model="newQuotationclient.vehicle">
-                                            <p v-show="errors.has('vehiculo')" class="text-danger">{{ errors.first('vehiculo') }}</p>
-                                        </div>-->
-
-
                                         <div class="row">
                                             <div class="col mb-3">
                                                 <label for="marca">Marca</label>
@@ -88,12 +87,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-
                                             <div class="col mb-3">
                                                 <label for="engine">Motor</label>
                                                 <EngineSelector/>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>

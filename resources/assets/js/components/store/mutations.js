@@ -962,11 +962,15 @@ export default { //used for changing the state
     },
     createQuotationclient(state) {
         var url = urlQuotationclient
+        if(state.newQuotationclient.cliente_part == true){
+            state.selectedClient.value = 1
+        }
         axios.post(url, {
             client_id: state.selectedClient.value,
             state: 'Pendiente',
             payment: state.newQuotationclient.payment,
             client_text: state.newQuotationclient.client_text,
+            cliente_part: state.newQuotationclient.cliente_part,
             vehicle: state.selectedVBrand.label + ' ' + state.selectedVModel.label + ' ' +  state.selectedVYear.label + ' ' +  state.selectedVEngine.label
         }).then(response => {
             state.newQuotationclient = {
