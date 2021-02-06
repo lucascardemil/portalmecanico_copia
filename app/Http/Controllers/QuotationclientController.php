@@ -89,70 +89,34 @@ class QuotationclientController extends Controller
             }  
         }
 
-        
 
-
-        $client = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->first();
-        if ($client === null) {
-            if($data['cliente_part'] == true){
-                $client_id = Client::create(
+        if($data['cliente_part'] == true){
+            $clients = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
+            foreach ($clients as $client) {
+                $quotation_id = Quotationclient::create(
                     [
                         'user_id' => \Auth::user()->id,
-                        'name' => 'CLIENTE PARTICULAR',
-                        'razonSocial' => 'CLIENTE PARTICULAR',
-                        'type' => 'Cliente Particular'
+                        'client_id' => $client->id,
+                        'state' => 'Pendiente',
+                        'payment' => 'Contado',
+                        'client_text' => $data['client_text'],
+                        'vehicle' => $data['vehicle'],
+                        'generado' => $data['generado']
                     ])->id;
-                
-                $quotation_id = Quotationclient::create(
-                    [
-                        'user_id' => \Auth::user()->id,
-                        'client_id' => $client_id,
-                        'state' => 'Pendiente',
-                        'payment' => 'Contado',
-                        'client_text' => $data['client_text'],
-                        'vehicle' => $data['vehicle'],
-                        'generado' => $data['generado']
-                    ])->id; 
-            }else{
-                $quotation_id = Quotationclient::create(
-                    [
-                        'user_id' => \Auth::user()->id,
-                        'client_id' => $data['client_id'],
-                        'state' => 'Pendiente',
-                        'payment' => 'Contado',
-                        'client_text' => $data['client_text'],
-                        'vehicle' => $data['vehicle'],
-                        'generado' => $data['generado']
-                    ])->id; 
             }
         }else{
-            if($data['cliente_part'] == true){
-                $clients = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
-                foreach ($clients as $client) {
-                    $quotation_id = Quotationclient::create(
-                        [
-                            'user_id' => \Auth::user()->id,
-                            'client_id' => $client->id,
-                            'state' => 'Pendiente',
-                            'payment' => 'Contado',
-                            'client_text' => $data['client_text'],
-                            'vehicle' => $data['vehicle'],
-                            'generado' => $data['generado']
-                        ])->id;
-                }
-            }else{
-                $quotation_id = Quotationclient::create(
-                    [
-                        'user_id' => \Auth::user()->id,
-                        'client_id' => $data['client_id'],
-                        'state' => 'Pendiente',
-                        'payment' => 'Contado',
-                        'client_text' => $data['client_text'],
-                        'vehicle' => $data['vehicle'],
-                        'generado' => $data['generado']
-                    ])->id; 
-            }   
-        }
+            $quotation_id = Quotationclient::create(
+                [
+                    'user_id' => \Auth::user()->id,
+                    'client_id' => $data['client_id'],
+                    'state' => 'Pendiente',
+                    'payment' => 'Contado',
+                    'client_text' => $data['client_text'],
+                    'vehicle' => $data['vehicle'],
+                    'generado' => $data['generado']
+                ])->id; 
+        }   
+        
         
         return $quotation_id;
 

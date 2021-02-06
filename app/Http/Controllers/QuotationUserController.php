@@ -102,6 +102,7 @@ class QuotationUserController extends Controller
 
         $clients = Client::where('user_id', '=', $user_id_logeado)->where('type', '=', 'Cliente Particular')->get();
         foreach ($clients as $client) {
+            
             $quotation_id = Quotationclient::firstOrCreate(
             [
                 'user_id' => $user_id_logeado, //usuario alvaro por defecto
@@ -112,29 +113,30 @@ class QuotationUserController extends Controller
                 'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
                 'generado' => 3
             ])->id;
+        
+
+            $user_id = QuotationUser::firstOrCreate(
+                [ 
+                    'name' => $name,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'quotation_id' => $quotation_id
+                ]
+            )->id;
+
+            QuotationUserVehicle::create(
+                [ 
+                    'patentchasis' => $patentchasis,
+                    'user_id' => $user_id,
+                    'brand' => $brand,
+                    'model' => $model,
+                    'year' => $year,
+                    'engine' => $engine,
+                    'email' => $email,
+                    'description' => $description
+                ]
+            );
         }
-
-        $user_id = QuotationUser::firstOrCreate(
-            [ 
-                'name' => $name,
-                'email' => $email,
-                'phone' => $phone,
-                'quotation_id' => $quotation_id
-            ]
-        )->id;
-
-        QuotationUserVehicle::create(
-            [ 
-                'patentchasis' => $patentchasis,
-                'user_id' => $user_id,
-                'brand' => $brand,
-                'model' => $model,
-                'year' => $year,
-                'engine' => $engine,
-                'email' => $email,
-                'description' => $description
-            ]
-        );
 
         // QuotationUserDescription::create(
         //     [
@@ -194,7 +196,8 @@ class QuotationUserController extends Controller
 
 
 
-        $clients = Client::where('user_id', '=', $user_id_logeado)->where('type', '=', 'Cliente Particular')->get();
+        
+        $clients = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
         foreach ($clients as $client) {
             $quotation_id = Quotationclient::firstOrCreate(
             [
@@ -207,29 +210,30 @@ class QuotationUserController extends Controller
                 'generado' => 4,
                 'tipo_detalle' => 1
             ])->id;
+        
+
+            $user_id = QuotationUser::firstOrCreate(
+                [ 
+                    'name' => $name,
+                    'email' => $email,
+                    
+                    'quotation_id' => $quotation_id
+                ]
+            )->id;
+
+            QuotationUserVehicle::create(
+                [ 
+                    'patentchasis' => $patentchasis,
+                    'user_id' => $user_id,
+                    'brand' => $brand,
+                    'model' => $model,
+                    'year' => $year,
+                    'engine' => $engine,
+                    'email' => $email,
+                    'description' => $description
+                ]
+            );
         }
-
-        $user_id = QuotationUser::firstOrCreate(
-            [ 
-                'name' => $name,
-                'email' => $email,
-                
-                'quotation_id' => $quotation_id
-            ]
-        )->id;
-
-        QuotationUserVehicle::create(
-            [ 
-                'patentchasis' => $patentchasis,
-                'user_id' => $user_id,
-                'brand' => $brand,
-                'model' => $model,
-                'year' => $year,
-                'engine' => $engine,
-                'email' => $email,
-                'description' => $description
-            ]
-        );
 
         $user = new User();
         $user->email = 'comercialsupra4@gmail.com';

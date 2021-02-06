@@ -59,19 +59,19 @@ class LoginController extends Controller
 
     //     if (password_verify($request->password, optional($user)->password)) {
     //         $this->clearLoginAttempts($request);
-            
-            
+
+
 
     //             $user->update(['token' => (new Google2FA)->generateSecretKey()]);
 
     //             $urlQR = $this->createUserUrlQR($user);
-            
-            
+
+
     //         return view("auth.2fa", compact('urlQR', 'user'));
     //     }
-        
+
     //     $this->incrementLoginAttempts($request);
-        
+
     //     return $this->sendFailedLoginResponse($request);
     // }
 
@@ -122,7 +122,7 @@ class LoginController extends Controller
     //         (new Google2FA)->getQRCodeUrl(
     //             config('app.name'),
     //             $user->email,
-    //             $user->token 
+    //             $user->token
     //         ), 'utf-8');
 
     //     return 'data:image/png;base64,' . base64_encode($data);
