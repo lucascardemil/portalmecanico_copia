@@ -103,7 +103,7 @@ class QuotationUserController extends Controller
         $clients = Client::where('user_id', '=', $user_id_logeado)->where('type', '=', 'Cliente Particular')->get();
         foreach ($clients as $client) {
             
-            $quotation_id = Quotationclient::firstOrCreate(
+            $quotation_id = Quotationclient::create(
             [
                 'user_id' => $user_id_logeado, //usuario alvaro por defecto
                 'client_id' => $client->id, //usuario particular
@@ -115,7 +115,7 @@ class QuotationUserController extends Controller
             ])->id;
         
 
-            $user_id = QuotationUser::firstOrCreate(
+            $user_id = QuotationUser::create(
                 [ 
                     'name' => $name,
                     'email' => $email,
@@ -199,7 +199,8 @@ class QuotationUserController extends Controller
         
         $clients = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
         foreach ($clients as $client) {
-            $quotation_id = Quotationclient::firstOrCreate(
+            
+            $quotation_id = Quotationclient::create(
             [
                 'user_id' => $user_id_logeado, //usuario alvaro por defecto
                 'client_id' => $client->id, //usuario particular
@@ -210,9 +211,8 @@ class QuotationUserController extends Controller
                 'generado' => 4,
                 'tipo_detalle' => 1
             ])->id;
-        
 
-            $user_id = QuotationUser::firstOrCreate(
+            $user_id = QuotationUser::create(
                 [ 
                     'name' => $name,
                     'email' => $email,
