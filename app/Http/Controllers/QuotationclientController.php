@@ -67,7 +67,7 @@ class QuotationclientController extends Controller
     {
         $data = $request->all();
 
-        //$data['user_id'] = \Auth::user()->id;
+        $data['user_id'] = \Auth::user()->id;
 
         $roles = DB::table('roles')
             ->join('model_has_roles', 'roles.id', '=', 'model_has_roles.role_id')
@@ -77,7 +77,7 @@ class QuotationclientController extends Controller
             ->get();
 
         foreach ($roles as $rol) {
-            if($rol->id == 2 && $data['cliente_part'] == true){
+            if($rol->id == 2 && isset($data['cliente_part'])){
                 $data['generado'] = 1;
                 $data['tipo_detalle'] = 1;
             }else{
@@ -90,7 +90,7 @@ class QuotationclientController extends Controller
         }
 
 
-        if($data['cliente_part'] == true){
+        if(isset($data['cliente_part'])){
             $clients = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
             foreach ($clients as $client) {
                 $quotation_id = Quotationclient::create(

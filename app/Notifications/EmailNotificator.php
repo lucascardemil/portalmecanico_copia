@@ -60,7 +60,7 @@ class EmailNotificator extends Notification
             ->line('Teléfono: '.$this->phone)
             ->line('Patente o Chasis: '.$this->patentchasis)
             ->line('Repuestos a solicitar: '.$this->description)
-            ->action('Ir a PortalApp', url('/admin-cotizaciones'))
+            ->action('Ir a PortalApp', url('/admin-cotizaciones-formales'))
 /*             ->line('Thank you for using our application!') */
             ->salutation('Saludos');
     }

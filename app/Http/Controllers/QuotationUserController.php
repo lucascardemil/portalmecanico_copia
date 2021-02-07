@@ -20,62 +20,7 @@ class QuotationUserController extends Controller
     use Notifiable;
 
     public function index(){
-
-        // $id = request('id');
-        // $client = request('client');
-        // $day = request('day');
-        // $month = request('month');
-        // $year = request('year');
- 
-        // $quotations = DB::table('quotation_users')
-        //                 ->join('quotation_user_vehicles', 'quotation_users.id', '=', 'quotation_user_vehicles.user_id')
-        //                 ->join('clients', 'quotation_users.client_id', '=', 'clients.id')
-        //                 ->select(
-        //                     'quotation_users.id',
-        //                     'quotation_users.state',
-        //                     'clients.rut',
-        //                     'clients.razonSocial',
-        //                     'quotation_users.name',
-        //                     'quotation_users.email',
-        //                     'quotation_users.phone',
-        //                     'quotation_users.payment',
-        //                     'quotation_user_vehicles.patentchasis',
-        //                     'quotation_user_vehicles.brand',
-        //                     'quotation_user_vehicles.model',
-        //                     'quotation_user_vehicles.year',
-        //                     'quotation_user_vehicles.engine',
-        //                     'quotation_user_vehicles.description',
-        //                     'quotation_users.created_at'
-        //                 )
-        //                 ->where('quotation_users.id', 'LIKE', '%'. $id . '%')
-        //                 ->where('quotation_users.name', 'LIKE', '%'. $client . '%')
-        //                 ->where(function($query) use ($day,$month,$year){
-        //                     if($day!=''){
-        //                         $query->whereDay('quotation_users.created_at', $day);
-        //                     }
-        //                     if($month!=''){
-        //                         $query->whereMonth('quotation_users.created_at', $month);
-        //                     }
-        //                     if($year!=''){
-        //                         $query->whereYear('quotation_users.created_at', $year);
-        //                     }
-        //                 })
-                        
-
-        //                 ->orderBy('quotation_user_vehicles.created_at', 'DESC')
-        //                 ->paginate(20);
-        // return [
-        //     'pagination' => [
-        //         'total'         => $quotations->total(),
-        //         'current_page'  => $quotations->currentPage(),
-        //         'per_page'      => $quotations->perPage(),
-        //         'last_page'     => $quotations->lastPage(),
-        //         'from'          => $quotations->firstItem(),
-        //         'to'            => $quotations->lastItem(),
-        //     ],
-        //     'quotations' => $quotations
-        // ];
-
+        //
     }
 
     
@@ -137,31 +82,6 @@ class QuotationUserController extends Controller
                 ]
             );
         }
-
-        // QuotationUserDescription::create(
-        //     [
-        //         'user_id' => $user_id,
-        //         'vehicle_id' => $vehicle_id,
-        //         'patentchasis' => $patentchasis,
-        //         'description' => $description,
-        //         'is_completed' => 0,
-        //         'email' => $email
-        //     ]);
-
-        // $client_id = Client::firstOrCreate( 
-        //     [ 
-        //         'user_id' => $user_id,
-        //         'name' => $name,
-        //         'rut' => 'CLIENTE PARTICULAR',
-        //         'razonSocial' => 'CLIENTE PARTICULAR',
-        //         'giro' => 'CLIENTE PARTICULAR',
-        //         'email' => $email,
-        //         'phone' => $phone,
-        //         'type' => 'Cliente'
-        //     ]
-        // )->id;
-
-        
 
         $user = new User();
         $user->email = 'comercialsupra4@gmail.com';
