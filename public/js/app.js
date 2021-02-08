@@ -11106,7 +11106,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65839,7 +65838,7 @@ var render = function() {
               "table",
               {
                 staticClass:
-                  "table table-hover table-striped mt-3 table-sm bg-primary text-white"
+                  "table table-hover table-striped mt-3 table-sm bg-dark text-white"
               },
               [
                 _vm._m(1),
@@ -65935,8 +65934,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Nota")]),
         _vm._v(" "),
         _c("th", [_vm._v("Fecha")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" ")]),
         _vm._v(" "),
         _c("th", [_vm._v(" ")])
       ])
@@ -66380,7 +66377,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("form", [
     _c("div", { staticClass: "modal fade", attrs: { id: "photo" } }, [
-      _c("div", { staticClass: "modal-dialog" }, [
+      _c("div", { staticClass: "modal-dialog modal-lg" }, [
         _c("div", { staticClass: "modal-content" }, [
           _vm._m(0),
           _vm._v(" "),
@@ -66394,13 +66391,13 @@ var render = function() {
                     "div",
                     {
                       key: imageLocal.id,
-                      staticClass: "col-lg-4 col-sm-12 mb-2"
+                      staticClass: "col-lg-12 col-sm-12 mb-2"
                     },
                     [
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-danger btn-sm",
+                          staticClass: "btn btn-danger btn-lg btn-block",
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -66408,16 +66405,16 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("X\n                            ")]
+                        [
+                          _vm._v(
+                            "Eliminar Imagen\n                            "
+                          )
+                        ]
                       ),
                       _vm._v(" "),
-                      _c("div", [
+                      _c("div", { staticClass: "mt-2" }, [
                         _c("img", {
-                          attrs: {
-                            src: imageLocal.url,
-                            width: "350",
-                            height: "350"
-                          }
+                          attrs: { src: imageLocal.url, width: "100%" }
                         })
                       ])
                     ]
@@ -66429,7 +66426,7 @@ var render = function() {
                     "div",
                     {
                       key: docLocal.id,
-                      staticClass: "col-lg-6 col-sm-12 mb-2"
+                      staticClass: "col-lg-12 col-sm-12 mb-2"
                     },
                     [
                       _c(

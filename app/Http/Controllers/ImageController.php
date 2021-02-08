@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Image;
+use App\DetailVehicle;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
@@ -63,9 +64,9 @@ class ImageController extends Controller
     public function destroy($id)
     {
         $image = Image::findOrFail($id);
-        $filename = str_replace(url('/storage'), "", $image->url);
+        $filename = str_replace(url('storage/vehicles/'), "", $image->url);
 
-        unlink( storage_path().$filename );
+        unlink( storage_path('app/public/vehicles/').$filename );
 
 
         // unlink(storage_path('img/vehicles/') . $filename );
@@ -86,15 +87,15 @@ class ImageController extends Controller
 
         foreach ($uploadedFile as $file){
             $filename = time().'.'.$file->getClientOriginalExtension();
-            $path = storage_path('img/vehicles/'.$filename);
+            $path = storage_path('app/public/vehicles/'.$filename);
             $img = $manager->make($file->getRealPath());
-            $img->resize(800,800, function($constraint){
+            $img->resize(1000,1000, function($constraint){
                 $constraint->aspectRatio();
             })->save($path);
             //url de comercialsupra.cl/registro
-            $url = url('storage/img/vehicles/'.$filename);
+            //$url = url('storage/img/vehicles/'.$filename);
             //url original sin subcarpeta
-            //$url = url('img/vehicles/'.$filename);
+            $url = url('storage/vehicles/'.$filename);
             Image::create(['detail_vehicle_id' => $id, 'url' => $url]);
 
             array_push($arreglo, $path);

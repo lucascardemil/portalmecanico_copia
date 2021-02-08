@@ -12,14 +12,13 @@
                     </div>
                     <div class="modal-body">
 
-                        <table class="table table-hover table-striped mt-3 table-sm bg-primary text-white">
+                        <table class="table table-hover table-striped mt-3 table-sm bg-dark text-white">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Kilometraje</th>
                                     <th>Nota</th>
                                     <th>Fecha</th>
-                                    <th>&nbsp;</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
