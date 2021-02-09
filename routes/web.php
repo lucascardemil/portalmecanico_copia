@@ -14,6 +14,7 @@
 use App\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 //administrador de recursos para los roles
 Route::ApiResource('roles', 'Role\RoleController');
@@ -148,6 +149,18 @@ Route::get('client-vehicles', 'VehicleController@clientvehicles');
 //seccion cotizacion
 Route::get('/cotizar', 'QuotationUserController@cotizar');
 Route::post('/upload', 'ImageController@upload');
+
+Route::get('storage-link', function(){
+    if(file_exists(public_path('storage'))){
+        return 'El directorio"public/storage" ya existe.';
+    }
+
+    app('files')->link(
+        storage_path('app/public'), public_path('storage')
+    );
+
+    return 'El directorio "public/storage" ha sido vinculado';
+});
 
 Route::get('/', function(){
     return view('error_ip');
