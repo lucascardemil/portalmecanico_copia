@@ -59218,20 +59218,22 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-primary btn-sm",
-                          attrs: {
-                            href: quotationLocal.url,
-                            target: "_blank",
-                            "data-toggle": "tooltip",
-                            "data-placeemnt": "top",
-                            title: "Messenger"
-                          }
-                        },
-                        [_c("i", { staticClass: "fab fa-facebook-f" })]
-                      ),
+                      quotationLocal.url != ""
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-primary btn-sm",
+                              attrs: {
+                                href: quotationLocal.url,
+                                target: "_blank",
+                                "data-toggle": "tooltip",
+                                "data-placeemnt": "top",
+                                title: "Messenger"
+                              }
+                            },
+                            [_c("i", { staticClass: "fab fa-facebook-f" })]
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
                       quotationLocal.generado == 3
                         ? _c(

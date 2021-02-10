@@ -174,7 +174,7 @@
                         <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY H:MM A') }}</td>
                         <td>
 
-                            <a :href="quotationLocal.url" class="btn btn-primary btn-sm" target="_blank"
+                            <a :href="quotationLocal.url" v-if="quotationLocal.url != ''" class="btn btn-primary btn-sm" target="_blank"
                                 data-toggle="tooltip"
                                 data-placeemnt="top"
                                 title="Messenger">
