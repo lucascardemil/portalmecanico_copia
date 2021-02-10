@@ -21,17 +21,17 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <form action="POST" v-on:submit.prevent="createQuotationclient">
+                                
                                 <div class="row">
-                                    
                                     <div class="col-6">
                                         <div class="col-12 mb-3">
                                             <input 
-                                                   :class="{'input': true, 'is-invalid': errors.has('cliente_part') }"
+                                            
                                                    type="checkbox" 
                                                    name="cliente_part"
                                                    v-model="newQuotationclient.cliente_part">
                                             <label for="cliente">Cliente Particular</label>
-                                            <p v-show="errors.has('cliente_part')" class="text-danger">{{ errors.first('cliente_part') }}</p>
+                                            
                                         </div>
 
                                         <div class="col-12 mb-3">
@@ -42,27 +42,36 @@
                                         
                                     
                                         <div class="col-12 mb-3">
-                                            <label for="cliente">Nombre Cliente</label>
-                                            <input v-validate="'min:2'"
-                                                    :class="{'input': true, 'is-invalid': errors.has('cliente') }"
+                                            <label for="nombre">Nombre Cliente</label>
+                                            <input v-validate="'required'"
+                                                    :class="{'input': true, 'is-invalid': errors.has('nombre') }"
                                                     type="text"
-                                                    name="cliente"
+                                                    name="nombre"
                                                     class="form-control" v-model="newQuotationclient.client_text">
-                                            <p v-show="errors.has('cliente')" class="text-danger">{{ errors.first('cliente') }}</p>
+                                            <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
+                                            
+                                        </div>
+                                        
+                                        <div class="col-12 mb-3">
+                                            <label for="url">URL</label>
+                                            <input 
+                                                    type="text"
+                                                    name="url"
+                                                    class="form-control" v-model="newQuotationclient.url">
                                         </div>
 
                                         <div class="col-12 mb-3">
                                             <label for="pago">Forma de Pago</label>
-                                            <input v-validate="'min:4'"
+                                            <input v-validate="'required'"
                                                     :class="{'input': true, 'is-invalid': errors.has('pago') }"
                                                     type="text"
                                                     name="pago"
                                                     class="form-control" v-model="newQuotationclient.payment">
                                             <p v-show="errors.has('pago')" class="text-danger">{{ errors.first('pago') }}</p>
+                                            
                                         </div>
 
                                         <div class="col-12">
-                                            <label></label>
                                             <button type="submit" class="btn btn-success form-control">
                                                 <i class="fas fa-plus-square"></i> Guardar
                                             </button>
@@ -162,8 +171,15 @@
                         <td>{{ quotationLocal.client.razonSocial }}</td>
                         <td>{{ quotationLocal.client_text }}</td>
                         <td>{{ quotationLocal.vehicle }}</td>
-                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY') }}</td>
+                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY H:MM A') }}</td>
                         <td>
+
+                            <a :href="quotationLocal.url" class="btn btn-primary btn-sm" target="_blank"
+                                data-toggle="tooltip"
+                                data-placeemnt="top"
+                                title="Messenger">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
 
                             
                            

@@ -971,12 +971,15 @@ export default { //used for changing the state
             payment: state.newQuotationclient.payment,
             client_text: state.newQuotationclient.client_text,
             cliente_part: state.newQuotationclient.cliente_part,
+            url: state.newQuotationclient.url,
             vehicle: state.selectedVBrand.label + ' ' + state.selectedVModel.label + ' ' +  state.selectedVYear.label + ' ' +  state.selectedVEngine.label
         }).then(response => {
             state.newQuotationclient = {
                 client_id: '',
+                client_text: '',
                 state: '',
-                payment: ''
+                payment: '',
+                url:''
             }
             state.errorsLaravel = []
             toastr.success('Cotización formal generada con éxito')

@@ -8304,6 +8304,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48985,7 +49001,7 @@ var staticRenderFns = [
             {
               staticClass: "btn btn-block text-left p-3",
               attrs: {
-                id: "btn-detailclient-card",
+                id: "btn-detailclient-card-import",
                 "data-toggle": "collapse",
                 "data-target": "#collapseOne",
                 "aria-expanded": "true",
@@ -56331,7 +56347,7 @@ var staticRenderFns = [
             {
               staticClass: "btn btn-block text-left p-3",
               attrs: {
-                id: "btn-detailclient-card",
+                id: "btn-detailclient-card-quotation",
                 "data-toggle": "collapse",
                 "data-target": "#collapseOne",
                 "aria-expanded": "true",
@@ -58419,7 +58435,7 @@ var staticRenderFns = [
             {
               staticClass: "btn btn-block text-left p-3",
               attrs: {
-                id: "btn-detailclient-card",
+                id: "btn-detailclient-card-mechanic",
                 "data-toggle": "collapse",
                 "data-target": "#collapseOne",
                 "aria-expanded": "true",
@@ -58640,10 +58656,6 @@ var render = function() {
                                   expression: "newQuotationclient.cliente_part"
                                 }
                               ],
-                              class: {
-                                input: true,
-                                "is-invalid": _vm.errors.has("cliente_part")
-                              },
                               attrs: { type: "checkbox", name: "cliente_part" },
                               domProps: {
                                 checked: Array.isArray(
@@ -58693,23 +58705,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("label", { attrs: { for: "cliente" } }, [
                               _vm._v("Cliente Particular")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.errors.has("cliente_part"),
-                                    expression: "errors.has('cliente_part')"
-                                  }
-                                ],
-                                staticClass: "text-danger"
-                              },
-                              [_vm._v(_vm._s(_vm.errors.first("cliente_part")))]
-                            )
+                            ])
                           ]),
                           _vm._v(" "),
                           _c(
@@ -58726,7 +58722,7 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-12 mb-3" }, [
-                            _c("label", { attrs: { for: "cliente" } }, [
+                            _c("label", { attrs: { for: "nombre" } }, [
                               _vm._v("Nombre Cliente")
                             ]),
                             _vm._v(" "),
@@ -58735,8 +58731,8 @@ var render = function() {
                                 {
                                   name: "validate",
                                   rawName: "v-validate",
-                                  value: "min:2",
-                                  expression: "'min:2'"
+                                  value: "required",
+                                  expression: "'required'"
                                 },
                                 {
                                   name: "model",
@@ -58748,9 +58744,9 @@ var render = function() {
                               staticClass: "form-control",
                               class: {
                                 input: true,
-                                "is-invalid": _vm.errors.has("cliente")
+                                "is-invalid": _vm.errors.has("nombre")
                               },
-                              attrs: { type: "text", name: "cliente" },
+                              attrs: { type: "text", name: "nombre" },
                               domProps: {
                                 value: _vm.newQuotationclient.client_text
                               },
@@ -58775,14 +58771,46 @@ var render = function() {
                                   {
                                     name: "show",
                                     rawName: "v-show",
-                                    value: _vm.errors.has("cliente"),
-                                    expression: "errors.has('cliente')"
+                                    value: _vm.errors.has("nombre"),
+                                    expression: "errors.has('nombre')"
                                   }
                                 ],
                                 staticClass: "text-danger"
                               },
-                              [_vm._v(_vm._s(_vm.errors.first("cliente")))]
+                              [_vm._v(_vm._s(_vm.errors.first("nombre")))]
                             )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-12 mb-3" }, [
+                            _c("label", { attrs: { for: "url" } }, [
+                              _vm._v("URL")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.newQuotationclient.url,
+                                  expression: "newQuotationclient.url"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { type: "text", name: "url" },
+                              domProps: { value: _vm.newQuotationclient.url },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.newQuotationclient,
+                                    "url",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-12 mb-3" }, [
@@ -58795,8 +58823,8 @@ var render = function() {
                                 {
                                   name: "validate",
                                   rawName: "v-validate",
-                                  value: "min:4",
-                                  expression: "'min:4'"
+                                  value: "required",
+                                  expression: "'required'"
                                 },
                                 {
                                   name: "model",
@@ -59183,13 +59211,28 @@ var render = function() {
                         _vm._s(
                           _vm._f("moment")(
                             quotationLocal.created_at,
-                            "DD/MM/YYYY"
+                            "DD/MM/YYYY H:MM A"
                           )
                         )
                       )
                     ]),
                     _vm._v(" "),
                     _c("td", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary btn-sm",
+                          attrs: {
+                            href: quotationLocal.url,
+                            target: "_blank",
+                            "data-toggle": "tooltip",
+                            "data-placeemnt": "top",
+                            title: "Messenger"
+                          }
+                        },
+                        [_c("i", { staticClass: "fab fa-facebook-f" })]
+                      ),
+                      _vm._v(" "),
                       quotationLocal.generado == 3
                         ? _c(
                             "a",
@@ -59514,8 +59557,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12" }, [
-      _c("label"),
-      _vm._v(" "),
       _c(
         "button",
         {
@@ -101831,12 +101872,15 @@ var urlCompany = 'companies';
       payment: state.newQuotationclient.payment,
       client_text: state.newQuotationclient.client_text,
       cliente_part: state.newQuotationclient.cliente_part,
+      url: state.newQuotationclient.url,
       vehicle: state.selectedVBrand.label + ' ' + state.selectedVModel.label + ' ' + state.selectedVYear.label + ' ' + state.selectedVEngine.label
     }).then(function (response) {
       state.newQuotationclient = {
         client_id: '',
+        client_text: '',
         state: '',
-        payment: ''
+        payment: '',
+        url: ''
       };
       state.errorsLaravel = [];
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Cotización formal generada con éxito');
@@ -104073,6 +104117,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     payment: '',
     client_text: '',
     cliente_part: '',
+    url: '',
     vehicle: '',
     generado: '',
     generado_client: ''

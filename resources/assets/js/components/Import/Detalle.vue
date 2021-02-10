@@ -232,7 +232,7 @@
 
                                         <div class="card-header p-0" id="headingOne">
                                         <h5 class="mb-0">
-                                            <button id="btn-detailclient-card"
+                                            <button id="btn-detailclient-card-import"
                                                 class="btn btn-block text-left p-3"
                                                 data-toggle="collapse" data-target="#collapseOne"
                                                 aria-expanded="true" aria-controls="collapseOne">

@@ -300,6 +300,7 @@ export default { //data
         payment: '',
         client_text: '',
         cliente_part: '',
+        url: '',
         vehicle: '',
         generado: '',
         generado_client: ''

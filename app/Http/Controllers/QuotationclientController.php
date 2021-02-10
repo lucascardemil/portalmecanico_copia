@@ -65,6 +65,7 @@ class QuotationclientController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->all();
 
         $data['user_id'] = \Auth::user()->id;
@@ -101,7 +102,8 @@ class QuotationclientController extends Controller
                         'payment' => 'Contado',
                         'client_text' => $data['client_text'],
                         'vehicle' => $data['vehicle'],
-                        'generado' => $data['generado']
+                        'generado' => $data['generado'],
+                        'url' => $data['url']
                     ])->id;
             }
         }else{
@@ -113,7 +115,8 @@ class QuotationclientController extends Controller
                     'payment' => 'Contado',
                     'client_text' => $data['client_text'],
                     'vehicle' => $data['vehicle'],
-                    'generado' => $data['generado']
+                    'generado' => $data['generado'],
+                    'url' => $data['url']
                 ])->id; 
         }   
         
