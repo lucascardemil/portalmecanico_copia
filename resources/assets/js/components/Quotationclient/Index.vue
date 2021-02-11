@@ -171,7 +171,7 @@
                         <td>{{ quotationLocal.client.razonSocial }}</td>
                         <td>{{ quotationLocal.client_text }}</td>
                         <td>{{ quotationLocal.vehicle }}</td>
-                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY H:MM A') }}</td>
+                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY h:mm a') }}</td>
                         <td>
 
                             <a :href="quotationLocal.url" v-if="quotationLocal.url != ''" class="btn btn-primary btn-sm" target="_blank"

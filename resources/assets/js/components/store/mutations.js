@@ -983,6 +983,7 @@ export default { //used for changing the state
             }
             state.errorsLaravel = []
             toastr.success('Cotización formal generada con éxito')
+            event.target.reset();
         }).catch(error => {
             state.errorsLaravel = error.response.data
         })

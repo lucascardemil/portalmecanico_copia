@@ -59211,7 +59211,7 @@ var render = function() {
                         _vm._s(
                           _vm._f("moment")(
                             quotationLocal.created_at,
-                            "DD/MM/YYYY H:MM A"
+                            "DD/MM/YYYY h:mm a"
                           )
                         )
                       )
@@ -101886,6 +101886,7 @@ var urlCompany = 'companies';
       };
       state.errorsLaravel = [];
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Cotización formal generada con éxito');
+      event.target.reset();
     })["catch"](function (error) {
       state.errorsLaravel = error.response.data;
     });
