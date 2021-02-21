@@ -41,6 +41,7 @@ Vue.component('notes-component', require('./components/Note/Index.vue').default)
 Vue.component('quotations-component', require('./components/Quotation/Index.vue').default)
 Vue.component('quotationsclient-component', require('./components/Quotationclient/Index.vue').default)
 Vue.component('quotationuser-component', require('./components/Quotationuser/Index.vue').default)
+Vue.component('quotationexpress-component', require('./components/Quotationexpress/Index.vue').default)
 
 Vue.component('imports-component', require('./components/Import/Index.vue').default)
 

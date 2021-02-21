@@ -294,6 +294,7 @@ export default { //data
     /************************************ */
     /*** sección componentes de cotizaciones para clientes*/
     quotationclients: [],
+    quotationclientsform: [],
     newQuotationclient: {
         client_id: '',
         state: '',
@@ -314,6 +315,13 @@ export default { //data
         vehicle: ''
     },
     searchQuotationClient: {
+        id: '',
+        client_text: '',
+        day: '',
+        month: '',
+        year: ''
+    },
+    searchQuotationClientForm: {
         id: '',
         client_text: '',
         day: '',
@@ -354,6 +362,15 @@ export default { //data
         name: '',
         email: '',
         phone: '',
+        patentchasis: '',
+        brand: '',
+        model: '',
+        year: '',
+        engine: '',
+        description: ''
+    },
+
+    formCotizacionExpress: {
         patentchasis: '',
         brand: '',
         model: '',

@@ -284,6 +284,9 @@ export default { //methods
     getQuotationclients(context, data) {
         context.commit('getQuotationclients', data.page)
     },
+    getQuotationclientsform(context, data) {
+        context.commit('getQuotationclientsform', data.page)
+    },
     
     createQuotationclient(context) {
         context.commit('createQuotationclient')
@@ -926,6 +929,10 @@ export default { //methods
                 context.commit('setVEngine', {label:'', value:''}) 
                 */
 
+    },
+
+    createQuotationUserExpress(context, data) {
+        context.commit('createQuotationUserExpress', data)
     },
     getPendingQuotations(context, data) {
         context.commit('getPendingQuotations', data)

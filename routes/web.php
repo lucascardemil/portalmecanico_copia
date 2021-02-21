@@ -73,6 +73,7 @@ Route::get('vyears-all/{model}', 'VehicleYearController@all');
 Route::ApiResource('vengines', 'VehicleEngineController');
 Route::get('vengines-all/{year}', 'VehicleEngineController@all');
 Route::ApiResource('quotationuser', 'QuotationUserController');
+Route::post('quotationuserexpress', 'QuotationUserController@storeUserExpress');
 Route::post('quotation-mechanic', 'QuotationUserController@storeMechanic');
 Route::ApiResource('pendingquotations', 'QuotationUserController');
 
@@ -84,6 +85,7 @@ Route::ApiResource('quotations', 'QuotationController');
 Route::get('quotation-details/{id}', 'QuotationController@details');
 
 Route::ApiResource('quotationclients', 'QuotationclientController');
+Route::get('quotationclientsform', 'QuotationclientController@clientsform');
 Route::get('quotationclient-details/{id}', 'QuotationclientController@details');
 Route::get('quotationforms/{id}', 'QuotationclientController@forms');
 Route::get('quotationusers/{id}', 'QuotationclientController@forms');
@@ -148,6 +150,7 @@ Route::get('client-vehicles', 'VehicleController@clientvehicles');
 
 //seccion cotizacion
 Route::get('/cotizar', 'QuotationUserController@cotizar');
+Route::get('/cotizar-express', 'QuotationUserController@cotizar_express');
 Route::post('/upload', 'ImageController@upload');
 
 Route::get('storage-link', function(){

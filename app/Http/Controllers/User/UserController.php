@@ -129,6 +129,7 @@ class UserController extends Controller
         //$data['rut'] = Rut::parse($data['rut'])->format();
         //$data['password'] = bcrypt(Rut::parse($data['rut'])->format(Rut::FORMAT_ESCAPED));
         $data['password'] = bcrypt( $data['password'] );
+        $data['url'] = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
 
         User::find($id)->update($data);
 

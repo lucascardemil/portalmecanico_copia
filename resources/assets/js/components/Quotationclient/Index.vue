@@ -163,7 +163,7 @@
                         <td>
                             <a v-if="quotationLocal.generado == 1" class="btn btn-warning btn-sm font-weight-bold">Sin Giro Comercial</a>
                             <a v-if="quotationLocal.generado == 2" class="btn btn-primary btn-sm font-weight-bold">Con Giro Comercial</a>
-                            <a v-if="quotationLocal.generado == 3" class="btn btn-success btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationLocal.id })">Formulario Cotizar</a>
+                            <!-- <a v-if="quotationLocal.generado == 3" class="btn btn-success btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationLocal.id })">Formulario Cotizar</a> -->
                             <a v-if="quotationLocal.generado == 4" class="btn btn-danger btn-sm font-weight-bold" type="button" @click.prevent="showModalDetailMechanic({ id: quotationLocal.id })">Repuestos A Solicitar</a>
                         </td>
                         <td>{{ quotationLocal.state }}</td>
@@ -171,7 +171,7 @@
                         <td>{{ quotationLocal.client.razonSocial }}</td>
                         <td>{{ quotationLocal.client_text }}</td>
                         <td>{{ quotationLocal.vehicle }}</td>
-                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY h:mm a') }}</td>
+                        <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY H:mm a') }}</td>
                         <td>
 
                             <a :href="quotationLocal.url" v-if="quotationLocal.url != ''" class="btn btn-primary btn-sm" target="_blank"
@@ -270,6 +270,11 @@
                 </li>
             </ul>
         </nav>
+
+        
+        <ListarClientesForm></ListarClientesForm>
+
+
         <CreateUser></CreateUser>
         <CreateUserMechanic></CreateUserMechanic>
         <DetalleCliente></DetalleCliente>
@@ -298,6 +303,7 @@ import DetalleEditarCM from './DetalleEditarMechanic'
 import CreateUserMechanic from './CreateUserMechanic'
 import EliminarCotizacionCliente from './Eliminar'
 import CreateUser from '../Quotation/CreateUser'
+import ListarClientesForm from './ListarClientesForm'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 
@@ -307,19 +313,20 @@ import YearSelector from '../Quotationuser/YearSelector'
 import EngineSelector from '../Quotationuser/EngineSelector'
 
 export default {
-    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, DetalleEditarCM, EliminarCotizacionCliente, CreateUser, CreateUserMechanic, DetalleMechanic, DetalleClienteMechanic },
+    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, DetalleEditarCM, EliminarCotizacionCliente, CreateUser, CreateUserMechanic, DetalleMechanic, DetalleClienteMechanic, ListarClientesForm },
     computed:{
-        ...mapState(['quotationclients','newQuotationclient', 'searchQuotationClient','pagination', 'offset', 'errorsLaravel']),
+        ...mapState(['quotationclients','quotationclientsform' ,'newQuotationclient', 'searchQuotationClient','pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
-        ...mapActions(['getQuotationclients', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailMechanic', 'showModalDetailUserMechanic', 'showModalDetailclientMechanic',
+        ...mapActions(['getQuotationclients', 'getQuotationclientsform', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailMechanic', 'showModalDetailUserMechanic', 'showModalDetailclientMechanic',
                         'showModalDeleteQuotationclient', 'changePageQuotationclient', 'modalCreateUserFromQuotation'])
     },
     created(){
         loadProgressBar();
         this.$store.dispatch('getQuotationclients', { page: 1 })
     }
+
 }
 </script>
 

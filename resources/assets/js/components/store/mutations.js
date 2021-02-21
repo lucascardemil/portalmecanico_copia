@@ -47,6 +47,7 @@ var urlMM = 'mm-all'
 var urlYM = 'ym-all'
 
 var urlCreateQuotationUser = 'quotationuser'
+var urlCreateQuotationUserExpress = 'quotationuserexpress'
 var urlPendingQuotations = 'pendingquotations'
 
 var urlNote = 'notes'
@@ -54,6 +55,7 @@ var urlNote = 'notes'
 var urlQuotation = 'quotations'
 var urlQuotationDetails = 'quotation-details'
 var urlQuotationclient = 'quotationclients'
+var urlQuotationclientform = 'quotationclientsform'
 var urlQuotationclientDetails = 'quotationclient-details'
 var urlQuotationPdf = 'quotation-pdf'
 var urlQuotationforms = 'quotationforms'
@@ -902,6 +904,22 @@ export default { //used for changing the state
             state.pagination = response.data.pagination
         });
     },
+
+    getQuotationclientsform(state, page) {
+        var day = state.searchQuotationClientForm.day
+        var month = state.searchQuotationClientForm.month
+        var year = state.searchQuotationClientForm.year
+
+        var url = urlQuotationclientform + '?page=' + page + '&id=' + state.searchQuotationClientForm.id + '&client=' + state.searchQuotationClientForm.client_text + '&day=' + day + '&month=' + month + '&year=' + year
+
+
+        axios.get(url).then(response => {
+            state.quotationclientsform = response.data.quotationclientsform.data
+            state.pagination = response.data.pagination
+        });
+    },
+
+
     showModalDetail(state, id) {
         state.idforms = id
         $('#detalleCliente').modal('show')
@@ -2408,6 +2426,44 @@ export default { //used for changing the state
                     name: '',
                     email: '',
                     phone: '',
+                    patentchasis: '',
+                    brand: '',
+                    model: '',
+                    year: '',
+                    engine: '',
+                    description: ''
+                },
+                state.errorsLaravel = []
+            alert('Solicitud ingresada con éxito')
+            return true
+        }).catch(error => {
+            state.errorsLaravel = []
+            if (error.response.status === 422) {
+                if (error.response.data.errors) {
+                    for (let key in error.response.data.errors) {
+                        state.errorsLaravel.push({
+                            field: key,
+                            msg: String(error.response.data.errors[key])
+                        })
+                    }
+                }
+            }
+            return false
+        })
+
+    },
+
+    createQuotationUserExpress(state) {
+        var url = urlCreateQuotationUserExpress
+        axios.post(url, {
+            patentchasis: state.formCotizacionExpress.patentchasis.toUpperCase(),
+            brand: state.selectedVBrand.label,
+            model: state.selectedVModel.label,
+            year: state.selectedVYear.label,
+            engine: state.selectedVEngine.label,
+            description: state.formCotizacionExpress.description
+        }).then(response => {
+            state.formCotizacionExpress = {
                     patentchasis: '',
                     brand: '',
                     model: '',

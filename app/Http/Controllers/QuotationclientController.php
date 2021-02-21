@@ -31,6 +31,8 @@ class QuotationclientController extends Controller
                                     ->id()
                                     ->date()
                                     ->orderBy('id', 'DESC')
+                                    ->where('generado', '<>', 3)
+                                    ->Where('generado', '<>', 5)
                                     ->paginate(10);
         else
             $quotationclients = Quotationclient::with('client')
@@ -38,8 +40,9 @@ class QuotationclientController extends Controller
                                         $q->razonsocial();
                                     })
                                     ->id()
-                                    ->date()
-                                    ->orderBy('id', 'DESC')->where('user_id', '=', $user_id)
+                                    ->date()    
+                                    ->orderBy('id', 'DESC')
+                                    ->where('user_id', '=', $user_id)
                                     ->paginate(10);
 
             return [
@@ -53,6 +56,34 @@ class QuotationclientController extends Controller
                 ],
                 'quotationclients' => $quotationclients
             ];
+
+    }
+
+    public function clientsform()
+    {
+        
+        $quotationclientsform = Quotationclient::with('client')
+                                ->whereHas('client', function ($q) {
+                                    $q->razonsocial();
+                                })
+                                ->id()
+                                ->date()    
+                                ->orderBy('id', 'DESC')
+                                ->where('generado', '=', 3)
+                                ->orWhere('generado', '=', 5)
+                                ->paginate(10);
+
+        return [
+            'pagination' => [
+                'total'         => $quotationclientsform->total(),
+                'current_page'  => $quotationclientsform->currentPage(),
+                'per_page'      => $quotationclientsform->perPage(),
+                'last_page'     => $quotationclientsform->lastPage(),
+                'from'          => $quotationclientsform->firstItem(),
+                'to'            => $quotationclientsform->lastItem(),
+            ],
+            'quotationclientsform' => $quotationclientsform
+        ];
 
     }
 

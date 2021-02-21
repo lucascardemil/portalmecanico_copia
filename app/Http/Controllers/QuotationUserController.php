@@ -28,6 +28,10 @@ class QuotationUserController extends Controller
     public function cotizar(){
         return view('quotation');
     }
+
+    public function cotizar_express(){
+        return view('quotation_express');
+    }
     
     public function store(StoreQuotationUser $request){
         $validate = $request->validated();
@@ -69,7 +73,7 @@ class QuotationUserController extends Controller
                 ]
             )->id;
 
-            QuotationUserVehicle::create(
+            $quotation = QuotationUserVehicle::create(
                 [ 
                     'patentchasis' => $patentchasis,
                     'user_id' => $user_id,
@@ -80,13 +84,17 @@ class QuotationUserController extends Controller
                     'email' => $email,
                     'description' => $description
                 ]
-            );
+            )->id;
+
+            
         }
 
-        $user = new User();
-        $user->email = 'comercialsupra4@gmail.com';
-        $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
-
+        if($quotation){
+            $user = new User();
+            $user->email = 'comercialsupra4@gmail.com';
+            $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        }
+        
         return response()->json(
         [
             'valid'=> true,
@@ -141,7 +149,7 @@ class QuotationUserController extends Controller
                 ]
             )->id;
 
-            QuotationUserVehicle::create(
+            $quotation = QuotationUserVehicle::create(
                 [ 
                     'patentchasis' => $patentchasis,
                     'user_id' => $user_id,
@@ -152,17 +160,91 @@ class QuotationUserController extends Controller
                     'email' => $email,
                     'description' => $description
                 ]
-            );
+            )->id;
         }
 
-        $user = new User();
-        $user->email = 'comercialsupra4@gmail.com';
-        $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        if($quotation){
+            $user = new User();
+            $user->email = 'comercialsupra4@gmail.com';
+            $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        }
+
 
         return response()->json([
             'valid'=> true,
             'data' => [
                 'message' => 'Cotizacion ingresada correctamente!'
+            ]
+        ], 200);
+    }
+
+
+    public function storeUserExpress(Request $request){
+
+        $data = $request->all();
+        
+        $name = Auth::user()->name;
+        $email = Auth::user()->email;
+        $user_id_logeado = Auth::id();
+        
+        $patentchasis = $data['patentchasis'];
+        $brand = $data['brand'];
+        $model = $data['model'];
+        $year = $data['year'];
+        $engine = $data['engine'];
+        $description = $data['description'];
+        $phone = '';
+
+
+
+        
+        $clients = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
+        foreach ($clients as $client) {
+            
+            $quotation_id = Quotationclient::create(
+            [
+                'user_id' => $user_id_logeado, //usuario alvaro por defecto
+                'client_id' => $client->id, //usuario particular
+                'state' => 'Pendiente',
+                'payment' => 'Contado',
+                'client_text' => $name,
+                'vehicle' => $brand.' '.$model.' '.$year.' '.$engine,
+                'generado' => 5
+            ])->id;
+
+            $user_id = QuotationUser::create(
+                [ 
+                    'name' => $name,
+                    'email' => $email,
+                    'quotation_id' => $quotation_id
+                ]
+            )->id;
+
+            $quotation = QuotationUserVehicle::create(
+                [ 
+                    'patentchasis' => $patentchasis,
+                    'user_id' => $user_id,
+                    'brand' => $brand,
+                    'model' => $model,
+                    'year' => $year,
+                    'engine' => $engine,
+                    'email' => $email,
+                    'description' => $description
+                ]
+            )->id;
+        }
+
+        // if($quotation){
+        //     $user = new User();
+        //     $user->email = 'comercialsupra4@gmail.com';
+        //     $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        // }
+
+
+        return response()->json([
+            'valid'=> true,
+            'data' => [
+                'message' => 'Cotizacion express ingresada correctamente!'
             ]
         ], 200);
     }
