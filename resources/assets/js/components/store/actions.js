@@ -323,6 +323,10 @@ export default { //methods
         context.commit('paginate', data.page)
         context.commit('getQuotationclients', data.page)
     },
+    changePageQuotationclientForm(context, data) {
+        context.commit('paginate', data.page)
+        context.commit('getQuotationclientsform', data.page)
+    },
     /******************************** */
     /******************************* */
     /**********seccion de importaciones********** */

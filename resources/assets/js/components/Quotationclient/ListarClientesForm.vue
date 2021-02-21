@@ -112,14 +112,14 @@
             <ul class="pagination">
                 <li class="page-item" v-if="pagination.current_page > 1">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclient({page: 1})">
+                    @click.prevent="changePageQuotationclientForm({page: 1})">
                         <span>Primera</span>
                     </a>
                 </li>
 
                 <li class="page-item" v-if="pagination.current_page > 1">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclient({page: pagination.current_page - 1})">
+                    @click.prevent="changePageQuotationclientForm({page: pagination.current_page - 1})">
                         <span>Atrás</span>
                     </a>
                 </li>
@@ -127,21 +127,21 @@
                 <li class="page-item" v-for="page in pagesNumber"
                     v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclient({page})">
+                    @click.prevent="changePageQuotationclientForm({page})">
                         {{ page }}
                     </a>
                 </li>
 
                 <li class="page-item" v-if="pagination.current_page < pagination.last_page">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclient({page: pagination.current_page + 1})">
+                    @click.prevent="changePageQuotationclientForm({page: pagination.current_page + 1})">
                         <span>Siguiente</span>
                     </a>
                 </li>
 
                 <li class="page-item" v-if="pagination.current_page < pagination.last_page">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclient({page:pagination.last_page})">
+                    @click.prevent="changePageQuotationclientForm({page:pagination.last_page})">
                         <span>Última</span>
                     </a>
                 </li>
@@ -188,7 +188,7 @@ export default {
     },
     methods:{
         ...mapActions(['getQuotationclientsform', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailMechanic', 'showModalDetailUserMechanic', 'showModalDetailclientMechanic',
-                        'showModalDeleteQuotationclient', 'changePageQuotationclient', 'modalCreateUserFromQuotation'])
+                        'showModalDeleteQuotationclient', 'changePageQuotationclientForm', 'modalCreateUserFromQuotation'])
     },
     created(){
         loadProgressBar();

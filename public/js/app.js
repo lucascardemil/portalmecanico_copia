@@ -8600,7 +8600,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     DetalleClienteMechanic: _DetalleClienteMechanic__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapState"])(['quotationclientsform', 'newQuotationclient', 'searchQuotationClientForm', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapActions"])(['getQuotationclientsform', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailMechanic', 'showModalDetailUserMechanic', 'showModalDetailclientMechanic', 'showModalDeleteQuotationclient', 'changePageQuotationclient', 'modalCreateUserFromQuotation'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapActions"])(['getQuotationclientsform', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailMechanic', 'showModalDetailUserMechanic', 'showModalDetailclientMechanic', 'showModalDeleteQuotationclient', 'changePageQuotationclientForm', 'modalCreateUserFromQuotation'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getQuotationclientsform', {
@@ -60383,7 +60383,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return _vm.changePageQuotationclient({ page: 1 })
+                          return _vm.changePageQuotationclientForm({ page: 1 })
                         }
                       }
                     },
@@ -60402,7 +60402,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return _vm.changePageQuotationclient({
+                          return _vm.changePageQuotationclientForm({
                             page: _vm.pagination.current_page - 1
                           })
                         }
@@ -60430,7 +60430,9 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return _vm.changePageQuotationclient({ page: page })
+                          return _vm.changePageQuotationclientForm({
+                            page: page
+                          })
                         }
                       }
                     },
@@ -60456,7 +60458,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return _vm.changePageQuotationclient({
+                          return _vm.changePageQuotationclientForm({
                             page: _vm.pagination.current_page + 1
                           })
                         }
@@ -60477,7 +60479,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return _vm.changePageQuotationclient({
+                          return _vm.changePageQuotationclientForm({
                             page: _vm.pagination.last_page
                           })
                         }
@@ -101236,6 +101238,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   changePageQuotationclient: function changePageQuotationclient(context, data) {
     context.commit('paginate', data.page);
     context.commit('getQuotationclients', data.page);
+  },
+  changePageQuotationclientForm: function changePageQuotationclientForm(context, data) {
+    context.commit('paginate', data.page);
+    context.commit('getQuotationclientsform', data.page);
   },
 
   /******************************** */
