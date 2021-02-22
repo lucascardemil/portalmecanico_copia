@@ -74,7 +74,7 @@ class QuotationclientController extends Controller
                                 ->paginate(10);
 
         return [
-            'pagination' => [
+            'pagination_form' => [
                 'total'         => $quotationclientsform->total(),
                 'current_page'  => $quotationclientsform->currentPage(),
                 'per_page'      => $quotationclientsform->perPage(),

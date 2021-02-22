@@ -110,38 +110,38 @@
 
         <nav>
             <ul class="pagination">
-                <li class="page-item" v-if="pagination.current_page > 1">
+                <li class="page-item" v-if="pagination_form.current_page > 1">
                     <a class="page-link border-light bg-dark" href="#"
                     @click.prevent="changePageQuotationclientForm({page: 1})">
                         <span>Primera</span>
                     </a>
                 </li>
 
-                <li class="page-item" v-if="pagination.current_page > 1">
+                <li class="page-item" v-if="pagination_form.current_page > 1">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclientForm({page: pagination.current_page - 1})">
+                    @click.prevent="changePageQuotationclientForm({page: pagination_form.current_page - 1})">
                         <span>Atrás</span>
                     </a>
                 </li>
 
-                <li class="page-item" v-for="page in pagesNumber"
-                    v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
+                <li class="page-item" v-for="page in pagesNumber_form"
+                    v-bind:class="[ page == isActived_form ? 'active' : '' ]" :key="page">
                     <a class="page-link border-light bg-dark" href="#"
                     @click.prevent="changePageQuotationclientForm({page})">
                         {{ page }}
                     </a>
                 </li>
 
-                <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                <li class="page-item" v-if="pagination_form.current_page < pagination_form.last_page">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclientForm({page: pagination.current_page + 1})">
+                    @click.prevent="changePageQuotationclientForm({page: pagination_form.current_page + 1})">
                         <span>Siguiente</span>
                     </a>
                 </li>
 
-                <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                <li class="page-item" v-if="pagination_form.current_page < pagination_form.last_page">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclientForm({page:pagination.last_page})">
+                    @click.prevent="changePageQuotationclientForm({page:pagination_form.last_page})">
                         <span>Última</span>
                     </a>
                 </li>
@@ -183,8 +183,8 @@ import EngineSelector from '../Quotationuser/EngineSelector'
 export default {
     components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, DetalleEditarCM, EliminarCotizacionCliente, CreateUser, CreateUserMechanic, DetalleMechanic, DetalleClienteMechanic },
     computed:{
-        ...mapState(['quotationclientsform' ,'newQuotationclient', 'searchQuotationClientForm','pagination', 'offset', 'errorsLaravel']),
-        ...mapGetters(['isActived', 'pagesNumber'])
+        ...mapState(['quotationclientsform' ,'newQuotationclient', 'searchQuotationClientForm','pagination_form', 'offset_form', 'errorsLaravel']),
+        ...mapGetters(['isActived_form', 'pagesNumber_form'])
     },
     methods:{
         ...mapActions(['getQuotationclientsform', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailMechanic', 'showModalDetailUserMechanic', 'showModalDetailclientMechanic',

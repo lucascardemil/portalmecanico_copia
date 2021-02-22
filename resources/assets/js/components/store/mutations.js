@@ -915,7 +915,7 @@ export default { //used for changing the state
 
         axios.get(url).then(response => {
             state.quotationclientsform = response.data.quotationclientsform.data
-            state.pagination = response.data.pagination
+            state.pagination_form = response.data.pagination_form
         });
     },
 

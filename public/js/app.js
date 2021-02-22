@@ -8599,7 +8599,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     DetalleMechanic: _DetalleMechanic__WEBPACK_IMPORTED_MODULE_3__["default"],
     DetalleClienteMechanic: _DetalleClienteMechanic__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapState"])(['quotationclientsform', 'newQuotationclient', 'searchQuotationClientForm', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapGetters"])(['isActived', 'pagesNumber'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapState"])(['quotationclientsform', 'newQuotationclient', 'searchQuotationClientForm', 'pagination_form', 'offset_form', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapGetters"])(['isActived_form', 'pagesNumber_form'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_11__["mapActions"])(['getQuotationclientsform', 'createQuotationclient', 'showModalDetailclient', 'showModalDetail', 'showModalDetailMechanic', 'showModalDetailUserMechanic', 'showModalDetailclientMechanic', 'showModalDeleteQuotationclient', 'changePageQuotationclientForm', 'modalCreateUserFromQuotation'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
@@ -60373,7 +60373,7 @@ var render = function() {
           "ul",
           { staticClass: "pagination" },
           [
-            _vm.pagination.current_page > 1
+            _vm.pagination_form.current_page > 1
               ? _c("li", { staticClass: "page-item" }, [
                   _c(
                     "a",
@@ -60392,7 +60392,7 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.pagination.current_page > 1
+            _vm.pagination_form.current_page > 1
               ? _c("li", { staticClass: "page-item" }, [
                   _c(
                     "a",
@@ -60403,7 +60403,7 @@ var render = function() {
                         click: function($event) {
                           $event.preventDefault()
                           return _vm.changePageQuotationclientForm({
-                            page: _vm.pagination.current_page - 1
+                            page: _vm.pagination_form.current_page - 1
                           })
                         }
                       }
@@ -60413,13 +60413,13 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm._l(_vm.pagesNumber, function(page) {
+            _vm._l(_vm.pagesNumber_form, function(page) {
               return _c(
                 "li",
                 {
                   key: page,
                   staticClass: "page-item",
-                  class: [page == _vm.isActived ? "active" : ""]
+                  class: [page == _vm.isActived_form ? "active" : ""]
                 },
                 [
                   _c(
@@ -60448,7 +60448,7 @@ var render = function() {
               )
             }),
             _vm._v(" "),
-            _vm.pagination.current_page < _vm.pagination.last_page
+            _vm.pagination_form.current_page < _vm.pagination_form.last_page
               ? _c("li", { staticClass: "page-item" }, [
                   _c(
                     "a",
@@ -60459,7 +60459,7 @@ var render = function() {
                         click: function($event) {
                           $event.preventDefault()
                           return _vm.changePageQuotationclientForm({
-                            page: _vm.pagination.current_page + 1
+                            page: _vm.pagination_form.current_page + 1
                           })
                         }
                       }
@@ -60469,7 +60469,7 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _vm.pagination.current_page < _vm.pagination.last_page
+            _vm.pagination_form.current_page < _vm.pagination_form.last_page
               ? _c("li", { staticClass: "page-item" }, [
                   _c(
                     "a",
@@ -60480,7 +60480,7 @@ var render = function() {
                         click: function($event) {
                           $event.preventDefault()
                           return _vm.changePageQuotationclientForm({
-                            page: _vm.pagination.last_page
+                            page: _vm.pagination_form.last_page
                           })
                         }
                       }
@@ -102238,6 +102238,35 @@ __webpack_require__.r(__webpack_exports__);
 
     return pagesArray;
   },
+  isActived_form: function isActived_form(state, getters) {
+    return state.pagination_form.current_page;
+  },
+  pagesNumber_form: function pagesNumber_form(state, getters) {
+    if (!state.pagination_form.to) {
+      return [];
+    }
+
+    var from = state.pagination_form.current_page - state.offset_form;
+
+    if (from < 1) {
+      from = 1;
+    }
+
+    var to = from + state.offset_year * 2;
+
+    if (to >= state.pagination_form.last_page) {
+      to = state.pagination_form.last_page;
+    }
+
+    var pagesArray = [];
+
+    while (from <= to) {
+      pagesArray.push(from);
+      from++;
+    }
+
+    return pagesArray;
+  },
   getVehicle: function getVehicle(state, getters) {
     return state.vehicle;
   },
@@ -103206,7 +103235,7 @@ var urlCompany = 'companies';
     var url = urlQuotationclientform + '?page=' + page + '&id=' + state.searchQuotationClientForm.id + '&client=' + state.searchQuotationClientForm.client_text + '&day=' + day + '&month=' + month + '&year=' + year;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.quotationclientsform = response.data.quotationclientsform.data;
-      state.pagination = response.data.pagination;
+      state.pagination_form = response.data.pagination_form;
     });
   },
   showModalDetail: function showModalDetail(state, id) {
@@ -105900,7 +105929,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   'last_page': 0,
   'from': 0,
   'to': 0
-}), _defineProperty(_options$optionsUser$, "offset", 2), _defineProperty(_options$optionsUser$, "pagination_marca", {
+}), _defineProperty(_options$optionsUser$, "offset", 2), _defineProperty(_options$optionsUser$, "pagination_form", {
+  'total': 0,
+  'current_page': 0,
+  'per_page': 0,
+  'last_page': 0,
+  'from': 0,
+  'to': 0
+}), _defineProperty(_options$optionsUser$, "offset_form", 2), _defineProperty(_options$optionsUser$, "pagination_marca", {
   'total': 0,
   'current_page': 0,
   'per_page': 0,
