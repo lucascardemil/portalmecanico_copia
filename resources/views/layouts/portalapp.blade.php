@@ -181,6 +181,14 @@
             </li>
             @endcan
 
+            @can('simple-quotations')
+            <li id="cotizaciones" class="nav-item">
+                <a class="nav-link" href="{{ route('admin-cotizacion-express') }}">
+                    <i class="fas fa-file-signature"></i>
+                    <span>Cotizaciones Express</span></a>
+            </li>
+            @endcan
+            
             @can('quotations')
             <li id="cotizaciones" class="nav-item">
                 <a class="nav-link" href="{{ route('admin-cotizaciones-formales') }}">

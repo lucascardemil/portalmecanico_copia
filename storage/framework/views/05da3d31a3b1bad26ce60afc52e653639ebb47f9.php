@@ -184,6 +184,14 @@
             </li>
             <?php endif; ?>
 
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('simple-quotations')): ?>
+            <li id="cotizaciones" class="nav-item">
+                <a class="nav-link" href="<?php echo e(route('admin-cotizacion-express')); ?>">
+                    <i class="fas fa-file-signature"></i>
+                    <span>Cotizaciones Express</span></a>
+            </li>
+            <?php endif; ?>
+            
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('quotations')): ?>
             <li id="cotizaciones" class="nav-item">
                 <a class="nav-link" href="<?php echo e(route('admin-cotizaciones-formales')); ?>">

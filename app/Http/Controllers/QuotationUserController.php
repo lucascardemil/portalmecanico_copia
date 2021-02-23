@@ -29,10 +29,6 @@ class QuotationUserController extends Controller
         return view('quotation');
     }
 
-    public function cotizar_express(){
-        return view('quotation_express');
-    }
-    
     public function store(StoreQuotationUser $request){
         $validate = $request->validated();
         $data = $request->all();

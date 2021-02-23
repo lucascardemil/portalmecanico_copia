@@ -2464,31 +2464,18 @@ export default { //used for changing the state
             description: state.formCotizacionExpress.description
         }).then(response => {
             state.formCotizacionExpress = {
-                    patentchasis: '',
-                    brand: '',
-                    model: '',
-                    year: '',
-                    engine: '',
-                    description: ''
-                },
-                state.errorsLaravel = []
-            alert('Solicitud ingresada con éxito')
-            return true
-        }).catch(error => {
+                patentchasis: '',
+                brand: '',
+                model: '',
+                year: '',
+                engine: '',
+                description: ''
+            },
             state.errorsLaravel = []
-            if (error.response.status === 422) {
-                if (error.response.data.errors) {
-                    for (let key in error.response.data.errors) {
-                        state.errorsLaravel.push({
-                            field: key,
-                            msg: String(error.response.data.errors[key])
-                        })
-                    }
-                }
-            }
-            return false
+            toastr.success('Solicitud ingresada con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
         })
-
     },
 
     getPendingQuotations(state, page) {

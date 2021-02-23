@@ -1,79 +1,87 @@
 <template>
-    <div class="container">
+    <div class="col-lg-12">
+        <h5 class="text-white">
+            Formulario de Cotización Express
+        </h5>
         <form action="POST" v-on:submit.prevent="createQuotationUserExpress">
-            <div class="row">
-                <h3>Formulario de Cotización Express</h3>
-            </div>
-            <div class="row">
-                <p v-if="errorsLaravel.length">
-                    <b class="text-danger">Por favor, corrija los siguientes errores:</b>
-                    <ul v-for="(error) in errorsLaravel" class="text-danger" :key="error.key">
-                        <li>
-                            {{error.msg}}
-                        </li>
-                    </ul>
-                </p>
-            </div>
-            <div class="row">
-                <h4>Vehículo</h4>
-                <div class="input-group input-group-icon">
-                    <input v-validate="'required|min:6|max:60'" 
-                        :class="{'input': true, 'is-invalid': errors.has('patente o chasis') }"
-                        class="form-control"
-                        type="text"
-                        name="patente o chasis"
-                        v-model="formCotizacionExpress.patentchasis" 
-                        placeholder="Patente o Chasis *"/>
-                    <div class="input-icon"><i class="fa fa-car"></i></div>
-                    <p v-show="errors.has('patente o chasis')" class="text-danger">{{ errors.first('patente o chasis') }}</p>
+            <div class="card w-50">
+                <div class="card-body">
+                    
+                        
+                        <div class="row">
+                            <p v-if="errorsLaravel.length">
+                                <b class="text-danger">Por favor, corrija los siguientes errores:</b>
+                                <ul v-for="(error) in errorsLaravel" class="text-danger" :key="error.key">
+                                    <li>
+                                        {{error.msg}}
+                                    </li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            
+                                <label class="font-weight-bold">Vehículo</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-car"></i></div>
+                                    </div>
+                                    <input v-validate="'required|min:6|max:60'" 
+                                        :class="{'input': true, 'is-invalid': errors.has('patente o chasis') }"
+                                        class="form-control"
+                                        type="text"
+                                        name="patente o chasis"
+                                        v-model="formCotizacionExpress.patentchasis" 
+                                        placeholder="Patente o Chasis *"/>
+                                </div>
+                                <p v-show="errors.has('patente o chasis')" class="text-danger">{{ errors.first('patente o chasis') }}</p>
+                            
+                        </div>
+                        <div class="form-group">
+                                <label class="font-weight-bold">Marca *</label>
+                                <BrandSelector></BrandSelector>
+                            
+                        </div>
+                        <div class="form-group">
+                                <label class="font-weight-bold">Modelo *</label>
+                                <ModelSelector></ModelSelector>
+                            
+                        </div>
+                        <div class="form-group">
+                                <label class="font-weight-bold">Año *</label>
+                                <YearSelector></YearSelector>
+                            
+                        </div>
+                        <div class="form-group">
+                                <label class="font-weight-bold">Motor *</label>
+                                <EngineSelector></EngineSelector>
+                            
+                        </div>
+
+                        <div class="form-group">
+                                <label class="font-weight-bold">Repuestos a solicitar *</label>
+                                <textarea
+                                    :class="{'input': true, 'is-invalid': errors.has('repuestos a solicitar') }"
+                                    class="form-control"
+                                    v-validate="'required|min:6'" 
+                                    style="resize:none" 
+                                    name="repuestos a solicitar" 
+                                    id="description"
+                                    v-model="formCotizacionExpress.description"
+                                    placeholder="Repuestos..."
+                                    cols="30" 
+                                    rows="9">
+                                </textarea>
+                                <p v-show="errors.has('repuestos a solicitar')" class="text-danger">{{ errors.first('repuestos a solicitar') }}</p>
+                            
+                        </div>
+                        <div class="form-group">
+                                <h5>(*): Campos Requeridos</h5>
+                        </div>
+                    
                 </div>
-                <div class="row">
-                    <div class="input-group">
-                        <div><h4>Marca *</h4></div>
-                        <BrandSelector></BrandSelector>
-                    </div>
-                    <div class="input-group">
-                        <div><h4>Modelo *</h4></div>
-                        <ModelSelector></ModelSelector>
-                    </div>  
-                    <div class="input-group">
-                        <div><h4>Año *</h4></div>
-                        <YearSelector></YearSelector>
-                    </div>
-                    <div class="input-group">
-                        <div><h4>Motor *</h4></div>
-                        <EngineSelector></EngineSelector>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <h4>Repuestos a solicitar *</h4>
-                <div class="input-group">
-                    <textarea
-                        :class="{'input': true, 'is-invalid': errors.has('repuestos a solicitar') }"
-                        class="form-control"
-                        v-validate="'required|min:6'" 
-                        style="resize:none" 
-                        name="repuestos a solicitar" 
-                        id="description"
-                        v-model="formCotizacionExpress.description"
-                        placeholder="Repuestos..."
-                        cols="30" 
-                        rows="9">
-                    </textarea>
-                    <p v-show="errors.has('repuestos a solicitar')" class="text-danger">{{ errors.first('repuestos a solicitar') }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <h4>(*): Campos Requeridos</h4>
-            </div>
-            <div class="row">
-                <div class="input-group" style="text-align:center;">
-                    <button 
-                        type="submit"
-                        class="btn btn-success"
-                        @click="scrollToTop">
-                        Enviar
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success form-control">
+                        <i class="far fa-paper-plane"></i> Solicitar
                     </button>
                 </div>
             </div>

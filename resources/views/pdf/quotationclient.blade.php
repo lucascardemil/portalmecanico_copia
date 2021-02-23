@@ -17,7 +17,7 @@
                     style="border-top-color:white!important;
                     border-left-color:white!important;
                     paddding-top:10px;">
-                    <span style="font-size:14px">
+                    <!-- <span style="font-size:14px">
                     @if($client->type == 'Cliente Particular')
                     {{ 'COMERCIAL SUPRA E.I.R.L' }}</span>
                     <br>
@@ -27,6 +27,11 @@
                     <br>
                     <span>{{ $client->giro ? $client->giro : 'Repuestos Automotrices, Repuestos Maquinarias, Importaciones'}}</span>
                     @endif
+                    <br>
+                    <br> -->
+                    <span style="font-size:14px">COMERCIAL SUPRA E.I.R.L</span>
+                    <br>
+                    <span>Repuestos Automotrices, Repuestos Maquinarias, Importaciones</span>
                     <br>
                     <br>
                 </td>

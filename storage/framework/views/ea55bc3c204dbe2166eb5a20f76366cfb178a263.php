@@ -15,7 +15,7 @@
                     style="border-top-color:white!important;
                     border-left-color:white!important;
                     paddding-top:10px;">
-                    <span style="font-size:14px">
+                    <!-- <span style="font-size:14px">
                     <?php if($client->type == 'Cliente Particular'): ?>
                     <?php echo e('COMERCIAL SUPRA E.I.R.L'); ?></span>
                     <br>
@@ -25,6 +25,11 @@
                     <br>
                     <span><?php echo e($client->giro ? $client->giro : 'Repuestos Automotrices, Repuestos Maquinarias, Importaciones'); ?></span>
                     <?php endif; ?>
+                    <br>
+                    <br> -->
+                    <span style="font-size:14px">COMERCIAL SUPRA E.I.R.L</span>
+                    <br>
+                    <span>Repuestos Automotrices, Repuestos Maquinarias, Importaciones</span>
                     <br>
                     <br>
                 </td>

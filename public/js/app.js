@@ -7068,14 +7068,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -8633,6 +8625,14 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55909,453 +55909,388 @@ var render = function() {
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-lg-12" }, [
-                    _c("div", { attrs: { id: "accordion" } }, [
-                      _c("div", { staticClass: "card" }, [
-                        _vm._m(1),
-                        _vm._v(" "),
+                    _c("div", { staticClass: "card" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
                         _c(
-                          "div",
+                          "form",
                           {
-                            staticClass: "collapse",
-                            attrs: {
-                              id: "collapseOne",
-                              "aria-labelledby": "headingOne",
-                              "data-parent": "#accordion"
+                            attrs: { action: "POST" },
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.createDetailclient($event)
+                              }
                             }
                           },
                           [
-                            _c("div", { staticClass: "card-body" }, [
+                            _c("div", { staticClass: "row" }, [
                               _c(
-                                "form",
-                                {
-                                  attrs: { action: "POST" },
+                                "div",
+                                { staticClass: "col-lg-3" },
+                                [
+                                  _c("label", { attrs: { for: "cliente" } }, [
+                                    _vm._v("Producto")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("SelectProduct")
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-3" }, [
+                                _c("label", { attrs: { for: "product" } }, [
+                                  _vm._v("Nombre Producto")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.product,
+                                      expression: "newDetailclient.product"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "text", name: "product" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.product
+                                  },
                                   on: {
-                                    submit: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.createDetailclient($event)
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "product",
+                                        $event.target.value
+                                      )
                                     }
                                   }
-                                },
-                                [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col-lg-3" },
-                                      [
-                                        _c(
-                                          "label",
-                                          { attrs: { for: "cliente" } },
-                                          [_vm._v("Producto")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("SelectProduct")
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-3" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "product" } },
-                                        [_vm._v("Nombre Producto")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.product,
-                                            expression:
-                                              "newDetailclient.product"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "text",
-                                          name: "product"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.product
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "product",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-3" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "product" } },
-                                        [_vm._v("Código")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.detail,
-                                            expression: "newDetailclient.detail"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "text",
-                                          name: "product"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.detail
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "detail",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-1" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "precio" } },
-                                        [_vm._v("Precio")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.price,
-                                            expression: "newDetailclient.price"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "precio"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.price
-                                        },
-                                        on: {
-                                          keyup: _vm.sumTotalProduct,
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "price",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-1" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "cantidad" } },
-                                        [_vm._v("Cantidad")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.quantity,
-                                            expression:
-                                              "newDetailclient.quantity"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "quantity"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.quantity
-                                        },
-                                        on: {
-                                          keyup: _vm.sumTotalProduct,
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "quantity",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-1" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "percentage" } },
-                                        [_vm._v("%")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.newDetailclient.percentage,
-                                            expression:
-                                              "newDetailclient.percentage"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "percentage"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.percentage
-                                        },
-                                        on: {
-                                          keyup: _vm.sumTotalProduct,
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "percentage",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-1" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "aditional" } },
-                                        [_vm._v("Adicional")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.newDetailclient.aditional,
-                                            expression:
-                                              "newDetailclient.aditional"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "aditional"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.aditional
-                                        },
-                                        on: {
-                                          keyup: _vm.sumTotalProduct,
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "aditional",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-1" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "transport" } },
-                                        [_vm._v("Flete")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.newDetailclient.transport,
-                                            expression:
-                                              "newDetailclient.transport"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "transport"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.transport
-                                        },
-                                        on: {
-                                          keyup: _vm.sumTotalProduct,
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "transport",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-1" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "utilidad" } },
-                                        [_vm._v("Utilidad")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.utility,
-                                            expression:
-                                              "newDetailclient.utility"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "utilidad",
-                                          disabled: ""
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.utility
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "utility",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-2" }, [
-                                      _c("label", { attrs: { for: "plazo" } }, [
-                                        _vm._v("Días de Plazo")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.days,
-                                            expression: "newDetailclient.days"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: { type: "text", name: "plazo" },
-                                        domProps: {
-                                          value: _vm.newDetailclient.days
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "days",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-2" }, [
-                                      _c("label", { attrs: { for: "total" } }, [
-                                        _vm._v("Total")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.total,
-                                            expression: "newDetailclient.total"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "total",
-                                          disabled: ""
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.total
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "total",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _vm._m(2)
-                                  ])
-                                ]
-                              )
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-3" }, [
+                                _c("label", { attrs: { for: "product" } }, [
+                                  _vm._v("Código")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.detail,
+                                      expression: "newDetailclient.detail"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "text", name: "product" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.detail
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "detail",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-1" }, [
+                                _c("label", { attrs: { for: "precio" } }, [
+                                  _vm._v("Precio")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.price,
+                                      expression: "newDetailclient.price"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "number", name: "precio" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.price
+                                  },
+                                  on: {
+                                    keyup: _vm.sumTotalProduct,
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "price",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-1" }, [
+                                _c("label", { attrs: { for: "cantidad" } }, [
+                                  _vm._v("Cantidad")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.quantity,
+                                      expression: "newDetailclient.quantity"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "number", name: "quantity" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.quantity
+                                  },
+                                  on: {
+                                    keyup: _vm.sumTotalProduct,
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "quantity",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-1" }, [
+                                _c("label", { attrs: { for: "percentage" } }, [
+                                  _vm._v("%")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.percentage,
+                                      expression: "newDetailclient.percentage"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "number", name: "percentage" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.percentage
+                                  },
+                                  on: {
+                                    keyup: _vm.sumTotalProduct,
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "percentage",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-1" }, [
+                                _c("label", { attrs: { for: "aditional" } }, [
+                                  _vm._v("Adicional")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.aditional,
+                                      expression: "newDetailclient.aditional"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "number", name: "aditional" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.aditional
+                                  },
+                                  on: {
+                                    keyup: _vm.sumTotalProduct,
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "aditional",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-1" }, [
+                                _c("label", { attrs: { for: "transport" } }, [
+                                  _vm._v("Flete")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.transport,
+                                      expression: "newDetailclient.transport"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "number", name: "transport" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.transport
+                                  },
+                                  on: {
+                                    keyup: _vm.sumTotalProduct,
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "transport",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-1" }, [
+                                _c("label", { attrs: { for: "utilidad" } }, [
+                                  _vm._v("Utilidad")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.utility,
+                                      expression: "newDetailclient.utility"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "number",
+                                    name: "utilidad",
+                                    disabled: ""
+                                  },
+                                  domProps: {
+                                    value: _vm.newDetailclient.utility
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "utility",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-2" }, [
+                                _c("label", { attrs: { for: "plazo" } }, [
+                                  _vm._v("Días de Plazo")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.days,
+                                      expression: "newDetailclient.days"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "text", name: "plazo" },
+                                  domProps: { value: _vm.newDetailclient.days },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "days",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-2" }, [
+                                _c("label", { attrs: { for: "total" } }, [
+                                  _vm._v("Total")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.total,
+                                      expression: "newDetailclient.total"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "number",
+                                    name: "total",
+                                    disabled: ""
+                                  },
+                                  domProps: {
+                                    value: _vm.newDetailclient.total
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "total",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(2)
                             ])
                           ]
                         )
@@ -56711,35 +56646,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header p-0", attrs: { id: "headingOne" } },
-      [
-        _c("h5", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-block text-left p-3",
-              attrs: {
-                id: "btn-detailclient-card-quotation",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne"
-              }
-            },
-            [
-              _vm._v(
-                "\n                                            Nuevo Producto\n                                            "
-              ),
-              _c("span", { staticClass: "text-right" }, [
-                _c("i", { staticClass: "fas fa-arrows-alt-v" })
-              ])
-            ]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h5", { staticClass: "mb-0" }, [_vm._v("Nuevo Producto")])
+    ])
   },
   function() {
     var _vm = this
@@ -60564,7 +60473,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "col-lg-12" }, [
+    _c("h5", { staticClass: "text-white" }, [
+      _vm._v("\n        Formulario de Cotización Express\n    ")
+    ]),
+    _vm._v(" "),
     _c(
       "form",
       {
@@ -60577,218 +60490,225 @@ var render = function() {
         }
       },
       [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _vm.errorsLaravel.length
-            ? _c(
-                "p",
-                [
-                  _c("b", { staticClass: "text-danger" }, [
-                    _vm._v("Por favor, corrija los siguientes errores:")
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.errorsLaravel, function(error) {
-                    return _c(
-                      "ul",
-                      { key: error.key, staticClass: "text-danger" },
-                      [
-                        _c("li", [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(error.msg) +
-                              "\n                    "
-                          )
-                        ])
-                      ]
-                    )
-                  })
-                ],
-                2
-              )
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("h4", [_vm._v("Vehículo")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-group input-group-icon" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|min:6|max:60",
-                  expression: "'required|min:6|max:60'"
-                },
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formCotizacionExpress.patentchasis,
-                  expression: "formCotizacionExpress.patentchasis"
-                }
-              ],
-              staticClass: "form-control",
-              class: {
-                input: true,
-                "is-invalid": _vm.errors.has("patente o chasis")
-              },
-              attrs: {
-                type: "text",
-                name: "patente o chasis",
-                placeholder: "Patente o Chasis *"
-              },
-              domProps: { value: _vm.formCotizacionExpress.patentchasis },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.formCotizacionExpress,
-                    "patentchasis",
-                    $event.target.value
+        _c("div", { staticClass: "card w-50" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _vm.errorsLaravel.length
+                ? _c(
+                    "p",
+                    [
+                      _c("b", { staticClass: "text-danger" }, [
+                        _vm._v("Por favor, corrija los siguientes errores:")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.errorsLaravel, function(error) {
+                        return _c(
+                          "ul",
+                          { key: error.key, staticClass: "text-danger" },
+                          [
+                            _c("li", [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(error.msg) +
+                                  "\n                                "
+                              )
+                            ])
+                          ]
+                        )
+                      })
+                    ],
+                    2
                   )
-                }
-              }
-            }),
+                : _vm._e()
+            ]),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { staticClass: "font-weight-bold" }, [
+                _vm._v("Vehículo")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mb-2" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|min:6|max:60",
+                      expression: "'required|min:6|max:60'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formCotizacionExpress.patentchasis,
+                      expression: "formCotizacionExpress.patentchasis"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  class: {
+                    input: true,
+                    "is-invalid": _vm.errors.has("patente o chasis")
+                  },
+                  attrs: {
+                    type: "text",
+                    name: "patente o chasis",
+                    placeholder: "Patente o Chasis *"
+                  },
+                  domProps: { value: _vm.formCotizacionExpress.patentchasis },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.formCotizacionExpress,
+                        "patentchasis",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "p",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("patente o chasis"),
+                      expression: "errors.has('patente o chasis')"
+                    }
+                  ],
+                  staticClass: "text-danger"
+                },
+                [_vm._v(_vm._s(_vm.errors.first("patente o chasis")))]
+              )
+            ]),
             _vm._v(" "),
             _c(
-              "p",
-              {
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("label", { staticClass: "font-weight-bold" }, [
+                  _vm._v("Marca *")
+                ]),
+                _vm._v(" "),
+                _c("BrandSelector")
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("label", { staticClass: "font-weight-bold" }, [
+                  _vm._v("Modelo *")
+                ]),
+                _vm._v(" "),
+                _c("ModelSelector")
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("label", { staticClass: "font-weight-bold" }, [
+                  _vm._v("Año *")
+                ]),
+                _vm._v(" "),
+                _c("YearSelector")
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("label", { staticClass: "font-weight-bold" }, [
+                  _vm._v("Motor *")
+                ]),
+                _vm._v(" "),
+                _c("EngineSelector")
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { staticClass: "font-weight-bold" }, [
+                _vm._v("Repuestos a solicitar *")
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
                 directives: [
                   {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("patente o chasis"),
-                    expression: "errors.has('patente o chasis')"
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required|min:6",
+                    expression: "'required|min:6'"
+                  },
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formCotizacionExpress.description,
+                    expression: "formCotizacionExpress.description"
                   }
                 ],
-                staticClass: "text-danger"
-              },
-              [_vm._v(_vm._s(_vm.errors.first("patente o chasis")))]
-            )
+                staticClass: "form-control",
+                class: {
+                  input: true,
+                  "is-invalid": _vm.errors.has("repuestos a solicitar")
+                },
+                staticStyle: { resize: "none" },
+                attrs: {
+                  name: "repuestos a solicitar",
+                  id: "description",
+                  placeholder: "Repuestos...",
+                  cols: "30",
+                  rows: "9"
+                },
+                domProps: { value: _vm.formCotizacionExpress.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.formCotizacionExpress,
+                      "description",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "p",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("repuestos a solicitar"),
+                      expression: "errors.has('repuestos a solicitar')"
+                    }
+                  ],
+                  staticClass: "text-danger"
+                },
+                [_vm._v(_vm._s(_vm.errors.first("repuestos a solicitar")))]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "input-group" },
-              [_vm._m(2), _vm._v(" "), _c("BrandSelector")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "input-group" },
-              [_vm._m(3), _vm._v(" "), _c("ModelSelector")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "input-group" },
-              [_vm._m(4), _vm._v(" "), _c("YearSelector")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "input-group" },
-              [_vm._m(5), _vm._v(" "), _c("EngineSelector")],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("h4", [_vm._v("Repuestos a solicitar *")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-group" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|min:6",
-                  expression: "'required|min:6'"
-                },
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.formCotizacionExpress.description,
-                  expression: "formCotizacionExpress.description"
-                }
-              ],
-              staticClass: "form-control",
-              class: {
-                input: true,
-                "is-invalid": _vm.errors.has("repuestos a solicitar")
-              },
-              staticStyle: { resize: "none" },
-              attrs: {
-                name: "repuestos a solicitar",
-                id: "description",
-                placeholder: "Repuestos...",
-                cols: "30",
-                rows: "9"
-              },
-              domProps: { value: _vm.formCotizacionExpress.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.formCotizacionExpress,
-                    "description",
-                    $event.target.value
-                  )
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "p",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.errors.has("repuestos a solicitar"),
-                    expression: "errors.has('repuestos a solicitar')"
-                  }
-                ],
-                staticClass: "text-danger"
-              },
-              [_vm._v(_vm._s(_vm.errors.first("repuestos a solicitar")))]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(6),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            {
-              staticClass: "input-group",
-              staticStyle: { "text-align": "center" }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: { type: "submit" },
-                  on: { click: _vm.scrollToTop }
-                },
-                [_vm._v("\n                    Enviar\n                ")]
-              )
-            ]
-          )
+          _vm._m(2)
         ])
       ]
     )
@@ -60799,48 +60719,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("h3", [_vm._v("Formulario de Cotización Express")])
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("div", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "fa fa-car" })
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-icon" }, [
-      _c("i", { staticClass: "fa fa-car" })
+    return _c("div", { staticClass: "form-group" }, [
+      _c("h5", [_vm._v("(*): Campos Requeridos")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h4", [_vm._v("Marca *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h4", [_vm._v("Modelo *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h4", [_vm._v("Año *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h4", [_vm._v("Motor *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("h4", [_vm._v("(*): Campos Requeridos")])
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success form-control",
+          attrs: { type: "submit" }
+        },
+        [
+          _c("i", { staticClass: "far fa-paper-plane" }),
+          _vm._v(" Solicitar\n                ")
+        ]
+      )
     ])
   }
 ]
@@ -104755,23 +104663,9 @@ var urlCompany = 'companies';
         engine: '',
         description: ''
       }, state.errorsLaravel = [];
-      alert('Solicitud ingresada con éxito');
-      return true;
+      toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Solicitud ingresada con éxito');
     })["catch"](function (error) {
-      state.errorsLaravel = [];
-
-      if (error.response.status === 422) {
-        if (error.response.data.errors) {
-          for (var key in error.response.data.errors) {
-            state.errorsLaravel.push({
-              field: key,
-              msg: String(error.response.data.errors[key])
-            });
-          }
-        }
-      }
-
-      return false;
+      state.errorsLaravel = error.response.data;
     });
   },
   getPendingQuotations: function getPendingQuotations(state, page) {

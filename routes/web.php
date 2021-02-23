@@ -150,7 +150,7 @@ Route::get('client-vehicles', 'VehicleController@clientvehicles');
 
 //seccion cotizacion
 Route::get('/cotizar', 'QuotationUserController@cotizar');
-Route::get('/cotizar-express', 'QuotationUserController@cotizar_express');
+Route::get('cotizar-express', 'QuotationUserController@cotizar_express');
 Route::post('/upload', 'ImageController@upload');
 
 Route::get('storage-link', function(){
@@ -248,6 +248,10 @@ Route::middleware(['auth'])->group(function () {
     //     return view('admin.cotizaciones');
     // })->name('admin-cotizaciones'); //->middleware('permission:cotizaciones');
 
+    Route::get('admin-cotizacion-express', function () {
+        return view('admin.cotizacion-express');
+    })->name('admin-cotizacion-express');
+    
     Route::get('admin-cotizaciones-formales', function () {
         return view('admin.cotizaciones-formales');
     })->name('admin-cotizaciones-formales'); //->middleware('permission:cotizaciones');
