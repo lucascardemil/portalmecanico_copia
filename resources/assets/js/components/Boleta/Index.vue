@@ -54,6 +54,8 @@
                             </div>
                             <div class="col-lg-3 align-self-center">
                                 <a v-bind:href="'/invoice/'+ resultado">{{ resultado }}</a>
+
+                                <!-- <p>{{ resultado }}</p> -->
                             </div>
                         </div>
                     </div>

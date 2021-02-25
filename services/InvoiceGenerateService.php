@@ -194,13 +194,10 @@ class InvoiceGenerateService
         $iva = round(($this->total / 119) * 19);
 
         
-        header('Content-Type: application/json');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
-        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
-        
+    
 
         $curl = curl_init();
+
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://dev-api.haulmer.com/v2/dte/document",
             CURLOPT_RETURNTRANSFER => true,
@@ -259,9 +256,11 @@ class InvoiceGenerateService
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false,
         ));
-        $response = curl_exec($curl);
-        curl_close($curl);
 
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        
         $created = new DateTime();
 
         $time = $created->format('G.i.s');

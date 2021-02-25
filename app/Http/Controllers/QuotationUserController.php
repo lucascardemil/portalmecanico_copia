@@ -191,8 +191,6 @@ class QuotationUserController extends Controller
         $description = $data['description'];
         $phone = '';
 
-
-
         
         $clients = Client::where('user_id', '=', \Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
         foreach ($clients as $client) {
@@ -230,11 +228,11 @@ class QuotationUserController extends Controller
             )->id;
         }
 
-        // if($quotation){
-        //     $user = new User();
-        //     $user->email = 'comercialsupra4@gmail.com';
-        //     $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
-        // }
+        if($quotation){
+            $user = new User();
+            $user->email = 'comercialsupra4@gmail.com';
+            $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
+        }
 
 
         return response()->json([
