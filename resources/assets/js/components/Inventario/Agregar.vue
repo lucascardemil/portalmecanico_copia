@@ -13,7 +13,7 @@
 
                         <div class="form-group">
                             <label>Subir Factura</label>
-                            <input id="file" type="file" ref="file" class="form-control" accept="application/pdf"
+                            <input id="file" type="file" ref="file" class="form-control" accept="application/xml"
                                 v-on:change="handleFileUpload()"
                             >
                         </div>

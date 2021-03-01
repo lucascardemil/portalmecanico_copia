@@ -16,7 +16,7 @@
       <div class="col-lg-3">
         <input type="text" v-model="search" class="form-control" placeholder="Filtrar Producto...">
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <nav>
           <ul class="pagination">
             <li class="page-item" v-if="pagination.current_page > 1">
@@ -56,7 +56,7 @@
             </li>
           </ul>
         </nav>
-      </div>
+      </div> -->
     </div>
     <table class="table table-borderless table-dark table-hover table-striped mt-3 table-sm">
       <thead>

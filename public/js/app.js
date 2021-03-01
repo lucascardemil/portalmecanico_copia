@@ -50491,7 +50491,7 @@ var render = function() {
                   attrs: {
                     id: "file",
                     type: "file",
-                    accept: "application/pdf"
+                    accept: "application/xml"
                   },
                   on: {
                     change: function($event) {
@@ -50599,130 +50599,6 @@ var render = function() {
               }
             }
           })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col" }, [
-          _c("nav", [
-            _c(
-              "ul",
-              { staticClass: "pagination" },
-              [
-                _vm.pagination.current_page > 1
-                  ? _c("li", { staticClass: "page-item" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "page-link border-light bg-dark",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.changePageCode({ page: 1 })
-                            }
-                          }
-                        },
-                        [_c("span", [_vm._v("Primera")])]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.pagination.current_page > 1
-                  ? _c("li", { staticClass: "page-item" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "page-link border-light bg-dark",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.changePageCode({
-                                page: _vm.pagination.current_page - 1
-                              })
-                            }
-                          }
-                        },
-                        [_c("span", [_vm._v("Atrás")])]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm._l(_vm.pagesNumber, function(page) {
-                  return _c(
-                    "li",
-                    {
-                      key: page,
-                      staticClass: "page-item",
-                      class: [page == _vm.isActived ? "active" : ""]
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "page-link border-light bg-dark",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.changePageCode({ page: page })
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n              " + _vm._s(page) + "\n            "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                }),
-                _vm._v(" "),
-                _vm.pagination.current_page < _vm.pagination.last_page
-                  ? _c("li", { staticClass: "page-item" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "page-link border-light bg-dark",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.changePageCode({
-                                page: _vm.pagination.current_page + 1
-                              })
-                            }
-                          }
-                        },
-                        [_c("span", [_vm._v("Siguiente")])]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.pagination.current_page < _vm.pagination.last_page
-                  ? _c("li", { staticClass: "page-item" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "page-link border-light bg-dark",
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.changePageCode({
-                                page: _vm.pagination.last_page
-                              })
-                            }
-                          }
-                        },
-                        [_c("span", [_vm._v("Última")])]
-                      )
-                    ])
-                  : _vm._e()
-              ],
-              2
-            )
-          ])
         ])
       ]),
       _vm._v(" "),
