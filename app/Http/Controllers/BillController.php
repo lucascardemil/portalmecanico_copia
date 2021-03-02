@@ -521,7 +521,7 @@ class BillController extends Controller
                 $inventory = Inventory::firstOrCreate(
                     [
                         'code_id' => $code->id,
-                        'price' => $producto->PrcItem,
+                        'price' => round($producto->MontoItem / $producto->QtyItem),
                         'quantity' => $producto->QtyItem
                     ]);
             }
