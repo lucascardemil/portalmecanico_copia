@@ -72,25 +72,25 @@
         </tr>
       </thead>
       <tbody v-for="codeLocal in rows" :key="codeLocal.id">
-        <tr>
-        <!-- <tr
+        <!-- <tr> -->
+        <tr
           class="accordion-toggle" 
           data-toggle="collapse" 
           :data-target="'#stock'+codeLocal.id"
-        > -->
+        >
           <td>{{ codeLocal.id }}</td>
           <td>{{ codeLocal.product.name }}</td>
           <td>{{ codeLocal.product.detail }}</td>
           <td>{{ codeLocal.client.name }}</td>
           <td>{{ codeLocal.codebar }}</td>
-          <td>{{ codeLocal.inventories[0].price | currency('$', 0, { thousandsSeparator: '.' })}}</td>
+          <!-- <td>{{ codeLocal.inventories[0].price | currency('$', 0, { thousandsSeparator: '.' })}}</td>
           <td>{{ codeLocal.inventories[0].quantity }}</td>
-          <td>{{ totalInventario(codeLocal.inventories[0]) | currency('$', 0, { thousandsSeparator: '.' })}}</td>
-          <!-- <td></td>
+          <td>{{ totalInventario(codeLocal.inventories[0]) | currency('$', 0, { thousandsSeparator: '.' })}}</td> -->
+          <td></td>
           <td>{{ totalUnidades(codeLocal) }}</td>
-          <td>{{ totalPrecio(codeLocal) | currency('$', 0, { thousandsSeparator: '.' })}}</td> -->
+          <td>{{ totalPrecio(codeLocal) | currency('$', 0, { thousandsSeparator: '.' })}}</td>
         </tr>
-        <!-- <tr v-for="inventario in codeLocal.inventories" 
+        <tr v-for="inventario in codeLocal.inventories" 
           :key="inventario.id" 
           :id="'stock'+inventario.code_id" 
           class="accordian-body collapse"
@@ -103,7 +103,7 @@
           <td>{{ inventario.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
           <td>{{ inventario.quantity }}</td>
           <td>{{ totalInventario(inventario) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-        </tr>  -->
+        </tr> 
       </tbody>
     </table>
 

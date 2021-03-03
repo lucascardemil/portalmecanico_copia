@@ -50634,47 +50634,98 @@ var render = function() {
           ]),
           _vm._v(" "),
           _vm._l(_vm.rows, function(codeLocal) {
-            return _c("tbody", { key: codeLocal.id }, [
-              _c("tr", [
-                _c("td", [_vm._v(_vm._s(codeLocal.id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(codeLocal.product.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(codeLocal.product.detail))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(codeLocal.client.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(codeLocal.codebar))]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    _vm._s(
-                      _vm._f("currency")(
-                        codeLocal.inventories[0].price,
-                        "$",
-                        0,
-                        { thousandsSeparator: "." }
+            return _c(
+              "tbody",
+              { key: codeLocal.id },
+              [
+                _c(
+                  "tr",
+                  {
+                    staticClass: "accordion-toggle",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#stock" + codeLocal.id
+                    }
+                  },
+                  [
+                    _c("td", [_vm._v(_vm._s(codeLocal.id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(codeLocal.product.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(codeLocal.product.detail))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(codeLocal.client.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(codeLocal.codebar))]),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.totalUnidades(codeLocal)))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          _vm._f("currency")(
+                            _vm.totalPrecio(codeLocal),
+                            "$",
+                            0,
+                            { thousandsSeparator: "." }
+                          )
+                        )
                       )
-                    )
-                  )
-                ]),
+                    ])
+                  ]
+                ),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(codeLocal.inventories[0].quantity))]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    _vm._s(
-                      _vm._f("currency")(
-                        _vm.totalInventario(codeLocal.inventories[0]),
-                        "$",
-                        0,
-                        { thousandsSeparator: "." }
-                      )
-                    )
+                _vm._l(codeLocal.inventories, function(inventario) {
+                  return _c(
+                    "tr",
+                    {
+                      key: inventario.id,
+                      staticClass: "accordian-body collapse",
+                      attrs: { id: "stock" + inventario.code_id }
+                    },
+                    [
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td"),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("currency")(inventario.price, "$", 0, {
+                              thousandsSeparator: "."
+                            })
+                          )
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(inventario.quantity))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("currency")(
+                              _vm.totalInventario(inventario),
+                              "$",
+                              0,
+                              { thousandsSeparator: "." }
+                            )
+                          )
+                        )
+                      ])
+                    ]
                   )
-                ])
-              ])
-            ])
+                })
+              ],
+              2
+            )
           })
         ],
         2
