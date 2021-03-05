@@ -2499,7 +2499,8 @@ export default { //used for changing the state
             response.data.forEach((product) => {
                 state.optionsProduct.push({
                     label: product.name,
-                    value: product.id
+                    value: product.id,
+                    price: product.price
                 })
             });
         });
@@ -2509,10 +2510,16 @@ export default { //used for changing the state
         if (state.selectedProduct != null) {
             state.newDetailclient.product = state.selectedProduct.label
             state.productForm.product = state.selectedProduct.label
+            state.newDetailclient.price = state.selectedProduct.price
+            state.newDetailclient.utility = 0
+            state.newDetailclient.total = 0
         } else {
             state.newDetailclient.product = ''
             state.productForm.product = ''
+            state.newDetailclient.utility = 0
+            state.newDetailclient.total = 0
         }
+
     },
     allProductimports(state) {
         var url = urlAllProductimport

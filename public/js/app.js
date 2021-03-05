@@ -7070,6 +7070,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -7670,14 +7684,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -55854,10 +55860,10 @@ var render = function() {
                             }
                           },
                           [
-                            _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "row mb-3" }, [
                               _c(
                                 "div",
-                                { staticClass: "col-lg-3" },
+                                { staticClass: "col-lg-4" },
                                 [
                                   _c("label", { attrs: { for: "cliente" } }, [
                                     _vm._v("Producto")
@@ -55868,7 +55874,7 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c("div", { staticClass: "col-lg-3" }, [
+                              _c("div", { staticClass: "col-lg-4" }, [
                                 _c("label", { attrs: { for: "product" } }, [
                                   _vm._v("Nombre Producto")
                                 ]),
@@ -55902,7 +55908,7 @@ var render = function() {
                                 })
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "col-lg-3" }, [
+                              _c("div", { staticClass: "col-lg-4" }, [
                                 _c("label", { attrs: { for: "product" } }, [
                                   _vm._v("Código")
                                 ]),
@@ -55934,41 +55940,64 @@ var render = function() {
                                     }
                                   }
                                 })
-                              ]),
-                              _vm._v(" "),
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-lg-1" }, [
                                 _c("label", { attrs: { for: "precio" } }, [
                                   _vm._v("Precio")
                                 ]),
                                 _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.newDetailclient.price,
-                                      expression: "newDetailclient.price"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { type: "number", name: "precio" },
-                                  domProps: {
-                                    value: _vm.newDetailclient.price
-                                  },
-                                  on: {
-                                    keyup: _vm.sumTotalProduct,
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
+                                _c("div", { staticClass: "input-group mb-3" }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.newDetailclient.price,
+                                        expression: "newDetailclient.price"
                                       }
-                                      _vm.$set(
-                                        _vm.newDetailclient,
-                                        "price",
-                                        $event.target.value
-                                      )
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { type: "number", name: "precio" },
+                                    domProps: {
+                                      value: _vm.newDetailclient.price
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.newDetailclient,
+                                          "price",
+                                          $event.target.value
+                                        )
+                                      }
                                     }
-                                  }
-                                })
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "input-group-append" },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-secondary",
+                                          attrs: { type: "button" },
+                                          on: { click: _vm.sumTotalProduct }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-calculator"
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-lg-1" }, [
@@ -56512,6 +56541,7 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-danger",
+                    attrs: { href: "#", role: "button" },
                     on: {
                       click: function($event) {
                         $event.preventDefault()
@@ -56529,6 +56559,7 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-danger",
+                    attrs: { href: "#", role: "button" },
                     on: {
                       click: function($event) {
                         $event.preventDefault()
@@ -58198,191 +58229,163 @@ var render = function() {
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-lg-12" }, [
-                    _c("div", { attrs: { id: "accordion" } }, [
-                      _c("div", { staticClass: "card" }, [
-                        _vm._m(1),
-                        _vm._v(" "),
+                    _c("div", { staticClass: "card" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
                         _c(
-                          "div",
+                          "form",
                           {
-                            staticClass: "collapse",
-                            attrs: {
-                              id: "collapseOne",
-                              "aria-labelledby": "headingOne",
-                              "data-parent": "#accordion"
+                            attrs: { action: "POST" },
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.createDetailclient($event)
+                              }
                             }
                           },
                           [
-                            _c("div", { staticClass: "card-body" }, [
-                              _c(
-                                "form",
-                                {
-                                  attrs: { action: "POST" },
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-lg-3" }, [
+                                _c("label", { attrs: { for: "product" } }, [
+                                  _vm._v("Nombre Producto")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.product,
+                                      expression: "newDetailclient.product"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "text", name: "product" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.product
+                                  },
                                   on: {
-                                    submit: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.createDetailclient($event)
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "product",
+                                        $event.target.value
+                                      )
                                     }
                                   }
-                                },
-                                [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c("div", { staticClass: "col-lg-3" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "product" } },
-                                        [_vm._v("Nombre Producto")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.product,
-                                            expression:
-                                              "newDetailclient.product"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "text",
-                                          name: "product"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.product
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "product",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-1" }, [
-                                      _c(
-                                        "label",
-                                        { attrs: { for: "precio" } },
-                                        [_vm._v("Precio")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.price,
-                                            expression: "newDetailclient.price"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "precio"
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.price
-                                        },
-                                        on: {
-                                          keyup: _vm.sumTotalProduct,
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "price",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-2" }, [
-                                      _c("label", { attrs: { for: "plazo" } }, [
-                                        _vm._v("Días de Plazo")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.days,
-                                            expression: "newDetailclient.days"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: { type: "text", name: "plazo" },
-                                        domProps: {
-                                          value: _vm.newDetailclient.days
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "days",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col-lg-2" }, [
-                                      _c("label", { attrs: { for: "total" } }, [
-                                        _vm._v("Total")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.newDetailclient.total,
-                                            expression: "newDetailclient.total"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          name: "total",
-                                          disabled: ""
-                                        },
-                                        domProps: {
-                                          value: _vm.newDetailclient.total
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.newDetailclient,
-                                              "total",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _vm._m(2)
-                                  ])
-                                ]
-                              )
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-1" }, [
+                                _c("label", { attrs: { for: "precio" } }, [
+                                  _vm._v("Precio")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.price,
+                                      expression: "newDetailclient.price"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "number", name: "precio" },
+                                  domProps: {
+                                    value: _vm.newDetailclient.price
+                                  },
+                                  on: {
+                                    keyup: _vm.sumTotalProduct,
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "price",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-2" }, [
+                                _c("label", { attrs: { for: "plazo" } }, [
+                                  _vm._v("Días de Plazo")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.days,
+                                      expression: "newDetailclient.days"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "text", name: "plazo" },
+                                  domProps: { value: _vm.newDetailclient.days },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "days",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-lg-2" }, [
+                                _c("label", { attrs: { for: "total" } }, [
+                                  _vm._v("Total")
+                                ]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.newDetailclient.total,
+                                      expression: "newDetailclient.total"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "number",
+                                    name: "total",
+                                    disabled: ""
+                                  },
+                                  domProps: {
+                                    value: _vm.newDetailclient.total
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.newDetailclient,
+                                        "total",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(2)
                             ])
                           ]
                         )
@@ -58637,35 +58640,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header p-0", attrs: { id: "headingOne" } },
-      [
-        _c("h5", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-block text-left p-3",
-              attrs: {
-                id: "btn-detailclient-card-mechanic",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne"
-              }
-            },
-            [
-              _vm._v(
-                "\n                                            Nuevo Producto\n                                            "
-              ),
-              _c("span", { staticClass: "text-right" }, [
-                _c("i", { staticClass: "fas fa-arrows-alt-v" })
-              ])
-            ]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h5", { staticClass: "mb-0" }, [_vm._v("Nuevo Producto")])
+    ])
   },
   function() {
     var _vm = this
@@ -104616,7 +104593,8 @@ var urlCompany = 'companies';
       response.data.forEach(function (product) {
         state.optionsProduct.push({
           label: product.name,
-          value: product.id
+          value: product.id,
+          price: product.price
         });
       });
     });
@@ -104627,9 +104605,14 @@ var urlCompany = 'companies';
     if (state.selectedProduct != null) {
       state.newDetailclient.product = state.selectedProduct.label;
       state.productForm.product = state.selectedProduct.label;
+      state.newDetailclient.price = state.selectedProduct.price;
+      state.newDetailclient.utility = 0;
+      state.newDetailclient.total = 0;
     } else {
       state.newDetailclient.product = '';
       state.productForm.product = '';
+      state.newDetailclient.utility = 0;
+      state.newDetailclient.total = 0;
     }
   },
   allProductimports: function allProductimports(state) {

@@ -15,22 +15,14 @@
                         <div class="row">
 
                             <div class="col-lg-12">
-                                <div id="accordion">
+                                <!-- <div id="accordion"> -->
                                     <div class="card">
 
-                                        <div class="card-header p-0" id="headingOne">
-                                            <h5 class="mb-0">
-                                                <button id="btn-detailclient-card-mechanic"
-                                                    class="btn btn-block text-left p-3"
-                                                    data-toggle="collapse" data-target="#collapseOne"
-                                                    aria-expanded="true" aria-controls="collapseOne">
-                                                Nuevo Producto
-                                                <span class="text-right"><i class="fas fa-arrows-alt-v"></i></span>
-                                                </button>
-                                            </h5>
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Nuevo Producto</h5>
                                         </div>
 
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <!-- <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"> -->
                                             <div class="card-body">
                                                 <form action="POST" v-on:submit.prevent="createDetailclient">
 
@@ -121,9 +113,9 @@
 
                                                 </form>
                                             </div>
-                                        </div>
+                                        <!-- </div> -->
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
 
                             <div class="col-lg-12 table-responsive">

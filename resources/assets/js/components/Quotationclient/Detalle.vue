@@ -26,14 +26,14 @@
                                             <div class="card-body">
                                                 <form action="POST" v-on:submit.prevent="createDetailclient">
 
-                                                    <div class="row">
+                                                    <div class="row mb-3">
 
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-4">
                                                             <label for="cliente">Producto</label>
                                                             <SelectProduct></SelectProduct>
                                                         </div>
 
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-4">
                                                             <label for="product">Nombre Producto</label>
                                                             <input 
                                                                 type="text"
@@ -43,17 +43,31 @@
                                                             >
                                                         </div>
 
-                                                         <div class="col-lg-3">
+                                                         <div class="col-lg-4">
                                                             <label for="product">Código</label>
                                                             <input type="text" name="product" class="form-control"
                                                             v-model="newDetailclient.detail">
                                                         </div>
+                                                    </div>
+                                                    <div class="row">
 
-                                                        <div class="col-lg-1">
+                                                        <!-- <div class="col-lg-1">
                                                             <label for="precio">Precio</label>
                                                             <input type="number" name="precio" class="form-control"
                                                                 v-model="newDetailclient.price"
+                                                                
                                                                 @keyup="sumTotalProduct">
+                                                            
+                                                        </div> -->
+                                                        <div class="col-lg-1">
+                                                            <label for="precio">Precio</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="number" name="precio" class="form-control"
+                                                                v-model="newDetailclient.price">
+                                                                <div class="input-group-append">
+                                                                    <button class="btn btn-secondary" @click="sumTotalProduct" type="button"><i class="fas fa-calculator"></i></button>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                         <div class="col-lg-1">
@@ -233,12 +247,12 @@
 
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-danger"
+                        <a class="btn btn-danger" href="#" role="button"
                             @click.prevent="pdfQuotationclient">
                             <i class="far fa-file-pdf"></i> PDF
                         </a>
 
-                        <a class="btn btn-danger"
+                        <a class="btn btn-danger" href="#" role="button"
                             @click.prevent="pdfIvaQuotationclient">
                             <i class="far fa-file-pdf"></i> PDF IVA Incluido
                         </a>
