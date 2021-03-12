@@ -59,7 +59,7 @@
                                                                 @keyup="sumTotalProduct">
                                                             
                                                         </div> -->
-                                                        <div class="col-lg-1">
+                                                        <div class="col-lg-2">
                                                             <label for="precio">Precio</label>
                                                             <div class="input-group mb-3">
                                                                 <input type="number" name="precio" class="form-control"
@@ -73,35 +73,35 @@
                                                         <div class="col-lg-1">
                                                             <label for="cantidad">Cantidad</label>
                                                             <input type="number" name="quantity" class="form-control"
-                                                                v-model="newDetailclient.quantity"
-                                                                @keyup="sumTotalProduct">
+                                                                v-model="newDetailclient.quantity" min="0"
+                                                                >
                                                         </div>
 
                                                         <div class="col-lg-1">
                                                             <label for="percentage">%</label>
                                                             <input type="number" name="percentage" class="form-control"
-                                                                v-model="newDetailclient.percentage"
-                                                                @keyup="sumTotalProduct">
+                                                                v-model="newDetailclient.percentage" min="0"
+                                                                >
                                                         </div>
 
                                                         <div class="col-lg-1">
                                                             <label for="aditional">Adicional</label>
                                                             <input type="number" name="aditional" class="form-control"
-                                                                v-model="newDetailclient.aditional"
-                                                                @keyup="sumTotalProduct">
+                                                                v-model="newDetailclient.aditional" min="0"
+                                                                >
                                                         </div>
 
                                                         <div class="col-lg-1">
                                                             <label for="transport">Flete</label>
                                                             <input type="number" name="transport" class="form-control"
-                                                                v-model="newDetailclient.transport"
-                                                                @keyup="sumTotalProduct">
+                                                                v-model="newDetailclient.transport" min="0"
+                                                                >
                                                         </div>
 
                                                         <div class="col-lg-1">
                                                             <label for="utilidad">Utilidad</label>
                                                             <input type="number" name="utilidad" class="form-control"
-                                                                v-model="newDetailclient.utility" disabled>
+                                                                v-model="newDetailclient.utility" min="0" disabled>
                                                         </div>
 
                                                         <div class="col-lg-2">
@@ -116,7 +116,7 @@
                                                                 v-model="newDetailclient.total" disabled>
                                                         </div>
 
-                                                        <div class="col-lg-2 mt-2">
+                                                        <div class="col-lg-1 mt-2">
                                                             <label></label>
                                                             <button type="submit" class="btn btn-success form-control">
                                                                 <i class="fas fa-plus-square"></i> Guardar

@@ -28,13 +28,13 @@
                                 <div class="row">
 
                                     <div class="col-lg-3">
-                                        <label for="nombre">Nombre</label>
+                                        <label for="name">Nombre</label>
                                         <input v-validate="'required|min:4|max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('nombre') }"
+                                                :class="{'input': true, 'is-invalid': errors.has('name') }"
                                                 type="text"
-                                                name="nombre"
+                                                name="name"
                                                 class="form-control" v-model="newUser.name">
-                                        <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
+                                        <p v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</p>
 
                                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
                                             <p>{{ error.name }}</p>
@@ -42,17 +42,17 @@
                                     </div>
 
                                     <div class="col-lg-3">
-                                        <label for="correo">Correo Electrónico</label>
+                                        <label for="email">Correo Electrónico</label>
                                         <input v-validate="'required|min:6|max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('correo') }"
+                                                :class="{'input': true, 'is-invalid': errors.has('email') }"
                                                 type="email"
-                                                name="correo"
+                                                name="email"
                                                 class="form-control" v-model="newUser.email">
                                         <p v-show="errors.has('nombre')"
-                                            class="text-danger">{{ errors.first('correo') }}</p>
+                                            class="text-danger">{{ errors.first('email') }}</p>
 
                                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.correo }}</p>
+                                            <p>{{ error.email }}</p>
                                         </div>
                                     </div>
 

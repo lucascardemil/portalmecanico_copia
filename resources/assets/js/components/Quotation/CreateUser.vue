@@ -9,13 +9,13 @@
                             <span>&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body" v-for="QuotationUsersLocal in quotationusers" :key="QuotationUsersLocal.id">
+                    <div class="modal-body">
                         <label for="name">Nombre</label>
-                        <input v-validate="'required|min:4|max:190'"
+                        <input v-validate="'required|min:4'"
                                 :class="{'input': true, 'is-invalid': errors.has('name') }"
                                 type="text"
                                 name="name"
-                                class="form-control" v-model="QuotationUsersLocal.name">
+                                class="form-control" v-model="newUser.name">
                         <p v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</p>
 
                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
@@ -23,11 +23,11 @@
                         </div>
 
                         <label for="email">Correo</label>
-                        <input v-validate="'required|min:6|max:190'"
+                        <input v-validate="'required|min:6'"
                                 :class="{'input': true, 'is-invalid': errors.has('email') }"
                                 type="email"
                                 name="email"
-                                class="form-control" v-model="QuotationUsersLocal.email">
+                                class="form-control" v-model="newUser.email">
                         <p v-show="errors.has('email')"
                             class="text-danger">{{ errors.first('email') }}</p>
 
@@ -50,7 +50,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="close">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="close">
                             Cancelar
                         </button>
                         <button type="submit" class="btn btn-primary">
@@ -69,7 +69,7 @@ import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
     computed: {
-        ...mapState(['quotationusers','newUser', 'errorsLaravel'])
+        ...mapState(['newUser', 'errorsLaravel'])
     },
     methods: {
         ...mapActions(['createUser'])

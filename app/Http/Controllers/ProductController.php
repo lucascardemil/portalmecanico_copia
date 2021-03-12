@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Product;
+use App\Code;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,9 +18,9 @@ class ProductController extends Controller
     public function index()
     {
         $idUser = Auth::id();
-        $products = Product::/*whereHas('codes.client', function ($query) use($idUser) {
+        $products = Product::whereHas('codes.client', function ($query) use($idUser) {
             $query->where('clients.user_id', '=', $idUser);
-        })->*/name()->orderBy('id', 'DESC')->paginate(10);
+        })->name()->orderBy('id', 'DESC')->paginate(10);
 
         return [
             'pagination' => [
@@ -53,23 +54,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nombre_product' => 'required',
-            'detalle_product' => 'required',
-            'codigo_product' => 'required',
-            'cliente_product' => 'required'
-        ], [
-            'nombre_product.required' => 'El campo nombre es obligatorio',
-            'detalle_product.required' => 'El campo detalle electrónico es obligatorio',
-            'codigo_product.required' => 'El campo codigo electrónico es obligatorio',
-            'cliente_product.required' => 'El campo cliente electrónico es obligatorio'
-        ]);
-
         $data = $request->all();
 
-        $product = Product::create($data);
+        $product = Product::create(
+            [
+                'name' => $data['name'],
+                'detail' => $data['detail']                
+            ])->id;
 
-        return $product->id;
+        $code = Code::create(
+            [
+                'client_id' => $data['client_id'],
+                'product_id' => $product,
+                'codebar' => $data['codebar'], 
+                'is_activate' => 1              
+            ]);
+        
+        return $product;
     }
 
     /**

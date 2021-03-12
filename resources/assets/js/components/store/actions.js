@@ -579,8 +579,8 @@ export default { //methods
     createProduct(context) {
         context.commit('createProduct')
         setTimeout(function () {
-            context.commit('getCodes', 1)
-            //context.commit('getProducts', 1)
+            //context.commit('getCodes', 1)
+            context.commit('getProducts', 1)
         }, 1000)
 
     },
@@ -685,6 +685,7 @@ export default { //methods
         context.commit('createUser')
         setTimeout(function () {
             context.commit('getUsers', 1)
+            context.commit('getQuotationclientsform', 1)
         }, 500)
 
     },
@@ -968,6 +969,12 @@ export default { //methods
     searchSii(context) {
         context.commit('searchSii')
     },
+    sumTotalProductMechanic(context) {
+        context.commit('sumTotalProductMechanic')
+    },
+    sumTotalEditProductMechanic(context) {
+        context.commit('sumTotalEditProductMechanic')
+    },
     sumTotalProduct(context) {
         context.commit('sumTotalProduct')
     },
@@ -1064,6 +1071,7 @@ export default { //methods
         context.commit('createMechanicClient')
         setTimeout(function () {
             context.commit('getMechanicClients')
+            context.commit('getQuotationclients', 1)
         }, 500)
     },
 

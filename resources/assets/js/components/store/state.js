@@ -316,14 +316,18 @@ export default { //data
     },
     searchQuotationClient: {
         id: '',
-        client_text: '',
+        razonSocial: '',
+        client: '',
+        vehicle: '',
         day: '',
         month: '',
         year: ''
     },
     searchQuotationClientForm: {
         id: '',
-        client_text: '',
+        razonSocial: '',
+        client: '',
+        vehicle: '',
         day: '',
         month: '',
         year: ''
@@ -611,7 +615,8 @@ export default { //data
     },
     newProduct: {
         name: '',
-        detail: ''
+        detail: '',
+        codebar: ''
     },
     fillProduct: {
         id: '',

@@ -23,26 +23,100 @@ class QuotationclientController extends Controller
     public function index()
     {
         $user_id = Auth::id();
+        $id = request('id');
+        $razonSocial = request('razonSocial');
+        $client = request('client');
+        $vehicle = request('vehicle');
+        $day = request('day');
+        $month = request('month');
+        $year = request('year');
+
+
         if($user_id == 1)
-            $quotationclients = Quotationclient::with('client')
-                                    ->whereHas('client', function ($q) {
-                                        $q->razonsocial();
+            $quotationclients = DB::table('quotationclients')
+                                    ->join('clients', 'quotationclients.client_id', '=', 'clients.id')
+                                    ->select(
+                                        'quotationclients.id',
+                                        'clients.rut',
+                                        'clients.razonSocial',
+                                        'quotationclients.client_text',
+                                        'quotationclients.vehicle',
+                                        'quotationclients.payment',
+                                        'quotationclients.state',
+                                        'quotationclients.generado_client',
+                                        'quotationclients.tipo_detalle',
+                                        'quotationclients.generado',
+                                        'quotationclients.created_at',
+                                        'quotationclients.url'
+                                    )
+                                    ->orderBy('quotationclients.id', 'DESC')
+                                    ->where('quotationclients.generado', '<>', 3)
+                                    ->where('quotationclients.generado', '<>', 5)
+                                    ->when($id, function ($query, $id) {
+                                        return $query->where('quotationclients.id', 'like', '%' . $id . '%');
                                     })
-                                    ->id()
-                                    ->date()
-                                    ->orderBy('id', 'DESC')
-                                    ->where('generado', '<>', 3)
-                                    ->Where('generado', '<>', 5)
+                                    ->when($razonSocial, function ($query, $razonSocial) {
+                                        return $query->where('clients.razonSocial', 'like', '%' . $razonSocial . '%');
+                                    })
+                                    ->when($client, function ($query, $client) {
+                                        return $query->where('quotationclients.client_text', 'like', '%' . $client . '%');
+                                    })
+                                    ->when($vehicle, function ($query, $vehicle) {
+                                        return $query->where('quotationclients.vehicle', 'like', '%' . $vehicle . '%');
+                                    })
+                                    ->when($day, function ($query, $day) {
+                                        return $query->whereDay('quotationclients.created_at', $day);
+                                    })
+                                    ->when($month, function ($query, $month) {
+                                        return $query->whereMonth('quotationclients.created_at', $month);
+                                    })
+                                    ->when($year, function ($query, $year) {
+                                        return $query->whereYear('quotationclients.created_at', $year);
+                                    })
                                     ->paginate(10);
-        else
-            $quotationclients = Quotationclient::with('client')
-                                    ->whereHas('client', function ($q) {
-                                        $q->razonsocial();
+       
+        else                
+                            
+            $quotationclients = DB::table('quotationclients')
+                                    ->join('clients', 'quotationclients.client_id', '=', 'clients.id')
+                                    ->select(
+                                        'quotationclients.id',
+                                        'clients.rut',
+                                        'clients.razonSocial',
+                                        'quotationclients.client_text',
+                                        'quotationclients.vehicle',
+                                        'quotationclients.payment',
+                                        'quotationclients.state',
+                                        'quotationclients.generado_client',
+                                        'quotationclients.tipo_detalle',
+                                        'quotationclients.generado',
+                                        'quotationclients.created_at',
+                                        'quotationclients.url'
+                                    )
+                                    ->orderBy('quotationclients.id', 'DESC')
+                                    ->where('quotationclients.generado', '<>', 3)
+                                    ->where('quotationclients.user_id', '=', $user_id)
+                                    ->when($id, function ($query, $id) {
+                                        return $query->where('quotationclients.id', 'like', '%' . $id . '%');
                                     })
-                                    ->id()
-                                    ->date()    
-                                    ->orderBy('id', 'DESC')
-                                    ->where('user_id', '=', $user_id)
+                                    ->when($razonSocial, function ($query, $razonSocial) {
+                                        return $query->where('clients.razonSocial', 'like', '%' . $razonSocial . '%');
+                                    })
+                                    ->when($client, function ($query, $client) {
+                                        return $query->where('quotationclients.client_text', 'like', '%' . $client . '%');
+                                    })
+                                    ->when($vehicle, function ($query, $vehicle) {
+                                        return $query->where('quotationclients.vehicle', 'like', '%' . $vehicle . '%');
+                                    })
+                                    ->when($day, function ($query, $day) {
+                                        return $query->whereDay('quotationclients.created_at', $day);
+                                    })
+                                    ->when($month, function ($query, $month) {
+                                        return $query->whereMonth('quotationclients.created_at', $month);
+                                    })
+                                    ->when($year, function ($query, $year) {
+                                        return $query->whereYear('quotationclients.created_at', $year);
+                                    })
                                     ->paginate(10);
 
             return [
@@ -62,16 +136,56 @@ class QuotationclientController extends Controller
     public function clientsform()
     {
         
-        $quotationclientsform = Quotationclient::with('client')
-                                ->whereHas('client', function ($q) {
-                                    $q->razonsocial();
+        $id = request('id');
+        $razonSocial = request('razonSocial');
+        $client = request('client');
+        $vehicle = request('vehicle');
+        $day = request('day');
+        $month = request('month');
+        $year = request('year');
+
+
+        $quotationclientsform = DB::table('quotationclients')
+                                ->join('clients', 'quotationclients.client_id', '=', 'clients.id')
+                                ->select(
+                                    'quotationclients.id',
+                                    'clients.rut',
+                                    'clients.razonSocial',
+                                    'quotationclients.client_text',
+                                    'quotationclients.vehicle',
+                                    'quotationclients.payment',
+                                    'quotationclients.state',
+                                    'quotationclients.generado_client',
+                                    'quotationclients.tipo_detalle',
+                                    'quotationclients.generado',
+                                    'quotationclients.created_at'
+                                )
+                                ->orderBy('quotationclients.id', 'DESC')
+                                ->where('quotationclients.generado', '=', 3)
+                                ->orWhere('quotationclients.generado', '=', 5)
+                                ->when($id, function ($query, $id) {
+                                    return $query->where('quotationclients.id', 'like', '%' . $id . '%');
                                 })
-                                ->id()
-                                ->date()    
-                                ->orderBy('id', 'DESC')
-                                ->where('generado', '=', 3)
-                                ->orWhere('generado', '=', 5)
+                                ->when($razonSocial, function ($query, $razonSocial) {
+                                    return $query->where('clients.razonSocial', 'like', '%' . $razonSocial . '%');
+                                })
+                                ->when($client, function ($query, $client) {
+                                    return $query->where('quotationclients.client_text', 'like', '%' . $client . '%');
+                                })
+                                ->when($vehicle, function ($query, $vehicle) {
+                                    return $query->where('quotationclients.vehicle', 'like', '%' . $vehicle . '%');
+                                })
+                                ->when($day, function ($query, $day) {
+                                    return $query->whereDay('quotationclients.created_at', $day);
+                                })
+                                ->when($month, function ($query, $month) {
+                                    return $query->whereMonth('quotationclients.created_at', $month);
+                                })
+                                ->when($year, function ($query, $year) {
+                                    return $query->whereYear('quotationclients.created_at', $year);
+                                })
                                 ->paginate(10);
+
 
         return [
             'pagination_form' => [

@@ -1,16 +1,12 @@
 <template>
     <div class="pl-0">
         <v-select
-            :class="{'input': true, 'is-invalid': errors.has('cliente_product') }"
+            required
             name="cliente"
             placeholder="Seleccionar Cliente"
             @input="setClient"
             :options="optionsClient"
             :value="selectedClient"></v-select>
-        <p v-show="errors.has('cliente_product')" class="text-danger">{{ errors.first('cliente_product') }}</p>
-        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-            <p>{{ error.cliente_product }}</p>
-        </div>
     </div>
 </template>
 

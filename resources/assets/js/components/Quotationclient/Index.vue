@@ -43,12 +43,12 @@
                                     
                                         <div class="col-12 mb-3">
                                             <label for="nombre">Nombre Cliente</label>
-                                            <input v-validate="'required'"
-                                                    :class="{'input': true, 'is-invalid': errors.has('nombre') }"
+                                            <input required
+                                                    
                                                     type="text"
                                                     name="nombre"
                                                     class="form-control" v-model="newQuotationclient.client_text">
-                                            <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
+                                            
                                             
                                         </div>
                                         
@@ -62,12 +62,12 @@
 
                                         <div class="col-12 mb-3">
                                             <label for="pago">Forma de Pago</label>
-                                            <input v-validate="'required'"
-                                                    :class="{'input': true, 'is-invalid': errors.has('pago') }"
+                                            <input required
+                                                    
                                                     type="text"
                                                     name="pago"
                                                     class="form-control" v-model="newQuotationclient.payment">
-                                            <p v-show="errors.has('pago')" class="text-danger">{{ errors.first('pago') }}</p>
+                                            
                                             
                                         </div>
 
@@ -137,10 +137,16 @@
                         <td></td>
                         <td>    
                             <input type="text" class="form-control"
-                                    v-model="searchQuotationClient.client_text" @keyup="getQuotationclients">
+                                    v-model="searchQuotationClient.razonSocial" @keyup="getQuotationclients">
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <input type="text" class="form-control"
+                                    v-model="searchQuotationClient.client" @keyup="getQuotationclients">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control"
+                                    v-model="searchQuotationClient.vehicle" @keyup="getQuotationclients">
+                        </td>
                         <td>
                             <div class="form-inline">
                                 <input type="text" class="form-control" style="width : 50px"
@@ -167,8 +173,8 @@
                             <a v-if="quotationLocal.generado == 4" class="btn btn-danger btn-sm font-weight-bold" type="button" @click.prevent="showModalDetailMechanic({ id: quotationLocal.id })">Repuestos A Solicitar</a>
                         </td>
                         <td>{{ quotationLocal.state }}</td>
-                        <td>{{ quotationLocal.client.rut }}</td>
-                        <td>{{ quotationLocal.client.razonSocial }}</td>
+                        <td>{{ quotationLocal.rut }}</td>
+                        <td>{{ quotationLocal.razonSocial }}</td>
                         <td>{{ quotationLocal.client_text }}</td>
                         <td>{{ quotationLocal.vehicle }}</td>
                         <td>{{ quotationLocal.created_at |  moment('DD/MM/YYYY H:mm a') }}</td>
@@ -183,7 +189,7 @@
 
                             
                            
-                            <a href="#" v-if="quotationLocal.generado == 3" class="btn btn-light btn-sm"
+                            <a href="#" v-if="quotationLocal.generado_client == 0 && (quotationLocal.generado == 1 || quotationLocal.generado == 2)" class="btn btn-light btn-sm"
                                 @click.prevent="modalCreateUserFromQuotation({ id: quotationLocal.id })"
                                 data-toggle="tooltip"
                                 data-placeemnt="top"
@@ -191,7 +197,7 @@
                                 <i class="fas fa-user"></i>
                             </a>
                             
-                            <a href="#" v-if="quotationLocal.generado_client == 0 && quotationLocal.generado == 1 || quotationLocal.generado == 2" class="btn btn-light btn-sm"
+                            <a href="#" v-if="quotationLocal.generado_client == 0 && quotationLocal.generado == 5" class="btn btn-light btn-sm"
                                 @click.prevent="showModalDetailUserMechanic({ id: quotationLocal.id })"
                                 data-toggle="tooltip"
                                 data-placeemnt="top"

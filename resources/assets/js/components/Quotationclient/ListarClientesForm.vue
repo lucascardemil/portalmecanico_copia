@@ -25,10 +25,16 @@
                     <td></td>
                     <td>    
                         <input type="text" class="form-control"
-                                v-model="searchQuotationClientForm.client_text" @keyup="getQuotationclientsform">
+                                v-model="searchQuotationClientForm.razonSocial" @keyup="getQuotationclientsform">
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        <input type="text" class="form-control"
+                                v-model="searchQuotationClientForm.client" @keyup="getQuotationclientsform">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control"
+                                v-model="searchQuotationClientForm.vehicle" @keyup="getQuotationclientsform">
+                    </td>
                     <td>
                         <div class="form-inline">
                             <input type="text" class="form-control" style="width : 50px"
@@ -53,24 +59,16 @@
                         <a v-if="quotationformLocal.generado == 3" class="btn btn-success btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationformLocal.id })">Formulario Cotizar</a>
                     </td>
                     <td>{{ quotationformLocal.state }}</td>
-                    <td>{{ quotationformLocal.client.rut }}</td>
-                    <td>{{ quotationformLocal.client.razonSocial }}</td>
+                    <td>{{ quotationformLocal.rut }}</td>
+                    <td>{{ quotationformLocal.razonSocial }}</td>
                     <td>{{ quotationformLocal.client_text }}</td>
                     <td>{{ quotationformLocal.vehicle }}</td>
                     <td>{{ quotationformLocal.created_at |  moment('DD/MM/YYYY H:mm a') }}</td>
                     <td>
                         
                         
-                        <a href="#" v-if="quotationformLocal.generado == 3" class="btn btn-light btn-sm"
+                        <a href="#" v-if="quotationformLocal.generado_client == 0 && quotationformLocal.generado == 3" class="btn btn-light btn-sm"
                             @click.prevent="modalCreateUserFromQuotation({ id: quotationformLocal.id })"
-                            data-toggle="tooltip"
-                            data-placeemnt="top"
-                            title="Crear Usuario">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        
-                        <a href="#" v-if="quotationformLocal.generado_client == 0 && quotationformLocal.generado == 1 || quotationformLocal.generado == 2" class="btn btn-light btn-sm"
-                            @click.prevent="showModalDetailUserMechanic({ id: quotationformLocal.id })"
                             data-toggle="tooltip"
                             data-placeemnt="top"
                             title="Crear Usuario">

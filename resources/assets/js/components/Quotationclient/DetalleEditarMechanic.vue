@@ -24,94 +24,18 @@
                             <p>{{ error.product }}</p>
                         </div>
 
-                        <!-- <label for="codigo">Código</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('codigo') }"
-                                type="text"
-                                name="codigo"
-                                class="form-control" v-model="fillDetailclient.detail">
-                        <p v-show="errors.has('codigo')" class="text-danger">{{ errors.first('codigo') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.detail }}</p>
-                        </div> -->
-
                         <label for="precio">Precio</label>
                         <input v-validate="''"
                                 :class="{'input': true, 'is-invalid': errors.has('precio') }"
                                 type="number"
                                 name="precio"
                                 class="form-control" v-model="fillDetailclient.price"
-                                @keyup="sumTotalEditProduct">
+                                @keyup="sumTotalEditProductMechanic">
                         <p v-show="errors.has('precio')" class="text-danger">{{ errors.first('precio') }}</p>
 
                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
                             <p>{{ error.price }}</p>
                         </div>
-
-                        <!-- <label for="cantidad">Cantidad</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('cantidad') }"
-                                type="number"
-                                name="cantidad"
-                                class="form-control" v-model="fillDetailclient.quantity"
-                                @keyup="sumTotalEditProduct">
-                        <p v-show="errors.has('cantidad')" class="text-danger">{{ errors.first('cantidad') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.quantity }}</p>
-                        </div>
-
-                        <label for="porcentaje">porcentaje %</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('adicional') }"
-                                type="number"
-                                name="porcentaje"
-                                class="form-control" v-model="fillDetailclient.percentage"
-                                @keyup="sumTotalEditProduct">
-                        <p v-show="errors.has('porcentaje')" class="text-danger">{{ errors.first('porcentaje') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.percentage }}</p>
-                        </div>
-
-                        <label for="adicional">Adicional</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('adicional') }"
-                                type="number"
-                                name="adicional"
-                                class="form-control" v-model="fillDetailclient.aditional"
-                                @keyup="sumTotalEditProduct">
-                        <p v-show="errors.has('adicional')" class="text-danger">{{ errors.first('adicional') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.percentage }}</p>
-                        </div>
-
-                        <label for="transporte">Transporte</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('transporte') }"
-                                type="number"
-                                name="transporte"
-                                class="form-control" v-model="fillDetailclient.transport"
-                                @keyup="sumTotalEditProduct">
-                        <p v-show="errors.has('transporte')" class="text-danger">{{ errors.first('transporte') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.transport }}</p>
-                        </div>
-
-                        <label for="utilidad">Utilidad</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('utilidad') }"
-                                type="number"
-                                name="utilidad"
-                                class="form-control" v-model="fillDetailclient.utility" disabled>
-                        <p v-show="errors.has('utilidad')" class="text-danger">{{ errors.first('utilidad') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.utility }}</p>
-                        </div> -->
 
                         <label for="dias">Días de Plazo</label>
                         <input v-validate="''"
@@ -168,7 +92,7 @@ export default {
         ...mapGetters([])
     },
     methods:{
-        ...mapActions(['updateDetailclient', 'sumTotalEditProduct'])
+        ...mapActions(['updateDetailclient', 'sumTotalEditProductMechanic'])
     },
 }
 </script>

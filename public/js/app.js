@@ -6103,21 +6103,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -6250,10 +6235,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['optionsClient', 'selectedClient', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getClient'])),
@@ -6351,7 +6332,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['quotationusers', 'newUser', 'errorsLaravel'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['newUser', 'errorsLaravel'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['createUser']))
 });
 
@@ -7581,86 +7562,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillDetailclient', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])([])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateDetailclient', 'sumTotalEditProduct']))
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateDetailclient', 'sumTotalEditProductMechanic']))
 });
 
 /***/ }),
@@ -7883,58 +7788,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -7943,7 +7796,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     SelectProduct: _Product_Select__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['detailclients', 'totalQuotationclient', 'totalUtilidad', 'totalTransporte', 'totalAdicional', 'totalQuotationclientIVA', 'newDetailclient', 'totalDetailclient', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])([])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['createDetailclient', 'editDetailclientMechanic', 'deleteDetailclient', 'pdfQuotationclient', 'pdfIvaQuotationclient', 'sumTotalProduct']))
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['createDetailclient', 'editDetailclientMechanic', 'deleteDetailclient', 'pdfQuotationclient', 'pdfIvaQuotationclient', 'sumTotalProductMechanic']))
 });
 
 /***/ }),
@@ -8326,6 +8179,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8405,8 +8264,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -53531,163 +53388,77 @@ var render = function() {
                     },
                     [
                       _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-5" },
-                          [
-                            _c("label", { attrs: { for: "nombre" } }, [
-                              _vm._v("*Nombre")
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "validate",
-                                  rawName: "v-validate",
-                                  value: "min:4|max:190",
-                                  expression: "'min:4|max:190'"
-                                },
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newProduct.name,
-                                  expression: "newProduct.name"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                input: true,
-                                "is-invalid": _vm.errors.has("nombre_product")
-                              },
-                              attrs: { type: "text", name: "nombre" },
-                              domProps: { value: _vm.newProduct.name },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newProduct,
-                                    "name",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "p",
+                        _c("div", { staticClass: "col-lg-5" }, [
+                          _c("label", { attrs: { for: "nombre" } }, [
+                            _vm._v("*Nombre")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
                               {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.errors.has("nombre_product"),
-                                    expression: "errors.has('nombre_product')"
-                                  }
-                                ],
-                                staticClass: "text-danger"
-                              },
-                              [
-                                _vm._v(
-                                  _vm._s(_vm.errors.first("nombre_product"))
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newProduct.name,
+                                expression: "newProduct.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              required: "",
+                              type: "text",
+                              name: "nombre"
+                            },
+                            domProps: { value: _vm.newProduct.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newProduct,
+                                  "name",
+                                  $event.target.value
                                 )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.errorsLaravel, function(error, index) {
-                              return _c(
-                                "div",
-                                { key: index, staticClass: "text-danger" },
-                                [
-                                  _c("p", [
-                                    _vm._v(_vm._s(error.nombre_product))
-                                  ])
-                                ]
-                              )
-                            })
-                          ],
-                          2
-                        ),
+                              }
+                            }
+                          })
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-5" },
-                          [
-                            _c("label", { attrs: { for: "detalle" } }, [
-                              _vm._v("*Detalle")
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "validate",
-                                  rawName: "v-validate",
-                                  value: "max:190",
-                                  expression: "'max:190'"
-                                },
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newProduct.detail,
-                                  expression: "newProduct.detail"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                input: true,
-                                "is-invalid": _vm.errors.has("detalle_product")
-                              },
-                              attrs: { type: "text", name: "detalle" },
-                              domProps: { value: _vm.newProduct.detail },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newProduct,
-                                    "detail",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "p",
+                        _c("div", { staticClass: "col-lg-5" }, [
+                          _c("label", { attrs: { for: "detalle" } }, [
+                            _vm._v("*Detalle")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
                               {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.errors.has("detalle_product"),
-                                    expression: "errors.has('detalle_product')"
-                                  }
-                                ],
-                                staticClass: "text-danger"
-                              },
-                              [
-                                _vm._v(
-                                  _vm._s(_vm.errors.first("detalle_product"))
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newProduct.detail,
+                                expression: "newProduct.detail"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              required: "",
+                              type: "text",
+                              name: "detalle"
+                            },
+                            domProps: { value: _vm.newProduct.detail },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newProduct,
+                                  "detail",
+                                  $event.target.value
                                 )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.errorsLaravel, function(error, index) {
-                              return _c(
-                                "div",
-                                { key: index, staticClass: "text-danger" },
-                                [
-                                  _c("p", [
-                                    _vm._v(_vm._s(error.detalle_product))
-                                  ])
-                                ]
-                              )
-                            })
-                          ],
-                          2
-                        ),
+                              }
+                            }
+                          })
+                        ]),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -53702,84 +53473,41 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-5" },
-                          [
-                            _c("label", { attrs: { for: "codigo" } }, [
-                              _vm._v("*Código")
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "validate",
-                                  rawName: "v-validate",
-                                  value: "min:2|max:100",
-                                  expression: "'min:2|max:100'"
-                                },
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newCode.codebar,
-                                  expression: "newCode.codebar"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                input: true,
-                                "is-invalid": _vm.errors.has("codigo_product")
-                              },
-                              attrs: { type: "text", name: "codigo" },
-                              domProps: { value: _vm.newCode.codebar },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newCode,
-                                    "codebar",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "p",
+                        _c("div", { staticClass: "col-lg-5" }, [
+                          _c("label", { attrs: { for: "codigo" } }, [
+                            _vm._v("*Código")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
                               {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.errors.has("codigo_product"),
-                                    expression: "errors.has('codigo_product')"
-                                  }
-                                ],
-                                staticClass: "text-danger"
-                              },
-                              [
-                                _vm._v(
-                                  _vm._s(_vm.errors.first("codigo_product"))
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newProduct.codebar,
+                                expression: "newProduct.codebar"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              required: "",
+                              type: "text",
+                              name: "codigo"
+                            },
+                            domProps: { value: _vm.newProduct.codebar },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newProduct,
+                                  "codebar",
+                                  $event.target.value
                                 )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.errorsLaravel, function(error, index) {
-                              return _c(
-                                "div",
-                                { key: index, staticClass: "text-danger" },
-                                [
-                                  _c("p", [
-                                    _vm._v(_vm._s(error.codigo_product))
-                                  ])
-                                ]
-                              )
-                            })
-                          ],
-                          2
-                        ),
+                              }
+                            }
+                          })
+                        ]),
                         _vm._v(" "),
                         _vm._m(1)
                       ])
@@ -54264,39 +53992,17 @@ var render = function() {
     { staticClass: "pl-0" },
     [
       _c("v-select", {
-        class: { input: true, "is-invalid": _vm.errors.has("cliente_product") },
         attrs: {
+          required: "",
           name: "cliente",
           placeholder: "Seleccionar Cliente",
           options: _vm.optionsClient,
           value: _vm.selectedClient
         },
         on: { input: _vm.setClient }
-      }),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.errors.has("cliente_product"),
-              expression: "errors.has('cliente_product')"
-            }
-          ],
-          staticClass: "text-danger"
-        },
-        [_vm._v(_vm._s(_vm.errors.first("cliente_product")))]
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.errorsLaravel, function(error, index) {
-        return _c("div", { key: index, staticClass: "text-danger" }, [
-          _c("p", [_vm._v(_vm._s(error.cliente_product))])
-        ])
       })
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
@@ -54338,217 +54044,194 @@ var render = function() {
         { staticClass: "modal fade", attrs: { id: "modalCreateUser" } },
         [
           _c("div", { staticClass: "modal-dialog" }, [
-            _c(
-              "div",
-              { staticClass: "modal-content" },
-              [
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._l(_vm.quotationusers, function(QuotationUsersLocal) {
-                  return _c(
-                    "div",
-                    { key: QuotationUsersLocal.id, staticClass: "modal-body" },
-                    [
-                      _c("label", { attrs: { for: "name" } }, [
-                        _vm._v("Nombre")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required|min:4|max:190",
-                            expression: "'required|min:4|max:190'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: QuotationUsersLocal.name,
-                            expression: "QuotationUsersLocal.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        class: {
-                          input: true,
-                          "is-invalid": _vm.errors.has("name")
-                        },
-                        attrs: { type: "text", name: "name" },
-                        domProps: { value: QuotationUsersLocal.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              QuotationUsersLocal,
-                              "name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("name"),
-                              expression: "errors.has('name')"
-                            }
-                          ],
-                          staticClass: "text-danger"
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("name")))]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.errorsLaravel, function(error, index) {
-                        return _c(
-                          "div",
-                          { key: index, staticClass: "text-danger" },
-                          [_c("p", [_vm._v(_vm._s(error.name))])]
-                        )
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "email" } }, [
-                        _vm._v("Correo")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required|min:6|max:190",
-                            expression: "'required|min:6|max:190'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: QuotationUsersLocal.email,
-                            expression: "QuotationUsersLocal.email"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        class: {
-                          input: true,
-                          "is-invalid": _vm.errors.has("email")
-                        },
-                        attrs: { type: "email", name: "email" },
-                        domProps: { value: QuotationUsersLocal.email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              QuotationUsersLocal,
-                              "email",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("email"),
-                              expression: "errors.has('email')"
-                            }
-                          ],
-                          staticClass: "text-danger"
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("email")))]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.errorsLaravel, function(error, index) {
-                        return _c(
-                          "div",
-                          { key: index, staticClass: "text-danger" },
-                          [_c("p", [_vm._v(_vm._s(error.email))])]
-                        )
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "password" } }, [
-                        _vm._v("Contraseña")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.newUser.password,
-                            expression: "newUser.password"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        class: {
-                          input: true,
-                          "is-invalid": _vm.errors.has("password")
-                        },
-                        attrs: { type: "password", name: "password" },
-                        domProps: { value: _vm.newUser.password },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.newUser,
-                              "password",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("password"),
-                              expression: "errors.has('password')"
-                            }
-                          ],
-                          staticClass: "text-danger"
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("password")))]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.errorsLaravel, function(error, index) {
-                        return _c(
-                          "div",
-                          { key: index, staticClass: "text-danger" },
-                          [_c("p", [_vm._v(_vm._s(error.password))])]
-                        )
-                      })
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [
+                  _c("label", { attrs: { for: "name" } }, [_vm._v("Nombre")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:4",
+                        expression: "'required|min:4'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newUser.name,
+                        expression: "newUser.name"
+                      }
                     ],
-                    2
-                  )
-                }),
-                _vm._v(" "),
-                _vm._m(1)
-              ],
-              2
-            )
+                    staticClass: "form-control",
+                    class: {
+                      input: true,
+                      "is-invalid": _vm.errors.has("name")
+                    },
+                    attrs: { type: "text", name: "name" },
+                    domProps: { value: _vm.newUser.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newUser, "name", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("name"),
+                          expression: "errors.has('name')"
+                        }
+                      ],
+                      staticClass: "text-danger"
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("name")))]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.errorsLaravel, function(error, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "text-danger" },
+                      [_c("p", [_vm._v(_vm._s(error.name))])]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "email" } }, [_vm._v("Correo")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:6",
+                        expression: "'required|min:6'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newUser.email,
+                        expression: "newUser.email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      input: true,
+                      "is-invalid": _vm.errors.has("email")
+                    },
+                    attrs: { type: "email", name: "email" },
+                    domProps: { value: _vm.newUser.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newUser, "email", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("email"),
+                          expression: "errors.has('email')"
+                        }
+                      ],
+                      staticClass: "text-danger"
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("email")))]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.errorsLaravel, function(error, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "text-danger" },
+                      [_c("p", [_vm._v(_vm._s(error.email))])]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: "password" } }, [
+                    _vm._v("Contraseña")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newUser.password,
+                        expression: "newUser.password"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: {
+                      input: true,
+                      "is-invalid": _vm.errors.has("password")
+                    },
+                    attrs: { type: "password", name: "password" },
+                    domProps: { value: _vm.newUser.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newUser, "password", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.errors.has("password"),
+                          expression: "errors.has('password')"
+                        }
+                      ],
+                      staticClass: "text-danger"
+                    },
+                    [_vm._v(_vm._s(_vm.errors.first("password")))]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.errorsLaravel, function(error, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "text-danger" },
+                      [_c("p", [_vm._v(_vm._s(error.password))])]
+                    )
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
           ])
         ]
       )
@@ -54585,7 +54268,7 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-outline-primary",
+          staticClass: "btn btn-outline-danger",
           attrs: {
             type: "button",
             "data-dismiss": "modal",
@@ -55944,7 +55627,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-lg-1" }, [
+                              _c("div", { staticClass: "col-lg-2" }, [
                                 _c("label", { attrs: { for: "precio" } }, [
                                   _vm._v("Precio")
                                 ]),
@@ -56015,12 +55698,15 @@ var render = function() {
                                     }
                                   ],
                                   staticClass: "form-control",
-                                  attrs: { type: "number", name: "quantity" },
+                                  attrs: {
+                                    type: "number",
+                                    name: "quantity",
+                                    min: "0"
+                                  },
                                   domProps: {
                                     value: _vm.newDetailclient.quantity
                                   },
                                   on: {
-                                    keyup: _vm.sumTotalProduct,
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
@@ -56050,12 +55736,15 @@ var render = function() {
                                     }
                                   ],
                                   staticClass: "form-control",
-                                  attrs: { type: "number", name: "percentage" },
+                                  attrs: {
+                                    type: "number",
+                                    name: "percentage",
+                                    min: "0"
+                                  },
                                   domProps: {
                                     value: _vm.newDetailclient.percentage
                                   },
                                   on: {
-                                    keyup: _vm.sumTotalProduct,
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
@@ -56085,12 +55774,15 @@ var render = function() {
                                     }
                                   ],
                                   staticClass: "form-control",
-                                  attrs: { type: "number", name: "aditional" },
+                                  attrs: {
+                                    type: "number",
+                                    name: "aditional",
+                                    min: "0"
+                                  },
                                   domProps: {
                                     value: _vm.newDetailclient.aditional
                                   },
                                   on: {
-                                    keyup: _vm.sumTotalProduct,
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
@@ -56120,12 +55812,15 @@ var render = function() {
                                     }
                                   ],
                                   staticClass: "form-control",
-                                  attrs: { type: "number", name: "transport" },
+                                  attrs: {
+                                    type: "number",
+                                    name: "transport",
+                                    min: "0"
+                                  },
                                   domProps: {
                                     value: _vm.newDetailclient.transport
                                   },
                                   on: {
-                                    keyup: _vm.sumTotalProduct,
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
@@ -56158,6 +55853,7 @@ var render = function() {
                                   attrs: {
                                     type: "number",
                                     name: "utilidad",
+                                    min: "0",
                                     disabled: ""
                                   },
                                   domProps: {
@@ -56614,7 +56310,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 mt-2" }, [
+    return _c("div", { staticClass: "col-lg-1 mt-2" }, [
       _c("label"),
       _vm._v(" "),
       _c(
@@ -57912,7 +57608,7 @@ var render = function() {
                     attrs: { type: "number", name: "precio" },
                     domProps: { value: _vm.fillDetailclient.price },
                     on: {
-                      keyup: _vm.sumTotalEditProduct,
+                      keyup: _vm.sumTotalEditProductMechanic,
                       input: function($event) {
                         if ($event.target.composing) {
                           return
@@ -58300,7 +57996,7 @@ var render = function() {
                                     value: _vm.newDetailclient.price
                                   },
                                   on: {
-                                    keyup: _vm.sumTotalProduct,
+                                    keyup: _vm.sumTotalProductMechanic,
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
@@ -58515,12 +58211,6 @@ var render = function() {
                               _vm._v(" "),
                               _c("td"),
                               _vm._v(" "),
-                              _c("td"),
-                              _vm._v(" "),
-                              _c("td"),
-                              _vm._v(" "),
-                              _c("td"),
-                              _vm._v(" "),
                               _c("td", [
                                 _vm._v(
                                   "Total: " +
@@ -58532,23 +58222,7 @@ var render = function() {
                                       })
                                     )
                                 )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td"),
-                              _vm._v(" "),
-                              _c("td"),
-                              _vm._v(" "),
-                              _c("td"),
-                              _vm._v(" "),
-                              _c("td"),
-                              _vm._v(" "),
-                              _c("td"),
-                              _vm._v(" "),
-                              _c("td"),
-                              _vm._v(" "),
-                              _c("td"),
+                              ]),
                               _vm._v(" "),
                               _c("td", [
                                 _vm._v(
@@ -58577,6 +58251,7 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-danger",
+                    attrs: { href: "#", role: "button" },
                     on: {
                       click: function($event) {
                         $event.preventDefault()
@@ -58594,6 +58269,7 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-danger",
+                    attrs: { href: "#", role: "button" },
                     on: {
                       click: function($event) {
                         $event.preventDefault()
@@ -58918,12 +58594,6 @@ var render = function() {
                             _c("input", {
                               directives: [
                                 {
-                                  name: "validate",
-                                  rawName: "v-validate",
-                                  value: "required",
-                                  expression: "'required'"
-                                },
-                                {
                                   name: "model",
                                   rawName: "v-model",
                                   value: _vm.newQuotationclient.client_text,
@@ -58931,11 +58601,11 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              class: {
-                                input: true,
-                                "is-invalid": _vm.errors.has("nombre")
+                              attrs: {
+                                required: "",
+                                type: "text",
+                                name: "nombre"
                               },
-                              attrs: { type: "text", name: "nombre" },
                               domProps: {
                                 value: _vm.newQuotationclient.client_text
                               },
@@ -58951,23 +58621,7 @@ var render = function() {
                                   )
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.errors.has("nombre"),
-                                    expression: "errors.has('nombre')"
-                                  }
-                                ],
-                                staticClass: "text-danger"
-                              },
-                              [_vm._v(_vm._s(_vm.errors.first("nombre")))]
-                            )
+                            })
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-12 mb-3" }, [
@@ -59010,12 +58664,6 @@ var render = function() {
                             _c("input", {
                               directives: [
                                 {
-                                  name: "validate",
-                                  rawName: "v-validate",
-                                  value: "required",
-                                  expression: "'required'"
-                                },
-                                {
                                   name: "model",
                                   rawName: "v-model",
                                   value: _vm.newQuotationclient.payment,
@@ -59023,11 +58671,11 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              class: {
-                                input: true,
-                                "is-invalid": _vm.errors.has("pago")
+                              attrs: {
+                                required: "",
+                                type: "text",
+                                name: "pago"
                               },
-                              attrs: { type: "text", name: "pago" },
                               domProps: {
                                 value: _vm.newQuotationclient.payment
                               },
@@ -59043,23 +58691,7 @@ var render = function() {
                                   )
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.errors.has("pago"),
-                                    expression: "errors.has('pago')"
-                                  }
-                                ],
-                                staticClass: "text-danger"
-                              },
-                              [_vm._v(_vm._s(_vm.errors.first("pago")))]
-                            )
+                            })
                           ]),
                           _vm._v(" "),
                           _vm._m(1)
@@ -59187,14 +58819,14 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.searchQuotationClient.client_text,
-                          expression: "searchQuotationClient.client_text"
+                          value: _vm.searchQuotationClient.razonSocial,
+                          expression: "searchQuotationClient.razonSocial"
                         }
                       ],
                       staticClass: "form-control",
                       attrs: { type: "text" },
                       domProps: {
-                        value: _vm.searchQuotationClient.client_text
+                        value: _vm.searchQuotationClient.razonSocial
                       },
                       on: {
                         keyup: _vm.getQuotationclients,
@@ -59204,7 +58836,7 @@ var render = function() {
                           }
                           _vm.$set(
                             _vm.searchQuotationClient,
-                            "client_text",
+                            "razonSocial",
                             $event.target.value
                           )
                         }
@@ -59212,9 +58844,63 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("td"),
+                  _c("td", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.searchQuotationClient.client,
+                          expression: "searchQuotationClient.client"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.searchQuotationClient.client },
+                      on: {
+                        keyup: _vm.getQuotationclients,
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.searchQuotationClient,
+                            "client",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
                   _vm._v(" "),
-                  _c("td"),
+                  _c("td", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.searchQuotationClient.vehicle,
+                          expression: "searchQuotationClient.vehicle"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.searchQuotationClient.vehicle },
+                      on: {
+                        keyup: _vm.getQuotationclients,
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.searchQuotationClient,
+                            "vehicle",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
                   _vm._v(" "),
                   _c("td", [
                     _c("div", { staticClass: "form-inline" }, [
@@ -59365,11 +59051,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(quotationLocal.state))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(quotationLocal.client.rut))]),
+                    _c("td", [_vm._v(_vm._s(quotationLocal.rut))]),
                     _vm._v(" "),
-                    _c("td", [
-                      _vm._v(_vm._s(quotationLocal.client.razonSocial))
-                    ]),
+                    _c("td", [_vm._v(_vm._s(quotationLocal.razonSocial))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(quotationLocal.client_text))]),
                     _vm._v(" "),
@@ -59404,7 +59088,9 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      quotationLocal.generado == 3
+                      quotationLocal.generado_client == 0 &&
+                      (quotationLocal.generado == 1 ||
+                        quotationLocal.generado == 2)
                         ? _c(
                             "a",
                             {
@@ -59428,9 +59114,8 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      (quotationLocal.generado_client == 0 &&
-                        quotationLocal.generado == 1) ||
-                      quotationLocal.generado == 2
+                      quotationLocal.generado_client == 0 &&
+                      quotationLocal.generado == 5
                         ? _c(
                             "a",
                             {
@@ -59847,14 +59532,14 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.searchQuotationClientForm.client_text,
-                        expression: "searchQuotationClientForm.client_text"
+                        value: _vm.searchQuotationClientForm.razonSocial,
+                        expression: "searchQuotationClientForm.razonSocial"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "text" },
                     domProps: {
-                      value: _vm.searchQuotationClientForm.client_text
+                      value: _vm.searchQuotationClientForm.razonSocial
                     },
                     on: {
                       keyup: _vm.getQuotationclientsform,
@@ -59864,7 +59549,7 @@ var render = function() {
                         }
                         _vm.$set(
                           _vm.searchQuotationClientForm,
-                          "client_text",
+                          "razonSocial",
                           $event.target.value
                         )
                       }
@@ -59872,9 +59557,63 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("td"),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.searchQuotationClientForm.client,
+                        expression: "searchQuotationClientForm.client"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.searchQuotationClientForm.client },
+                    on: {
+                      keyup: _vm.getQuotationclientsform,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.searchQuotationClientForm,
+                          "client",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
                 _vm._v(" "),
-                _c("td"),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.searchQuotationClientForm.vehicle,
+                        expression: "searchQuotationClientForm.vehicle"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.searchQuotationClientForm.vehicle },
+                    on: {
+                      keyup: _vm.getQuotationclientsform,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.searchQuotationClientForm,
+                          "vehicle",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("td", [
                   _c("div", { staticClass: "form-inline" }, [
@@ -60023,11 +59762,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(quotationformLocal.state))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(quotationformLocal.client.rut))]),
+                  _c("td", [_vm._v(_vm._s(quotationformLocal.rut))]),
                   _vm._v(" "),
-                  _c("td", [
-                    _vm._v(_vm._s(quotationformLocal.client.razonSocial))
-                  ]),
+                  _c("td", [_vm._v(_vm._s(quotationformLocal.razonSocial))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(quotationformLocal.client_text))]),
                   _vm._v(" "),
@@ -60045,6 +59782,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("td", [
+                    quotationformLocal.generado_client == 0 &&
                     quotationformLocal.generado == 3
                       ? _c(
                           "a",
@@ -60060,32 +59798,6 @@ var render = function() {
                               click: function($event) {
                                 $event.preventDefault()
                                 return _vm.modalCreateUserFromQuotation({
-                                  id: quotationformLocal.id
-                                })
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-user" })]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    (quotationformLocal.generado_client == 0 &&
-                      quotationformLocal.generado == 1) ||
-                    quotationformLocal.generado == 2
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-light btn-sm",
-                            attrs: {
-                              href: "#",
-                              "data-toggle": "tooltip",
-                              "data-placeemnt": "top",
-                              title: "Crear Usuario"
-                            },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.showModalDetailUserMechanic({
                                   id: quotationformLocal.id
                                 })
                               }
@@ -65883,7 +65595,7 @@ var render = function() {
                           "div",
                           { staticClass: "col-lg-3" },
                           [
-                            _c("label", { attrs: { for: "nombre" } }, [
+                            _c("label", { attrs: { for: "name" } }, [
                               _vm._v("Nombre")
                             ]),
                             _vm._v(" "),
@@ -65905,9 +65617,9 @@ var render = function() {
                               staticClass: "form-control",
                               class: {
                                 input: true,
-                                "is-invalid": _vm.errors.has("nombre")
+                                "is-invalid": _vm.errors.has("name")
                               },
-                              attrs: { type: "text", name: "nombre" },
+                              attrs: { type: "text", name: "name" },
                               domProps: { value: _vm.newUser.name },
                               on: {
                                 input: function($event) {
@@ -65930,13 +65642,13 @@ var render = function() {
                                   {
                                     name: "show",
                                     rawName: "v-show",
-                                    value: _vm.errors.has("nombre"),
-                                    expression: "errors.has('nombre')"
+                                    value: _vm.errors.has("name"),
+                                    expression: "errors.has('name')"
                                   }
                                 ],
                                 staticClass: "text-danger"
                               },
-                              [_vm._v(_vm._s(_vm.errors.first("nombre")))]
+                              [_vm._v(_vm._s(_vm.errors.first("name")))]
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.errorsLaravel, function(error, index) {
@@ -65954,7 +65666,7 @@ var render = function() {
                           "div",
                           { staticClass: "col-lg-3" },
                           [
-                            _c("label", { attrs: { for: "correo" } }, [
+                            _c("label", { attrs: { for: "email" } }, [
                               _vm._v("Correo Electrónico")
                             ]),
                             _vm._v(" "),
@@ -65976,9 +65688,9 @@ var render = function() {
                               staticClass: "form-control",
                               class: {
                                 input: true,
-                                "is-invalid": _vm.errors.has("correo")
+                                "is-invalid": _vm.errors.has("email")
                               },
-                              attrs: { type: "email", name: "correo" },
+                              attrs: { type: "email", name: "email" },
                               domProps: { value: _vm.newUser.email },
                               on: {
                                 input: function($event) {
@@ -66007,14 +65719,14 @@ var render = function() {
                                 ],
                                 staticClass: "text-danger"
                               },
-                              [_vm._v(_vm._s(_vm.errors.first("correo")))]
+                              [_vm._v(_vm._s(_vm.errors.first("email")))]
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.errorsLaravel, function(error, index) {
                               return _c(
                                 "div",
                                 { key: index, staticClass: "text-danger" },
-                                [_c("p", [_vm._v(_vm._s(error.correo))])]
+                                [_c("p", [_vm._v(_vm._s(error.email))])]
                               )
                             })
                           ],
@@ -101329,7 +101041,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   createProduct: function createProduct(context) {
     context.commit('createProduct');
     setTimeout(function () {
-      context.commit('getCodes', 1); //context.commit('getProducts', 1)
+      //context.commit('getCodes', 1)
+      context.commit('getProducts', 1);
     }, 1000);
   },
   editProduct: function editProduct(context, data) {
@@ -101442,6 +101155,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     context.commit('createUser');
     setTimeout(function () {
       context.commit('getUsers', 1);
+      context.commit('getQuotationclientsform', 1);
     }, 500);
   },
   editUser: function editUser(context, data) {
@@ -101732,6 +101446,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   searchSii: function searchSii(context) {
     context.commit('searchSii');
   },
+  sumTotalProductMechanic: function sumTotalProductMechanic(context) {
+    context.commit('sumTotalProductMechanic');
+  },
+  sumTotalEditProductMechanic: function sumTotalEditProductMechanic(context) {
+    context.commit('sumTotalEditProductMechanic');
+  },
   sumTotalProduct: function sumTotalProduct(context) {
     context.commit('sumTotalProduct');
   },
@@ -101815,6 +101535,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     context.commit('createMechanicClient');
     setTimeout(function () {
       context.commit('getMechanicClients');
+      context.commit('getQuotationclients', 1);
     }, 500);
   },
   getClientVehicles: function getClientVehicles(context) {
@@ -102282,7 +102003,6 @@ var urlCompany = 'companies';
       state.pagination = response.data.pagination;
     });
   },
-  getAllVehicles: function getAllVehicles(state, page) {},
   createVehicle: function createVehicle(state) {
     var id_user = null;
 
@@ -103033,20 +102753,28 @@ var urlCompany = 'companies';
 
   /******************************* */
   getQuotationclients: function getQuotationclients(state, page) {
+    var id = state.searchQuotationClient.id;
+    var razonSocial = state.searchQuotationClient.razonSocial;
+    var client = state.searchQuotationClient.client;
+    var vehicle = state.searchQuotationClient.vehicle;
     var day = state.searchQuotationClient.day;
     var month = state.searchQuotationClient.month;
     var year = state.searchQuotationClient.year;
-    var url = urlQuotationclient + '?page=' + page + '&id=' + state.searchQuotationClient.id + '&client=' + state.searchQuotationClient.client_text + '&day=' + day + '&month=' + month + '&year=' + year;
+    var url = urlQuotationclient + '?page=' + page + '&id=' + id + '&razonSocial=' + razonSocial + '&client=' + client + '&vehicle=' + vehicle + '&day=' + day + '&month=' + month + '&year=' + year;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.quotationclients = response.data.quotationclients.data;
       state.pagination = response.data.pagination;
     });
   },
   getQuotationclientsform: function getQuotationclientsform(state, page) {
+    var id = state.searchQuotationClientForm.id;
+    var razonSocial = state.searchQuotationClientForm.razonSocial;
+    var client = state.searchQuotationClientForm.client;
+    var vehicle = state.searchQuotationClientForm.vehicle;
     var day = state.searchQuotationClientForm.day;
     var month = state.searchQuotationClientForm.month;
     var year = state.searchQuotationClientForm.year;
-    var url = urlQuotationclientform + '?page=' + page + '&id=' + state.searchQuotationClientForm.id + '&client=' + state.searchQuotationClientForm.client_text + '&day=' + day + '&month=' + month + '&year=' + year;
+    var url = urlQuotationclientform + '?page=' + page + '&id=' + id + '&razonSocial=' + razonSocial + '&client=' + client + '&vehicle=' + vehicle + '&day=' + day + '&month=' + month + '&year=' + year;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.quotationclientsform = response.data.quotationclientsform.data;
       state.pagination_form = response.data.pagination_form;
@@ -103212,13 +102940,13 @@ var urlCompany = 'companies';
       state.newDetailclient = {
         quotationclient_id: '',
         product: '',
-        price: 1,
-        quantity: 1,
+        price: 0,
+        quantity: 0,
         percentage: 35,
         aditional: 0,
         transport: 0,
         utility: 0,
-        total: 10
+        total: 0
       };
       state.errorsLaravel = [];
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Detalle generado con éxito');
@@ -103717,36 +103445,14 @@ var urlCompany = 'companies';
     var url = urlProduct;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
       name: state.newProduct.name,
-      detail: state.newProduct.detail
+      detail: state.newProduct.detail,
+      client_id: state.selectedClient.value,
+      codebar: state.newProduct.codebar
     }).then(function (response) {
-      var idProduct = response.data;
-      var url = urlCode;
-      state.newCode.client_id = state.selectedClient.value;
-      state.newCode.product_id = idProduct;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
-        client_id: state.newCode.client_id,
-        product_id: state.newCode.product_id,
-        codebar: state.newCode.codebar,
-        is_activate: state.newCode.is_activate
-      }).then(function (response) {
-        state.selectedClient = {
-          label: '',
-          value: ''
-        };
-        state.newCode = {
-          client_id: '',
-          product_id: '',
-          codebar: '',
-          is_activate: 1
-        };
-        state.errorsLaravel = [];
-        toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Código generado con éxito');
-      })["catch"](function (error) {
-        state.errorsLaravel = error.response.data;
-      });
       state.newProduct = {
         name: '',
-        detail: ''
+        detail: '',
+        codebar: ''
       };
       state.errorsLaravel = [];
       $('#create').modal('hide');
@@ -103988,19 +103694,20 @@ var urlCompany = 'companies';
   createUser: function createUser(state) {
     var url = urlUser;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
+      id: state.idUser,
       name: state.newUser.name,
       email: state.newUser.email,
       password: state.newUser.password //url: window.location.host + "/acceso/" + md5(state.newUser.password)
 
     }).then(function (response) {
       state.newUser = {
+        id: '',
         name: '',
         email: '',
         password: '',
         url: ''
       };
       state.errorsLaravel = [];
-      $('#modalCreateUser').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Usuario generado con éxito');
     })["catch"](function (error) {
       state.errorsLaravel = error.response.data;
@@ -104692,7 +104399,40 @@ var urlCompany = 'companies';
       //console.log(response)
     });
   },
+  sumTotalProductMechanic: function sumTotalProductMechanic(state) {
+    if (state.newDetailclient.price == '') {
+      state.newDetailclient.total = 0;
+      state.newDetailclient.price = 0;
+    }
+
+    state.newDetailclient.total = state.newDetailclient.price;
+  },
+  sumTotalEditProductMechanic: function sumTotalEditProductMechanic(state) {
+    if (state.fillDetailclient.price == '') {
+      state.fillDetailclient.total = 0;
+      state.fillDetailclient.price = 0;
+    }
+
+    state.fillDetailclient.total = state.fillDetailclient.price;
+    state.fillDetailclient.totalIVA = Math.round(state.fillDetailclient.total * 1.19);
+  },
   sumTotalProduct: function sumTotalProduct(state) {
+    if (state.newDetailclient.aditional == '') {
+      state.newDetailclient.aditional = 0;
+    }
+
+    if (state.newDetailclient.transport == '') {
+      state.newDetailclient.transport = 0;
+    }
+
+    if (state.newDetailclient.quantity == '') {
+      state.newDetailclient.quantity = 0;
+    }
+
+    if (state.newDetailclient.percentage == '') {
+      state.newDetailclient.percentage = 0;
+    }
+
     state.newDetailclient.utility = Math.round(parseFloat((parseFloat(state.newDetailclient.price) * (parseFloat(state.newDetailclient.percentage) / 100 + 1) + parseFloat(state.newDetailclient.aditional) - parseFloat(state.newDetailclient.price)) * parseFloat(state.newDetailclient.quantity)));
     state.newDetailclient.total = Math.round(parseFloat((parseFloat(state.newDetailclient.price) * (parseFloat(state.newDetailclient.percentage) / 100 + 1) + parseFloat(state.newDetailclient.aditional) + parseFloat(state.newDetailclient.transport)) * parseFloat(state.newDetailclient.quantity)));
   },
@@ -104931,8 +104671,8 @@ var urlCompany = 'companies';
     });
   },
   createMechanicClient: function createMechanicClient(state) {
-    // axios.post('mechanic-client/' + state.idforms,{
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('mechanic-client', {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('mechanic-client/' + state.idforms, {
+      // axios.post('mechanic-client',{
       name: state.newUser.name,
       email: state.newUser.email,
       password: state.newUser.password
@@ -104945,6 +104685,7 @@ var urlCompany = 'companies';
       };
       state.errorsLaravel = [];
       $('#modalCreateUserMechanic').modal('hide');
+      $('#btn-user-card').click();
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Usuario generado con éxito');
     })["catch"](function (error) {
       state.errorsLaravel = error.response.data;
@@ -105414,14 +105155,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   searchQuotationClient: {
     id: '',
-    client_text: '',
+    razonSocial: '',
+    client: '',
+    vehicle: '',
     day: '',
     month: '',
     year: ''
   },
   searchQuotationClientForm: {
     id: '',
-    client_text: '',
+    razonSocial: '',
+    client: '',
+    vehicle: '',
     day: '',
     month: '',
     year: ''
@@ -105672,7 +105417,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   detail: ''
 }), _defineProperty(_options$optionsUser$, "newProduct", {
   name: '',
-  detail: ''
+  detail: '',
+  codebar: ''
 }), _defineProperty(_options$optionsUser$, "fillProduct", {
   id: '',
   name: '',

@@ -27,31 +27,22 @@
 
                                     <div class="col-lg-5">
                                         <label for="nombre">*Nombre</label>
-                                        <input v-validate="'min:4|max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('nombre_product') }"
+                                        <input required
+                                                
                                                 type="text"
                                                 name="nombre"
                                                 class="form-control" v-model="newProduct.name">
-                                        <p v-show="errors.has('nombre_product')" class="text-danger">{{ errors.first('nombre_product') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.nombre_product }}</p>
-                                        </div>
+                                        
                                     </div>
 
                                     <div class="col-lg-5">
                                         <label for="detalle">*Detalle</label>
-                                        <input v-validate="'max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('detalle_product') }"
+                                        <input required
+                                                
                                                 type="text"
                                                 name="detalle"
                                                 class="form-control" v-model="newProduct.detail">
-                                        <p v-show="errors.has('detalle_product')"
-                                            class="text-danger">{{ errors.first('detalle_product') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.detalle_product }}</p>
-                                        </div>
+                                        
                                     </div>
 
                                     <div class="col-lg-5">
@@ -61,16 +52,10 @@
 
                                     <div class="col-lg-5">
                                         <label for="codigo">*Código</label>
-                                        <input v-validate="'min:2|max:100'"
-                                                :class="{'input': true, 'is-invalid': errors.has('codigo_product') }"
+                                        <input required
                                                 type="text"
                                                 name="codigo"
-                                                class="form-control" v-model="newCode.codebar">
-                                        <p v-show="errors.has('codigo_product')" class="text-danger">{{ errors.first('codigo_product') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.codigo_product }}</p>
-                                        </div>
+                                                class="form-control" v-model="newProduct.codebar">
                                     </div>
 
                                     <div class="col-lg-2 mt-2">

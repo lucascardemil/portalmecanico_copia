@@ -53,7 +53,7 @@
                                                             <label for="precio">Precio</label>
                                                             <input type="number" name="precio" class="form-control"
                                                                 v-model="newDetailclient.price"
-                                                                @keyup="sumTotalProduct">
+                                                                @keyup="sumTotalProductMechanic">
                                                         </div>
 
                                                         <!-- <div class="col-lg-1">
@@ -125,14 +125,8 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Producto</th>
-                                            <!-- <th>Código</th> -->
                                             <th>Plazo</th>
                                             <th>Valor Neto ($)</th>
-                                            <!-- <th>Cantidad</th> -->
-                                            <!-- <th>Porcentaje</th> -->
-                                            <!-- <th>Adicional ($)</th> -->
-                                            <!-- <th>Transporte ($)</th> -->
-                                            <!-- <th>Utilidad ($)</th> -->
                                             <th>Total Neto ($)</th>
                                             <th>Total + IVA ($)</th>
                                             <th>Acción</th>
@@ -140,40 +134,11 @@
                                     </thead>
                                     <tbody>
 
-                                        <!--<tr>
-                                            <td></td>
-                                            <td>
-                                                <input type="text" class="form-control form-control-sm"
-                                                        v-model="newDetail.product">
-                                            </td>
-                                            <td>
-                                                <input type="number" class="form-control form-control-sm"
-                                                        v-model="newDetail.price">
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-success btn-sm"
-                                                    @click.prevent="createDetail"
-                                                    data-toggle="tooltip"
-                                                    data-placement="top"
-                                                    title="Crear">
-                                                    <i class="fas fa-plus-square"></i>
-                                                </a>
-                                            </td>
-                                        </tr>-->
-
                                         <tr v-for="(detailLocal, index) in detailclients" :key="detailLocal.id">
                                             <td width="10px">{{ index + 1 }}</td>
                                             <td>{{ detailLocal.product }}</td>
-                                            <!-- <td>{{ detailLocal.detail }}</td> -->
                                             <td>{{ detailLocal.days }}</td>
                                             <td>{{ detailLocal.price | currency('', 0, { thousandsSeparator: '.' }) }}</td>
-                                            <!-- <td>{{ detailLocal.quantity }}</td> -->
-                                            <!-- <td>{{ detailLocal.percentage+'%' }}</td> -->
-                                            <!-- <td>{{ detailLocal.aditional | currency('', 0, { thousandsSeparator: '.' }) }}</td> -->
-                                            <!-- <td>{{ detailLocal.transport | currency('', 0, { thousandsSeparator: '.' }) }}</td> -->
-                                            <!-- <td>{{ detailLocal.utility | currency('', 0, { thousandsSeparator: '.' }) }}</td> -->
-                                            
-                                            
                                             <td>{{ detailLocal.total | currency('', 0, { thousandsSeparator: '.' }) }}</td>
                                             <th>{{ Math.round(detailLocal.total * 1.19) | currency('', 0, { thousandsSeparator: '.' }) }}</th>
 
@@ -201,26 +166,9 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <!-- <td>Total: {{ totalAdicional | currency('', 0, { thousandsSeparator: '.' }) }}</td>
-                                            <td>Total: {{ totalTransporte | currency('', 0, { thousandsSeparator: '.' }) }}</td>
-                                            <td>Total: {{ totalUtilidad | currency('', 0, { thousandsSeparator: '.' }) }}</td> -->
                                             <td>Total: {{ totalQuotationclient | currency('', 0, { thousandsSeparator: '.' }) }}</td>
-                                                
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            
-                                            
                                             <td>Total + IVA: {{ totalQuotationclientIVA | currency('', 0, { thousandsSeparator: '.' }) }}</td>
+                                                
                                         </tr>
                                     </tbody>
                                 </table>
@@ -231,12 +179,12 @@
 
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-danger"
+                        <a class="btn btn-danger" href="#" role="button"
                             @click.prevent="pdfQuotationclient">
                             <i class="far fa-file-pdf"></i> PDF
                         </a>
 
-                        <a class="btn btn-danger"
+                        <a class="btn btn-danger" href="#" role="button"
                             @click.prevent="pdfIvaQuotationclient">
                             <i class="far fa-file-pdf"></i> PDF IVA Incluido
                         </a>
@@ -264,7 +212,7 @@ export default {
     },
     methods:{
         ...mapActions(['createDetailclient', 'editDetailclientMechanic', 'deleteDetailclient',
-                    'pdfQuotationclient', 'pdfIvaQuotationclient', 'sumTotalProduct'])
+                    'pdfQuotationclient', 'pdfIvaQuotationclient', 'sumTotalProductMechanic'])
     },
 }
 </script>

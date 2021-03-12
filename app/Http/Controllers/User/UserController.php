@@ -59,16 +59,17 @@ class UserController extends Controller
     {
         $id = request('id');
         $this->validate($request, [
-            'name' => 'required|min:6|max:190',
-            'email' => 'required|email|unique:users,email|min:6|max:150',
+            'name' => 'required|min:4',
+            'email' => 'required|email|unique:users,email|min:6',
+            'password' => 'required|min:4',
         ], [
             'name.required' => 'El campo nombre es obligatorio',
             'name.min' => 'El campo nombre debe tener al menos 6 caracteres',
-            'name.max' => 'El campo nombre debe tener a lo más 190 caracteres',
+            'password.required' => 'El campo password es obligatorio',
+            'password.min' => 'El campo password debe tener al menos 6 caracteres',
             'email.required' => 'El campo correo electrónico es obligatorio',
             'email.unique' => 'El correo electrónico ya existe',
             'email.min' => 'El campo de correo electrónico debe tener al menos 6 caracteres',
-            'email.max' => 'El campo de correo electrónico debe tener a lo más 150 caracteres',
         ]);
 
         $data = $request->all();
@@ -80,13 +81,15 @@ class UserController extends Controller
 
         $user = User::create($data);
 
+
+
         DB::table('quotationclients')->where('id', $id)->update(
             [
                 'generado_client' => 1, 
             ]
         );
 
-        return $user;
+        return $id;
     }
 
     /**
@@ -184,7 +187,7 @@ class UserController extends Controller
 
     public function storeclient(Request $request)
     {
-        //$id = request('id');
+        $id = request('id');
         $user = $this->store($request);
 
         $user->roles()->sync(array(0 => '3'));

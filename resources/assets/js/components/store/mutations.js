@@ -116,9 +116,6 @@ export default { //used for changing the state
             state.pagination = response.data.pagination
         });
     },
-    getAllVehicles(state, page) {
-
-    },
     createVehicle(state) {
         var id_user = null
         if (state.selectedUser != null) {
@@ -892,13 +889,16 @@ export default { //used for changing the state
 
 
     getQuotationclients(state, page) {
+        var id = state.searchQuotationClient.id
+        var razonSocial = state.searchQuotationClient.razonSocial
+        var client = state.searchQuotationClient.client
+        var vehicle = state.searchQuotationClient.vehicle
         var day = state.searchQuotationClient.day
         var month = state.searchQuotationClient.month
         var year = state.searchQuotationClient.year
-
-        var url = urlQuotationclient + '?page=' + page + '&id=' + state.searchQuotationClient.id + '&client=' + state.searchQuotationClient.client_text + '&day=' + day + '&month=' + month + '&year=' + year
-
-
+        
+        var url = urlQuotationclient + '?page=' + page + '&id=' + id + '&razonSocial=' + razonSocial + '&client=' + client + '&vehicle=' + vehicle + '&day=' + day + '&month=' + month + '&year=' + year
+        
         axios.get(url).then(response => {
             state.quotationclients = response.data.quotationclients.data
             state.pagination = response.data.pagination
@@ -906,11 +906,15 @@ export default { //used for changing the state
     },
 
     getQuotationclientsform(state, page) {
+        var id = state.searchQuotationClientForm.id
+        var razonSocial = state.searchQuotationClientForm.razonSocial
+        var client = state.searchQuotationClientForm.client
+        var vehicle = state.searchQuotationClientForm.vehicle
         var day = state.searchQuotationClientForm.day
         var month = state.searchQuotationClientForm.month
         var year = state.searchQuotationClientForm.year
-
-        var url = urlQuotationclientform + '?page=' + page + '&id=' + state.searchQuotationClientForm.id + '&client=' + state.searchQuotationClientForm.client_text + '&day=' + day + '&month=' + month + '&year=' + year
+        
+        var url = urlQuotationclientform + '?page=' + page + '&id=' + id + '&razonSocial=' + razonSocial + '&client=' + client + '&vehicle=' + vehicle + '&day=' + day + '&month=' + month + '&year=' + year
 
 
         axios.get(url).then(response => {
@@ -1080,13 +1084,13 @@ export default { //used for changing the state
             state.newDetailclient = {
                 quotationclient_id: '',
                 product: '',
-                price: 1,
-                quantity: 1,
+                price: 0,
+                quantity: 0,
                 percentage: 35,
                 aditional: 0,
                 transport: 0,
                 utility: 0,
-                total: 10
+                total: 0
             }
             state.errorsLaravel = []
             toastr.success('Detalle generado con éxito')
@@ -1598,42 +1602,13 @@ export default { //used for changing the state
         axios.post(url, {
             name: state.newProduct.name,
             detail: state.newProduct.detail,
+            client_id: state.selectedClient.value,
+            codebar: state.newProduct.codebar
         }).then(response => {
-
-            var idProduct = response.data
-
-            var url = urlCode
-
-            state.newCode.client_id = state.selectedClient.value
-            state.newCode.product_id = idProduct
-
-            axios.post(url, {
-                client_id: state.newCode.client_id,
-                product_id: state.newCode.product_id,
-                codebar: state.newCode.codebar,
-                is_activate: state.newCode.is_activate,
-            }).then(response => {
-                state.selectedClient = {
-                    label: '',
-                    value: ''
-                }
-                state.newCode = {
-                    client_id: '',
-                    product_id: '',
-                    codebar: '',
-                    is_activate: 1
-                }
-                state.errorsLaravel = []
-
-                toastr.success('Código generado con éxito')
-            }).catch(error => {
-                state.errorsLaravel = error.response.data
-            })
-
-
             state.newProduct = {
                 name: '',
-                detail: ''
+                detail: '',
+                codebar: ''
             }
             state.errorsLaravel = []
             $('#create').modal('hide')
@@ -1881,25 +1856,27 @@ export default { //used for changing the state
     createUser(state) {
         var url = urlUser
         axios.post(url, {
+            id: state.idUser,
             name: state.newUser.name,
             email: state.newUser.email,
             password: state.newUser.password,
             //url: window.location.host + "/acceso/" + md5(state.newUser.password)
         }).then(response => {
             state.newUser = {
+                id: '',
                 name: '',
                 email: '',
                 password: '',
                 url: ''
             }
             state.errorsLaravel = []
-            
-            $('#modalCreateUser').modal('hide')
             toastr.success('Usuario generado con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data
         })
     },
+
+    
     editUser(state, user) {
         state.fillUser.id = user.id
         state.fillUser.name = user.name
@@ -2596,7 +2573,34 @@ export default { //used for changing the state
             //console.log(response)
         });
     },
+    sumTotalProductMechanic(state) {
+        if(state.newDetailclient.price == ''){
+            state.newDetailclient.total = 0
+            state.newDetailclient.price = 0
+        }
+        state.newDetailclient.total = state.newDetailclient.price
+    },
+    sumTotalEditProductMechanic(state) {
+        if(state.fillDetailclient.price == ''){
+            state.fillDetailclient.total = 0
+            state.fillDetailclient.price = 0
+        }
+        state.fillDetailclient.total = state.fillDetailclient.price
+        state.fillDetailclient.totalIVA = Math.round(state.fillDetailclient.total * 1.19)
+    },
     sumTotalProduct(state) {
+        if(state.newDetailclient.aditional == ''){
+            state.newDetailclient.aditional = 0
+        }
+        if(state.newDetailclient.transport == ''){
+            state.newDetailclient.transport = 0
+        }
+        if(state.newDetailclient.quantity == ''){
+            state.newDetailclient.quantity = 0
+        }
+        if(state.newDetailclient.percentage == ''){
+            state.newDetailclient.percentage = 0
+        }
         state.newDetailclient.utility = Math.round(parseFloat((parseFloat(state.newDetailclient.price) *
                 ((parseFloat(state.newDetailclient.percentage) / 100) + 1) +
                 parseFloat(state.newDetailclient.aditional) -
@@ -2609,6 +2613,8 @@ export default { //used for changing the state
                 parseFloat(state.newDetailclient.aditional) +
                 parseFloat(state.newDetailclient.transport)) *
             parseFloat(state.newDetailclient.quantity)))
+        
+        
     },
     sumTotalEditProduct(state) {
         state.fillDetailclient.utility = Math.round(parseFloat((parseFloat(state.fillDetailclient.price) *
@@ -2966,8 +2972,8 @@ export default { //used for changing the state
 
     createMechanicClient(state) {
           
-        // axios.post('mechanic-client/' + state.idforms,{
-        axios.post('mechanic-client',{
+        axios.post('mechanic-client/' + state.idforms,{
+        // axios.post('mechanic-client',{
             name: state.newUser.name,
             email: state.newUser.email,
             password: state.newUser.password,
@@ -2980,6 +2986,7 @@ export default { //used for changing the state
             }
             state.errorsLaravel = []
             $('#modalCreateUserMechanic').modal('hide')
+            $('#btn-user-card').click()
             toastr.success('Usuario generado con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data
