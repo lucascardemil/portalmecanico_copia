@@ -579,7 +579,7 @@ export default { //methods
     createProduct(context) {
         context.commit('createProduct')
         setTimeout(function () {
-            //context.commit('getCodes', 1)
+            context.commit('getCodes', 1)
             context.commit('getProducts', 1)
         }, 1000)
 

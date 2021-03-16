@@ -51,15 +51,15 @@
                                                     </div>
                                                     <div class="row">
 
-                                                        <!-- <div class="col-lg-1">
+                                                        <div class="col-lg-2">
                                                             <label for="precio">Precio</label>
                                                             <input type="number" name="precio" class="form-control"
                                                                 v-model="newDetailclient.price"
-                                                                
-                                                                @keyup="sumTotalProduct">
+                                                                @keyup="sumTotalProduct"
+                                                                >
                                                             
-                                                        </div> -->
-                                                        <div class="col-lg-2">
+                                                        </div>
+                                                        <!-- <div class="col-lg-2">
                                                             <label for="precio">Precio</label>
                                                             <div class="input-group mb-3">
                                                                 <input type="number" name="precio" class="form-control"
@@ -68,33 +68,33 @@
                                                                     <button class="btn btn-secondary" @click="sumTotalProduct" type="button"><i class="fas fa-calculator"></i></button>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
 
                                                         <div class="col-lg-1">
                                                             <label for="cantidad">Cantidad</label>
                                                             <input type="number" name="quantity" class="form-control"
-                                                                v-model="newDetailclient.quantity" min="0"
+                                                                v-model="newDetailclient.quantity" @keyup="sumTotalProduct" min="0"
                                                                 >
                                                         </div>
 
                                                         <div class="col-lg-1">
                                                             <label for="percentage">%</label>
                                                             <input type="number" name="percentage" class="form-control"
-                                                                v-model="newDetailclient.percentage" min="0"
+                                                                v-model="newDetailclient.percentage" @keyup="sumTotalProduct" min="0"
                                                                 >
                                                         </div>
 
                                                         <div class="col-lg-1">
                                                             <label for="aditional">Adicional</label>
                                                             <input type="number" name="aditional" class="form-control"
-                                                                v-model="newDetailclient.aditional" min="0"
+                                                                v-model="newDetailclient.aditional" @keyup="sumTotalProduct" min="0"
                                                                 >
                                                         </div>
 
                                                         <div class="col-lg-1">
                                                             <label for="transport">Flete</label>
                                                             <input type="number" name="transport" class="form-control"
-                                                                v-model="newDetailclient.transport" min="0"
+                                                                v-model="newDetailclient.transport" @keyup="sumTotalProduct" min="0"
                                                                 >
                                                         </div>
 

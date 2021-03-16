@@ -502,30 +502,40 @@ class BillController extends Controller
                 'type' => 'Proveedor'
             ])->id;
 
-        foreach ($xml->DTE->Documento->Detalle as $producto) {
-            if(!empty($producto->CdgItem->TpoCodigo)){
-                $detail = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $producto->NmbItem); //Elimina lo espacios en blanco
-                $product = Product::firstOrCreate(
-                    [
-                        'name' => $detail,
-                        'detail' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo
-                    ]);
-                
-                $code = Code::firstOrCreate(
-                    [
-                        'client_id' => $client_id,
-                        'product_id' => $product->id,
-                        'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo
-                    ]);
 
-                $inventory = Inventory::firstOrCreate(
-                    [
-                        'code_id' => $code->id,
-                        'price' => round($producto->MontoItem / $producto->QtyItem),
-                        'quantity' => $producto->QtyItem
-                    ]);
-            }
+        // $folios = Code::where('folio', '=' , $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio)->get();
+
+        
+        // if($xml->DTE->Documento->Encabezado->IdDoc[0]->Folio == $folios){
+            foreach ($xml->DTE->Documento->Detalle as $producto) {
+                if(!empty($producto->CdgItem->TpoCodigo)){
+                    // if($producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo == )
+                        $detail = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $producto->NmbItem); //Elimina lo espacios en blanco
+                        $product = Product::firstOrCreate(
+                            [
+                                'name' => $detail,
+                                'detail' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo
+                            ]);
+                        
+                        $code = Code::firstOrCreate(
+                            [
+                                'client_id' => $client_id,
+                                'product_id' => $product->id,
+                                'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
+                                'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis
+                            ]);
+        
+                        $inventory = Inventory::firstOrCreate(
+                            [
+                                'code_id' => $code->id,
+                                'price' => round($producto->MontoItem / $producto->QtyItem),
+                                'quantity' => $producto->QtyItem
+                            ]);
+                    // }
+                }
+            // }
         }
+        
     }
 
     /**

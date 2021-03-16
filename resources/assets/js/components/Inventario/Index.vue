@@ -63,16 +63,15 @@
         <tr>
           <th>ID</th>
           <th>Producto</th>
-          <th>Detalle</th>
-          <th>Proveedor</th>
           <th>Código</th>
+          <th>Proveedor</th>
+          <th>Fecha Factura</th>
           <th>Precio</th>
           <th>Unidades</th>
           <th><a href="#" @click="sortBy">Total</a></th>
         </tr>
       </thead>
       <tbody v-for="codeLocal in rows" :key="codeLocal.id">
-        <!-- <tr> -->
         <tr
           class="accordion-toggle" 
           data-toggle="collapse" 
@@ -80,9 +79,9 @@
         >
           <td>{{ codeLocal.id }}</td>
           <td>{{ codeLocal.product.name }}</td>
-          <td>{{ codeLocal.product.detail }}</td>
-          <td>{{ codeLocal.client.name }}</td>
           <td>{{ codeLocal.codebar }}</td>
+          <td>{{ codeLocal.client.name }}</td>
+          <td>{{ codeLocal.fecha_fact }}</td>
           <!-- <td>{{ codeLocal.inventories[0].price | currency('$', 0, { thousandsSeparator: '.' })}}</td>
           <td>{{ codeLocal.inventories[0].quantity }}</td>
           <td>{{ totalInventario(codeLocal.inventories[0]) | currency('$', 0, { thousandsSeparator: '.' })}}</td> -->

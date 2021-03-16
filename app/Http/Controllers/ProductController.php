@@ -125,21 +125,21 @@ class ProductController extends Controller
     public function all()
     {
         $idUser = Auth::id();
-        // $product = Product::whereHas('codes.client', function ($query) use($idUser) {
-        //     $query->where('clients.user_id', '=', $idUser);
-        // })->orderBy('id', 'DESC')->get();
+        $product = Product::whereHas('codes.client', function ($query) use($idUser) {
+            $query->where('clients.user_id', '=', $idUser);
+        })->orderBy('id', 'DESC')->get();
 
-        // return $product;
-
-
-        $product = DB::table('clients')
-            ->join('codes', 'clients.id', '=', 'codes.client_id')
-            ->join('products', 'codes.product_id', '=', 'products.id')
-            ->join('inventories', 'codes.id', '=', 'inventories.code_id')
-            ->where('clients.user_id', '=', $idUser)
-            ->select('products.name', 'inventories.price')
-            ->orderBy('products.id', 'DESC')->get();
-        
         return $product;
+
+
+        // $product = DB::table('clients')
+        //     ->join('codes', 'clients.id', '=', 'codes.client_id')
+        //     ->join('products', 'codes.product_id', '=', 'products.id')
+        //     ->join('inventories', 'codes.id', '=', 'inventories.code_id')
+        //     ->where('clients.user_id', '=', $idUser)
+        //     ->select('products.name', 'inventories.price')
+        //     ->orderBy('products.id', 'DESC')->get();
+        
+        // return $product;
     }
 }

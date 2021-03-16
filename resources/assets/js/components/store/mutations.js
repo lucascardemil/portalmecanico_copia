@@ -2476,8 +2476,7 @@ export default { //used for changing the state
             response.data.forEach((product) => {
                 state.optionsProduct.push({
                     label: product.name,
-                    value: product.id,
-                    price: product.price
+                    value: product.id
                 })
             });
         });
@@ -2487,16 +2486,10 @@ export default { //used for changing the state
         if (state.selectedProduct != null) {
             state.newDetailclient.product = state.selectedProduct.label
             state.productForm.product = state.selectedProduct.label
-            state.newDetailclient.price = state.selectedProduct.price
-            state.newDetailclient.utility = 0
-            state.newDetailclient.total = 0
         } else {
             state.newDetailclient.product = ''
             state.productForm.product = ''
-            state.newDetailclient.utility = 0
-            state.newDetailclient.total = 0
         }
-
     },
     allProductimports(state) {
         var url = urlAllProductimport
@@ -2507,7 +2500,7 @@ export default { //used for changing the state
                     label: product.name + ' - ' + product.detail,
                     value: product.id,
                     name: product.name,
-                    detail: product.detail,
+                    detail: product.detail
                 })
             })
         });
@@ -2574,33 +2567,13 @@ export default { //used for changing the state
         });
     },
     sumTotalProductMechanic(state) {
-        if(state.newDetailclient.price == ''){
-            state.newDetailclient.total = 0
-            state.newDetailclient.price = 0
-        }
         state.newDetailclient.total = state.newDetailclient.price
     },
     sumTotalEditProductMechanic(state) {
-        if(state.fillDetailclient.price == ''){
-            state.fillDetailclient.total = 0
-            state.fillDetailclient.price = 0
-        }
         state.fillDetailclient.total = state.fillDetailclient.price
         state.fillDetailclient.totalIVA = Math.round(state.fillDetailclient.total * 1.19)
     },
-    sumTotalProduct(state) {
-        if(state.newDetailclient.aditional == ''){
-            state.newDetailclient.aditional = 0
-        }
-        if(state.newDetailclient.transport == ''){
-            state.newDetailclient.transport = 0
-        }
-        if(state.newDetailclient.quantity == ''){
-            state.newDetailclient.quantity = 0
-        }
-        if(state.newDetailclient.percentage == ''){
-            state.newDetailclient.percentage = 0
-        }
+    sumTotalProduct(state) {        
         state.newDetailclient.utility = Math.round(parseFloat((parseFloat(state.newDetailclient.price) *
                 ((parseFloat(state.newDetailclient.percentage) / 100) + 1) +
                 parseFloat(state.newDetailclient.aditional) -
@@ -2613,8 +2586,6 @@ export default { //used for changing the state
                 parseFloat(state.newDetailclient.aditional) +
                 parseFloat(state.newDetailclient.transport)) *
             parseFloat(state.newDetailclient.quantity)))
-        
-        
     },
     sumTotalEditProduct(state) {
         state.fillDetailclient.utility = Math.round(parseFloat((parseFloat(state.fillDetailclient.price) *
