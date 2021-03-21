@@ -1,6 +1,6 @@
 <template>
 
-<div class="container">
+<div>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Producto Existente</a>
@@ -12,67 +12,71 @@
     <div class="tab-content bg-white p-3" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <form action="POST" v-on:submit.prevent="createCode">
-                <div class="row">
-                    <div class="col-lg-6">
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
                         <label for="producto">Producto</label>
                         <SelectProduct></SelectProduct>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="form-group col-lg-6">
                         <label for="cliente">Proveedor</label>
                         <SelectProvider></SelectProvider>
                     </div>
-                    <div class="col-lg-6">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
                         <label for="codigo">Código</label>
                         <input required
                         type="text"
                         name="codigo"
                         class="form-control" v-model="newCode.codebar">
                     </div>
-                    <div class="col-lg-6 mt-2">
-                        <label></label>
-                        <button type="submit" class="btn btn-success form-control btn-block">
-                            <i class="fas fa-plus-square"></i> Guardar
-                        </button>
+                    <div class="form-group col-lg-6">
+                        <label for="atributo">Atributo</label>
+                        <input required
+                        type="number"
+                        name="atributo"
+                        class="form-control" v-model="newCode.atributo">
                     </div>
                 </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-plus-square"></i> Guardar
+                </button>
             </form>
         </div>
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             <form action="POST" v-on:submit.prevent="createProduct">
-                <div class="row">
-                    <div class="col-lg-5">
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
                         <label for="nombre">*Nombre</label>
                         <input required
                                 type="text"
                                 name="nombre"
                                 class="form-control" v-model="newProduct.name">
                     </div>
-                    <div class="col-lg-5">
+                    <div class="form-group col-lg-6">
                         <label for="detalle">*Detalle</label>
                         <input required
-                        type="text"
-                        name="detalle"
-                        class="form-control" v-model="newProduct.detail">
-
+                                type="text"
+                                name="detalle"
+                                class="form-control" v-model="newProduct.detail">
                     </div>
-                    <div class="col-lg-5">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
                         <label for="cliente">*Proveedor</label>
                         <SelectProvider></SelectProvider>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="form-group col-lg-6">
                         <label for="codigo">*Código</label>
                         <input required
-                        type="text"
-                        name="codigo"
-                        class="form-control" v-model="newProduct.codebar">
-                    </div>
-                    <div class="col-lg-2 mt-2">
-                        <label></label>
-                        <button type="submit" class="btn btn-success form-control">
-                        <i class="fas fa-plus-square"></i> Guardar
-                        </button>
+                                type="text"
+                                name="codigo"
+                                class="form-control" v-model="newProduct.codebar">
                     </div>
                 </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-plus-square"></i> Guardar
+                </button>
             </form>
         </div>
     </div>

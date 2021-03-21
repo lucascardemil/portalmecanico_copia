@@ -12,7 +12,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="">
+                        <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input v-validate="'required|min:4|max:190'"
                                     :class="{'input': true, 'is-invalid': errors.has('nombre') }"
@@ -26,22 +26,22 @@
                             </div>
                         </div>
 
-                        <div class="">
-                            <label for="correo">Nombre</label>
+                        <div class="form-group">
+                            <label for="correo">Email</label>
                             <input v-validate="'required|min:6|max:190'"
                                     :class="{'input': true, 'is-invalid': errors.has('correo') }"
                                     type="email"
                                     name="correo"
                                     class="form-control" v-model="fillUser.email">
-                            <p v-show="errors.has('nombre')"
+                            <p v-show="errors.has('correo')"
                                 class="text-danger">{{ errors.first('correo') }}</p>
 
                             <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                <p>{{ error.correo }}</p>
+                                <p>{{ error.email }}</p>
                             </div>
                         </div>
 
-                        <div class="">
+                        <div class="form-group">
                             <label for="password">Contraseña</label>
                             <input v-validate="'required'"
                                     :class="{'input': true, 'is-invalid': errors.has('password') }"
@@ -56,7 +56,7 @@
                             </div>
                         </div>
 
-                        <div class="">
+                        <div class="form-group">
                             <label for="url">URL</label>
                             <input type="text" name="url" class="form-control" v-model="fillUser.url" readonly=readonly>
                         </div>

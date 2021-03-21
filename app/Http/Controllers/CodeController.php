@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Code;
+use App\Inventory;
+use App\Atributo;
 use Illuminate\Http\Request;
 
 class CodeController extends Controller
@@ -85,7 +87,34 @@ class CodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Code::find($id)->update($request->all());
+        // Code::find($id)->update($request->all());
+        
+        // $inventory = Inventory::find($codes);
+        // $inventory->quantity = $request->atributo;
+        // $inventory->save();
+
+        $code = Code::find($id);
+        $code->codebar = $request->codebar;
+        $code->atributo = $request->atributo;
+        $code->save();
+
+        // Atributo::create([
+        //     'codigo' => $request->codebar,
+        //     'atributo' => $request->atributo
+        // ]);
+
+
+        if($request->atributo > 0){
+            $inventorys = Inventory::where('code_id', $code->id)->get();
+            foreach($inventorys as $inventory){
+                if($request->atributo != $inventory->quantity){
+                    Inventory::where('code_id', $code->id)->update([
+                        'quantity' => $request->atributo,
+                        'price' => round($inventory->price / $request->atributo)
+                    ]);
+                }
+            }
+        }
 
         return;
     }

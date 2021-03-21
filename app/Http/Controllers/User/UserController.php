@@ -115,9 +115,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|min:6|max:190',
+            'name' => 'required|min:4|max:190',
             'email' => ['required', 'email', 'min:6', 'max:150',
                         \Illuminate\Validation\Rule::unique('users')->ignore(User::find($id))],
+            'password' => 'required|min:6|max:190',
         ], [
             'name.required' => 'El campo nombre es obligatorio',
             'name.min' => 'El campo nombre debe tener al menos 6 caracteres',
@@ -125,6 +126,9 @@ class UserController extends Controller
             'email.required' => 'El campo correo electrónico es obligatorio',
             'email.min' => 'El campo de correo electrónico debe tener al menos 6 caracteres',
             'email.max' => 'El campo de correo electrónico debe tener a lo más 150 caracteres',
+            'password.required' => 'El campo contraseña es obligatorio',
+            'password.min' => 'El campo de contraseña debe tener al menos 6 caracteres',
+            'password.max' => 'El campo de contraseña debe tener a lo más 150 caracteres',
         ]);
 
         $data = $request->all();

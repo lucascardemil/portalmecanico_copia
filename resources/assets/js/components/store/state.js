@@ -87,6 +87,14 @@ export default { //data
         label: '',
         value: ''
     },
+    selectedProductCode: {
+        label: '',
+        value: ''
+    },
+    selectedClientCode: {
+        label: '',
+        value: ''
+    },
     selectedProductimport: {
         label: '',
         value: ''
@@ -634,6 +642,7 @@ export default { //data
         client_id: '',
         product_id: '',
         codebar: '',
+        atributo: 0,
         is_activate: 1
     },
     fillCode: {
@@ -641,6 +650,7 @@ export default { //data
         client_id: '',
         product_id: '',
         codebar: '',
+        atributo: 0,
         is_activate: 1
     },
     searchCode: {

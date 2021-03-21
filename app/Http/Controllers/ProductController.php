@@ -127,7 +127,7 @@ class ProductController extends Controller
         $idUser = Auth::id();
         $product = Product::whereHas('codes.client', function ($query) use($idUser) {
             $query->where('clients.user_id', '=', $idUser);
-        })->orderBy('id', 'DESC')->get();
+        })->orderBy('id', 'DESC')->groupBy('name')->get();
 
         return $product;
 

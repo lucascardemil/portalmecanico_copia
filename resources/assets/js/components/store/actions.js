@@ -581,6 +581,7 @@ export default { //methods
         setTimeout(function () {
             context.commit('getCodes', 1)
             context.commit('getProducts', 1)
+            context.commit('allProducts')
         }, 1000)
 
     },

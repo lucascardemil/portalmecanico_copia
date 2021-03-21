@@ -503,38 +503,116 @@ class BillController extends Controller
             ])->id;
 
 
-        // $folios = Code::where('folio', '=' , $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio)->get();
+        $folios = Code::where('folio', '=' , $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio)->get('folio');
 
-        
-        // if($xml->DTE->Documento->Encabezado->IdDoc[0]->Folio == $folios){
-            foreach ($xml->DTE->Documento->Detalle as $producto) {
-                if(!empty($producto->CdgItem->TpoCodigo)){
-                    // if($producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo == )
-                        $detail = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $producto->NmbItem); //Elimina lo espacios en blanco
-                        $product = Product::firstOrCreate(
-                            [
-                                'name' => $detail,
-                                'detail' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo
-                            ]);
+              
+            if($xml->DTE->Documento->Encabezado->IdDoc[0]->Folio != isset($folios[0]->folio)){
+
+                foreach ($xml->DTE->Documento->Detalle as $producto) {
+                    if(!empty($producto->CdgItem->TpoCodigo)){
                         
-                        $code = Code::firstOrCreate(
-                            [
-                                'client_id' => $client_id,
-                                'product_id' => $product->id,
-                                'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
-                                'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis
-                            ]);
-        
-                        $inventory = Inventory::firstOrCreate(
-                            [
-                                'code_id' => $code->id,
-                                'price' => round($producto->MontoItem / $producto->QtyItem),
-                                'quantity' => $producto->QtyItem
-                            ]);
-                    // }
+                        
+                            $count = Product::where('detail', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->count();
+                            $detail = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $producto->NmbItem); //Elimina lo espacios en blanco
+
+                            if(empty($count)){
+                               
+
+                                $product = Product::firstOrCreate(
+                                    [
+                                        'name' => $detail,
+                                        'detail' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo
+                                    ]);
+                                
+                                
+
+                                $code = Code::firstOrCreate(
+                                    [
+                                        'client_id' => $client_id,
+                                        'product_id' => $product->id,
+                                        'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
+                                        'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
+                                        'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
+                                    ]);
+                            
+                        
+                                Inventory::firstOrCreate(
+                                    [
+                                        'code_id' => $code->id,
+                                        'price' => round($producto->MontoItem / $producto->QtyItem),
+                                        'quantity' => $producto->QtyItem
+                                    ]);
+                                    
+                                
+                                
+                                
+                            }else{
+
+                                $products = Product::where('detail', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->get();
+
+                                foreach ($products as $product) {
+
+                                    $count = Code::where('codebar', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->count();
+                                    if(empty($count)){
+                                        $code = Code::firstOrCreate(
+                                            [
+                                                'client_id' => $client_id,
+                                                'product_id' => $product->id,
+                                                'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
+                                                'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
+                                                'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
+                                            ]);
+                                        
+                                        Inventory::firstOrCreate(
+                                            [
+                                                'code_id' => $code->id,
+                                                'price' => round($producto->MontoItem / $producto->QtyItem),
+                                                'quantity' => $producto->QtyItem
+                                            ]);
+                                        
+                                    }else{
+                                        $inventorys = Code::where('codebar', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->get();
+                                        foreach($inventorys as $inventory){
+
+                                            if($inventory->codebar != $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo){
+
+                                                $code = Code::firstOrCreate(
+                                                    [
+                                                        'client_id' => $client_id,
+                                                        'product_id' => $product->id,
+                                                        'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
+                                                        'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
+                                                        'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
+                                                    ]);
+                                            }
+                                        
+                                        
+                                            if($inventory->atributo > 0){
+                                                
+                                                Inventory::create(
+                                                    [
+                                                        'code_id' => $inventory->id,
+                                                        'price' => round($producto->MontoItem / $inventory->atributo),
+                                                        'quantity' => $inventory->atributo
+                                                    ]);
+                                                
+                                            }else{
+                                        
+                                                Inventory::firstOrCreate(
+                                                    [
+                                                        'code_id' => $code->id,
+                                                        'price' => round($producto->MontoItem / $producto->QtyItem),
+                                                        'quantity' => $producto->QtyItem
+                                                    ]);
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }                        
+                    }else return response()->json('Failure', 422);
                 }
-            // }
-        }
+            }else return response()->json('Failure', 422);
         
     }
 

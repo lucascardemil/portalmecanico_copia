@@ -1680,6 +1680,7 @@ export default { //used for changing the state
             client_id: state.newCode.client_id,
             product_id: state.newCode.product_id,
             codebar: state.newCode.codebar,
+            atributo: state.newCode.atributo,
             is_activate: state.newCode.is_activate,
         }).then(response => {
 
@@ -1695,6 +1696,7 @@ export default { //used for changing the state
                 client_id: '',
                 product_id: '',
                 codebar: '',
+                atributo: 0,
                 is_activate: 1
             }
             state.errorsLaravel = []
@@ -1711,19 +1713,20 @@ export default { //used for changing the state
         state.fillCode.client_id = code.client_id
         state.fillCode.product_id = code.product_id
         state.fillCode.codebar = code.codebar
+        state.fillCode.atributo = code.atributo
         state.fillCode.is_activate = code.is_activate
 
         state.optionsProduct.forEach(product => {
             if (product.value == state.fillCode.product_id) {
-                state.selectedProduct.value = product.value
-                state.selectedProduct.label = product.label
+                state.selectedProductCode.value = product.value
+                state.selectedProductCode.label = product.label
             }
         })
 
         state.optionsClient.forEach(client => {
             if (client.value == state.fillCode.client_id) {
-                state.optionsClient.value = client.value
-                state.optionsClient.label = client.label
+                state.selectedClientCode.value = client.value
+                state.selectedClientCode.label = client.label
             }
         })
 
@@ -1741,6 +1744,7 @@ export default { //used for changing the state
                 client_id: '',
                 product_id: '',
                 codebar: '',
+                atributo: 0,
                 is_activate: 1
             }
             state.errorsLaravel = []

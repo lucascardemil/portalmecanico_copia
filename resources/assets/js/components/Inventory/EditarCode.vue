@@ -11,25 +11,29 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
-                        <label for="cliente">Proveedor</label>
-                        <SelectProvider></SelectProvider>
-
-                        <label for="producto">Producto</label>
-                        <SelectProduct></SelectProduct>
-
-                        <label for="codigo">Código</label>
-                        <input v-validate="'required|min:1'"
-                                :class="{'input': true, 'is-invalid': errors.has('codigo') }"
-                                type="text"
-                                name="codigo"
-                                class="form-control" v-model="fillCode.codebar">
-                        <p v-show="errors.has('codigo')" class="text-danger">{{ errors.first('codigo') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.codebar }}</p>
+                        <div class="form-group">
+                            <label for="cliente">Proveedor</label>
+                            <SelectProvider></SelectProvider>
                         </div>
-
+                        <div class="form-group">
+                            <label for="producto">Producto</label>
+                            <SelectProduct></SelectProduct>
+                        </div>
+                        <div class="form-group">
+                            <label for="codigo">Código</label>
+                            <input required
+                                    
+                                    type="text"
+                                    name="codigo"
+                                    class="form-control" v-model="fillCode.codebar">
+                        </div>
+                        <div class="form-group">
+                            <label for="atributo">Atributo</label>
+                            <input required
+                            type="number"
+                            name="atributo"
+                            class="form-control" v-model="fillCode.atributo">
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -46,8 +50,8 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import SelectProduct from '../Product/Select'
-import SelectProvider from '../Client/Select'
+import SelectProduct from './SelectProduct'
+import SelectProvider from './SelectProvider'
 
 export default {
     components: { SelectProduct, SelectProvider },
