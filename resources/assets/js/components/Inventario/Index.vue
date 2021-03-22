@@ -42,7 +42,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>{{ inventario.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+                    <td>{{ inventario.price | currency('$', 1) }}</td>
                     <td>{{ inventario.quantity }}</td>
                     <td>{{ totalInventario(inventario) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
                 </tr> 

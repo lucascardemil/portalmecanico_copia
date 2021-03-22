@@ -588,12 +588,15 @@ class BillController extends Controller
                                         
                                         
                                             if($inventory->atributo > 0){
+
+                                                $cantidad = $producto->QtyItem * $inventory->atributo;
+                                                $total = $producto->PrcItem * $producto->QtyItem;
                                                 
                                                 Inventory::create(
                                                     [
                                                         'code_id' => $inventory->id,
-                                                        'price' => round($producto->MontoItem / $inventory->atributo),
-                                                        'quantity' => $inventory->atributo
+                                                        'price' => $total / $cantidad,
+                                                        'quantity' => $cantidad
                                                     ]);
                                                 
                                             }else{

@@ -50496,11 +50496,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(
-                            _vm._f("currency")(inventario.price, "$", 0, {
-                              thousandsSeparator: "."
-                            })
-                          )
+                          _vm._s(_vm._f("currency")(inventario.price, "$", 1))
                         )
                       ]),
                       _vm._v(" "),
@@ -51843,12 +51839,7 @@ var render = function() {
                           _c("td", [
                             _vm._v(
                               _vm._s(
-                                _vm._f("currency")(
-                                  inventoryLocal.price,
-                                  "$",
-                                  0,
-                                  { thousandsSeparator: "." }
-                                )
+                                _vm._f("currency")(inventoryLocal.price, "$", 1)
                               )
                             )
                           ]),

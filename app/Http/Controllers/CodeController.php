@@ -108,9 +108,12 @@ class CodeController extends Controller
             $inventorys = Inventory::where('code_id', $code->id)->get();
             foreach($inventorys as $inventory){
                 if($request->atributo != $inventory->quantity){
+                    $cantidad = $inventory->quantity * $request->atributo;
+                    $total = $inventory->price * $inventory->quantity;
+                    
                     Inventory::where('code_id', $code->id)->update([
-                        'quantity' => $request->atributo,
-                        'price' => round($inventory->price / $request->atributo)
+                        'quantity' => $cantidad,
+                        'price' => $total / $cantidad
                     ]);
                 }
             }

@@ -65,7 +65,7 @@
 
                                     <tr v-for="inventoryLocal in inventories" :key="inventoryLocal.id">
                                         <td>{{ inventoryLocal.id }}</td>
-                                        <td>{{ inventoryLocal.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+                                        <td>{{ inventoryLocal.price | currency('$', 1) }}</td>
                                         <td>{{ inventoryLocal.quantity }}</td>
                                         <td>{{ totalInventario(inventoryLocal) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
                                         <td>
