@@ -613,7 +613,7 @@ class BillController extends Controller
                                 }
                                 
                             }                        
-                    }else return response()->json('Failure', 422);
+                    }
                 }
             }else return response()->json('Failure', 422);
         
