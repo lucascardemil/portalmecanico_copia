@@ -1353,6 +1353,7 @@ export default { //used for changing the state
         /* + adicional*/
 
         var precio_dolar = parseFloat(state.newDetailimport.price) * parseFloat(state.detailImport.dolar)
+        //var dolar = parseFloat(state.detailImport.dolar)
 
         axios.put(urlImport + '/' + state.idImport, {
             dolar: state.detailImport.dolar,
@@ -1370,6 +1371,7 @@ export default { //used for changing the state
             price_dolar: precio_dolar,
             quantity: state.newDetailimport.quantity,
             //usa: state.newDetailimport.usa,
+            //dolar: dolar,
             usa: usa,
             seguro: seguro,
             valorem: state.newDetailimport.valorem,
@@ -1518,7 +1520,7 @@ export default { //used for changing the state
         })
     },
     finishDetailimport(state) {
-        var idImport = null
+        var idImport = state.idImport
         state.detailimports.forEach(localImport => {
             var url = urlDetailimport + '/' + localImport.id
             idImport = localImport.import_id
@@ -2664,7 +2666,7 @@ export default { //used for changing the state
             detailImport.retiro = parseFloat(percentage / 100 * state.detailImportNacional.retiro)
             detailImport.fleteChile = parseFloat(percentage / 100 * state.detailImportNacional.fleteChile)
 
-            detailImport.price_dolar = parseFloat(detailImport.price) * parseFloat(state.detailImport.dolar)
+            //detailImport.price_dolar = parseFloat(detailImport.price) * parseFloat(state.detailImport.dolar)
 
             if (detailImport.valorem == 1) {
 

@@ -13,66 +13,39 @@
                     <div class="modal-body">
 
                         <label for="producto">Producto</label>
-                        <input v-validate="'min:2'"
-                                :class="{'input': true, 'is-invalid': errors.has('producto') }"
+                        <input required
                                 type="text"
                                 name="producto"
                                 class="form-control" v-model="fillDetailimport.product">
-                        <p v-show="errors.has('producto')" class="text-danger">{{ errors.first('producto') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.product }}</p>
-                        </div>
+                        
 
                         <label for="codigo">Código</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('codigo') }"
+                        <input required
                                 type="text"
                                 name="codigo"
                                 class="form-control" v-model="fillDetailimport.detail">
-                        <p v-show="errors.has('codigo')" class="text-danger">{{ errors.first('codigo') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.detail }}</p>
-                        </div>
-
+                        
                         <label for="valor">Valor (clp)</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('valor') }"
+                        <input required
                                 type="number"
                                 step="0.01"
                                 name="valor"
                                 class="form-control" v-model="fillDetailimport.price">
-                        <p v-show="errors.has('valor')" class="text-danger">{{ errors.first('valor') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.price }}</p>
-                        </div>
+                        
 
                         <label for="cantidad">Cantidad</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('cantidad') }"
+                        <input required
                                 type="number"
                                 name="cantidad"
                                 class="form-control" v-model="fillDetailimport.quantity">
-                        <p v-show="errors.has('cantidad')" class="text-danger">{{ errors.first('cantidad') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.quantity }}</p>
-                        </div>
-
+                        
                         <label for="adicional">Adicional (clp)</label>
-                        <input v-validate="''"
-                                :class="{'input': true, 'is-invalid': errors.has('adicional') }"
+                        <input 
                                 type="number"
                                 step="0.01"
                                 name="adicional"
                                 class="form-control" v-model="fillDetailimport.aditional">
-                        <p v-show="errors.has('adicional')" class="text-danger">{{ errors.first('adicional') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.aditional }}</p>
-                        </div>
+                        
 
 
                     </div>

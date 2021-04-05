@@ -311,9 +311,11 @@
                                                             <input type="number" name="aditional" class="form-control"
                                                                 v-model="newDetailimport.aditional">
                                                         </div>-->
+                                                    </div>
+                                                    <div class="row">
 
                                                         <div class="col-lg-1 mt-2">
-                                                            <label></label>
+                                                            
                                                             <button type="submit"
                                                                     class="btn btn-success form-control">
                                                                     Guardar
@@ -475,10 +477,9 @@
 
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-success"
-                            @click.prevent="finishDetailimport">
-                            Finalizar
-                        </a>
+                        
+
+                        <button type="button" class="btn btn-success" @click.prevent="finishDetailimport">Finalizar</button>
 
                     </div>
                 </div>

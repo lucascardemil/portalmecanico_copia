@@ -35,7 +35,7 @@
 
                                                         <div class="col-lg-4">
                                                             <label for="product">Nombre Producto</label>
-                                                            <input 
+                                                            <input required
                                                                 type="text"
                                                                 name="product"
                                                                 class="form-control"
@@ -55,7 +55,7 @@
                                                             <label for="precio">Precio</label>
                                                             <input type="number" name="precio" class="form-control"
                                                                 v-model="newDetailclient.price"
-                                                                @keyup="sumTotalProduct"
+                                                                @keyup="sumTotalProduct" required
                                                                 >
                                                             
                                                         </div>
@@ -72,7 +72,7 @@
 
                                                         <div class="col-lg-1">
                                                             <label for="cantidad">Cantidad</label>
-                                                            <input type="number" name="quantity" class="form-control"
+                                                            <input type="number" name="quantity" class="form-control" required
                                                                 v-model="newDetailclient.quantity" @keyup="sumTotalProduct" min="0"
                                                                 >
                                                         </div>

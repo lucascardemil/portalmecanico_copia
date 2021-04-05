@@ -11,42 +11,24 @@
                     </div>
                     <div class="modal-body">
                         <label for="name">Nombre</label>
-                        <input v-validate="'required|min:4|max:190'"
-                                :class="{'input': true, 'is-invalid': errors.has('name') }"
+                        <input required
                                 type="text"
                                 name="name"
                                 class="form-control" v-model="newUser.name">
-                        <p v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.name }}</p>
-                        </div>
-
+                        
                         <label for="email">Correo</label>
-                        <input v-validate="'required|min:6|max:190'"
-                                :class="{'input': true, 'is-invalid': errors.has('email') }"
+                        <input required
                                 type="email"
                                 name="email"
                                 class="form-control" v-model="newUser.email">
-                        <p v-show="errors.has('email')"
-                            class="text-danger">{{ errors.first('email') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.email }}</p>
-                        </div>
+                        
 
                         <label for="password">Contraseña</label>
-                        <input v-validate="'required'"
-                                :class="{'input': true, 'is-invalid': errors.has('password') }"
+                        <input required
                                 type="password"
                                 name="password"
                                 class="form-control" v-model="newUser.password">
-                        <p v-show="errors.has('password')"
-                            class="text-danger">{{ errors.first('password') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.password }}</p>
-                        </div>
+                        
 
                     </div>
                     <div class="modal-footer">

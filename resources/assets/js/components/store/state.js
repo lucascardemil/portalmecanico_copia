@@ -539,6 +539,7 @@ export default { //data
     },
 
     detailImport: {
+        id: 0,
         dolar: 700,
         embarque: 0,
         seguro: 1,

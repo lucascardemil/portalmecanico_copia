@@ -27,16 +27,10 @@
 
                                     <div class="col-lg-9">
                                         <label for="nombre">Nombre</label>
-                                        <input v-validate="'min:3'"
-                                                :class="{'input': true, 'is-invalid': errors.has('nombre') }"
+                                        <input required
                                                 type="text"
                                                 name="nombre"
                                                 class="form-control" v-model="newImport.name">
-                                        <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.name }}</p>
-                                        </div>
                                     </div>
 
 

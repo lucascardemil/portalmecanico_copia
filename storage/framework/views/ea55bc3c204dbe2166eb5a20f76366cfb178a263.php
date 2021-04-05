@@ -3,7 +3,8 @@
     <table class="table table-bordered">
         <tbody>
 
-            <tr style="border-spacing: 15px;!important;">
+        <tr>
+                <?php if($user->logo > 0): ?>
                 <td COLSPAN="2" class="text-center"
                     style="border-top-color:white!important;
                     border-left-color:white!important;
@@ -15,18 +16,6 @@
                     style="border-top-color:white!important;
                     border-left-color:white!important;
                     paddding-top:10px;">
-                    <!-- <span style="font-size:14px">
-                    <?php if($client->type == 'Cliente Particular'): ?>
-                    <?php echo e('COMERCIAL SUPRA E.I.R.L'); ?></span>
-                    <br>
-                    <span><?php echo e($client->giro ? $client->giro : 'Repuestos Automotrices, Repuestos Maquinarias, Importaciones'); ?></span>
-                    <?php else: ?>
-                    <?php echo e($client->razonSocial ? $client->razonSocial :  'COMERCIAL SUPRA E.I.R.L'); ?></span>
-                    <br>
-                    <span><?php echo e($client->giro ? $client->giro : 'Repuestos Automotrices, Repuestos Maquinarias, Importaciones'); ?></span>
-                    <?php endif; ?>
-                    <br>
-                    <br> -->
                     <span style="font-size:14px">COMERCIAL SUPRA E.I.R.L</span>
                     <br>
                     <span>Repuestos Automotrices, Repuestos Maquinarias, Importaciones</span>
@@ -42,14 +31,29 @@
                     <br>
                     <span>FECHA: <?php echo e($quotation->created_at->format('d/m/Y')); ?></span>
                 </td>
-            </tr>
-
-            <!--<tr>
-                <td class="text-center" COLSPAN="6" style="padding-right:5px">
-                    <span style="font-size:18px">Cotización N°<?php echo e($quotation->id); ?></span>
-                    <span style="font-size:18px;float:right"><?php echo e($quotation->created_at); ?></span>
+                <?php else: ?>
+                <td COLSPAN="10" class="text-center"
+                    style="border-top-color:white!important;
+                    border-left-color:white!important;
+                    paddding-top:10px;">
+                    <span style="font-size:14px">COMERCIAL SUPRA E.I.R.L</span>
+                    <br>
+                    <span>Repuestos Automotrices, Repuestos Maquinarias, Importaciones</span>
+                    <br>
+                    <br>
                 </td>
-            </tr>-->
+                <td class="text-center" COLSPAN="2">
+                    <span style="font-size:16px">RUT: 76.515.046-9</span>
+                    <br>
+                    <span style="font-size:16px">COTIZACIÓN</span>
+                    <br>
+                    <span style="font-size:16px"><?php echo e($quotation->id); ?></span>
+                    <br>
+                    <span>FECHA: <?php echo e($quotation->created_at->format('d/m/Y')); ?></span>
+                </td>           
+                <?php endif; ?>
+                
+            </tr>
 
             <tr>
                 <td COLSPAN="12"
@@ -72,21 +76,6 @@
                     <span>Teléfono: </span> <b><span><?php echo e($client->phone); ?></span></b>
                     <?php endif; ?>
                 </td>
-                <!--<td COLSPAN="2" style="font-size:13px">
-                    <span>Sr: </span> <b><span>Álvaro Pérez</span></b>
-                    <br>
-                    <span>Empresa: </span> <b><span>Comercial Supra E.I.R.L</span></b>
-                    <br>
-                    <span>Rut: </span> <b><span>76.515.046-9</span></b>
-                    <br>
-                    <span>Dirección: </span> <b><span>Rubén Jiménez 601</span></b>
-                    <br>
-                    <span>Ciudad: </span> <b><span>Coquimbo</span></b>
-                    <br>
-                    <span>E-mail: </span> <b><span>comercialsupra4@gmail.com</span></b>
-                    <br>
-                    <span>Teléfono: </span> <b><span>(+569) 89483379</span></b>
-                </td>-->
             </tr>
 
             <tr>
@@ -100,7 +89,7 @@
             </tr>
 
             <tr>
-                <td class="text-center" COLSPAN="1">
+                <td class="text-center">
                     Cant
                 </td>
                 <td class="text-center" COLSPAN="7">
@@ -109,10 +98,10 @@
                 <td class="text-center" COLSPAN="2">
                     Plazo Entrega
                 </td>
-                <td class="text-center" COLSPAN="1">
+                <td class="text-center" >
                     Valor Unitario
                 </td>
-                <td class="text-center" COLSPAN="1">
+                <td class="text-center">
                     Valor Total
                 </td>
             </tr>
@@ -122,28 +111,30 @@
             <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $detail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
 
-                        <td class="text-center" COLSPAN="1"><?php echo e($detail->quantity); ?></td>
+                        <td class="text-center"><?php echo e($detail->quantity); ?></td>
                         <td class="text-center" COLSPAN="7"><?php echo e($detail->product); ?></td>
-                        <td COLSPAN="2"><?php echo e($detail->days); ?></td>
-                        <td COLSPAN="1">$ <?php echo e(round($detail->total / $detail->quantity, -1)); ?></td>
-                        <td COLSPAN="1">$ <?php echo e(round($detail->total, -1)); ?></td>
+                        <td class="text-center" COLSPAN="2"><?php echo e($detail->days); ?></td>
+                        <?php if($detail->quantity > 0): ?>
+                            <td class="text-center">$ <?php echo e(round($detail->total / $detail->quantity, -1)); ?></td>
+                        <?php else: ?>
+                            <td class="text-center">$ <?php echo e(0); ?></td>
+                        <?php endif; ?>
+                        <td class="text-center">$ <?php echo e(round($detail->total, -1)); ?></td>
                         <?php $totalServicio += $detail->total ?>
                         <?php $contador = $contador + 1 ?>
 
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-
             <?php for($i = $contador; $i < 9; $i++ ): ?>
                 <tr style="color:white">
-                    <td COLSPAN="1">-</td>
+                    <td>-</td>
                     <td COLSPAN="7">-</td>
                     <td COLSPAN="2">-</td>
-                    <td COLSPAN="1">-</td>
-                    <td COLSPAN="1">-</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
             <?php endfor; ?>
-
 
             <tr>
                 <td COLSPAN="12">
@@ -168,13 +159,13 @@
                         Validez cotización: 5 días
                     </span>
                 </td>
-                <td class="text-center" COLSPAN="2" style="border:none;">
-                    <span style="font-size:12px">
+                <td class="text-center" COLSPAN="2">
+                    <span style="font-size:14px">
                         Neto
                     </span>
                 </td>
                 <td class="text-center" COLSPAN="2">
-                    <span style="font-size:12px">
+                    <span style="font-size:14px">
                         $ <?php echo e(round($totalServicio, -1)); ?>
 
                     </span>
@@ -182,13 +173,13 @@
             </tr>
 
             <tr>
-                <td class="text-center" COLSPAN="2" style="border:none;">
-                    <span style="font-size:12px">
+                <td class="text-center" COLSPAN="2">
+                    <span style="font-size:14px">
                         Iva
                     </span>
                 </td>
                 <td class="text-center" COLSPAN="2">
-                    <span style="font-size:12px">
+                    <span style="font-size:14px">
                         $ <?php echo e(round($totalServicio * 0.19, -1)); ?>
 
                     </span>
@@ -196,13 +187,13 @@
             </tr>
 
             <tr>
-                <td class="text-center" COLSPAN="2" style="border:none;">
-                    <span style="font-size:12px">
+                <td class="text-center" COLSPAN="2">
+                    <span style="font-size:14px">
                         Total
                     </span>
                 </td>
                 <td class="text-center" COLSPAN="2">
-                    <span style="font-size:12px">
+                    <span style="font-size:14px">
                         $ <?php echo e(round($totalServicio * 1.19, -1)); ?>
 
                     </span>
@@ -222,16 +213,6 @@
 
 <?php $__env->stopSection(); ?>
 
-<style>
-    table{
-        border-collapse: collapse;
-        margin-bottom: 0px;
-        margin-top: 0px;
-    }
-    tr, td{
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
-    }
-</style>
+
 
 <?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\portalmecanico_copia\resources\views/pdf/quotationclient.blade.php ENDPATH**/ ?>

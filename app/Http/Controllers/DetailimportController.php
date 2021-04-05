@@ -29,7 +29,24 @@ class DetailimportController extends Controller
     {
         $data = $request->all();
 
+        // return $data['price'] * $this->convertCurrency($data['price'], 'CLP', 'USD');
+
+        // // Detailimport::create([
+        // //     'aditional' => $data['aditional'],
+        // //     'detail' => $data['detail'],
+        // //     'import_id' => $data['import_id'],
+        // //     'price_dolar' => $this->convertCurrency($data['price'], 'CLP', 'USD') * $data['dolar'],
+        // //     'price' => $data['price'],
+        // //     'product' => $data['product'],
+        // //     'quantity' => $data['quantity'],
+        // //     'seguro' => $data['seguro'],
+        // //     'usa' => $data['usa'],
+        // //     'valorem' => $data['valorem']
+
+        // // ]);
+
         Detailimport::create($data);
+
     }
 
     /**
@@ -73,7 +90,7 @@ class DetailimportController extends Controller
         return;
     }
 
-
+    
 
 
 }
