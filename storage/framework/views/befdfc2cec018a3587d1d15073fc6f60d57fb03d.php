@@ -101,8 +101,8 @@
                         <td class="text-center" COLSPAN="7"><?php echo e($detail->product); ?></td>
                         <td COLSPAN="2"><?php echo e($detail->days); ?></td>
                         <?php if($detail->quantity > 0): ?>
-                            <!-- <td COLSPAN="1">$ <?php echo e(round($detail->total / $detail->quantity, -1)); ?></td> -->
-                            <td class="text-center">$ <?php echo e(round($detail->price)); ?></td>
+                            <td COLSPAN="1">$ <?php echo e(round($detail->total * 1.19 / $detail->quantity, -1)); ?></td>
+                            
                         <?php else: ?>
                             <td class="text-center">$ <?php echo e(0); ?></td>
                         <?php endif; ?>

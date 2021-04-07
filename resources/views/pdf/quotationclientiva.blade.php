@@ -103,8 +103,8 @@
                         <td class="text-center" COLSPAN="7">{{ $detail->product }}</td>
                         <td COLSPAN="2">{{ $detail->days }}</td>
                         @if($detail->quantity > 0)
-                            <!-- <td COLSPAN="1">$ {{ round($detail->total / $detail->quantity, -1) }}</td> -->
-                            <td class="text-center">$ {{ round($detail->price) }}</td>
+                            <td COLSPAN="1">$ {{ round($detail->total * 1.19 / $detail->quantity, -1) }}</td>
+                            
                         @else
                             <td class="text-center">$ {{ 0 }}</td>
                         @endif
