@@ -38,7 +38,7 @@ var urlVBrand = 'vbrands-all'
 var urlVModel = 'vmodels-all'
 var urlVYear = 'vyears-all'
 var urlVEngine = 'vengines-all'
-
+var urlCiudad = 'ciudad-all'
 
 var urlVBR = 'vbr-all'
 var urlVMR = 'vmr-all'
@@ -49,6 +49,8 @@ var urlYM = 'ym-all'
 var urlCreateQuotationUser = 'quotationuser'
 var urlCreateQuotationUserExpress = 'quotationuserexpress'
 var urlPendingQuotations = 'pendingquotations'
+
+var urlCreateQuotationShipping = 'quotationshipping'
 
 var urlNote = 'notes'
 
@@ -920,6 +922,21 @@ export default { //used for changing the state
         axios.get(url).then(response => {
             state.quotationclientsform = response.data.quotationclientsform.data
             state.pagination_form = response.data.pagination_form
+        });
+    },
+
+    getQuotationlinkenvio(state) {
+        var url = 'quotationlinkenvio' 
+        axios.get(url).then(response => {
+            state.linkenvio.url = window.location.host + "/cotizar-envio/" + response.data
+        });
+    },
+
+
+    getQuotationShipping(state) {
+        var url = 'quotationshipping' 
+        axios.get(url).then(response => {
+            state.quotationshipping = response.data
         });
     },
 
@@ -1883,6 +1900,7 @@ export default { //used for changing the state
     },
 
     
+
     editUser(state, user) {
         state.fillUser.id = user.id
         state.fillUser.name = user.name
@@ -2313,8 +2331,21 @@ export default { //used for changing the state
 
     /****************formulario de cotizacion ****************************************/
 
-
-
+    allCiudad(state) {
+        var url = urlCiudad
+        axios.get(url).then(response => {
+            state.optionsCiudad = []
+            response.data.forEach((ciudad) => {
+                state.optionsCiudad.push({
+                    label: ciudad.nombre,
+                    value: ciudad.id
+                })
+            });
+        });
+    },
+    setCiudad(state, ciudad) {
+        state.selectedCiudad = ciudad
+    },
 
     allVBrands(state) {
         var url = urlVBrand
@@ -2459,6 +2490,54 @@ export default { //used for changing the state
         }).catch(error => {
             state.errorsLaravel = error.response.data
         })
+    },
+
+
+    createQuotationEnvio(state) {
+        var url = urlCreateQuotationShipping
+        var cadena = window.location.href
+        var id = cadena.split("/")
+
+        if (state.formQuotationShipping.direccion != '') {
+            state.formQuotationShipping.direccion
+        }else{
+            state.formQuotationShipping.direccion = 'Sin Envio'
+        }
+
+        axios.post(url, {
+            id: id[4],
+            nombre: state.formQuotationShipping.nombre,
+            rut: state.formQuotationShipping.rut,
+            telefono: state.formQuotationShipping.telefono,
+            ciudad: state.selectedCiudad.value,
+            direccion: state.formQuotationShipping.direccion
+        }).then(response => {
+            state.formQuotationShipping = {
+                id: '',
+                nombre: '',
+                rut: '',
+                telefono: '',
+                ciudad: '',
+                direccion: ''
+            },
+            state.errorsLaravel = []
+            toastr.success('Se envio la solicitud de envio')
+            return true
+        }).catch(error => {
+            state.errorsLaravel = []
+            if (error.response.status === 422) {
+                if (error.response.data.errors) {
+                    for (let key in error.response.data.errors) {
+                        state.errorsLaravel.push({
+                            field: key,
+                            msg: String(error.response.data.errors[key])
+                        })
+                    }
+                }
+            }
+            return false
+        })
+
     },
 
     getPendingQuotations(state, page) {

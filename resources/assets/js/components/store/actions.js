@@ -287,6 +287,14 @@ export default { //methods
     getQuotationclientsform(context, data) {
         context.commit('getQuotationclientsform', data.page)
     },
+
+    getQuotationlinkenvio(context, data) {
+        context.commit('getQuotationlinkenvio', data)
+    },
+
+    getQuotationShipping(context, data) {
+        context.commit('getQuotationShipping', data)
+    },
     
     createQuotationclient(context) {
         context.commit('createQuotationclient')
@@ -876,6 +884,13 @@ export default { //methods
         context.commit('allYM', data)
     },
     /*************seccion formulario de cotizacion  ****************/
+
+    setCiudad(context, data) {
+        context.commit('setCiudad', data)
+    },
+    allCiudad(context, data) {
+        context.commit('allCiudad', data)
+    },
     allVBrands(context, data) {
         context.commit('allVBrands', data)
     },
@@ -935,6 +950,9 @@ export default { //methods
                 context.commit('setVEngine', {label:'', value:''}) 
                 */
 
+    },
+    createQuotationEnvio(context, data) {
+        context.commit('createQuotationEnvio', data)
     },
 
     createQuotationUserExpress(context, data) {

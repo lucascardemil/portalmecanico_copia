@@ -15,8 +15,12 @@ export default { //data
     optionsVModel: [],
     optionsVYear: [],
     optionsVEngine: [],
-
+    optionsCiudad: [],
     optionsVehicleClient: [],
+
+    linkenvio: {
+        url: ''
+    },
 
     selectedVBrand: {
         label: '',
@@ -31,6 +35,11 @@ export default { //data
         value: ''
     },
     selectedVEngine: {
+        label: '',
+        value: ''
+    },
+
+    selectedCiudad: {
         label: '',
         value: ''
     },
@@ -303,6 +312,7 @@ export default { //data
     /*** sección componentes de cotizaciones para clientes*/
     quotationclients: [],
     quotationclientsform: [],
+    quotationshipping: [],
     newQuotationclient: {
         client_id: '',
         state: '',
@@ -389,6 +399,15 @@ export default { //data
         year: '',
         engine: '',
         description: ''
+    },
+
+    formQuotationShipping: {
+        id: '',
+        nombre: '',
+        rut: '',
+        telefono: '',
+        ciudad: '',
+        direccion: ''
     },
     quotationDesc: '',
     /************************************ */

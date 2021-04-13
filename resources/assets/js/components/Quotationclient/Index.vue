@@ -110,7 +110,6 @@
             </div>
         </div>
         
-
         <div class="table-responsive">
             <table class="table table-striped mt-3 text-white bg-dark">
                 <thead>
@@ -279,6 +278,7 @@
 
         
         <ListarClientesForm></ListarClientesForm>
+        <ListarQuotationShipping></ListarQuotationShipping>
 
 
         <CreateUser></CreateUser>
@@ -310,6 +310,7 @@ import CreateUserMechanic from './CreateUserMechanic'
 import EliminarCotizacionCliente from './Eliminar'
 import CreateUser from '../Quotation/CreateUser'
 import ListarClientesForm from './ListarClientesForm'
+import ListarQuotationShipping from './ListarQuotationShipping'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 
@@ -319,7 +320,7 @@ import YearSelector from '../Quotationuser/YearSelector'
 import EngineSelector from '../Quotationuser/EngineSelector'
 
 export default {
-    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, DetalleEditarCM, EliminarCotizacionCliente, CreateUser, CreateUserMechanic, DetalleMechanic, DetalleClienteMechanic, ListarClientesForm },
+    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, DetalleEditarCM, EliminarCotizacionCliente, CreateUser, CreateUserMechanic, DetalleMechanic, DetalleClienteMechanic, ListarClientesForm, ListarQuotationShipping },
     computed:{
         ...mapState(['quotationclients','quotationclientsform' ,'newQuotationclient', 'searchQuotationClient','pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])
