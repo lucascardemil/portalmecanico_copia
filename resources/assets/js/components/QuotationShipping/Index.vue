@@ -51,9 +51,23 @@
                                 <label class="font-weight-light">Ciudad*</label>
                                 <CiudadSelector></CiudadSelector>        
                             </div>
+                            <div class="form-group">
+                                <label class="font-weight-light">Sucursal</label>
+                                <input
+                                        class="form-control"
+                                        type="text"
+                                        name="sucursal"
+                                        v-model="formQuotationShipping.sucursal" />
+                                
+                            </div>
                             <div class="form-check mb-3">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" v-model="formQuotationShipping.envio">
                                 <label class="form-check-label" for="exampleCheck1">Envió a domicilio</label>
+                            </div>
+                            <div class="form-group" :class="formQuotationShipping.envio === true ? 'd-block' : 'd-none'">
+                                <small>Si requiere entrega a domicilio, debemos simular previamente el valor de la encomienda y el cliente
+                                       transferirnos el monto para pagar el servicio, ya que los transportes no permiten entregas a domicilio por pagar.
+                                </small>
                             </div>
                             <div class="form-group" :class="formQuotationShipping.envio === true ? 'd-block' : 'd-none'">
                                 <label class="font-weight-light">Dirección</label>
@@ -65,6 +79,7 @@
                                         v-model="formQuotationShipping.direccion" />
                                 <p v-show="errors.has('direccion')" class="text-danger">{{ errors.first('direccion') }}</p>
                             </div>
+                            
                             <button type="submit" class="btn btn-primary btn-block">Enviar</button>
                         </form>
                     </div>

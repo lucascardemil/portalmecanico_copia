@@ -407,7 +407,8 @@ export default { //data
         rut: '',
         telefono: '',
         ciudad: '',
-        direccion: ''
+        direccion: '',
+        sucursal: ''
     },
     quotationDesc: '',
     /************************************ */

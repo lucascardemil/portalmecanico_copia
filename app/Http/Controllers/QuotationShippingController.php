@@ -40,7 +40,8 @@ class QuotationShippingController extends Controller
                                         'quotation_shippings.rut',
                                         'quotation_shippings.telefono',
                                         'towns.nombre as ciudad',
-                                        'quotation_shippings.direccion'
+                                        'quotation_shippings.direccion',
+                                        'quotation_shippings.sucursal'
                                     )
                                     ->orderBy('quotation_shippings.id', 'DESC')->get();
 
@@ -57,6 +58,7 @@ class QuotationShippingController extends Controller
         $telefono = $data['telefono'];
         $ciudad = $data['ciudad'];
         $direccion = $data['direccion'];
+        $sucursal = $data['sucursal'];
         
         QuotationShipping::create([
             'user_id' => $user_id_logeado, //usuario alvaro por defecto
@@ -64,7 +66,8 @@ class QuotationShippingController extends Controller
             'rut' => $rut,
             'telefono' => $telefono,
             'ciudad' => $ciudad,
-            'direccion' => $direccion
+            'direccion' => $direccion,
+            'sucursal' => $sucursal
         ]);
     
 

@@ -249,10 +249,6 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.notas');
     })->name('admin-notas'); //->middleware('permission:notas');
 
-    // Route::get('admin-cotizaciones', function () {
-    //     return view('admin.cotizaciones');
-    // })->name('admin-cotizaciones'); //->middleware('permission:cotizaciones');
-
     Route::get('admin-cotizacion-express', function () {
         return view('admin.cotizacion-express');
     })->name('admin-cotizacion-express');

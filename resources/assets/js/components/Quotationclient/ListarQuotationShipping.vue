@@ -9,6 +9,7 @@
                     <th>Telefono</th>
                     <th>Ciudad</th>
                     <th>Dirección</th>
+                    <th>Sucursal</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +49,7 @@
                     <td></td>
                 </tr> -->
                 <tr>
-                    <td colspan="5">
+                    <td colspan="6">
                         <input type="text" class="form-control" v-model="linkenvio.url" readonly=readonly>
                         <input type="hidden" id="testing-code" :value="linkenvio.url">
                     </td>
@@ -64,6 +65,7 @@
                     <td>{{ quotationshippingLocal.telefono }}</td>
                     <td>{{ quotationshippingLocal.ciudad }}</td>
                     <td>{{ quotationshippingLocal.direccion }}</td>
+                    <td>{{ quotationshippingLocal.sucursal }}</td>
                 </tr>
             </tbody>
         </table>

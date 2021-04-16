@@ -1,4 +1,4 @@
-@extends('layouts.portalapp')
+<!-- @extends('layouts.portalapp')
 
 @section('content')
 
@@ -8,4 +8,4 @@
         </div>
     </div>
 
-@endsection
+@endsection -->
