@@ -324,6 +324,9 @@ export default { //methods
     pdfQuotationclient(context) {
         context.commit('pdfQuotationclient')
     },
+    pdfQuotationShipping(context, data) {
+        context.commit('pdfQuotationShipping' , data.id)
+    },
     pdfIvaQuotationclient(context) {
         context.commit('pdfIvaQuotationclient')
     },

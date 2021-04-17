@@ -152,6 +152,7 @@ Route::ApiResource('{id}/quotationshipping', 'QuotationShippingController');
 Route::get('quotationlinkenvio', 'QuotationShippingController@user');
 Route::get('quotationshipping', 'QuotationShippingController@all');
 Route::get('/cotizar-envio/{id}', 'QuotationShippingController@cotizar_envio');
+Route::get('quotationshipping-pdf/{id}', 'QuotationShippingController@pdf');
 
 //seccion cotizacion
 Route::get('/cotizar', 'QuotationUserController@cotizar');

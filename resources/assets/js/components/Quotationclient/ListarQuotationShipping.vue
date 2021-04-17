@@ -10,6 +10,7 @@
                     <th>Ciudad</th>
                     <th>Dirección</th>
                     <th>Sucursal</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +50,7 @@
                     <td></td>
                 </tr> -->
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <input type="text" class="form-control" v-model="linkenvio.url" readonly=readonly>
                         <input type="hidden" id="testing-code" :value="linkenvio.url">
                     </td>
@@ -66,6 +67,11 @@
                     <td>{{ quotationshippingLocal.ciudad }}</td>
                     <td>{{ quotationshippingLocal.direccion }}</td>
                     <td>{{ quotationshippingLocal.sucursal }}</td>
+                    <td>
+                        <a class="btn btn-danger" href="#" role="button"
+                            @click.prevent="pdfQuotationShipping({ id: quotationshippingLocal.id })"> Generar
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -125,7 +131,7 @@ export default {
         ...mapState(['quotationshipping','linkenvio','errorsLaravel']),
     },
     methods:{
-        ...mapActions(['getQuotationShipping']),
+        ...mapActions(['getQuotationShipping','pdfQuotationShipping']),
         copyTestingCode () {
           let testingCodeToCopy = document.querySelector('#testing-code')
           testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製

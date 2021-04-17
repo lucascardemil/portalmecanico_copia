@@ -70,6 +70,7 @@ var urlDetail = 'details'
 var urlDetailclient = 'detailclients'
 var urlQuotationclientPdf = 'quotationclient-pdf'
 var urlQuotationclientPdfIva = 'quotationclient-pdf-iva'
+var urlQuotationShippingPdf = 'quotationshipping-pdf'
 
 var urlImport = 'imports'
 var urlImportDetails = 'import-details'
@@ -1062,6 +1063,10 @@ export default { //used for changing the state
     },
     pdfQuotationclient(state) {
         var url = urlQuotationclientPdf + '/' + state.idQuotationclient
+        window.location.href = url;
+    },
+    pdfQuotationShipping(state, id) {
+        var url = urlQuotationShippingPdf + '/' + id
         window.location.href = url;
     },
     pdfIvaQuotationclient(state) {
@@ -2693,14 +2698,6 @@ export default { //used for changing the state
     distributionImport(state) {
         state.detailimports.forEach(detailImport => {
 
-            /*var embarque = parseFloat(state.detailImport.embarque)
-            var seguro = parseFloat(detailImport.seguro) + 1
-            var usa = parseFloat(detailImport.usa) + 1
-            var fee = parseFloat(state.detailImport.fee)
-            var fleteUsa = parseFloat(state.detailImport.fleteUsa)
-            var bankusa = parseFloat(state.detailImport.bankusa)
-            var bankchile = parseFloat(state.detailImport.bankchile)
-            var transferencia = parseFloat(state.detailImport.transferencia)*/
             var embarque = parseFloat(state.detailImport.embarque)
             var seguro = parseFloat(detailImport.seguro) + 1
             var usa = parseFloat(detailImport.usa) + 1
@@ -2710,33 +2707,29 @@ export default { //used for changing the state
             var bankchile = parseFloat(state.detailImport.bankchile)
             var transferencia = parseFloat(state.detailImport.transferencia)
             var otro = parseFloat(state.detailImport.otro)
+            var utilidad = "" + detailImport.valueChile
 
-            var percentage =
-                parseFloat((parseFloat(detailImport.price) * parseInt(detailImport.quantity) * 100) / state.totalPriceImport)
+            var percentage = parseFloat((parseFloat(detailImport.price) * parseInt(detailImport.quantity) * 100) / state.totalPriceImport)
 
             detailImport.percentage = percentage
 
-            detailImport.embarque =
-                parseFloat(percentage / 100 * embarque) * parseFloat(state.detailImport.dolar)
+            detailImport.embarque = parseFloat(percentage / 100 * embarque) * parseFloat(state.detailImport.dolar)
 
-            /* detailImport.seguro =
-                 parseFloat( percentage / 100 * seguro ) * parseFloat(state.detailImport.dolar)*/
+            detailImport.seguro = parseFloat( percentage / 100 * seguro ) * parseFloat(state.detailImport.dolar)
 
-            detailImport.fee =
-                parseFloat(percentage / 100 * fee) * parseFloat(state.detailImport.dolar)
+            detailImport.fee = parseFloat(percentage / 100 * fee) * parseFloat(state.detailImport.dolar)
 
-            detailImport.fleteUsa =
-                parseFloat(percentage / 100 * fleteUsa) * parseFloat(state.detailImport.dolar)
+            detailImport.fleteUsa = parseFloat(percentage / 100 * fleteUsa) * parseFloat(state.detailImport.dolar)
 
-            detailImport.bankusa =
-                parseFloat(percentage / 100 * bankusa) * parseFloat(state.detailImport.dolar)
+            detailImport.bankusa = parseFloat(percentage / 100 * bankusa) * parseFloat(state.detailImport.dolar)
 
-            detailImport.bankchile =
-                parseFloat(percentage / 100 * bankchile) * parseFloat(state.detailImport.dolar)
+            detailImport.bankchile = parseFloat(percentage / 100 * bankchile) * parseFloat(state.detailImport.dolar)
 
-            detailImport.transferencia =
-                parseInt(percentage / 100 * transferencia) * parseFloat(state.detailImport.dolar)
-            
+            detailImport.transferencia = parseInt(percentage / 100 * transferencia) * parseFloat(state.detailImport.dolar)
+                
+            detailImport.otro = parseInt(percentage / 100 * otro) * parseFloat(state.detailImport.dolar)
+
+
             detailImport.aduana1 = parseFloat(percentage / 100 * state.detailImportNacional.aduana1)
             detailImport.aduana2 = parseFloat(percentage / 100 * state.detailImportNacional.aduana2)
             detailImport.manipuleo = parseFloat(percentage / 100 * state.detailImportNacional.manipuleo)
@@ -2745,7 +2738,7 @@ export default { //used for changing the state
             detailImport.retiro = parseFloat(percentage / 100 * state.detailImportNacional.retiro)
             detailImport.fleteChile = parseFloat(percentage / 100 * state.detailImportNacional.fleteChile)
 
-            //detailImport.price_dolar = parseFloat(detailImport.price) * parseFloat(state.detailImport.dolar)
+            detailImport.price_dolar = parseFloat(detailImport.price) * parseFloat(state.detailImport.dolar)
 
             if (detailImport.valorem == 1) {
 
@@ -2777,26 +2770,25 @@ export default { //used for changing the state
                         parseFloat(detailImport.quantity)
                     ) +
                     parseFloat(detailImport.embarque) +
-                    //parseFloat( detailImport.seguro ) +
                     parseFloat(detailImport.fee) +
                     parseFloat(detailImport.fleteUsa) +
                     parseFloat(detailImport.bankusa) +
                     parseFloat(detailImport.bankchile) +
                     parseFloat(detailImport.transferencia) +
                     parseFloat(detailImport.otro)
-
             }
 
             var totalInternacional = 
-                parseFloat(embarque) +
-                parseFloat(otro) +
-                parseFloat(fee) +
-                parseFloat(fleteUsa) +
-                parseFloat(bankusa) +
-                parseFloat(bankchile) +
-                parseFloat(transferencia)
+                parseFloat(detailImport.embarque) +
+                parseFloat(detailImport.fee) +
+                parseFloat(detailImport.fleteUsa) +
+                parseFloat(detailImport.bankusa) +
+                parseFloat(detailImport.bankchile) +
+                parseFloat(detailImport.transferencia) +
+                parseFloat(detailImport.otro)
 
-            var totalNacional = parseFloat(state.detailImportNacional.aduana1) +
+            var totalNacional = 
+                parseFloat(state.detailImportNacional.aduana1) +
                 parseFloat(state.detailImportNacional.aduana2) +
                 parseFloat(state.detailImportNacional.manipuleo) +
                 parseFloat(state.detailImportNacional.bodega) +
@@ -2804,22 +2796,19 @@ export default { //used for changing the state
                 parseFloat(state.detailImportNacional.retiro) +
                 parseFloat(state.detailImportNacional.fleteChile)
 
-            detailImport.internacional = totalInternacional * parseFloat(state.detailImport.dolar)
+        
+            detailImport.internacional = totalInternacional
             detailImport.nacional = parseFloat(percentage / 100 * totalNacional)
 
             detailImport.costTotal = parseFloat(detailImport.internacional) + parseFloat(detailImport.nacional)
-
-            var utilidad = "" + detailImport.valueChile
-
-            //utilidad = utilidad.split('.').join('')
 
             detailImport.total = parseFloat(detailImport.total) + parseFloat(detailImport.nacional)
 
             detailImport.utility = parseFloat(utilidad) - parseFloat(detailImport.total / detailImport.quantity)
 
             detailImport.unitario =
-                /*parseFloat(detailImport.price_dolar * (usa) * (seguro) )
-                                                   + parseFloat( detailImport.costTotal / detailImport.quantity)*/
+                // parseFloat(detailImport.price_dolar * (usa) * (seguro) )
+                //                                    + parseFloat( detailImport.costTotal / detailImport.quantity)
                 parseFloat(detailImport.total / detailImport.quantity)
 
         })

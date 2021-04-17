@@ -9,6 +9,7 @@ use App\Http\Requests\StoreQuotationShipping;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class QuotationShippingController extends Controller
 {
@@ -77,5 +78,32 @@ class QuotationShippingController extends Controller
                 'message' => 'Cotizacion ingresada correctamente!'
             ]
         ], 200);
+    }
+
+
+    public function pdf($id)
+    {
+        /**
+         * toma en cuenta que para ver los mismos
+         * datos debemos hacer la misma consulta
+        **/
+        $shippings = DB::table('quotation_shippings')
+                            ->join('towns', 'quotation_shippings.ciudad', '=', 'towns.id')
+                            ->select(
+                                'quotation_shippings.id',
+                                'quotation_shippings.nombre',
+                                'quotation_shippings.rut',
+                                'quotation_shippings.telefono',
+                                'towns.nombre as ciudad',
+                                'quotation_shippings.direccion',
+                                'quotation_shippings.sucursal'
+                            )
+                            ->orderBy('quotation_shippings.id', 'DESC')->get();
+
+        $pdf = PDF::loadView('pdf.quotationshipping', compact(['shippings']) )->setPaper([ 0 , 0 , 226.772 , 141.732 ], 'landscape');
+
+        return $pdf->stream('Envio_'.$id.'.pdf');
+
+        ///return $pdf->download('cotizacion N° '.$id.'.pdf');
     }
 }

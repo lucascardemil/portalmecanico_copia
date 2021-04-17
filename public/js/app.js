@@ -8225,13 +8225,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['quotationshipping', 'linkenvio', 'errorsLaravel'])),
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getQuotationShipping'])), {}, {
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getQuotationShipping', 'pdfQuotationShipping'])), {}, {
     copyTestingCode: function copyTestingCode() {
       var testingCodeToCopy = document.querySelector('#testing-code');
       testingCodeToCopy.setAttribute('type', 'text'); // 不是 hidden 才能複製
@@ -58357,7 +58363,7 @@ var render = function() {
           "tbody",
           [
             _c("tr", [
-              _c("td", { attrs: { colspan: "6" } }, [
+              _c("td", { attrs: { colspan: "7" } }, [
                 _c("input", {
                   directives: [
                     {
@@ -58420,7 +58426,26 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(quotationshippingLocal.direccion))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(quotationshippingLocal.sucursal))])
+                _c("td", [_vm._v(_vm._s(quotationshippingLocal.sucursal))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { href: "#", role: "button" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.pdfQuotationShipping({
+                            id: quotationshippingLocal.id
+                          })
+                        }
+                      }
+                    },
+                    [_vm._v(" Generar\n                    ")]
+                  )
+                ])
               ])
             })
           ],
@@ -58449,7 +58474,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Dirección")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Sucursal")])
+        _c("th", [_vm._v("Sucursal")]),
+        _vm._v(" "),
+        _c("th")
       ])
     ])
   }
@@ -99338,6 +99365,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   pdfQuotationclient: function pdfQuotationclient(context) {
     context.commit('pdfQuotationclient');
   },
+  pdfQuotationShipping: function pdfQuotationShipping(context, data) {
+    context.commit('pdfQuotationShipping', data.id);
+  },
   pdfIvaQuotationclient: function pdfIvaQuotationclient(context) {
     context.commit('pdfIvaQuotationclient');
   },
@@ -100554,6 +100584,7 @@ var urlDetail = 'details';
 var urlDetailclient = 'detailclients';
 var urlQuotationclientPdf = 'quotationclient-pdf';
 var urlQuotationclientPdfIva = 'quotationclient-pdf-iva';
+var urlQuotationShippingPdf = 'quotationshipping-pdf';
 var urlImport = 'imports';
 var urlImportDetails = 'import-details';
 var urlDetailimport = 'detailimports';
@@ -101507,6 +101538,10 @@ var urlCompany = 'companies';
   },
   pdfQuotationclient: function pdfQuotationclient(state) {
     var url = urlQuotationclientPdf + '/' + state.idQuotationclient;
+    window.location.href = url;
+  },
+  pdfQuotationShipping: function pdfQuotationShipping(state, id) {
+    var url = urlQuotationShippingPdf + '/' + id;
     window.location.href = url;
   },
   pdfIvaQuotationclient: function pdfIvaQuotationclient(state) {
@@ -103084,14 +103119,6 @@ var urlCompany = 'companies';
   },
   distributionImport: function distributionImport(state) {
     state.detailimports.forEach(function (detailImport) {
-      /*var embarque = parseFloat(state.detailImport.embarque)
-      var seguro = parseFloat(detailImport.seguro) + 1
-      var usa = parseFloat(detailImport.usa) + 1
-      var fee = parseFloat(state.detailImport.fee)
-      var fleteUsa = parseFloat(state.detailImport.fleteUsa)
-      var bankusa = parseFloat(state.detailImport.bankusa)
-      var bankchile = parseFloat(state.detailImport.bankchile)
-      var transferencia = parseFloat(state.detailImport.transferencia)*/
       var embarque = parseFloat(state.detailImport.embarque);
       var seguro = parseFloat(detailImport.seguro) + 1;
       var usa = parseFloat(detailImport.usa) + 1;
@@ -103101,24 +103128,25 @@ var urlCompany = 'companies';
       var bankchile = parseFloat(state.detailImport.bankchile);
       var transferencia = parseFloat(state.detailImport.transferencia);
       var otro = parseFloat(state.detailImport.otro);
+      var utilidad = "" + detailImport.valueChile;
       var percentage = parseFloat(parseFloat(detailImport.price) * parseInt(detailImport.quantity) * 100 / state.totalPriceImport);
       detailImport.percentage = percentage;
       detailImport.embarque = parseFloat(percentage / 100 * embarque) * parseFloat(state.detailImport.dolar);
-      /* detailImport.seguro =
-           parseFloat( percentage / 100 * seguro ) * parseFloat(state.detailImport.dolar)*/
-
+      detailImport.seguro = parseFloat(percentage / 100 * seguro) * parseFloat(state.detailImport.dolar);
       detailImport.fee = parseFloat(percentage / 100 * fee) * parseFloat(state.detailImport.dolar);
       detailImport.fleteUsa = parseFloat(percentage / 100 * fleteUsa) * parseFloat(state.detailImport.dolar);
       detailImport.bankusa = parseFloat(percentage / 100 * bankusa) * parseFloat(state.detailImport.dolar);
       detailImport.bankchile = parseFloat(percentage / 100 * bankchile) * parseFloat(state.detailImport.dolar);
       detailImport.transferencia = parseInt(percentage / 100 * transferencia) * parseFloat(state.detailImport.dolar);
+      detailImport.otro = parseInt(percentage / 100 * otro) * parseFloat(state.detailImport.dolar);
       detailImport.aduana1 = parseFloat(percentage / 100 * state.detailImportNacional.aduana1);
       detailImport.aduana2 = parseFloat(percentage / 100 * state.detailImportNacional.aduana2);
       detailImport.manipuleo = parseFloat(percentage / 100 * state.detailImportNacional.manipuleo);
       detailImport.bodega = parseFloat(percentage / 100 * state.detailImportNacional.bodega);
       detailImport.guia = parseFloat(percentage / 100 * state.detailImportNacional.guia);
       detailImport.retiro = parseFloat(percentage / 100 * state.detailImportNacional.retiro);
-      detailImport.fleteChile = parseFloat(percentage / 100 * state.detailImportNacional.fleteChile); //detailImport.price_dolar = parseFloat(detailImport.price) * parseFloat(state.detailImport.dolar)
+      detailImport.fleteChile = parseFloat(percentage / 100 * state.detailImportNacional.fleteChile);
+      detailImport.price_dolar = parseFloat(detailImport.price) * parseFloat(state.detailImport.dolar);
 
       if (detailImport.valorem == 1) {
         detailImport.total = parseFloat(parseFloat(detailImport.price_dolar) * parseFloat(seguro) * parseFloat(usa) * parseFloat(detailImport.quantity)) + parseFloat(detailImport.embarque) + //parseFloat( detailImport.seguro ) +
@@ -103128,22 +103156,18 @@ var urlCompany = 'companies';
       }
 
       if (detailImport.valorem == 0) {
-        detailImport.total = parseFloat(parseFloat(detailImport.price_dolar) * parseFloat(seguro) * parseFloat(usa) * parseFloat(detailImport.quantity)) + parseFloat(detailImport.embarque) + //parseFloat( detailImport.seguro ) +
-        parseFloat(detailImport.fee) + parseFloat(detailImport.fleteUsa) + parseFloat(detailImport.bankusa) + parseFloat(detailImport.bankchile) + parseFloat(detailImport.transferencia) + parseFloat(detailImport.otro);
+        detailImport.total = parseFloat(parseFloat(detailImport.price_dolar) * parseFloat(seguro) * parseFloat(usa) * parseFloat(detailImport.quantity)) + parseFloat(detailImport.embarque) + parseFloat(detailImport.fee) + parseFloat(detailImport.fleteUsa) + parseFloat(detailImport.bankusa) + parseFloat(detailImport.bankchile) + parseFloat(detailImport.transferencia) + parseFloat(detailImport.otro);
       }
 
-      var totalInternacional = parseFloat(embarque) + parseFloat(otro) + parseFloat(fee) + parseFloat(fleteUsa) + parseFloat(bankusa) + parseFloat(bankchile) + parseFloat(transferencia);
+      var totalInternacional = parseFloat(detailImport.embarque) + parseFloat(detailImport.fee) + parseFloat(detailImport.fleteUsa) + parseFloat(detailImport.bankusa) + parseFloat(detailImport.bankchile) + parseFloat(detailImport.transferencia) + parseFloat(detailImport.otro);
       var totalNacional = parseFloat(state.detailImportNacional.aduana1) + parseFloat(state.detailImportNacional.aduana2) + parseFloat(state.detailImportNacional.manipuleo) + parseFloat(state.detailImportNacional.bodega) + parseFloat(state.detailImportNacional.guia) + parseFloat(state.detailImportNacional.retiro) + parseFloat(state.detailImportNacional.fleteChile);
-      detailImport.internacional = totalInternacional * parseFloat(state.detailImport.dolar);
+      detailImport.internacional = totalInternacional;
       detailImport.nacional = parseFloat(percentage / 100 * totalNacional);
       detailImport.costTotal = parseFloat(detailImport.internacional) + parseFloat(detailImport.nacional);
-      var utilidad = "" + detailImport.valueChile; //utilidad = utilidad.split('.').join('')
-
       detailImport.total = parseFloat(detailImport.total) + parseFloat(detailImport.nacional);
       detailImport.utility = parseFloat(utilidad) - parseFloat(detailImport.total / detailImport.quantity);
-      detailImport.unitario =
-      /*parseFloat(detailImport.price_dolar * (usa) * (seguro) )
-                                         + parseFloat( detailImport.costTotal / detailImport.quantity)*/
+      detailImport.unitario = // parseFloat(detailImport.price_dolar * (usa) * (seguro) )
+      //                                    + parseFloat( detailImport.costTotal / detailImport.quantity)
       parseFloat(detailImport.total / detailImport.quantity);
     });
   },
