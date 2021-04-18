@@ -97,10 +97,11 @@ class QuotationShippingController extends Controller
                                 'towns.nombre as ciudad',
                                 'quotation_shippings.direccion',
                                 'quotation_shippings.sucursal'
-                            )
+                            )->where('quotation_shippings.id', '=', $id )
                             ->orderBy('quotation_shippings.id', 'DESC')->get();
 
         $pdf = PDF::loadView('pdf.quotationshipping', compact(['shippings']) )->setPaper([ 0 , 0 , 226.772 , 141.732 ], 'landscape');
+
 
         return $pdf->stream('Envio_'.$id.'.pdf');
 

@@ -68,7 +68,7 @@
                     <td>{{ quotationshippingLocal.direccion }}</td>
                     <td>{{ quotationshippingLocal.sucursal }}</td>
                     <td>
-                        <a class="btn btn-danger" href="#" role="button"
+                        <a class="btn btn-danger btn-block" href="#" role="button"
                             @click.prevent="pdfQuotationShipping({ id: quotationshippingLocal.id })"> Generar
                         </a>
                     </td>

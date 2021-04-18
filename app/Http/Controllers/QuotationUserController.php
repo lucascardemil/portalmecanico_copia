@@ -85,7 +85,7 @@ class QuotationUserController extends Controller
             
         }
 
-        if($quotation){
+        if(isset($quotation)){
             $user = new User();
             $user->email = 'comercialsupra4@gmail.com';
             $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
@@ -159,7 +159,7 @@ class QuotationUserController extends Controller
             )->id;
         }
 
-        if($quotation){
+        if(isset($quotation)){
             $user = new User();
             $user->email = 'comercialsupra4@gmail.com';
             $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));
@@ -228,7 +228,7 @@ class QuotationUserController extends Controller
             )->id;
         }
 
-        if($quotation){
+        if(isset($quotation)){
             $user = new User();
             $user->email = 'comercialsupra4@gmail.com';
             $user->notify(new EmailNotificator($name, $email, $phone, $patentchasis, $description));

@@ -58432,7 +58432,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn btn-danger",
+                      staticClass: "btn btn-danger btn-block",
                       attrs: { href: "#", role: "button" },
                       on: {
                         click: function($event) {
