@@ -9,9 +9,9 @@ use App\Http\Requests\StoreQuotationShipping;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-//use Barryvdh\DomPDF\Facade as PDF;
-use Mike42\Escpos\PrintConnectors\FilePrintConnector;
-use Mike42\Escpos\Printer;
+use Barryvdh\DomPDF\Facade as PDF;
+// use Mike42\Escpos\PrintConnectors\FilePrintConnector;
+// use Mike42\Escpos\Printer;
 
 
 class QuotationShippingController extends Controller
@@ -103,16 +103,16 @@ class QuotationShippingController extends Controller
                             )->where('quotation_shippings.id', '=', $id )
                             ->orderBy('quotation_shippings.id', 'DESC')->get();
 
-        $connector = new FilePrintConnector("php://stdout");
-        $printer = new Printer($connector);
-        $printer->text("Hello World!\n");
-        $printer->cut();
-        $printer->close();
+        // $connector = new FilePrintConnector("php://stdout");
+        // $printer = new Printer($connector);
+        // $printer->text("Hello World!\n");
+        // $printer->cut();
+        // $printer->close();
 
-        //$pdf = PDF::loadView('pdf.quotationshipping', compact(['shippings']) )->setPaper([ 0 , 0 , 226.772 , 141.732 ], 'landscape');
+        $pdf = PDF::loadView('pdf.quotationshipping', compact(['shippings']) )->setPaper([ 0 , 0 , 226.772 , 141.732 ], 'landscape');
 
 
-        //return $pdf->stream('Envio_'.$id.'.pdf');
+        return $pdf->stream('Envio_'.$id.'.pdf');
 
         ///return $pdf->download('cotizacion N° '.$id.'.pdf');
     }
