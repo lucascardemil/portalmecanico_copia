@@ -506,26 +506,53 @@ class BillController extends Controller
         $folios = Code::where('folio', '=' , $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio)->get('folio');
 
               
-            if($xml->DTE->Documento->Encabezado->IdDoc[0]->Folio != isset($folios[0]->folio)){
+        if($xml->DTE->Documento->Encabezado->IdDoc[0]->Folio != isset($folios[0]->folio)){
 
-                foreach ($xml->DTE->Documento->Detalle as $producto) {
-                    if(!empty($producto->CdgItem->TpoCodigo)){
+            foreach ($xml->DTE->Documento->Detalle as $producto) {
+                if(!empty($producto->CdgItem->TpoCodigo)){
+                    
+                    $count = Product::where('detail', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->count();
+                    $detail = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $producto->NmbItem); //Elimina lo espacios en blanco
+
+                    if(empty($count)){
+                        
+
+                        $product = Product::firstOrCreate(
+                            [
+                                'name' => $detail,
+                                'detail' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo
+                            ]);
                         
                         
-                            $count = Product::where('detail', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->count();
-                            $detail = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $producto->NmbItem); //Elimina lo espacios en blanco
 
+                        $code = Code::firstOrCreate(
+                            [
+                                'client_id' => $client_id,
+                                'product_id' => $product->id,
+                                'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
+                                'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
+                                'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
+                            ]);
+                    
+                
+                        Inventory::firstOrCreate(
+                            [
+                                'code_id' => $code->id,
+                                'price' => round($producto->MontoItem / $producto->QtyItem),
+                                'quantity' => $producto->QtyItem
+                            ]);
+                            
+                        
+                        
+                        
+                    }else{
+
+                        $products = Product::where('detail', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->get();
+
+                        foreach ($products as $product) {
+
+                            $count = Code::where('codebar', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->count();
                             if(empty($count)){
-                               
-
-                                $product = Product::firstOrCreate(
-                                    [
-                                        'name' => $detail,
-                                        'detail' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo
-                                    ]);
-                                
-                                
-
                                 $code = Code::firstOrCreate(
                                     [
                                         'client_id' => $client_id,
@@ -534,26 +561,20 @@ class BillController extends Controller
                                         'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
                                         'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
                                     ]);
-                            
-                        
+                                
                                 Inventory::firstOrCreate(
                                     [
                                         'code_id' => $code->id,
                                         'price' => round($producto->MontoItem / $producto->QtyItem),
                                         'quantity' => $producto->QtyItem
                                     ]);
-                                    
-                                
-                                
                                 
                             }else{
+                                $inventorys = Code::where('codebar', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->get();
+                                foreach($inventorys as $inventory){
 
-                                $products = Product::where('detail', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->get();
+                                    if($inventory->codebar != $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo){
 
-                                foreach ($products as $product) {
-
-                                    $count = Code::where('codebar', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->count();
-                                    if(empty($count)){
                                         $code = Code::firstOrCreate(
                                             [
                                                 'client_id' => $client_id,
@@ -562,61 +583,140 @@ class BillController extends Controller
                                                 'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
                                                 'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
                                             ]);
+                                    }
+                                
+                                
+                                    if($inventory->atributo > 0){
+
+                                        $cantidad = $producto->QtyItem * $inventory->atributo;
+                                        $total = $producto->PrcItem * $producto->QtyItem;
                                         
-                                        Inventory::firstOrCreate(
+                                        Inventory::create(
                                             [
-                                                'code_id' => $code->id,
-                                                'price' => round($producto->MontoItem / $producto->QtyItem),
-                                                'quantity' => $producto->QtyItem
+                                                'code_id' => $inventory->id,
+                                                'price' => $total / $cantidad,
+                                                'quantity' => $cantidad
                                             ]);
                                         
                                     }else{
-                                        $inventorys = Code::where('codebar', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->get();
-                                        foreach($inventorys as $inventory){
-
-                                            if($inventory->codebar != $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo){
-
-                                                $code = Code::firstOrCreate(
-                                                    [
-                                                        'client_id' => $client_id,
-                                                        'product_id' => $product->id,
-                                                        'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
-                                                        'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
-                                                        'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
-                                                    ]);
-                                            }
-                                        
-                                        
-                                            if($inventory->atributo > 0){
-
-                                                $cantidad = $producto->QtyItem * $inventory->atributo;
-                                                $total = $producto->PrcItem * $producto->QtyItem;
-                                                
-                                                Inventory::create(
-                                                    [
-                                                        'code_id' => $inventory->id,
-                                                        'price' => $total / $cantidad,
-                                                        'quantity' => $cantidad
-                                                    ]);
-                                                
-                                            }else{
-                                        
-                                                Inventory::firstOrCreate(
-                                                    [
-                                                        'code_id' => $inventory->id,
-                                                        'price' => round($producto->MontoItem / $producto->QtyItem),
-                                                        'quantity' => $producto->QtyItem
-                                                    ]);
-                                            }
-                                        }
+                                
+                                        Inventory::firstOrCreate(
+                                            [
+                                                'code_id' => $inventory->id,
+                                                'price' => round($producto->MontoItem / $producto->QtyItem),
+                                                'quantity' => $producto->QtyItem
+                                            ]);
                                     }
                                 }
-                                
-                            }                        
-                    }
+                            }
+                        }
+                    }                        
                 }
-            }else return response()->json('Failure', 422);
-        
+            }
+        }else{
+
+            foreach ($xml->DTE->Documento->Detalle as $producto) {
+                if(!empty($producto->CdgItem->TpoCodigo)){
+
+                    $count = Product::where('detail', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->count();
+                    $detail = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $producto->NmbItem); //Elimina lo espacios en blanco
+
+                    if(empty($count)){
+                        
+
+                        $product = Product::firstOrCreate(
+                            [
+                                'name' => $detail,
+                                'detail' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo
+                            ]);
+                        
+                        
+
+                        $code = Code::firstOrCreate(
+                            [
+                                'client_id' => $client_id,
+                                'product_id' => $product->id,
+                                'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
+                                'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
+                                'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
+                            ]);
+                    
+                
+                        Inventory::firstOrCreate(
+                            [
+                                'code_id' => $code->id,
+                                'price' => round($producto->MontoItem / $producto->QtyItem),
+                                'quantity' => $producto->QtyItem
+                            ]);
+                    }else{
+
+                        $products = Product::where('detail', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->get();
+
+                        foreach ($products as $product) {
+
+                            $count = Code::where('codebar', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->count();
+                            if(empty($count)){
+                                $code = Code::firstOrCreate(
+                                    [
+                                        'client_id' => $client_id,
+                                        'product_id' => $product->id,
+                                        'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
+                                        'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
+                                        'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
+                                    ]);
+                                
+                                Inventory::firstOrCreate(
+                                    [
+                                        'code_id' => $code->id,
+                                        'price' => round($producto->MontoItem / $producto->QtyItem),
+                                        'quantity' => $producto->QtyItem
+                                    ]);
+                                
+                            }else{
+                                $inventorys = Code::where('codebar', $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo)->get();
+                                foreach($inventorys as $inventory){
+
+                                    if($inventory->codebar != $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo){
+
+                                        $code = Code::firstOrCreate(
+                                            [
+                                                'client_id' => $client_id,
+                                                'product_id' => $product->id,
+                                                'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
+                                                'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
+                                                'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
+                                            ]);
+                                    }
+                                
+                                
+                                    if($inventory->atributo > 0){
+
+                                        $cantidad = $producto->QtyItem * $inventory->atributo;
+                                        $total = $producto->PrcItem * $producto->QtyItem;
+                                        
+                                        Inventory::create(
+                                            [
+                                                'code_id' => $inventory->id,
+                                                'price' => $total / $cantidad,
+                                                'quantity' => $cantidad
+                                            ]);
+                                        
+                                    }else{
+                                
+                                        Inventory::firstOrCreate(
+                                            [
+                                                'code_id' => $inventory->id,
+                                                'price' => round($producto->MontoItem / $producto->QtyItem),
+                                                'quantity' => $producto->QtyItem
+                                            ]);
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                }
+            }
+        }
     }
 
     /**
