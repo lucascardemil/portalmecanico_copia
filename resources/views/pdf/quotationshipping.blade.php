@@ -1,22 +1,11 @@
 @extends('layoutshipping')
 
 @section('content')
-    <div style="font-size: 9px; padding-bottom: 10px">
-        <div class="text-center">
-            <b>COMERCIAL SUPRA E.I.R.L</b> 
-        </div>
-        <div class="text-center">
-            <small>Repuestos Automotrices, Repuestos Maquinarias, Importaciones</small>    
-        </div>
-        <div class="text-center">
-            <small>76.515.046-9</small>    
-        </div>
-    </div>
     <table>   
         <tbody>
             @foreach($shippings as $shipping)
                 <tr>
-                    <th>Nombre:</th>    
+                    <th>ATTE:</th>    
                     <td>{{ $shipping->nombre }}</td>
                 </tr>
                 <tr>
@@ -24,32 +13,40 @@
                     <td>{{ $shipping->rut }}</td>
                 </tr>
                 <tr>
-                    <th>Teléfono:</th>
+                    <th>CEL:</th>
                     <td>{{ $shipping->telefono }}</td>
                 </tr>
                 <tr>
-                    <th>Ciudad:</th>
+                    <th>CIUDAD:</th>
                     <td>{{ $shipping->ciudad }}</td>
                 </tr>
                 <tr>
-                    <th>Dirección:</th>
+                    <th>DIRECCION:</th>
                     <td>{{ $shipping->direccion }}</td>
                 </tr>
                 <tr>
-                    <th>Sucursal:</th>
+                    <th>SUCURSAL:</th>
                     <td>{{ $shipping->sucursal }}</td>
                 </tr>
             @endforeach
+                <tr>
+                    <th style="padding-top: 15px;">RTE:</th>    
+                    <td style="padding-top: 15px;">COMERCIAL SUPRA E.I.R.L</td>
+                </tr>
+                <tr>
+                    <th>RUT:</th> 
+                    <td>76.515.046-9</td>
+                </tr>
+                <tr>
+                    <th>CEL:</th>
+                    <td>+56 9 8948 3379</td>
+                </tr>
+                <tr>
+                    <th>DIRECCION:</th>
+                    <td>Av. Rubén Jiménez 601, Coquimbo</td>
+                </tr>
         </tbody>
     </table>
-    <div style="font-size: 9px;">
-        <div class="text-center">
-            <small>Alvaro Perez</small> 
-        </div>
-        <div class="text-center">
-            <small>Contacto: +56 9 8948 3379</small> 
-        </div>
-    </div>
 @endsection
 
 

@@ -7,13 +7,11 @@
         <title>Envio N°{{ $shipping->id }}</title>
 
         <style>
-            @page { margin: 10px 20px 10px 20px;  }
+            @page { margin: 10px 10px 10px 10px;  }
             table{
                 width: 100%;
                 font-size: 9px;
-            }
-            th, td {
-                padding: 0 0 15px 0;
+                text-transform: uppercase;
             }  
         </style>
 

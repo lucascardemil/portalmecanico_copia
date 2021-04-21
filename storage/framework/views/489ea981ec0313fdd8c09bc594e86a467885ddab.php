@@ -1,20 +1,9 @@
 <?php $__env->startSection('content'); ?>
-    <div style="font-size: 9px; padding-bottom: 10px">
-        <div class="text-center">
-            <b>COMERCIAL SUPRA E.I.R.L</b> 
-        </div>
-        <div class="text-center">
-            <small>Repuestos Automotrices, Repuestos Maquinarias, Importaciones</small>    
-        </div>
-        <div class="text-center">
-            <small>76.515.046-9</small>    
-        </div>
-    </div>
     <table>   
         <tbody>
             <?php $__currentLoopData = $shippings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $shipping): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                    <th>Nombre:</th>    
+                    <th>ATTE:</th>    
                     <td><?php echo e($shipping->nombre); ?></td>
                 </tr>
                 <tr>
@@ -22,32 +11,40 @@
                     <td><?php echo e($shipping->rut); ?></td>
                 </tr>
                 <tr>
-                    <th>Teléfono:</th>
+                    <th>CEL:</th>
                     <td><?php echo e($shipping->telefono); ?></td>
                 </tr>
                 <tr>
-                    <th>Ciudad:</th>
+                    <th>CIUDAD:</th>
                     <td><?php echo e($shipping->ciudad); ?></td>
                 </tr>
                 <tr>
-                    <th>Dirección:</th>
+                    <th>DIRECCION:</th>
                     <td><?php echo e($shipping->direccion); ?></td>
                 </tr>
                 <tr>
-                    <th>Sucursal:</th>
+                    <th>SUCURSAL:</th>
                     <td><?php echo e($shipping->sucursal); ?></td>
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <tr>
+                    <th style="padding-top: 15px;">RTE:</th>    
+                    <td style="padding-top: 15px;">COMERCIAL SUPRA E.I.R.L</td>
+                </tr>
+                <tr>
+                    <th>RUT:</th> 
+                    <td>76.515.046-9</td>
+                </tr>
+                <tr>
+                    <th>CEL:</th>
+                    <td>+56 9 8948 3379</td>
+                </tr>
+                <tr>
+                    <th>DIRECCION:</th>
+                    <td>Av. Rubén Jiménez 601, Coquimbo</td>
+                </tr>
         </tbody>
     </table>
-    <div style="font-size: 9px;">
-        <div class="text-center">
-            <small>Alvaro Perez</small> 
-        </div>
-        <div class="text-center">
-            <small>Contacto: +56 9 8948 3379</small> 
-        </div>
-    </div>
 <?php $__env->stopSection(); ?>
 
 
