@@ -148,9 +148,9 @@ Route::post('mechanic-client/{id?}', 'User\UserController@storeclient');
 Route::get('client-vehicles', 'VehicleController@clientvehicles');
 
 Route::get('{id}/ciudad-all', 'QuotationShippingController@ciudades');
-Route::ApiResource('{id}/quotationshipping', 'QuotationShippingController');
+Route::post('{id}/quotationshipping', 'QuotationShippingController@store');
 Route::get('quotationlinkenvio', 'QuotationShippingController@user');
-Route::get('quotationshipping', 'QuotationShippingController@all');
+Route::ApiResource('quotationshipping', 'QuotationShippingController');
 Route::get('/cotizar-envio/{id}', 'QuotationShippingController@cotizar_envio');
 Route::get('quotationshipping-pdf/{id}', 'QuotationShippingController@pdf');
 

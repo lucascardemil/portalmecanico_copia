@@ -351,6 +351,7 @@ export default { //data
         year: ''
     },
     idQuotationclient: null,
+    idQuotationShipping: null,
     totalUtilidad: 0,
     totalTransporte: 0,
     totalAdicional: 0,

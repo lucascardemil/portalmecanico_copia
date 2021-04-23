@@ -68,8 +68,11 @@
                     <td>{{ quotationshippingLocal.direccion }}</td>
                     <td>{{ quotationshippingLocal.sucursal }}</td>
                     <td>
-                        <a class="btn btn-danger btn-block" href="#" role="button"
-                            @click.prevent="pdfQuotationShipping({ id: quotationshippingLocal.id })"> Generar
+                        <a class="btn btn-secondary" href="#" role="button"
+                            @click.prevent="pdfQuotationShipping({ id: quotationshippingLocal.id })"><i class="far fa-file-alt"></i> Generar
+                        </a>
+                        <a class="btn btn-danger" href="#" role="button"
+                            @click.prevent="showdeleteQuotationShipping({ id: quotationshippingLocal.id })"><i class="far fa-trash-alt"></i>
                         </a>
                     </td>
                 </tr>
@@ -115,23 +118,24 @@
                 </li>
             </ul>
         </nav> -->
+        <EliminarShipping></EliminarShipping>
     </div>
- 
 </template>
 
 <script>
 
+import EliminarShipping from '../QuotationShipping/EliminarShipping'
 import { loadProgressBar } from 'axios-progress-bar'
 import { mapState, mapActions, mapGetters } from 'vuex'
 import toastr from 'toastr'
 
 export default {
-    components: {  },
+    components: { EliminarShipping },
     computed:{
         ...mapState(['quotationshipping','linkenvio','errorsLaravel']),
     },
     methods:{
-        ...mapActions(['getQuotationShipping','pdfQuotationShipping']),
+        ...mapActions(['getQuotationShipping','pdfQuotationShipping','showdeleteQuotationShipping']),
         copyTestingCode () {
           let testingCodeToCopy = document.querySelector('#testing-code')
           testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製

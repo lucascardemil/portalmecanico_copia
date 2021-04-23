@@ -315,10 +315,19 @@ export default { //methods
     showModalDeleteQuotationclient(context, data) {
         context.commit('showModalDeleteQuotationclient', data.id)
     },
+    showdeleteQuotationShipping(context, data) {
+        context.commit('showdeleteQuotationShipping', data.id)
+    },
     deleteQuotationclient(context, data) {
         context.commit('deleteQuotationclient', data.id)
         setTimeout(function () {
             context.commit('getQuotationclients', 1)
+        }, 1000)
+    },
+    deleteQuotationShipping(context, data) {
+        context.commit('deleteQuotationShipping', data.id)
+        setTimeout(function () {
+            context.commit('getQuotationShipping', 1)
         }, 1000)
     },
     pdfQuotationclient(context) {

@@ -34,7 +34,7 @@ class QuotationShippingController extends Controller
         return $id;
     }
 
-    public function all()
+    public function index()
     {
         $quotationshipping = DB::table('quotation_shippings')
                                     ->join('towns', 'quotation_shippings.ciudad', '=', 'towns.id')
@@ -115,5 +115,13 @@ class QuotationShippingController extends Controller
         return $pdf->stream('Envio_'.$id.'.pdf');
 
         ///return $pdf->download('cotizacion N° '.$id.'.pdf');
+    }
+
+    public function destroy($id)
+    {
+        $quotation = QuotationShipping::findOrFail($id);
+        $quotation->delete();
+
+        return;
     }
 }

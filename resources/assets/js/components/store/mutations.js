@@ -1053,12 +1053,24 @@ export default { //used for changing the state
         state.idQuotationclient = id
         $('#modalDeleteQuotationClient').modal('show')
     },
+    showdeleteQuotationShipping(state, id) {
+        state.idQuotationShipping = id
+        $('#modaldeleteQuotationShipping').modal('show')
+    },
     deleteQuotationclient(state, id) {
         var url = urlQuotationclient + '/' + state.idQuotationclient
         axios.delete(url).then(response => {
             toastr.success('Cotización formal eliminada con éxito')
             $('#modalDeleteQuotationClient').modal('hide')
             state.idQuotationclient = null
+        })
+    },
+    deleteQuotationShipping(state, id) {
+        var url = urlCreateQuotationShipping + '/' + state.idQuotationShipping
+        axios.delete(url).then(response => {
+            toastr.success('Envio eliminado con éxito')
+            $('#modaldeleteQuotationShipping').modal('hide')
+            state.idQuotationShipping = null
         })
     },
     pdfQuotationclient(state) {
