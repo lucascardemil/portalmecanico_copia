@@ -1046,7 +1046,6 @@ export default { //used for changing the state
             $('#edit').modal('hide')
             toastr.success('Cotización formal actualizada con éxito')
         }).catch(error => {
-            state.errorsLaravel = error.response.data
         })
     },
     showModalDeleteQuotationclient(state, id) {
@@ -1056,6 +1055,10 @@ export default { //used for changing the state
     showdeleteQuotationShipping(state, id) {
         state.idQuotationShipping = id
         $('#modaldeleteQuotationShipping').modal('show')
+    },
+    showQuotationShipping(state, id) {
+        state.fillQuotationShipping.id = id
+        $('#modalQuotationShipping').modal('show')
     },
     deleteQuotationclient(state, id) {
         var url = urlQuotationclient + '/' + state.idQuotationclient
@@ -2126,6 +2129,20 @@ export default { //used for changing the state
             state.errorsLaravel = error.response.data
         })
     },
+
+    updateQuotationShipping(state, id) {
+        var url = urlCreateQuotationShipping + '/' + id
+        axios.put(url, state.fillQuotationShipping).then(response => {
+            state.fillQuotationShipping = {
+                direccion: ''
+            }
+            state.errorsLaravel = [];
+            $('#modalQuotationShipping').modal('hide')
+            toastr.success('Se agrego la dirección correctamente')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
     getAllPermissions(state) {
         var url = urlAllPermissions
         axios.get(url).then(response => {
@@ -2516,11 +2533,11 @@ export default { //used for changing the state
         var cadena = window.location.href
         var id = cadena.split("/")
 
-        if (state.formQuotationShipping.direccion != '') {
-            state.formQuotationShipping.direccion
-        }else{
-            state.formQuotationShipping.direccion = 'Sin Envio'
-        }
+        // if (state.formQuotationShipping.direccion != '') {
+        //     state.formQuotationShipping.direccion
+        // }else{
+        //     state.formQuotationShipping.direccion = 'Sin Envio'
+        // }
 
         axios.post(url, {
             id: id[4],
@@ -2528,7 +2545,7 @@ export default { //used for changing the state
             rut: state.formQuotationShipping.rut,
             telefono: state.formQuotationShipping.telefono,
             ciudad: state.selectedCiudad.value,
-            direccion: state.formQuotationShipping.direccion,
+            // direccion: state.formQuotationShipping.direccion,
             sucursal: state.formQuotationShipping.sucursal
         }).then(response => {
             state.formQuotationShipping = {
@@ -2537,7 +2554,7 @@ export default { //used for changing the state
                 rut: '',
                 telefono: '',
                 ciudad: '',
-                direccion: '',
+                // direccion: '',
                 sucursal: ''
             },
             state.errorsLaravel = []

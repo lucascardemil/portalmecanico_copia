@@ -68,12 +68,16 @@
                     <td>{{ quotationshippingLocal.direccion }}</td>
                     <td>{{ quotationshippingLocal.sucursal }}</td>
                     <td>
-                        <a class="btn btn-secondary" href="#" role="button"
+                        <a class="btn btn-success" href="#" role="button"
+                            @click.prevent="showQuotationShipping({ id: quotationshippingLocal.id })"><i class="fas fa-shipping-fast"></i> Domicilio
+                        </a>
+                        <a class="btn btn-info" href="#" role="button"
                             @click.prevent="pdfQuotationShipping({ id: quotationshippingLocal.id })"><i class="far fa-file-alt"></i> Generar
                         </a>
                         <a class="btn btn-danger" href="#" role="button"
                             @click.prevent="showdeleteQuotationShipping({ id: quotationshippingLocal.id })"><i class="far fa-trash-alt"></i>
                         </a>
+                        
                     </td>
                 </tr>
             </tbody>
@@ -119,23 +123,25 @@
             </ul>
         </nav> -->
         <EliminarShipping></EliminarShipping>
+        <EnvioShipping></EnvioShipping>
     </div>
 </template>
 
 <script>
 
 import EliminarShipping from '../QuotationShipping/EliminarShipping'
+import EnvioShipping from '../QuotationShipping/EnvioShipping'
 import { loadProgressBar } from 'axios-progress-bar'
 import { mapState, mapActions, mapGetters } from 'vuex'
 import toastr from 'toastr'
 
 export default {
-    components: { EliminarShipping },
+    components: { EliminarShipping, EnvioShipping },
     computed:{
         ...mapState(['quotationshipping','linkenvio','errorsLaravel']),
     },
     methods:{
-        ...mapActions(['getQuotationShipping','pdfQuotationShipping','showdeleteQuotationShipping']),
+        ...mapActions(['getQuotationShipping','pdfQuotationShipping','showdeleteQuotationShipping', 'showQuotationShipping']),
         copyTestingCode () {
           let testingCodeToCopy = document.querySelector('#testing-code')
           testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製

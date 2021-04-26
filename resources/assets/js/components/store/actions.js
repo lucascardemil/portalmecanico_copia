@@ -318,6 +318,9 @@ export default { //methods
     showdeleteQuotationShipping(context, data) {
         context.commit('showdeleteQuotationShipping', data.id)
     },
+    showQuotationShipping(context, data) {
+        context.commit('showQuotationShipping', data.id)
+    },
     deleteQuotationclient(context, data) {
         context.commit('deleteQuotationclient', data.id)
         setTimeout(function () {
@@ -810,6 +813,12 @@ export default { //methods
     },
     updateUserRoles(context, data) {
         context.commit('updateUserRoles', data.id)
+    },
+    updateQuotationShipping(context, data) {
+        context.commit('updateQuotationShipping', data.id)
+        setTimeout(function () {
+            context.commit('getQuotationShipping', 1)
+        }, 1000)
     },
     /************ Sección de consultar para los selects************* */
     allUsers(context) {

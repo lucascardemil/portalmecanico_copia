@@ -60,7 +60,7 @@
                                         v-model="formQuotationShipping.sucursal" />
                                 
                             </div>
-                            <div class="form-check mb-3">
+                            <!-- <div class="form-check mb-3">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" v-model="formQuotationShipping.envio">
                                 <label class="form-check-label" for="exampleCheck1">Envió a domicilio</label>
                             </div>
@@ -78,7 +78,7 @@
                                         name="direccion"
                                         v-model="formQuotationShipping.direccion" />
                                 <p v-show="errors.has('direccion')" class="text-danger">{{ errors.first('direccion') }}</p>
-                            </div>
+                            </div> -->
                             
                             <button type="submit" class="btn btn-primary btn-block">Enviar</button>
                         </form>

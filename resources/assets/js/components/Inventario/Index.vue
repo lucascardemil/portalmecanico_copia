@@ -41,7 +41,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td>{{ inventario.fecha_fact }}</td>
                     <td>{{ inventario.price | currency('$', 1) }}</td>
                     <td>{{ inventario.quantity }}</td>
                     <td>{{ totalInventario(inventario) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>

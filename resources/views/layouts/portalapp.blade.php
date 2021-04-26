@@ -255,6 +255,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/app-principal.js') }}"></script>
     <!--<script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>-->
+    
+    
 </body>
 
 </html>

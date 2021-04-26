@@ -408,7 +408,7 @@ export default { //data
         rut: '',
         telefono: '',
         ciudad: '',
-        direccion: '',
+        direccion: 'SIN ENVIO',
         sucursal: ''
     },
     quotationDesc: '',
@@ -861,6 +861,10 @@ export default { //data
     userRoles: [],
     fillUserRoles: {
         name: null
+    },
+    fillQuotationShipping: {
+        id: '',
+        direccion: ''
     },
     checkedRoles: [],
     permissions: [],

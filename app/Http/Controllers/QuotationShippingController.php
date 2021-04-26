@@ -61,7 +61,7 @@ class QuotationShippingController extends Controller
         $rut = $data['rut'];
         $telefono = $data['telefono'];
         $ciudad = $data['ciudad'];
-        $direccion = $data['direccion'];
+        // $direccion = $data['direccion'];
         $sucursal = $data['sucursal'];
         
         QuotationShipping::create([
@@ -70,7 +70,7 @@ class QuotationShippingController extends Controller
             'rut' => $rut,
             'telefono' => $telefono,
             'ciudad' => $ciudad,
-            'direccion' => $direccion,
+            // 'direccion' => $direccion,
             'sucursal' => $sucursal
         ]);
     
@@ -81,6 +81,13 @@ class QuotationShippingController extends Controller
                 'message' => 'Cotizacion ingresada correctamente!'
             ]
         ], 200);
+    }
+
+    public function update(Request $request, $id)
+    {
+        QuotationShipping::find($id)->update($request->all());
+
+        return;
     }
 
 

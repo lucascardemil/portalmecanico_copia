@@ -530,7 +530,6 @@ class BillController extends Controller
                             'client_id' => $client_id,
                             'product_id' => $product->id,
                             'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
-                            'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
                             'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
                         ]);
                 
@@ -539,7 +538,8 @@ class BillController extends Controller
                         [
                             'code_id' => $code->id,
                             'price' => round($producto->MontoItem / $producto->QtyItem),
-                            'quantity' => $producto->QtyItem
+                            'quantity' => $producto->QtyItem,
+                            'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis
                         ]);
                         
                     
@@ -558,7 +558,6 @@ class BillController extends Controller
                                     'client_id' => $client_id,
                                     'product_id' => $product->id,
                                     'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
-                                    'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
                                     'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
                                 ]);
                             
@@ -566,7 +565,8 @@ class BillController extends Controller
                                 [
                                     'code_id' => $code->id,
                                     'price' => round($producto->MontoItem / $producto->QtyItem),
-                                    'quantity' => $producto->QtyItem
+                                    'quantity' => $producto->QtyItem,
+                                    'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis
                                 ]);
                             
                         }else{
@@ -580,7 +580,6 @@ class BillController extends Controller
                                             'client_id' => $client_id,
                                             'product_id' => $product->id,
                                             'codebar' => $producto->CdgItem->TpoCodigo.'-'.$producto->CdgItem->VlrCodigo,
-                                            'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis,
                                             'folio' => $xml->DTE->Documento->Encabezado->IdDoc[0]->Folio
                                         ]);
                                 }
@@ -595,7 +594,8 @@ class BillController extends Controller
                                         [
                                             'code_id' => $inventory->id,
                                             'price' => $total / $cantidad,
-                                            'quantity' => $cantidad
+                                            'quantity' => $cantidad,
+                                            'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis
                                         ]);
                                     
                                 }else{
@@ -604,7 +604,8 @@ class BillController extends Controller
                                         [
                                             'code_id' => $inventory->id,
                                             'price' => round($producto->MontoItem / $producto->QtyItem),
-                                            'quantity' => $producto->QtyItem
+                                            'quantity' => $producto->QtyItem,
+                                            'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis
                                         ]);
                                 }
                             }
