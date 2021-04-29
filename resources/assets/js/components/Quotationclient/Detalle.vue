@@ -113,7 +113,7 @@
                                                         <div class="col-lg-2">
                                                             <label for="total">Total</label>
                                                             <input type="number" name="total" class="form-control"
-                                                                v-model="newDetailclient.total" disabled>
+                                                                v-model="newDetailclient.total" min="0" disabled>
                                                         </div>
 
                                                         <div class="col-lg-1 mt-2">

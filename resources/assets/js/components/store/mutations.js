@@ -2598,7 +2598,8 @@ export default { //used for changing the state
             response.data.forEach((product) => {
                 state.optionsProduct.push({
                     label: product.name,
-                    value: product.id
+                    value: product.id,
+                    price: product.price
                 })
             });
         });
@@ -2608,9 +2609,28 @@ export default { //used for changing the state
         if (state.selectedProduct != null) {
             state.newDetailclient.product = state.selectedProduct.label
             state.productForm.product = state.selectedProduct.label
+            state.newDetailclient.price = state.selectedProduct.price
+
+
+            state.newDetailclient.utility = Math.round(parseFloat((parseFloat(state.newDetailclient.price) *
+                ((parseFloat(state.newDetailclient.percentage) / 100) + 1) +
+                parseFloat(state.newDetailclient.aditional) -
+                parseFloat(state.newDetailclient.price)) *
+            parseFloat(state.newDetailclient.quantity)))
+
+            state.newDetailclient.total = Math.round(parseFloat(((
+                    parseFloat(state.newDetailclient.price) *
+                    ((parseFloat(state.newDetailclient.percentage) / 100) + 1)) +
+                parseFloat(state.newDetailclient.aditional) +
+                parseFloat(state.newDetailclient.transport)) *
+            parseFloat(state.newDetailclient.quantity)))
+
         } else {
             state.newDetailclient.product = ''
             state.productForm.product = ''
+            state.newDetailclient.price = 0
+            state.newDetailclient.utility = 0
+            state.newDetailclient.total = 0
         }
     },
     allProductimports(state) {

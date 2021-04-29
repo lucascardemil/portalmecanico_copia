@@ -984,12 +984,11 @@ export default { //methods
     },
     /**************************************************************/
     allProducts(context) {
-        setTimeout(function () {
-            context.commit('allProducts')
-        }, 500)
+        context.commit('allProducts')
     },
     setProduct(context, data) {
         context.commit('setProduct', data)
+        
         // context.commit('setCode', { label:'', value:'' })
         // context.commit('allCodes')
     },
