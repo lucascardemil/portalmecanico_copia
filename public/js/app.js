@@ -101982,7 +101982,7 @@ var urlCompany = 'companies';
         quotationclient_id: '',
         product: '',
         price: 0,
-        quantity: 0,
+        quantity: 1,
         percentage: 35,
         aditional: 0,
         transport: 0,
