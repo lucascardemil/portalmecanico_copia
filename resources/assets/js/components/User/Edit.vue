@@ -20,10 +20,6 @@
                                     name="nombre"
                                     class="form-control" v-model="fillUser.name">
                             <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
-
-                            <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                <p>{{ error.name }}</p>
-                            </div>
                         </div>
 
                         <div class="form-group">
@@ -33,12 +29,7 @@
                                     type="email"
                                     name="correo"
                                     class="form-control" v-model="fillUser.email">
-                            <p v-show="errors.has('correo')"
-                                class="text-danger">{{ errors.first('correo') }}</p>
-
-                            <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                <p>{{ error.email }}</p>
-                            </div>
+                            <p v-show="errors.has('correo')" class="text-danger">{{ errors.first('correo') }}</p>
                         </div>
 
                         <div class="form-group">
@@ -48,18 +39,15 @@
                                     type="password"
                                     name="password"
                                     class="form-control" v-model="fillUser.password">
-                            <p v-show="errors.has('password')"
-                                class="text-danger">{{ errors.first('password') }}</p>
-
-                            <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                <p>{{ error.password }}</p>
-                            </div>
+                            <p v-show="errors.has('password')" class="text-danger">{{ errors.first('password') }}</p>
                         </div>
 
                         <div class="form-group">
                             <label for="url">URL</label>
                             <input type="text" name="url" class="form-control" v-model="fillUser.url" readonly=readonly>
                         </div>
+
+                        
 
 
                     </div>
@@ -85,6 +73,7 @@ export default {
     },
     methods:{
         ...mapActions(['updateUser'])
-    },
+    }
+    
 }
 </script>

@@ -43,7 +43,7 @@
                                     v-model="searchVehicle.name" @keyup="getVehicles">
                         </td>
                         <td>
-                            <input type="number" class="form-control form-control-sm"
+                            <input type="text" class="form-control form-control-sm"
                                     v-model="searchVehicle.year" @keyup="getVehicles">
                         </td>
                         <td></td>
@@ -163,7 +163,7 @@ export default {
     },
     created(){
         loadProgressBar();
-        this.$store.dispatch('getVehiclesUser', { page: 1 })
+        this.$store.dispatch('getVehicles', { page: 1 })
     }
 }
 

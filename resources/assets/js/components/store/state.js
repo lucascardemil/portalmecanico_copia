@@ -148,15 +148,17 @@ export default { //data
         user_id: '',
         patent: '',
         chasis: '',
-        name: '',
+        brand: '',
+        model: '',
         year: '',
+        engine: '',
         color: '',
         km: ''
     },
     searchVehicle: {
         patent: '',
         name: '',
-        year: 0
+        year: ''
     },
     newDetailVehicle: {
         vehicle_id: '',
@@ -817,6 +819,12 @@ export default { //data
     quotationusers:[],
     quotationUserMechanic:[],
     users: [],
+    totalvehi: [],
+    totalcli: [],
+    totalcliadmin: [],
+    totalvehiadmin: [],
+    cantCliVehiAdmin: [],
+    quotationRoles: [],
     user: {
         name: '',
         email: '',
@@ -829,7 +837,10 @@ export default { //data
         email: '',
         password: '',
         url: '',
-        logo: ''
+        logo: '',
+        mecanico: '',
+        cant_client: 0,
+        cant_vehicle: 0
     },
     fillUser: {
         id: '',
@@ -839,6 +850,15 @@ export default { //data
         url: '',
         ip_acceso: '',
         logo: ''
+    },
+    fillCantCliVehi: {
+        id: '',
+        cant_client: 0,
+        cant_vehicle: 0
+    },
+    fillCantVehicle: {
+        id: '',
+        cant_vehicle: 0
     },
     searchUser: {
         barcode: '',

@@ -20,10 +20,6 @@
                                 class="form-control" v-model="newDetailVehicle.km">
                         <p v-show="errors.has('kilometraje')" class="text-danger">{{ errors.first('kilometraje') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.km }}</p>
-                        </div>
-
                         <label for="nota">Nota</label>
                         <textarea v-validate="'required|min:4'"
                                 :class="{'input': true, 'is-invalid': errors.has('nota') }"
@@ -39,11 +35,6 @@
                         </div>
 
                         <!--<button class="btn btn-info">Subir Imágenes</button>-->
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.note }}</p>
-                        </div>
-
 
                     </div>
                     <div class="modal-footer">

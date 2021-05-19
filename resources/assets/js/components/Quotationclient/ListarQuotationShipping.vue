@@ -1,6 +1,6 @@
 <template>
     <div class="table-responsive">
-        <table class="table table-striped mt-3 text-white bg-dark">
+        <table class="table table-striped table-sm text-white bg-dark mt-3">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -67,14 +67,14 @@
                     <td>{{ quotationshippingLocal.ciudad }}</td>
                     <td>{{ quotationshippingLocal.direccion }}</td>
                     <td>{{ quotationshippingLocal.sucursal }}</td>
-                    <td>
-                        <a class="btn btn-success" href="#" role="button"
+                    <td class="text-right">
+                        <a class="btn btn-success btn-sm" href="#" role="button"
                             @click.prevent="showQuotationShipping({ id: quotationshippingLocal.id })"><i class="fas fa-shipping-fast"></i> Domicilio
                         </a>
-                        <a class="btn btn-info" href="#" role="button"
+                        <a class="btn btn-info btn-sm" href="#" role="button"
                             @click.prevent="pdfQuotationShipping({ id: quotationshippingLocal.id })"><i class="far fa-file-alt"></i> Generar
                         </a>
-                        <a class="btn btn-danger" href="#" role="button"
+                        <a class="btn btn-danger btn-sm" href="#" role="button"
                             @click.prevent="showdeleteQuotationShipping({ id: quotationshippingLocal.id })"><i class="far fa-trash-alt"></i>
                         </a>
                         

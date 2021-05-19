@@ -5,16 +5,16 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h6>Asignar Roles al Usuario {{ fillUserRoles.name }}</h6>
+                        <h4>Asignar Roles al Usuario - {{ fillUserRoles.name }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span>&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body pt-0">
+                    <div class="modal-body">
 
                         <div v-for="rolesLocal in roles" :key="rolesLocal.id">
                             <input type="checkbox" v-bind:id="rolesLocal.id" v-bind:value="rolesLocal.id" v-model="checkedRoles">
-                            <label v-bind:for="rolesLocal.id">{{ rolesLocal.name }} ( {{ rolesLocal.description }} ) </label>
+                            <label v-bind:for="rolesLocal.id">{{ rolesLocal.description }}</label>
                         </div>
                         <!--<span>Roles Seleccionados: {{ checkedRoles }}</span>-->
 

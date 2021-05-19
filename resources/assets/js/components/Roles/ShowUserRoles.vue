@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h6>Lista de Roles</h6>
+                <h4>Lista de Roles</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span>&times;</span>
                 </button>
@@ -12,7 +12,7 @@
             <div class="modal-body pt-0">
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped mt-3 table-sm">
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -30,8 +30,6 @@
                     </table>
                 </div>
 
-            </div>
-            <div class="modal-footer">
             </div>
         </div>
     </div>

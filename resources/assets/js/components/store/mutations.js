@@ -5,6 +5,13 @@ import printJS from 'print-js'
 var $ = window.jQuery = require('jquery')
 
 var urlUser = 'users'
+var urlQuotationRoles = 'quotation-roles'
+var urlTotalVehi = 'total-vehi'
+var urlTotalCli = 'total-cli'
+var urlTotalCliAdmin = 'total-cli-admin'
+var urlTotalVehiAdmin = 'total-vehi-admin'
+var urlCantVehicle = 'cant-vehicle-user'
+var urlCantCliVehi = 'cant-cli-vehi-user'
 var urlAllUser = 'users-all'
 var urlRoles = 'roles'
 var urlAllRoles = 'roles-all'
@@ -106,10 +113,10 @@ export default { //used for changing the state
     /******************************* */
     getVehicles(state, page) {
         var url = urlVehicle + '?page=' + page + '&patent=' + state.searchVehicle.patent + '&name=' + state.searchVehicle.name + '&year=' + state.searchVehicle.year
-        axios.get(urlVehicle).then(response => {
-            state.vehicles = response.data
-            //state.vehicles = response.data.vehicles.data
-            //state.pagination = response.data.pagination
+        axios.get(url).then(response => {
+            
+            state.vehicles = response.data.vehicles.data
+            state.pagination = response.data.pagination
         });
     },
     getVehiclesUser(state, page) {
@@ -145,6 +152,7 @@ export default { //used for changing the state
             toastr.success('Vehículo generado con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data
+            toastr.error("¡Error, Ya no puede crear mas vehiculos!")
         })
     },
     editVehicle(state, vehicle) {
@@ -157,7 +165,10 @@ export default { //used for changing the state
         state.fillVehicle.patent = vehicle.patent
         state.fillVehicle.chasis = vehicle.chasis
         state.fillVehicle.name = vehicle.name
-        state.fillVehicle.year = vehicle.year
+        state.selectedVBrand.label = vehicle.brand
+        state.selectedVModel.label = vehicle.model
+        state.selectedVYear.label = vehicle.year
+        state.selectedVEngine.label = vehicle.engine
         state.fillVehicle.color = vehicle.color
         state.fillVehicle.km = vehicle.km
         $("#edit").modal('show')
@@ -252,16 +263,30 @@ export default { //used for changing the state
     },
     updateVehicle(state, id) {
         var url = urlVehicle + '/' + id
-        axios.put(url, state.fillVehicle).then(response => {
-            state.fillVehicle = {
-                id: '',
-                patent: '',
-                chasis: '',
-                name: '',
-                year: '',
-                color: '',
-                km: ''
-            }
+        axios.put(url, {
+            id: state.fillVehicle.id,
+            patent: state.fillVehicle.patent,
+            chasis: state.fillVehicle.chasis,
+            brand: state.selectedVBrand.label,
+            model: state.selectedVModel.label,
+            year: state.selectedVYear.label,
+            engine: state.selectedVEngine.label,
+            color: state.fillVehicle.color,
+            km: state.fillVehicle.km
+        }).then(response => {
+            state.fillVehicle.id = ''
+            state.fillVehicle.patent = ''
+            state.fillVehicle.chasis = ''
+            state.fillVehicle.color = ''
+            state.fillVehicle.km = ''
+            state.selectedVBrand.label = '',
+            state.selectedVBrand.value = '',
+            state.selectedVModel.label = '',
+            state.selectedVModel.value = '',
+            state.selectedVYear.label = '',
+            state.selectedVYear.value = '',
+            state.selectedVEngine.label = '',
+            state.selectedVEngine.value = '',
             state.errorsLaravel = []
             $('#edit').modal('hide')
             toastr.success('Vehículo actualizado con éxito')
@@ -1887,6 +1912,20 @@ export default { //used for changing the state
             state.pagination = response.data.pagination
         });
     },
+
+    getRolesQuotation(state) {
+        var url = urlQuotationRoles
+        axios.get(url).then(response => {
+            state.quotationRoles = response.data
+        });
+    },
+
+    // getIdUserRoles(state, user){
+    //     var url = urlUser + '/' + user.id + '/' + urlRoles
+    //     axios.get(url).then(response => {
+    //         state.userRoles = response.data
+    //     });
+    // },
     showUser(state) {
         var url = urlUserId
         axios.get(url).then(response => {
@@ -1904,6 +1943,8 @@ export default { //used for changing the state
             name: state.newUser.name,
             email: state.newUser.email,
             password: state.newUser.password,
+            cant_client: state.newUser.cant_client,
+            cant_vehicle: state.newUser.cant_vehicle
             //url: window.location.host + "/acceso/" + md5(state.newUser.password)
         }).then(response => {
             state.newUser = {
@@ -1929,6 +1970,7 @@ export default { //used for changing the state
         state.fillUser.password = user.password
         state.fillUser.url = window.location.host + "/acceso/" + user.url
         state.fillUser.logo = user.logo
+        state.fillUser.cantidad = user.cantidad
         $("#edit").modal('show')
     },
     updateUserShow(state) {
@@ -1957,6 +1999,37 @@ export default { //used for changing the state
             toastr.success('Usuario actualizado con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data
+        })
+    },
+
+    updateCantCliVehi(state, id) {
+        var url = urlCantCliVehi + '/' + id
+        axios.put(url, state.fillCantCliVehi).then(response => {
+            state.fillCantCliVehi = {
+                id: '',
+                cant_client: 0,
+                cant_vehicle: 0
+            }
+            state.errorsLaravel = []
+            $('#editCantCliVehi').modal('hide')
+            toastr.success('Se han actualizado las cantidades con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    updateCantVehicle(state, id) {
+        var url = urlCantVehicle + '/' + id
+        axios.put(url, state.fillCantVehicle).then(response => {
+            state.fillCantVehicle = {
+                id: '',
+                cant_vehicle: 0
+            }
+            state.errorsLaravel = []
+            $('#editCantVehicle').modal('hide')
+            toastr.success('La cantidad se actualizado con éxito')
+        }).catch(error => {
+            toastr.error(error.response.data)
         })
     },
     modalDeleteUser(state, id) {
@@ -2101,12 +2174,22 @@ export default { //used for changing the state
             state.roles = response.data
         });
     },
-    getUserRoles(state, id) {
-        var url = urlUser + '/' + id + '/' + urlRoles
-        axios.get(url).then(response => {
-            state.userRoles = response.data
-            $("#showRoles").modal('show')
-        });
+    // getUserRoles(state, id) {
+    //     var url = urlUser + '/' + id + '/' + urlRoles
+    //     axios.get(url).then(response => {
+    //         state.userRoles = response.data
+    //         $("#showRoles").modal('show')
+    //     });
+    // },
+    editCantCliVehi(state, user) {
+        state.fillCantCliVehi.id = user.id
+        state.cantCliVehiAdmin.cant_client = user.cant_client
+        state.cantCliVehiAdmin.cant_vehicle = user.cant_vehicle
+        $("#editCantCliVehi").modal('show')
+    },
+    editCantVehicle(state, user) {
+        state.fillCantVehicle.id = user.id
+        $("#editCantVehicle").modal('show')
     },
     editUserRoles(state, user) {
         var roles = []
@@ -3064,6 +3147,33 @@ export default { //used for changing the state
             })
     },
 
+    getTotalVehi(state) {
+        var url = urlTotalVehi
+        axios.get(url).then(response => {
+            state.totalvehi = response.data
+        });
+    },
+    getTotalCli(state, user) {
+        var url = urlTotalCli
+        axios.get(url).then(response => {
+            state.totalcli = response.data
+        });
+    },
+
+    getTotalCliAdmin(state, user) {
+        var url = urlTotalCliAdmin + '/' + user.id
+        axios.get(url).then(response => {
+            state.totalcliadmin = response.data
+        });
+    },
+
+    getTotalVehiAdmin(state, user) {
+        var url = urlTotalVehiAdmin + '/' + user.id
+        axios.get(url).then(response => {
+            state.totalvehiadmin = response.data
+        });
+    },
+
     createMechanicClient(state) {
           
         axios.post('mechanic-client/' + state.idforms,{
@@ -3080,10 +3190,31 @@ export default { //used for changing the state
             }
             state.errorsLaravel = []
             $('#modalCreateUserMechanic').modal('hide')
-            $('#btn-user-card').click()
             toastr.success('Usuario generado con éxito')
         }).catch(error => {
             state.errorsLaravel = error.response.data
+        })
+    },
+
+    createMechanicClient2(state) {
+
+        axios.post('mechanic-client2',{
+            name: state.newUser.name,
+            email: state.newUser.email,
+            password: state.newUser.password,
+            cant_vehicle: state.newUser.cant_vehicle
+        }).then(response => {
+            state.newUser = {
+                id: '',
+                name: '',
+                email: '',
+                password: '',
+                cant_vehicle: ''
+            }
+            state.errorsLaravel = []
+            toastr.success('Usuario generado con éxito')
+        }).catch(error => {
+            toastr.error(error.response.data)
         })
     },
 

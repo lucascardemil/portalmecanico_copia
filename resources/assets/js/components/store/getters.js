@@ -9,9 +9,9 @@ export default { //computed propeties
         return state.newDetailVehicle.km.length >= 1 &&
                 state.newDetailVehicle.note.length >= 4
     },
-    completeVehicleEdit(state, getters){
-        return state.fillVehicle.name.length >= 4
-    },
+    // completeVehicleEdit(state, getters){
+    //     return state.fillVehicle.name.length >= 4
+    // },
     isActived(state, getters){
         return state.pagination.current_page
     },

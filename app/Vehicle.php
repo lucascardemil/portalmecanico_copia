@@ -33,7 +33,7 @@ class Vehicle extends Model
     {
         $keyword = request('name');
         if ($query) {
-            $query->where('name', 'LIKE', '%'. $keyword . '%');
+            $query->where('brand', 'LIKE', '%'. $keyword . '%');
         }
         return $query;
     }

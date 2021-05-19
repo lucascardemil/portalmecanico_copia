@@ -20,9 +20,6 @@
                                 class="form-control" v-model="fillVehicle.patent">
                         <p v-show="errors.has('patente')" class="text-danger">{{ errors.first('patente') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.patent }}</p>
-                        </div>
 
                         <label for="chasis">Chasis</label>
                         <input v-validate="'required|min:4|max:190'"
@@ -32,33 +29,20 @@
                                 class="form-control" v-model="fillVehicle.chasis">
                         <p v-show="errors.has('chasis')" class="text-danger">{{ errors.first('chasis') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.chasis }}</p>
-                        </div>
+                        <label for="marca">Marca</label>
+                        <BrandSelector/>
+                        <!-- <SelectBrand></SelectBrand> -->
+                        
+                        <label for="modelo">Modelo</label>
+                        <ModelSelector/>
+                        <!-- <SelectModel></SelectModel> -->
 
-                        <label for="nombre">Modelo</label>
-                        <input v-validate="'required|min:4|max:190'"
-                                :class="{'input': true, 'is-invalid': errors.has('nombre') }"
-                                type="text"
-                                name="nombre"
-                                class="form-control" v-model="fillVehicle.name">
-                        <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
-
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.name }}</p>
-                        </div>
-
+                        
                         <label for="anio">Año</label>
-                        <input v-validate="'required|min:4|max:190'"
-                                :class="{'input': true, 'is-invalid': errors.has('anio') }"
-                                type="text"
-                                name="anio"
-                                class="form-control" v-model="fillVehicle.year">
-                        <p v-show="errors.has('anio')" class="text-danger">{{ errors.first('anio') }}</p>
+                        <YearSelector/>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.year }}</p>
-                        </div>
+                        <label for="engine">Motor</label>
+                        <EngineSelector/>
 
                         <label for="color">Color</label>
                         <input v-validate="'required|min:4|max:190'"
@@ -68,26 +52,21 @@
                                 class="form-control" v-model="fillVehicle.color">
                         <p v-show="errors.has('color')" class="text-danger">{{ errors.first('color') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.color }}</p>
-                        </div>
 
                         <label for="km">Kilometraje</label>
-                        <input v-validate="'required|min:4|max:190'"
+                        <input v-validate="'required|min:1|max:190'"
                                 :class="{'input': true, 'is-invalid': errors.has('km') }"
                                 type="number"
                                 name="km"
                                 class="form-control" v-model="fillVehicle.km">
                         <p v-show="errors.has('km')" class="text-danger">{{ errors.first('km') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.km }}</p>
-                        </div>
+                      
 
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-warning" :disabled="!completeVehicleEdit">
+                        <button type="submit" class="btn btn-warning">
                             <i class="fas fa-edit"></i> Editar
                         </button>
                     </div>
@@ -101,10 +80,15 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
 
+import BrandSelector from '../Quotationuser/BrandSelector'
+import ModelSelector from '../Quotationuser/ModelSelector'
+import YearSelector from '../Quotationuser/YearSelector'
+import EngineSelector from '../Quotationuser/EngineSelector'
+
 export default {
+    components: { BrandSelector, ModelSelector, YearSelector, EngineSelector },
     computed:{
-        ...mapState(['fillVehicle', 'errorsLaravel']),
-        ...mapGetters(['completeVehicleEdit'])
+        ...mapState(['fillVehicle', 'errorsLaravel'])
     },
     methods:{
         ...mapActions(['updateVehicleUser'])

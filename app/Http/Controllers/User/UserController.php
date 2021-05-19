@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Freshwork\ChileanBundle\Rut;
 use CodeItNow\BarcodeBundle\Utils\BarcodeGenerator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -58,18 +59,22 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $id = request('id');
+
         $this->validate($request, [
-            'name' => 'required|min:4',
-            'email' => 'required|email|unique:users,email|min:6',
-            'password' => 'required|min:4',
+            'name' => 'required|min:4|max:190',
+            'email' => ['required', 'email', 'min:6', 'max:150',
+                        \Illuminate\Validation\Rule::unique('users')->ignore(User::find($id))],
+            'password' => 'required|min:6|max:190',
         ], [
             'name.required' => 'El campo nombre es obligatorio',
             'name.min' => 'El campo nombre debe tener al menos 6 caracteres',
-            'password.required' => 'El campo password es obligatorio',
-            'password.min' => 'El campo password debe tener al menos 6 caracteres',
+            'name.max' => 'El campo nombre debe tener a lo más 190 caracteres',
             'email.required' => 'El campo correo electrónico es obligatorio',
-            'email.unique' => 'El correo electrónico ya existe',
             'email.min' => 'El campo de correo electrónico debe tener al menos 6 caracteres',
+            'email.max' => 'El campo de correo electrónico debe tener a lo más 150 caracteres',
+            'password.required' => 'El campo contraseña es obligatorio',
+            'password.min' => 'El campo de contraseña debe tener al menos 6 caracteres',
+            'password.max' => 'El campo de contraseña debe tener a lo más 150 caracteres',
         ]);
 
         $data = $request->all();
@@ -81,7 +86,9 @@ class UserController extends Controller
 
         $user = User::create($data);
 
-
+        if($data['cant_client'] > 0 || $data['cant_vehicle'] > 0){
+            $user->roles()->sync(array(0 => '2'));
+        }
 
         DB::table('quotationclients')->where('id', $id)->update(
             [
@@ -151,8 +158,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        $mechanics = DB::table('mechanic_client')
+            ->join('users', 'users.id', '=', 'mechanic_client.user_id')
+            ->where('mechanic_client.user_id', '=', $id)->delete();
+
+        if($mechanics){
+            $user = User::findOrFail($id);
+            $user->delete();
+        }
+        
 
         return;
     }
@@ -183,7 +197,7 @@ class UserController extends Controller
         $clients = DB::table('users')
             ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
             ->where('mechanic_client.mechanic_id', '=', $user_id)
-            ->select('users.id', 'users.name', 'users.email', 'users.password', 'users.url')
+            ->select('users.id', 'users.name', 'users.email', 'users.password', 'users.url', 'users.url', 'users.cant_vehicle')
             ->get();
 
         return $clients;
@@ -199,7 +213,7 @@ class UserController extends Controller
         DB::table('mechanic_client')->insertOrIgnore(
             [
                 'user_id' => $user->id, 
-                'mechanic_id' => \Auth::user()->id,
+                'mechanic_id' => \Auth::user()->id
                 //'quotation_id' => request('id')
             ]
         );
@@ -210,6 +224,54 @@ class UserController extends Controller
             ]
         );
     }
+
+    public function storeclient2(Request $request)
+    {
+        $id = \Auth::user()->id;
+
+        $clients = DB::table('users')->where('id', '=', $id)->get();
+
+        $total = DB::table('users')
+            ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+            ->where('mechanic_client.mechanic_id', '=', $id)
+            ->count();
+
+        $data = $request->all();
+        
+        if($total >= $clients[0]->cant_vehicle){
+            return response()->json('¡No se pueden asignar vehiculos a mas clientes!', 422);
+        }else{
+            if($total >= $clients[0]->cant_client){
+                return response()->json('¡Supero la cantidad de clientes!', 422);
+            }else{
+
+                $suma_vehicles = DB::table('users')
+                    ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+                    ->where('mechanic_client.mechanic_id', '=', $id)
+                    ->sum('users.cant_vehicle');
+
+                $total_vehicle = $data['cant_vehicle'] + $suma_vehicles;
+
+                if($total_vehicle > $clients[0]->cant_vehicle){
+                    return response()->json('supero la cantidad de vehiculos', 422);
+                }else{
+
+                    $data['password'] = bcrypt( $data['password'] );
+                    $data['url'] = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
+
+                    $user = User::create($data);
+                    $user->roles()->sync(array(0 => '3'));
+
+                    DB::table('mechanic_client')->insertOrIgnore(
+                        [
+                            'user_id' => $user->id, 
+                            'mechanic_id' => \Auth::user()->id
+                        ]
+                    );
+                }
+            }
+        }
+    }
     
     public function updateRole(Request $request, User $user)
     {
@@ -217,5 +279,121 @@ class UserController extends Controller
         //actualizar roles
         
         $user->roles()->sync($request->all());
+    }
+
+    public function updateCantVehicleUser(Request $request, $id)
+    {
+        $mechanic = \Auth::user()->id;
+        $data = $request->all();
+
+
+        $suma_vehicles = DB::table('users')
+                    ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+                    ->where('mechanic_client.mechanic_id', '=', $mechanic)
+                    ->sum('users.cant_vehicle');
+
+        $mechanics = DB::table('users')->where('id', '=', $mechanic)->get();
+
+    
+        $total_vehicle = $data['cant_vehicle'] + $suma_vehicles;
+
+        if($data['cant_vehicle'] == 0){
+            return response()->json('¡La cantidad no puede ser 0!', 422);
+        }else{
+            if($total_vehicle > $mechanics[0]->cant_vehicle){
+                return response()->json('¡Error, Ya no puede crear mas vehiculos!', 422);
+            }else{
+                DB::table('users')->where('id', $id)->update(
+                    [
+                        'cant_vehicle' => $total_vehicle
+                    ]
+                );
+                return;
+            }
+        }
+    }
+
+    public function updateCantCliVehiUser(Request $request, $id)
+    {   
+        $data = $request->all();
+
+        $users = DB::table('users')->where('id', '=', $id)->get();
+
+        $total_vehicle = $data['cant_vehicle'] + $users[0]->cant_vehicle;
+        $total_client = $data['cant_client'] + $users[0]->cant_client;
+
+        DB::table('users')->where('id', $id)->update(
+            [
+                'cant_vehicle' => $total_vehicle,
+                'cant_client' => $total_client 
+            ]
+        );
+
+        return;
+    }
+
+    public function quotation_roles()
+    {
+        $user_id = \Auth::user()->id;
+        $users = User::where('id', '=', $user_id)->with('roles')->get();
+
+        return $users;
+    }
+
+
+    public function totalVehi()
+    {
+        $mechanic = \Auth::user()->id;
+        $suma_vehicles = DB::table('users')
+                    ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+                    ->where('mechanic_client.mechanic_id', '=', $mechanic)
+                    ->sum('users.cant_vehicle');
+        $users = DB::table('users')->where('id', '=', $mechanic)->get();
+
+        $total_vehicles   = ['total_vehicles' => ($users[0]->cant_vehicle - $suma_vehicles)];
+        return $total_vehicles;
+    }
+
+
+    public function totalCli()
+    {
+        $mechanic = \Auth::user()->id;
+        $suma_clients = DB::table('users')
+                    ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+                    ->where('mechanic_client.mechanic_id', '=', $mechanic)
+                    ->count();
+             
+        $users = DB::table('users')->where('id', '=', $mechanic)->get();
+
+        $total_clients = ['total_clients' => ($users[0]->cant_client - $suma_clients)];
+        return $total_clients;
+    }
+
+
+
+    public function totalCliAdmin($id)
+    {
+        $suma_clients = DB::table('users')
+                    ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+                    ->where('mechanic_client.mechanic_id', '=', $id)
+                    ->count();
+             
+        $users = DB::table('users')->where('id', '=', $id)->get();
+
+        $total_clients = ['total_clients' => ($users[0]->cant_client - $suma_clients)];
+        return $total_clients;
+    }
+
+
+    public function totalVehiAdmin($id)
+    {
+        $suma_vehicles = DB::table('users')
+                    ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+                    ->where('mechanic_client.mechanic_id', '=', $id)
+                    ->sum('users.cant_vehicle');
+        $users = DB::table('users')->where('id', '=', $id)->get();
+
+        $total_vehicles   = ['total_vehicles' => ($users[0]->cant_vehicle - $suma_vehicles)];
+        return $total_vehicles;
     }
 }

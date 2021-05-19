@@ -13,28 +13,24 @@
                     <div class="modal-body">
 
                         <label for="patente">Patente</label>
-                        <input v-validate="'required|min:2|max:190'"
+                        <input v-validate="'required|min:4|max:190'"
                                 :class="{'input': true, 'is-invalid': errors.has('patente') }"
                                 type="text"
                                 name="patente"
                                 class="form-control" v-model="newVehicle.patent">
                         <p v-show="errors.has('patente')" class="text-danger">{{ errors.first('patente') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.patent }}</p>
-                        </div>
+                        
 
                         <label for="patente">Chasis</label>
-                        <input v-validate="'required|min:2|max:190'"
+                        <input v-validate="'required|min:4|max:190'"
                                 :class="{'input': true, 'is-invalid': errors.has('chasis') }"
                                 type="text"
                                 name="chasis"
                                 class="form-control" v-model="newVehicle.chasis">
                         <p v-show="errors.has('chasis')" class="text-danger">{{ errors.first('chasis') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.chasis }}</p>
-                        </div>
+                       
                         
                         <label for="marca">Marca</label>
                         <BrandSelector/>
@@ -52,16 +48,14 @@
                         <EngineSelector/>
 
                         <label for="color">Color</label>
-                        <input v-validate="'required|min:2|max:190'"
+                        <input v-validate="'required|min:4|max:190'"
                                 :class="{'input': true, 'is-invalid': errors.has('color') }"
                                 type="text"
                                 name="color"
                                 class="form-control" v-model="newVehicle.color">
                         <p v-show="errors.has('color')" class="text-danger">{{ errors.first('color') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.color }}</p>
-                        </div>
+                        
 
                         <label for="km">Kilometraje</label>
                         <input v-validate="'required|min:1|max:190'"
@@ -71,9 +65,7 @@
                                 class="form-control" v-model="newVehicle.km">
                         <p v-show="errors.has('km')" class="text-danger">{{ errors.first('km') }}</p>
 
-                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                            <p>{{ error.km }}</p>
-                        </div>
+                        
 
                     </div>
                     <div class="modal-footer">

@@ -135,7 +135,7 @@ class QuotationclientController extends Controller
 
     public function clientsform()
     {
-        
+        $user_id = Auth::id();
         $id = request('id');
         $razonSocial = request('razonSocial');
         $client = request('client');
@@ -143,7 +143,6 @@ class QuotationclientController extends Controller
         $day = request('day');
         $month = request('month');
         $year = request('year');
-
 
         $quotationclientsform = DB::table('quotationclients')
                                 ->join('clients', 'quotationclients.client_id', '=', 'clients.id')
@@ -198,7 +197,7 @@ class QuotationclientController extends Controller
             ],
             'quotationclientsform' => $quotationclientsform
         ];
-
+               
     }
 
 

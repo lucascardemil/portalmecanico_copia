@@ -17,7 +17,7 @@ export default { //methods
     createVehicleUser(context) {
         context.commit('createVehicle')
         setTimeout(function () {
-            context.commit('getVehiclesUser', 1)
+            context.commit('getVehicles', 1)
         }, 1000)
 
     },
@@ -33,7 +33,7 @@ export default { //methods
     updateVehicleUser(context, data) {
         context.commit('updateVehicle', data.id)
         setTimeout(function () {
-            context.commit('getVehiclesUser', 1)
+            context.commit('getVehicles', 1)
         }, 1000)
     },
     deleteVehicle(context, data) {
@@ -45,7 +45,7 @@ export default { //methods
     deleteVehicleUser(context, data) {
         context.commit('deleteVehicle', data.id)
         setTimeout(function () {
-            context.commit('getVehiclesUser', 1)
+            context.commit('getVehicles', 1)
         }, 1000)
     },
     changePageVehicle(context, data) {
@@ -702,6 +702,12 @@ export default { //methods
     getUsers(context, data) {
         context.commit('getUsers', data.page)
     },
+
+    getRolesQuotation(context, data) {
+        context.commit('getRolesQuotation', data)
+    },
+
+
     showUser(context, data) {
         context.commit('showUser')
     },
@@ -726,6 +732,20 @@ export default { //methods
         context.commit('updateUser', data.id)
         setTimeout(function () {
             context.commit('getUsers', 1)
+        }, 500)
+    },
+    updateCantCliVehi(context, data) {
+        context.commit('updateCantCliVehi', data.id)
+        setTimeout(function () {
+            context.commit('getUsers', 1)
+        }, 500)
+    },
+
+    updateCantVehicle(context, data) {
+        context.commit('updateCantVehicle', data.id)
+        setTimeout(function () {
+            context.commit('getMechanicClients', 1)
+            context.commit('getTotalVehi')
         }, 500)
     },
     updateMechanicClient(context, data) {
@@ -805,8 +825,17 @@ export default { //methods
     getAllPermissions(context) {
         context.commit('getAllPermissions')
     },
-    getUserRoles(context, data) {
-        context.commit('getUserRoles', data.id)
+    // getUserRoles(context, data) {
+    //     context.commit('getUserRoles', data.id)
+    // },
+
+    editCantCliVehi(context, data) {
+        context.commit('editCantCliVehi', data.userLocal)
+        context.commit('getTotalCliAdmin', data.userLocal)
+        context.commit('getTotalVehiAdmin', data.userLocal)
+    },
+    editCantVehicle(context, data) {
+        context.commit('editCantVehicle', data.userLocal)
     },
     editUserRoles(context, data) {
         context.commit('editUserRoles', data.userLocal)
@@ -1106,11 +1135,35 @@ export default { //methods
         context.commit('getMechanicClients');
     },
 
+
+    getTotalVehi(context) {
+        context.commit('getTotalVehi');
+    },
+
+    getTotalCli(context) {
+        context.commit('getTotalCli');
+    },
+
+    getTotalCliAdmin(context) {
+        context.commit('getTotalCliAdmin');
+    },
+    getTotalVehiAdmin(context) {
+        context.commit('getTotalVehiAdmin');
+    },
+
     createMechanicClient(context) {
         context.commit('createMechanicClient')
         setTimeout(function () {
-            context.commit('getMechanicClients')
             context.commit('getQuotationclients', 1)
+        }, 500)
+    },
+
+    createMechanicClient2(context) {
+        context.commit('createMechanicClient2')
+        setTimeout(function () {
+            context.commit('getMechanicClients')
+            context.commit('getTotalCli')
+            context.commit('getTotalVehi')
         }, 500)
     },
 

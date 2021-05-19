@@ -1,12 +1,11 @@
-<template>  
+<template>
     <div class="table-responsive">
-        <table class="table table-striped mt-3 text-white bg-dark">
+        <table class="table table-striped table-sm text-white bg-dark mt-3">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Generado</th>
                     <th>Estado</th>
-                    <th>Rut</th>
                     <th>Razón Social</th>
                     <th>Cliente</th>
                     <th>Vehículo</th>
@@ -48,7 +47,6 @@
                         </div>
                     </td>
                     <td></td>
-                    <td></td>
                 </tr>
 
                 <tr v-for="quotationformLocal in quotationclientsform" :key="quotationformLocal.id">
@@ -59,7 +57,6 @@
                         <a v-if="quotationformLocal.generado == 3" class="btn btn-success btn-sm font-weight-bold" type="button" @click.prevent="showModalDetail({ id: quotationformLocal.id })">Formulario Cotizar</a>
                     </td>
                     <td>{{ quotationformLocal.state }}</td>
-                    <td>{{ quotationformLocal.rut }}</td>
                     <td>{{ quotationformLocal.razonSocial }}</td>
                     <td>{{ quotationformLocal.client_text }}</td>
                     <td>{{ quotationformLocal.vehicle }}</td>

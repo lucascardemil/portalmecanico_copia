@@ -7,9 +7,7 @@
                 Administración de Usuarios
 				
             </h5>
-        </div>
-
-        <div class="col-lg-12">
+        
             <div id="accordion">
                 <div class="card">
                     <div class="card-header p-0" id="headingOne">
@@ -27,51 +25,69 @@
                             <form action="POST" v-on:submit.prevent="createUser">
                                 <div class="row">
 
-                                    <div class="col-lg-3">
+                                    <div class="form-group col-12">
+                                        <input 
+                                                type="checkbox" 
+                                                name="mecanico"
+                                                v-model="newUser.mecanico">
+                                        <label for="mecanico">Mecanico</label>
+                                        
+                                    </div>
+
+                                    <div class="form-group col-lg-2">
                                         <label for="nombre">Nombre</label>
-                                        <input v-validate="'required|min:4|max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('nombre') }"
+                                        <input required
+                                          
                                                 type="text"
                                                 name="nombre"
                                                 class="form-control" v-model="newUser.name">
-                                        <p v-show="errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.name }}</p>
-                                        </div>
+                                       
                                     </div>
 
-                                    <div class="col-lg-3">
-                                        <label for="correo">Correo Electrónico</label>
-                                        <input v-validate="'required|min:6|max:190'"
-                                                :class="{'input': true, 'is-invalid': errors.has('correo') }"
+                                    <div class="form-group col-lg-3">
+                                        <label for="correo">Email</label>
+                                        <input required
+                                                
                                                 type="email"
                                                 name="correo"
                                                 class="form-control" v-model="newUser.email">
-                                        <p v-show="errors.has('nombre')"
-                                            class="text-danger">{{ errors.first('correo') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.correo }}</p>
-                                        </div>
+                                       
                                     </div>
 
-                                    <div class="col-lg-3">
+                                    <div class="form-group col-lg-2">
                                         <label for="password">Contraseña</label>
-                                        <input v-validate="'required'"
-                                                :class="{'input': true, 'is-invalid': errors.has('password') }"
+                                        <input required
+                                                
                                                 type="password"
                                                 name="password"
                                                 class="form-control" v-model="newUser.password">
-                                        <p v-show="errors.has('password')"
-                                            class="text-danger">{{ errors.first('password') }}</p>
-
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.password }}</p>
-                                        </div>
+                                        
                                     </div>
 
-                                    <div class="col-lg-3 mt-2">
+
+                                    <div class="form-group col-lg-1" v-bind:hidden="newUser.mecanico === true ? false : true">
+                                        <label for="cant_client">Clientes</label>
+                                        <input required
+                                                type="number"
+                                                name="cant_client"
+                                                class="form-control" v-model="newUser.cant_client">
+                                    </div>
+                                    <div class="form-group col-lg-1" v-bind:hidden="newUser.mecanico === true ? false : true">
+                                        <label for="cant_vehicle">Vehiculos</label>
+                                        <input required
+                                                type="number"
+                                                name="cant_vehicle"
+                                                class="form-control" v-model="newUser.cant_vehicle">
+                                    </div>
+
+                                    <div class="col-lg-3 mt-2" v-bind:hidden="newUser.mecanico === true ? true : false">
+                                        <label></label>
+                                        <button type="submit" class="btn btn-block btn-success form-control">
+                                            <i class="fas fa-plus-square"></i> Guardar
+                                        </button>
+                                    </div>
+
+                                    <div class="col-lg-3 mt-2" v-bind:hidden="newUser.mecanico === true ? false : true">
                                         <label></label>
                                         <button type="submit" class="btn btn-success form-control">
                                             <i class="fas fa-plus-square"></i> Guardar
@@ -84,119 +100,120 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
 
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped mt-3 table-sm text-white bg-dark">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>&nbsp;</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--<tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>-->
-                    <tr v-for="userLocal in users" :key="userLocal.id">
-                        <td width="10px">{{ userLocal.id }}</td>
-                        <td>{{ userLocal.name }}</td>
-                        <td>{{ userLocal.email }}</td>
-                        <td width="200px">
+            <div class="table-responsive">
+                <table class="table table-sm text-white bg-dark mt-3">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="userLocal in users" :key="userLocal.id">
+                            <td>{{ userLocal.id }}</td>
+                            <td>{{ userLocal.name }}</td>
+                            <td>{{ userLocal.email }}</td>
+                            <td class="text-right">
 
-                            <button class="btn btn-success btn-rounded btn-sm"
-                                    @click.prevent="editUserRoles({userLocal})"
+                                <button class="btn btn-success"
+                                        @click.prevent="editUserRoles({userLocal})"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Asignar Rol">
+                                        <i class="fas fa-user-cog"></i>
+                                </button>
+
+
+
+                                
+                                
+                                <button class="btn btn-secondary" v-if="!userLocal.roles.length == 0 && userLocal.roles[0].name == 'mechanic'"
+                                        @click.prevent="editCantCliVehi({userLocal})"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Cantidad de clientes y vehiculos">
+                                        <i class="fas fa-cogs"></i>
+                                </button>
+                                   
+
+                                
+
+                                <!-- <button class="btn btn-secondary"
+                                        @click.prevent="getUserRoles({id: userLocal.id})"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Ver Roles del Usuario">
+                                        <i class="fas fa-eye"></i>
+                                </button> -->
+
+                                <a href="#" class="btn btn-warning"
+                                    @click.prevent="editUser({ userLocal } )"
                                     data-toggle="tooltip"
                                     data-placement="top"
-                                    title="Asignar Rol">
-                                    <i class="fas fa-user-cog"></i>
-                            </button>
+                                    title="Editar">
+                                    <i class="far fa-edit"></i>
+                                </a>
 
-                            <button class="btn btn-secondary btn-rounded btn-sm"
-                                    @click.prevent="getUserRoles({id: userLocal.id})"
+                                <a href="#" class="btn btn-danger"
+                                    @click.prevent="modalDeleteUser( { id: userLocal.id } )"
                                     data-toggle="tooltip"
                                     data-placement="top"
-                                    title="Ver Roles del Usuario">
-                                    <i class="fas fa-eye"></i>
-                            </button>
+                                    title="Eliminar">
+                                    <i class="fas fa-ban"></i>
+                                </a>
 
-                            <!--<button class="btn btn-secondary btn-rounded btn-sm"
-                                    @click.prevent="getUserRoles({id: userLocal.id})"
-                                    data-toggle="tooltip"
-                                    data-placement="top"
-                                    title="Ver Roles del Usuario">
-                                    <i class="fas fa-eye"></i>
-                            </button>-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                            <a href="#" class="btn btn-warning btn-sm"
-                                @click.prevent="editUser({ userLocal } )"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Editar">
-                                <i class="far fa-edit"></i>
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item" v-if="pagination.current_page > 1">
+                            <a class="page-link border-light bg-dark" href="#" @click.prevent="changePageUser({page: 1})">
+                                <span>Primera</span>
                             </a>
+                        </li>
 
-                            <a href="#" class="btn btn-danger btn-sm"
-                                @click.prevent="modalDeleteUser( { id: userLocal.id } )"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Eliminar">
-                                <i class="fas fa-ban"></i>
+                        <li class="page-item" v-if="pagination.current_page > 1">
+                            <a class="page-link border-light bg-dark" href="#" @click.prevent="changePageUser({page: pagination.current_page - 1})">
+                                <span>Atrás</span>
                             </a>
+                        </li>
 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        <li class="page-item" v-for="page in pagesNumber"
+                            v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
+                            <a class="page-link border-light bg-dark" href="#" @click.prevent="changePageUser({page})">
+                                {{ page }}
+                            </a>
+                        </li>
 
-            <nav>
-                <ul class="pagination">
-                    <li class="page-item" v-if="pagination.current_page > 1">
-                        <a class="page-link border-light bg-dark" href="#" @click.prevent="changePageUser({page: 1})">
-                            <span>Primera</span>
-                        </a>
-                    </li>
+                        <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                            <a class="page-link border-light bg-dark" href="#" @click.prevent="changePageUser({page: pagination.current_page + 1})">
+                                <span>Siguiente</span>
+                            </a>
+                        </li>
 
-                    <li class="page-item" v-if="pagination.current_page > 1">
-                        <a class="page-link border-light bg-dark" href="#" @click.prevent="changePageUser({page: pagination.current_page - 1})">
-                            <span>Atrás</span>
-                        </a>
-                    </li>
+                        <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                            <a class="page-link border-light bg-dark" href="#"  @click.prevent="changePageUser({page:pagination.last_page})">
+                                <span>Última</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
 
-                    <li class="page-item" v-for="page in pagesNumber"
-                        v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
-                        <a class="page-link border-light bg-dark" href="#" @click.prevent="changePageUser({page})">
-                            {{ page }}
-                        </a>
-                    </li>
-
-                    <li class="page-item" v-if="pagination.current_page < pagination.last_page">
-                        <a class="page-link border-light bg-dark" href="#" @click.prevent="changePageUser({page: pagination.current_page + 1})">
-                            <span>Siguiente</span>
-                        </a>
-                    </li>
-
-                    <li class="page-item" v-if="pagination.current_page < pagination.last_page">
-                        <a class="page-link border-light bg-dark" href="#"  @click.prevent="changePageUser({page:pagination.last_page})">
-                            <span>Última</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
+            </div>
         </div>
 
         <EditUser></EditUser>
         <DeleteUser></DeleteUser>
 
-        <ShowUserRoles></ShowUserRoles>
+        <!-- <ShowUserRoles></ShowUserRoles> -->
+        <EditCantClientVehicle></EditCantClientVehicle>
         <UpdateUserRoles></UpdateUserRoles>
 
     </div>
@@ -212,17 +229,18 @@ import EditUser from './Edit'
 import DeleteUser from './Delete'
 
 import UpdateUserRoles from '../Roles/UpdateUserRoles'
-import ShowUserRoles from '../Roles/ShowUserRoles'
+// import ShowUserRoles from '../Roles/ShowUserRoles'
+import EditCantClientVehicle from './EditCantClientVehicle'
 
 export default {
-    components: { EditUser, DeleteUser, UpdateUserRoles, ShowUserRoles },
+    components: { EditUser, DeleteUser, UpdateUserRoles, EditCantClientVehicle },
     computed:{
         ...mapState(['users', 'newUser', 'pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
         ...mapActions(['getUsers', 'createUser',
-        'editUser', 'modalDeleteUser', 'deleteUser', 'changePageUser', 'getUserRoles', 'editUserRoles', 'changePageUser'])
+        'editUser', 'modalDeleteUser', 'deleteUser', 'changePageUser', 'editCantCliVehi', 'editUserRoles', 'changePageUser'])
     },
     created(){
         loadProgressBar()

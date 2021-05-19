@@ -25,6 +25,13 @@ Route::put('usersRoles/{user}', 'User\UserController@updateRole');
 Route::ApiResource('permissions', 'Permission\PermissionController')->only('index');
 //administrador de recursos para los usuarios
 Route::ApiResource('users', 'User\UserController');
+Route::get('quotation-roles', 'User\UserController@quotation_roles');
+Route::put('cant-vehicle-user/{id}', 'User\UserController@updateCantVehicleUser');
+Route::put('cant-cli-vehi-user/{id}', 'User\UserController@updateCantCliVehiUser');
+Route::get('total-vehi', 'User\UserController@totalVehi');
+Route::get('total-cli', 'User\UserController@totalCli');
+Route::get('total-cli-admin/{id}', 'User\UserController@totalCliAdmin');
+Route::get('total-vehi-admin/{id}', 'User\UserController@totalVehiAdmin');
 Route::get('users-all', 'User\UserController@all');
 
 
@@ -145,6 +152,7 @@ Route::get('code-search/{code}', 'CodeController@search');
 Route::get('product-search/{code}', 'CodeController@product');
 Route::get('mechanic-clients', 'User\UserController@clients');
 Route::post('mechanic-client/{id?}', 'User\UserController@storeclient');
+Route::post('mechanic-client2', 'User\UserController@storeclient2');
 Route::get('client-vehicles', 'VehicleController@clientvehicles');
 
 Route::get('{id}/ciudad-all', 'QuotationShippingController@ciudades');
