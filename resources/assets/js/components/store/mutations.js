@@ -7,6 +7,7 @@ var $ = window.jQuery = require('jquery')
 var urlUser = 'users'
 var urlQuotationRoles = 'quotation-roles'
 var urlTotalVehi = 'total-vehi'
+var urlSumaVehi = 'suma-vehi'
 var urlTotalCli = 'total-cli'
 var urlTotalCliAdmin = 'total-cli-admin'
 var urlTotalVehiAdmin = 'total-vehi-admin'
@@ -1943,7 +1944,7 @@ export default { //used for changing the state
             name: state.newUser.name,
             email: state.newUser.email,
             password: state.newUser.password,
-            cant_client: state.newUser.cant_client,
+            //cant_client: state.newUser.cant_client,
             cant_vehicle: state.newUser.cant_vehicle
             //url: window.location.host + "/acceso/" + md5(state.newUser.password)
         }).then(response => {
@@ -2007,7 +2008,7 @@ export default { //used for changing the state
         axios.put(url, state.fillCantCliVehi).then(response => {
             state.fillCantCliVehi = {
                 id: '',
-                cant_client: 0,
+                //cant_client: 0,
                 cant_vehicle: 0
             }
             state.errorsLaravel = []
@@ -2189,6 +2190,7 @@ export default { //used for changing the state
     },
     editCantVehicle(state, user) {
         state.fillCantVehicle.id = user.id
+        state.fillCantVehicle.cant_vehicle  = 0
         $("#editCantVehicle").modal('show')
     },
     editUserRoles(state, user) {
@@ -3153,6 +3155,14 @@ export default { //used for changing the state
             state.totalvehi = response.data
         });
     },
+
+    getSumaVehi(state) {
+        var url = urlSumaVehi
+        axios.get(url).then(response => {
+            state.sumavehi = response.data
+        });
+    },
+
     getTotalCli(state, user) {
         var url = urlTotalCli
         axios.get(url).then(response => {

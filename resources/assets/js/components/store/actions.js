@@ -746,6 +746,7 @@ export default { //methods
         setTimeout(function () {
             context.commit('getMechanicClients', 1)
             context.commit('getTotalVehi')
+            context.commit('getSumaVehi')
         }, 500)
     },
     updateMechanicClient(context, data) {
@@ -831,7 +832,7 @@ export default { //methods
 
     editCantCliVehi(context, data) {
         context.commit('editCantCliVehi', data.userLocal)
-        context.commit('getTotalCliAdmin', data.userLocal)
+        //context.commit('getTotalCliAdmin', data.userLocal)
         context.commit('getTotalVehiAdmin', data.userLocal)
     },
     editCantVehicle(context, data) {
@@ -842,6 +843,7 @@ export default { //methods
     },
     updateUserRoles(context, data) {
         context.commit('updateUserRoles', data.id)
+        context.commit('getUsers', 1)
     },
     updateQuotationShipping(context, data) {
         context.commit('updateQuotationShipping', data.id)
@@ -1144,6 +1146,10 @@ export default { //methods
         context.commit('getTotalCli');
     },
 
+    getSumaVehi(context) {
+        context.commit('getSumaVehi');
+    },
+
     getTotalCliAdmin(context) {
         context.commit('getTotalCliAdmin');
     },
@@ -1162,7 +1168,7 @@ export default { //methods
         context.commit('createMechanicClient2')
         setTimeout(function () {
             context.commit('getMechanicClients')
-            context.commit('getTotalCli')
+            //context.commit('getTotalCli')
             context.commit('getTotalVehi')
         }, 500)
     },

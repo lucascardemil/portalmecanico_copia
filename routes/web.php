@@ -151,6 +151,7 @@ Route::get('sale-products/{sale}', 'SaleController@products');
 Route::get('code-search/{code}', 'CodeController@search');
 Route::get('product-search/{code}', 'CodeController@product');
 Route::get('mechanic-clients', 'User\UserController@clients');
+Route::get('suma-vehi', 'User\UserController@sumavehi');
 Route::post('mechanic-client/{id?}', 'User\UserController@storeclient');
 Route::post('mechanic-client2', 'User\UserController@storeclient2');
 Route::get('client-vehicles', 'VehicleController@clientvehicles');

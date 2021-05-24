@@ -10507,8 +10507,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['totalcliadmin', 'totalvehiadmin', 'fillCantCliVehi', 'cantCliVehiAdmin', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])([])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getTotalCliAdmin', 'getTotalVehiAdmin', 'updateCantCliVehi']))
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['totalvehiadmin', 'fillCantCliVehi', 'cantCliVehiAdmin', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])([])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getTotalVehiAdmin', 'updateCantCliVehi']))
 });
 
 /***/ }),
@@ -10535,6 +10535,22 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11135,6 +11151,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -11144,14 +11167,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     EditUser: _EditUser__WEBPACK_IMPORTED_MODULE_2__["default"],
     EditCantVehicle: _EditCantVehicle__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['totalvehi', 'totalcli', 'users', 'newUser', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getTotalVehi', 'getTotalCli', 'getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser', 'editCantVehicle'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['totalvehi', 'sumavehi', 'users', 'newUser', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getTotalVehi', 'getSumaVehi', 'getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser', 'editCantVehicle'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getMechanicClients', {
       page: 1
     });
-    this.$store.dispatch('getTotalCli');
+    this.$store.dispatch('getSumaVehi');
     this.$store.dispatch('getTotalVehi');
   }
 });
@@ -63405,102 +63428,37 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "tbody",
-                          [
-                            _vm._l(_vm.totalcliadmin, function(
-                              totalcliadminLocal
-                            ) {
-                              return _c("tr", { key: totalcliadminLocal.id }, [
-                                _c("th", [_vm._v("Clientes")]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(totalcliadminLocal))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm.cantCliVehiAdmin.cant_client -
-                                        totalcliadminLocal
-                                    )
+                          _vm._l(_vm.totalvehiadmin, function(
+                            totalvehiadminLocal
+                          ) {
+                            return _c("tr", { key: totalvehiadminLocal.id }, [
+                              _c("th", [_vm._v("Vehiculos")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-center" }, [
+                                _vm._v(_vm._s(totalvehiadminLocal))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-center" }, [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.cantCliVehiAdmin.cant_vehicle -
+                                      totalvehiadminLocal
                                   )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(
-                                    _vm._s(_vm.cantCliVehiAdmin.cant_client)
-                                  )
-                                ])
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-center" }, [
+                                _vm._v(
+                                  _vm._s(_vm.cantCliVehiAdmin.cant_vehicle)
+                                )
                               ])
-                            }),
-                            _vm._v(" "),
-                            _vm._l(_vm.totalvehiadmin, function(
-                              totalvehiadminLocal
-                            ) {
-                              return _c("tr", { key: totalvehiadminLocal.id }, [
-                                _c("th", [_vm._v("Vehiculos")]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(totalvehiadminLocal))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm.cantCliVehiAdmin.cant_vehicle -
-                                        totalvehiadminLocal
-                                    )
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(
-                                    _vm._s(_vm.cantCliVehiAdmin.cant_vehicle)
-                                  )
-                                ])
-                              ])
-                            })
-                          ],
-                          2
+                            ])
+                          }),
+                          0
                         )
                       ]
                     )
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "cant_client" } }, [
-                    _vm._v("Clientes")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fillCantCliVehi.cant_client,
-                        expression: "fillCantCliVehi.cant_client"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      required: "",
-                      type: "number",
-                      name: "cant_client"
-                    },
-                    domProps: { value: _vm.fillCantCliVehi.cant_client },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.fillCantCliVehi,
-                          "cant_client",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
@@ -63554,7 +63512,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
-      _c("h4", [_vm._v("Cantidad de clientes y vehiculos")]),
+      _c("h4", [_vm._v("Cantidad de vehiculos")]),
       _vm._v(" "),
       _c(
         "button",
@@ -63657,60 +63615,7 @@ var render = function() {
                     },
                     [
                       _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "form-group col-12" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.newUser.mecanico,
-                                expression: "newUser.mecanico"
-                              }
-                            ],
-                            attrs: { type: "checkbox", name: "mecanico" },
-                            domProps: {
-                              checked: Array.isArray(_vm.newUser.mecanico)
-                                ? _vm._i(_vm.newUser.mecanico, null) > -1
-                                : _vm.newUser.mecanico
-                            },
-                            on: {
-                              change: function($event) {
-                                var $$a = _vm.newUser.mecanico,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = null,
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      _vm.$set(
-                                        _vm.newUser,
-                                        "mecanico",
-                                        $$a.concat([$$v])
-                                      )
-                                  } else {
-                                    $$i > -1 &&
-                                      _vm.$set(
-                                        _vm.newUser,
-                                        "mecanico",
-                                        $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1))
-                                      )
-                                  }
-                                } else {
-                                  _vm.$set(_vm.newUser, "mecanico", $$c)
-                                }
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("label", { attrs: { for: "mecanico" } }, [
-                            _vm._v("Mecanico")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group col-lg-2" }, [
+                        _c("div", { staticClass: "form-group col-lg-3" }, [
                           _c("label", { attrs: { for: "nombre" } }, [
                             _vm._v("Nombre")
                           ]),
@@ -63782,7 +63687,7 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group col-lg-2" }, [
+                        _c("div", { staticClass: "form-group col-lg-3" }, [
                           _c("label", { attrs: { for: "password" } }, [
                             _vm._v("Contraseña")
                           ]),
@@ -63818,121 +63723,7 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "form-group col-lg-1",
-                            attrs: {
-                              hidden:
-                                _vm.newUser.mecanico === true ? false : true
-                            }
-                          },
-                          [
-                            _c("label", { attrs: { for: "cant_client" } }, [
-                              _vm._v("Clientes")
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newUser.cant_client,
-                                  expression: "newUser.cant_client"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                required: "",
-                                type: "number",
-                                name: "cant_client"
-                              },
-                              domProps: { value: _vm.newUser.cant_client },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newUser,
-                                    "cant_client",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "form-group col-lg-1",
-                            attrs: {
-                              hidden:
-                                _vm.newUser.mecanico === true ? false : true
-                            }
-                          },
-                          [
-                            _c("label", { attrs: { for: "cant_vehicle" } }, [
-                              _vm._v("Vehiculos")
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newUser.cant_vehicle,
-                                  expression: "newUser.cant_vehicle"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                required: "",
-                                type: "number",
-                                name: "cant_vehicle"
-                              },
-                              domProps: { value: _vm.newUser.cant_vehicle },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newUser,
-                                    "cant_vehicle",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col-lg-3 mt-2",
-                            attrs: {
-                              hidden:
-                                _vm.newUser.mecanico === true ? true : false
-                            }
-                          },
-                          [_c("label"), _vm._v(" "), _vm._m(1)]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col-lg-3 mt-2",
-                            attrs: {
-                              hidden:
-                                _vm.newUser.mecanico === true ? false : true
-                            }
-                          },
-                          [_c("label"), _vm._v(" "), _vm._m(2)]
-                        )
+                        _vm._m(1)
                       ])
                     ]
                   )
@@ -63947,7 +63738,7 @@ var render = function() {
             "table",
             { staticClass: "table table-sm text-white bg-dark mt-3" },
             [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -63979,29 +63770,26 @@ var render = function() {
                         [_c("i", { staticClass: "fas fa-user-cog" })]
                       ),
                       _vm._v(" "),
-                      !userLocal.roles.length == 0 &&
-                      userLocal.roles[0].name == "mechanic"
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-secondary",
-                              attrs: {
-                                "data-toggle": "tooltip",
-                                "data-placement": "top",
-                                title: "Cantidad de clientes y vehiculos"
-                              },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.editCantCliVehi({
-                                    userLocal: userLocal
-                                  })
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fas fa-cogs" })]
-                          )
-                        : _vm._e(),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: {
+                            "data-toggle": "tooltip",
+                            "data-placement": "top",
+                            title: "Cantidad de vehiculos"
+                          },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.editCantCliVehi({
+                                userLocal: userLocal
+                              })
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-cogs" })]
+                      ),
                       _vm._v(" "),
                       _c(
                         "a",
@@ -64226,33 +64014,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-block btn-success form-control",
-        attrs: { type: "submit" }
-      },
-      [
-        _c("i", { staticClass: "fas fa-plus-square" }),
-        _vm._v(" Guardar\n                                    ")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success form-control",
-        attrs: { type: "submit" }
-      },
-      [
-        _c("i", { staticClass: "fas fa-plus-square" }),
-        _vm._v(" Guardar\n                                    ")
-      ]
-    )
+    return _c("div", { staticClass: "col-lg-3 mt-2" }, [
+      _c("label"),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success form-control",
+          attrs: { type: "submit" }
+        },
+        [
+          _c("i", { staticClass: "fas fa-plus-square" }),
+          _vm._v(" Guardar\n                                    ")
+        ]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -64430,7 +64206,7 @@ var render = function() {
             _c("div", { staticClass: "modal-body" }, [
               _c(
                 "div",
-                {},
+                { staticClass: "form-group" },
                 [
                   _c("label", { attrs: { for: "nombre" } }, [_vm._v("Nombre")]),
                   _vm._v(" "),
@@ -64495,7 +64271,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                {},
+                { staticClass: "form-group" },
                 [
                   _c("label", { attrs: { for: "correo" } }, [_vm._v("Nombre")]),
                   _vm._v(" "),
@@ -64560,7 +64336,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                {},
+                { staticClass: "form-group" },
                 [
                   _c("label", { attrs: { for: "password" } }, [
                     _vm._v("Contraseña")
@@ -64625,7 +64401,7 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _c("div", {}, [
+              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "url" } }, [_vm._v("URL")]),
                 _vm._v(" "),
                 _c("input", {
@@ -64919,38 +64695,21 @@ var render = function() {
                 _c(
                   "div",
                   { staticClass: "row" },
-                  [
-                    _vm._l(_vm.totalcli, function(totalcliLocal) {
-                      return _c(
-                        "div",
-                        { key: totalcliLocal.id, staticClass: "col-12" },
-                        [
-                          _c("h5", { staticClass: "card-title mb-0" }, [
-                            _vm._v(
-                              "Total de clientes disponibles: " +
-                                _vm._s(totalcliLocal)
-                            )
-                          ])
-                        ]
-                      )
-                    }),
-                    _vm._v(" "),
-                    _vm._l(_vm.totalvehi, function(totalvehiLocal) {
-                      return _c(
-                        "div",
-                        { key: totalvehiLocal.id, staticClass: "col-12" },
-                        [
-                          _c("h5", { staticClass: "card-title mb-0" }, [
-                            _vm._v(
-                              "Total de vehiculos disponibles: " +
-                                _vm._s(totalvehiLocal)
-                            )
-                          ])
-                        ]
-                      )
-                    })
-                  ],
-                  2
+                  _vm._l(_vm.totalvehi, function(totalvehiLocal) {
+                    return _c(
+                      "div",
+                      { key: totalvehiLocal.id, staticClass: "col-12" },
+                      [
+                        _c("h5", { staticClass: "card-title mb-0" }, [
+                          _vm._v(
+                            "Total de vehiculos disponibles: " +
+                              _vm._s(totalvehiLocal)
+                          )
+                        ])
+                      ]
+                    )
+                  }),
+                  0
                 )
               ])
             ])
@@ -64969,63 +64728,77 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.users, function(userLocal) {
-                  return _c("tr", { key: userLocal.id }, [
-                    _c("td", { attrs: { width: "10px" } }, [
-                      _vm._v(_vm._s(userLocal.id))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(userLocal.name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(userLocal.email))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(userLocal.cant_vehicle))]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-right" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-secondary",
-                          attrs: {
-                            "data-toggle": "tooltip",
-                            "data-placement": "top",
-                            title: "Cantidad de vehiculos"
-                          },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.editCantVehicle({
-                                userLocal: userLocal
-                              })
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fas fa-car" })]
-                      ),
+                [
+                  _vm._l(_vm.users, function(userLocal) {
+                    return _c("tr", { key: userLocal.id }, [
+                      _c("td", { attrs: { width: "10px" } }, [
+                        _vm._v(_vm._s(userLocal.id))
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-warning",
-                          attrs: {
-                            href: "#",
-                            "data-toggle": "tooltip",
-                            "data-placement": "top",
-                            title: "Editar"
-                          },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.editUser({ userLocal: userLocal })
+                      _c("td", [_vm._v(_vm._s(userLocal.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(userLocal.email))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(userLocal.cant_vehicle))]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-right" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-secondary",
+                            attrs: {
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: "Cantidad de vehiculos"
+                            },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.editCantVehicle({
+                                  userLocal: userLocal
+                                })
+                              }
                             }
-                          }
-                        },
-                        [_c("i", { staticClass: "far fa-edit" })]
-                      )
+                          },
+                          [_c("i", { staticClass: "fas fa-car" })]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-warning",
+                            attrs: {
+                              href: "#",
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: "Editar"
+                            },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.editUser({ userLocal: userLocal })
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-edit" })]
+                        )
+                      ])
                     ])
+                  }),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "text-right" }, [_vm._v("Total:")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.sumavehi))]),
+                    _vm._v(" "),
+                    _c("td")
                   ])
-                }),
-                0
+                ],
+                2
               )
             ]
           ),
@@ -100676,6 +100449,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setTimeout(function () {
       context.commit('getMechanicClients', 1);
       context.commit('getTotalVehi');
+      context.commit('getSumaVehi');
     }, 500);
   },
   updateMechanicClient: function updateMechanicClient(context, data) {
@@ -100765,8 +100539,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   //     context.commit('getUserRoles', data.id)
   // },
   editCantCliVehi: function editCantCliVehi(context, data) {
-    context.commit('editCantCliVehi', data.userLocal);
-    context.commit('getTotalCliAdmin', data.userLocal);
+    context.commit('editCantCliVehi', data.userLocal); //context.commit('getTotalCliAdmin', data.userLocal)
+
     context.commit('getTotalVehiAdmin', data.userLocal);
   },
   editCantVehicle: function editCantVehicle(context, data) {
@@ -100777,6 +100551,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   updateUserRoles: function updateUserRoles(context, data) {
     context.commit('updateUserRoles', data.id);
+    context.commit('getUsers', 1);
   },
   updateQuotationShipping: function updateQuotationShipping(context, data) {
     context.commit('updateQuotationShipping', data.id);
@@ -101063,6 +100838,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   getTotalCli: function getTotalCli(context) {
     context.commit('getTotalCli');
   },
+  getSumaVehi: function getSumaVehi(context) {
+    context.commit('getSumaVehi');
+  },
   getTotalCliAdmin: function getTotalCliAdmin(context) {
     context.commit('getTotalCliAdmin');
   },
@@ -101078,8 +100856,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   createMechanicClient2: function createMechanicClient2(context) {
     context.commit('createMechanicClient2');
     setTimeout(function () {
-      context.commit('getMechanicClients');
-      context.commit('getTotalCli');
+      context.commit('getMechanicClients'); //context.commit('getTotalCli')
+
       context.commit('getTotalVehi');
     }, 500);
   },
@@ -101461,6 +101239,7 @@ var $ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery
 var urlUser = 'users';
 var urlQuotationRoles = 'quotation-roles';
 var urlTotalVehi = 'total-vehi';
+var urlSumaVehi = 'suma-vehi';
 var urlTotalCli = 'total-cli';
 var urlTotalCliAdmin = 'total-cli-admin';
 var urlTotalVehiAdmin = 'total-vehi-admin';
@@ -103311,7 +103090,7 @@ var urlCompany = 'companies';
       name: state.newUser.name,
       email: state.newUser.email,
       password: state.newUser.password,
-      cant_client: state.newUser.cant_client,
+      //cant_client: state.newUser.cant_client,
       cant_vehicle: state.newUser.cant_vehicle //url: window.location.host + "/acceso/" + md5(state.newUser.password)
 
     }).then(function (response) {
@@ -103370,7 +103149,7 @@ var urlCompany = 'companies';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, state.fillCantCliVehi).then(function (response) {
       state.fillCantCliVehi = {
         id: '',
-        cant_client: 0,
+        //cant_client: 0,
         cant_vehicle: 0
       };
       state.errorsLaravel = [];
@@ -103558,6 +103337,7 @@ var urlCompany = 'companies';
   },
   editCantVehicle: function editCantVehicle(state, user) {
     state.fillCantVehicle.id = user.id;
+    state.fillCantVehicle.cant_vehicle = 0;
     $("#editCantVehicle").modal('show');
   },
   editUserRoles: function editUserRoles(state, user) {
@@ -104364,6 +104144,12 @@ var urlCompany = 'companies';
     var url = urlTotalVehi;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.totalvehi = response.data;
+    });
+  },
+  getSumaVehi: function getSumaVehi(state) {
+    var url = urlSumaVehi;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      state.sumavehi = response.data;
     });
   },
   getTotalCli: function getTotalCli(state, user) {
@@ -105288,7 +105074,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   'last_page': 0,
   'from': 0,
   'to': 0
-}), _defineProperty(_options$optionsUser$, "offset_motor", 5), _defineProperty(_options$optionsUser$, "attachment", []), _defineProperty(_options$optionsUser$, "form", new FormData()), _defineProperty(_options$optionsUser$, "records", []), _defineProperty(_options$optionsUser$, "images", []), _defineProperty(_options$optionsUser$, "docs", []), _defineProperty(_options$optionsUser$, "links", []), _defineProperty(_options$optionsUser$, "idUser", null), _defineProperty(_options$optionsUser$, "quotationusers", []), _defineProperty(_options$optionsUser$, "quotationUserMechanic", []), _defineProperty(_options$optionsUser$, "users", []), _defineProperty(_options$optionsUser$, "totalvehi", []), _defineProperty(_options$optionsUser$, "totalcli", []), _defineProperty(_options$optionsUser$, "totalcliadmin", []), _defineProperty(_options$optionsUser$, "totalvehiadmin", []), _defineProperty(_options$optionsUser$, "cantCliVehiAdmin", []), _defineProperty(_options$optionsUser$, "quotationRoles", []), _defineProperty(_options$optionsUser$, "user", {
+}), _defineProperty(_options$optionsUser$, "offset_motor", 5), _defineProperty(_options$optionsUser$, "attachment", []), _defineProperty(_options$optionsUser$, "form", new FormData()), _defineProperty(_options$optionsUser$, "records", []), _defineProperty(_options$optionsUser$, "images", []), _defineProperty(_options$optionsUser$, "docs", []), _defineProperty(_options$optionsUser$, "links", []), _defineProperty(_options$optionsUser$, "idUser", null), _defineProperty(_options$optionsUser$, "quotationusers", []), _defineProperty(_options$optionsUser$, "quotationUserMechanic", []), _defineProperty(_options$optionsUser$, "users", []), _defineProperty(_options$optionsUser$, "totalvehi", []), _defineProperty(_options$optionsUser$, "sumavehi", []), _defineProperty(_options$optionsUser$, "totalcli", []), _defineProperty(_options$optionsUser$, "totalcliadmin", []), _defineProperty(_options$optionsUser$, "totalvehiadmin", []), _defineProperty(_options$optionsUser$, "cantCliVehiAdmin", []), _defineProperty(_options$optionsUser$, "quotationRoles", []), _defineProperty(_options$optionsUser$, "user", {
   name: '',
   email: '',
   password: '',
@@ -105300,8 +105086,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   password: '',
   url: '',
   logo: '',
-  mecanico: '',
-  cant_client: 0,
+  //mecanico: '',
+  //cant_client: 0,
   cant_vehicle: 0
 }), _defineProperty(_options$optionsUser$, "fillUser", {
   id: '',
@@ -105313,7 +105099,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   logo: ''
 }), _defineProperty(_options$optionsUser$, "fillCantCliVehi", {
   id: '',
-  cant_client: 0,
+  //cant_client: 0,
   cant_vehicle: 0
 }), _defineProperty(_options$optionsUser$, "fillCantVehicle", {
   id: '',

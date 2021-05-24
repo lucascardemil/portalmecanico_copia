@@ -5,7 +5,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4>Cantidad de clientes y vehiculos</h4>
+                        <h4>Cantidad de vehiculos</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span>&times;</span>
                         </button>
@@ -23,12 +23,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="totalcliadminLocal in totalcliadmin" :key="totalcliadminLocal.id">
+                                        <!-- <tr v-for="totalcliadminLocal in totalcliadmin" :key="totalcliadminLocal.id">
                                             <th>Clientes</th>
                                             <td class="text-center">{{ totalcliadminLocal }}</td>
                                             <td class="text-center">{{ cantCliVehiAdmin.cant_client - totalcliadminLocal }}</td>
                                             <td class="text-center">{{ cantCliVehiAdmin.cant_client }}</td>
-                                        </tr>
+                                        </tr> -->
                                         <tr v-for="totalvehiadminLocal in totalvehiadmin" :key="totalvehiadminLocal.id">
                                             <th>Vehiculos</th>
                                             <td class="text-center">{{ totalvehiadminLocal }}</td>
@@ -39,14 +39,14 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="cant_client">Clientes</label>
                             <input required
                                     type="number"
                                     name="cant_client"
                                     class="form-control" v-model="fillCantCliVehi.cant_client">
                             
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="cant_vehicle">Vehiculos</label>
                             <input required
@@ -73,11 +73,13 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
     computed:{
-        ...mapState(['totalcliadmin', 'totalvehiadmin' ,'fillCantCliVehi', 'cantCliVehiAdmin', 'errorsLaravel']),
+        ...mapState(['totalvehiadmin' ,'fillCantCliVehi', 'cantCliVehiAdmin', 'errorsLaravel']),
+        //...mapState(['totalcliadmin', 'totalvehiadmin' ,'fillCantCliVehi', 'cantCliVehiAdmin', 'errorsLaravel']),
         ...mapGetters([])
     },
     methods:{
-        ...mapActions(['getTotalCliAdmin', 'getTotalVehiAdmin','updateCantCliVehi'])
+        ...mapActions(['getTotalVehiAdmin','updateCantCliVehi'])
+        //...mapActions(['getTotalCliAdmin', 'getTotalVehiAdmin','updateCantCliVehi'])
     },
     
     

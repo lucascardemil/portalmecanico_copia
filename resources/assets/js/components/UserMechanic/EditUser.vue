@@ -12,7 +12,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="">
+                        <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input v-validate="'required|min:4|max:190'"
                                     :class="{'input': true, 'is-invalid': errors.has('nombre') }"
@@ -26,7 +26,7 @@
                             </div>
                         </div>
 
-                        <div class="">
+                        <div class="form-group">
                             <label for="correo">Nombre</label>
                             <input v-validate="'required|min:6|max:190'"
                                     :class="{'input': true, 'is-invalid': errors.has('correo') }"
@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="">
+                        <div class="form-group">
                             <label for="password">Contraseña</label>
                             <input v-validate="'required'"
                                     :class="{'input': true, 'is-invalid': errors.has('password') }"
@@ -56,7 +56,7 @@
                             </div>
                         </div>
 
-                        <div class="">
+                        <div class="form-group">
                             <label for="url">URL</label>
                             <input type="text" name="url" class="form-control" v-model="fillUser.url" readonly=readonly>
                         </div>

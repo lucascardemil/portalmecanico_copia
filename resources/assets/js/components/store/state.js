@@ -820,6 +820,7 @@ export default { //data
     quotationUserMechanic:[],
     users: [],
     totalvehi: [],
+    sumavehi: [],
     totalcli: [],
     totalcliadmin: [],
     totalvehiadmin: [],
@@ -838,8 +839,8 @@ export default { //data
         password: '',
         url: '',
         logo: '',
-        mecanico: '',
-        cant_client: 0,
+        //mecanico: '',
+        //cant_client: 0,
         cant_vehicle: 0
     },
     fillUser: {
@@ -853,7 +854,7 @@ export default { //data
     },
     fillCantCliVehi: {
         id: '',
-        cant_client: 0,
+        //cant_client: 0,
         cant_vehicle: 0
     },
     fillCantVehicle: {

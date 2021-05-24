@@ -76,9 +76,9 @@
                     <div class="card text-white bg-success mt-3">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12" v-for="totalcliLocal in totalcli" :key="totalcliLocal.id">
+                                <!-- <div class="col-12" v-for="totalcliLocal in totalcli" :key="totalcliLocal.id">
                                     <h5 class="card-title mb-0">Total de clientes disponibles: {{ totalcliLocal }}</h5>
-                                </div>
+                                </div> -->
                                 <div class="col-12" v-for="totalvehiLocal in totalvehi" :key="totalvehiLocal.id">
                                     <h5 class="card-title mb-0">Total de vehiculos disponibles: {{ totalvehiLocal }}</h5>
                                 </div>
@@ -124,6 +124,13 @@
                                 </a>
 
                             </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <th class="text-right">Total:</th>
+                            <td>{{ sumavehi }}</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -182,16 +189,18 @@ import EditCantVehicle from './EditCantVehicle'
 export default {
     components: { EditUser, EditCantVehicle },
     computed:{
-        ...mapState(['totalvehi', 'totalcli', 'users', 'newUser', 'pagination', 'offset', 'errorsLaravel']),
+        ...mapState(['totalvehi', 'sumavehi', 'users', 'newUser', 'pagination', 'offset', 'errorsLaravel']),
+        //...mapState(['totalvehi', 'totalcli', 'users', 'newUser', 'pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
-        ...mapActions(['getTotalVehi', 'getTotalCli', 'getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser','editCantVehicle'])
+        ...mapActions(['getTotalVehi', 'getSumaVehi', 'getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser','editCantVehicle'])
+        //...mapActions(['getTotalVehi', 'getTotalCli', 'getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser','editCantVehicle'])
     },
     created(){
         loadProgressBar()
         this.$store.dispatch('getMechanicClients', { page: 1 })
-        this.$store.dispatch('getTotalCli')
+        this.$store.dispatch('getSumaVehi')
         this.$store.dispatch('getTotalVehi')
     }
 }

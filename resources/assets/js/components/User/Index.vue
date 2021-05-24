@@ -25,16 +25,16 @@
                             <form action="POST" v-on:submit.prevent="createUser">
                                 <div class="row">
 
-                                    <div class="form-group col-12">
+                                    <!-- <div class="form-group col-12">
                                         <input 
                                                 type="checkbox" 
                                                 name="mecanico"
                                                 v-model="newUser.mecanico">
                                         <label for="mecanico">Mecanico</label>
                                         
-                                    </div>
+                                    </div> -->
 
-                                    <div class="form-group col-lg-2">
+                                    <div class="form-group col-lg-3">
                                         <label for="nombre">Nombre</label>
                                         <input required
                                           
@@ -54,7 +54,7 @@
                                        
                                     </div>
 
-                                    <div class="form-group col-lg-2">
+                                    <div class="form-group col-lg-3">
                                         <label for="password">Contraseña</label>
                                         <input required
                                                 
@@ -65,7 +65,7 @@
                                     </div>
 
 
-                                    <div class="form-group col-lg-1" v-bind:hidden="newUser.mecanico === true ? false : true">
+                                    <!-- <div class="form-group col-lg-1" v-bind:hidden="newUser.mecanico === true ? false : true">
                                         <label for="cant_client">Clientes</label>
                                         <input required
                                                 type="number"
@@ -88,6 +88,13 @@
                                     </div>
 
                                     <div class="col-lg-3 mt-2" v-bind:hidden="newUser.mecanico === true ? false : true">
+                                        <label></label>
+                                        <button type="submit" class="btn btn-success form-control">
+                                            <i class="fas fa-plus-square"></i> Guardar
+                                        </button>
+                                    </div> -->
+
+                                    <div class="col-lg-3 mt-2">
                                         <label></label>
                                         <button type="submit" class="btn btn-success form-control">
                                             <i class="fas fa-plus-square"></i> Guardar
@@ -128,16 +135,25 @@
                                 </button>
 
 
+                                <button class="btn btn-secondary"
+                                        @click.prevent="editCantCliVehi({userLocal})"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Cantidad de vehiculos">
+                                        <i class="fas fa-cogs"></i>
+                                </button>
+
+
 
                                 
                                 
-                                <button class="btn btn-secondary" v-if="!userLocal.roles.length == 0 && userLocal.roles[0].name == 'mechanic'"
+                                <!-- <button class="btn btn-secondary" v-if="!userLocal.roles.length == 0 && userLocal.roles[0].name == 'mechanic'"
                                         @click.prevent="editCantCliVehi({userLocal})"
                                         data-toggle="tooltip"
                                         data-placement="top"
                                         title="Cantidad de clientes y vehiculos">
                                         <i class="fas fa-cogs"></i>
-                                </button>
+                                </button> -->
                                    
 
                                 
