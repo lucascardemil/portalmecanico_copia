@@ -72,7 +72,7 @@
 
                     </a>
 
-                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                    <form id="logout-form" action="<?php echo e(route('logout', ['url' => Auth::user()->url  ])); ?>" method="POST" style="display: none;">
                         <?php echo csrf_field(); ?>
                     </form>
                 </div>

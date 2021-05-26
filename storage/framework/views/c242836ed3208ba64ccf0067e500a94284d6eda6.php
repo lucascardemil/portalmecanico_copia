@@ -6,6 +6,7 @@
                 <div class="card-header"><?php echo e(__('Iniciar Sesión')); ?></div>
 
                 <div class="card-body">
+                    
                     <form method="POST" action="<?php echo e(route('login', ['url' => $url])); ?>" aria-label="<?php echo e(__('Login')); ?>">
                     <?php echo csrf_field(); ?>
 

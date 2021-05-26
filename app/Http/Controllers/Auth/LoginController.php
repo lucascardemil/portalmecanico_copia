@@ -75,6 +75,37 @@ class LoginController extends Controller
     //     return $this->sendFailedLoginResponse($request);
     // }
 
+    public function login(Request $request, $url)
+    {
+        $users = User::where('url', $url)->get();
+        if($users[0]->email == $request['email']){
+            $this->validateLogin($request);
+
+            // If the class is using the ThrottlesLogins trait, we can automatically throttle
+            // the login attempts for this application. We'll key this by the username and
+            // the IP address of the client making these requests into this application.
+            if (method_exists($this, 'hasTooManyLoginAttempts') &&
+                $this->hasTooManyLoginAttempts($request)) {
+                $this->fireLockoutEvent($request);
+
+                return $this->sendLockoutResponse($request);
+            }
+
+            if ($this->attemptLogin($request)) {
+                return $this->sendLoginResponse($request);
+            }
+
+            // If the login attempt was unsuccessful we will increment the number of attempts
+            // to login and redirect the user back to the login form. Of course, when this
+            // user surpasses their maximum number of attempts they will get locked out.
+            $this->incrementLoginAttempts($request);
+
+            return $this->sendFailedLoginResponse($request);
+        }else{
+            return redirect()->route('acceso', ['url' => $url]);
+        }
+    }
+
 
     public function showLoginForm($url = null)
     {
@@ -97,7 +128,7 @@ class LoginController extends Controller
     }
 
 
-    public function logout(Request $request)
+    public function logout(Request $request, $url)
     {
         $this->guard()->logout();
 
@@ -108,7 +139,7 @@ class LoginController extends Controller
         //     return $this->loggedOut($request) ?: redirect()->route('acceso', ['url' => $user->url]);
         // }
 
-        return $this->loggedOut($request) ?: redirect('error_ip');
+        return $this->loggedOut($request) ?: redirect()->route('acceso', ['url' => $url]);
     }
 
     // public function createUserUrlQR($user)

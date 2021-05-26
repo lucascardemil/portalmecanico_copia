@@ -6,7 +6,7 @@ import VeeValidate, {
     Validator
 } from 'vee-validate'
 
-Validator.localize('en', es) // changes the locale
+//Validator.localize('en', es) // changes the locale
 
 Vue.use(Vuex)
 Vue.use(require('vue-moment'))

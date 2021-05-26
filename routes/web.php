@@ -181,13 +181,9 @@ Route::get('storage-link', function(){
     return 'El directorio "public/storage" ha sido vinculado';
 });
 
-Route::get('/', function(){
-    return view('error_ip');
-});
-
 Route::get('login/{url?}', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login/{url}', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('logout/{url}', 'Auth\LoginController@logout')->name('logout');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::get('acceso/{url}', 'AccesoController@index')->name('acceso');
 
@@ -201,6 +197,7 @@ Route::put('acceso/user-id/{url}', 'AccesoController@acceso');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::post('/login-two-factor/{user}', 'Auth\LoginController@login2FA')->name('login.2fa');
+
     
 Route::middleware(['auth'])->group(function () {
 

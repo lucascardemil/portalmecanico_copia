@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Iniciar Sesión') }}</div>
 
                 <div class="card-body">
+                    
                     <form method="POST" action="{{ route('login', ['url' => $url]) }}" aria-label="{{ __('Login') }}">
                     @csrf
 

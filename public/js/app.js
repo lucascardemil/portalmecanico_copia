@@ -101188,8 +101188,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-vee_validate__WEBPACK_IMPORTED_MODULE_3__["Validator"].localize('en', vee_validate_dist_locale_es__WEBPACK_IMPORTED_MODULE_2___default.a); // changes the locale
+ //Validator.localize('en', es) // changes the locale
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js"));
