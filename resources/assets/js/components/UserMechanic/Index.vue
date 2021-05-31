@@ -41,7 +41,7 @@
                                                 class="form-control" v-model="newUser.email">
                                     </div>
 
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-2">
                                         <label for="password">Contraseña</label>
                                         <input required
                                                 type="password"
@@ -49,12 +49,23 @@
                                                 class="form-control" v-model="newUser.password">
                                     </div>
 
-                                    <div class="form-group col-lg-1">
+                                    <!-- <div class="form-group col-lg-1">
                                         <label for="cant_vehicle">Vehiculos</label>
                                         <input required
                                                 type="number"
                                                 name="cant_vehicle"
                                                 class="form-control" v-model="newUser.cant_vehicle">
+                                    </div> -->
+
+                                    <div class="form-group col-lg-2">
+                                        <label for="cant_vehicle">Vehiculos</label>
+                                        <select class="form-control" name="cant_vehicle" v-model="newUser.cant_vehicle">
+                                            <option disabled value="0">Seleccione Cantidad</option>
+                                            <option value="10">10</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
                                     </div>
 
                                     <div class="col-lg-2 mt-2">
@@ -71,14 +82,14 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-6">
                     <div class="card text-white bg-success mt-3">
                         <div class="card-body">
                             <div class="row">
-                                <!-- <div class="col-12" v-for="totalcliLocal in totalcli" :key="totalcliLocal.id">
+                                <div class="col-12" v-for="totalcliLocal in totalcli" :key="totalcliLocal.id">
                                     <h5 class="card-title mb-0">Total de clientes disponibles: {{ totalcliLocal }}</h5>
-                                </div> -->
+                                </div>
                                 <div class="col-12" v-for="totalvehiLocal in totalvehi" :key="totalvehiLocal.id">
                                     <h5 class="card-title mb-0">Total de vehiculos disponibles: {{ totalvehiLocal }}</h5>
                                 </div>
@@ -86,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="table-responsive">
                 <table class="table table-striped table-sm text-white bg-dark mt-3">

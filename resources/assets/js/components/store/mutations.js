@@ -2194,11 +2194,12 @@ export default { //used for changing the state
         $("#editCantVehicle").modal('show')
     },
     editUserRoles(state, user) {
+        //var roles = [user.role_id]
         var roles = []
         state.checkedRoles = []
         state.fillUserRoles.id = user.id
         state.fillUserRoles.name = user.name
-        user.roles.forEach(role => {
+        user.roles.forEach(role => {   
             roles.push(role.id)
         })
         state.checkedRoles = roles

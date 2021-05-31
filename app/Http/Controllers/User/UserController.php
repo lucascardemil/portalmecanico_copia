@@ -6,6 +6,7 @@ namespace App\Http\Controllers\User;
 use Auth;
 use App\User;
 use App\Service;
+use App\MechanicClient;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,21 +34,18 @@ class UserController extends Controller
      */
     public function index()
     {
-       
-            $users = User::orderBy('id', 'DESC')->with('roles')->paginate(10);
-
-            return [
-                'pagination' => [
-                    'total'         => $users->total(),
-                    'current_page'  => $users->currentPage(),
-                    'per_page'      => $users->perPage(),
-                    'last_page'     => $users->lastPage(),
-                    'from'          => $users->firstItem(),
-                    'to'            => $users->lastItem(),
-                ],
-                'users' => $users
-            ];
-        
+        $users = User::doesntHave('mechanic')->orderBy('id', 'DESC')->with('roles')->paginate(10);
+        return [
+            'pagination' => [
+                'total'         => $users->total(),
+                'current_page'  => $users->currentPage(),
+                'per_page'      => $users->perPage(),
+                'last_page'     => $users->lastPage(),
+                'from'          => $users->firstItem(),
+                'to'            => $users->lastItem(),
+            ],
+            'users' => $users
+        ];
     }
 
     /**
@@ -243,7 +241,7 @@ class UserController extends Controller
         $id = \Auth::user()->id;
         $data = $request->all();
 
-        //$clients = DB::table('users')->where('id', '=', $id)->get();
+        $clients = DB::table('users')->where('id', '=', $id)->get();
 
         $suma_vehicles = DB::table('users')
                     ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
@@ -255,7 +253,7 @@ class UserController extends Controller
         if($data['cant_vehicle'] == 0){
             return response()->json('¡La cantidad no puede ser 0!', 422);
         }else{
-            if($total > $suma_vehicles){
+            if($total > $clients[0]->cant_vehicle){
                 return response()->json('¡No puede crear mas clientes, supero la cantidad de vehiculos!', 422);
             }else{
                 $data['password'] = bcrypt( $data['password'] );
@@ -330,7 +328,7 @@ class UserController extends Controller
 
         $mechanics = DB::table('users')->where('id', '=', $mechanic)->get();
 
-        $client = DB::table('users')->where('id', '=', $id)->get();
+        $clients = DB::table('users')->where('id', '=', $id)->get();
 
         
         $total = $data['cant_vehicle'] + $suma_vehicles;
@@ -344,7 +342,7 @@ class UserController extends Controller
                 
                 DB::table('users')->where('id', $id)->update(
                     [
-                        'cant_vehicle' => $data['cant_vehicle'] + $client[0]->cant_vehicle
+                        'cant_vehicle' => $data['cant_vehicle']
                     ]
                 );
                 return;
@@ -356,15 +354,14 @@ class UserController extends Controller
     {   
         $data = $request->all();
 
-        $users = DB::table('users')->where('id', '=', $id)->get();
+        //$users = DB::table('users')->where('id', '=', $id)->get();
 
-        $total_vehicle = $data['cant_vehicle'] + $users[0]->cant_vehicle;
+        //$total_vehicle = $data['cant_vehicle'] + $users[0]->cant_vehicle;
         //$total_client = $data['cant_client'] + $users[0]->cant_client;
 
         DB::table('users')->where('id', $id)->update(
             [
-                'cant_vehicle' => $total_vehicle
-                //'cant_client' => $total_client 
+                'cant_vehicle' => $data['cant_vehicle']
             ]
         );
 

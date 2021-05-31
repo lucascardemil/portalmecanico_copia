@@ -44,4 +44,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Client');
     }
 
+    public function mechanic() {
+        return $this->hasone('App\MechanicClient', 'user_id', 'id');
+    }
+
 }

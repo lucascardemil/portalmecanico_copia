@@ -10504,6 +10504,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -10848,6 +10866,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillCantVehicle', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])([])),
@@ -10977,6 +11006,17 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -63415,90 +63455,86 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-12" }, [
-                    _c(
-                      "table",
-                      {
-                        staticClass:
-                          "table table-striped table-sm text-white bg-dark"
-                      },
-                      [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(_vm.totalvehiadmin, function(
-                            totalvehiadminLocal
-                          ) {
-                            return _c("tr", { key: totalvehiadminLocal.id }, [
-                              _c("th", [_vm._v("Vehiculos")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v(_vm._s(totalvehiadminLocal))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.cantCliVehiAdmin.cant_vehicle -
-                                      totalvehiadminLocal
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v(
-                                  _vm._s(_vm.cantCliVehiAdmin.cant_vehicle)
-                                )
-                              ])
-                            ])
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "cant_vehicle" } }, [
                     _vm._v("Vehiculos")
                   ]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fillCantCliVehi.cant_vehicle,
-                        expression: "fillCantCliVehi.cant_vehicle"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      required: "",
-                      type: "number",
-                      name: "cant_vehicle"
-                    },
-                    domProps: { value: _vm.fillCantCliVehi.cant_vehicle },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fillCantCliVehi.cant_vehicle,
+                          expression: "fillCantCliVehi.cant_vehicle"
                         }
-                        _vm.$set(
-                          _vm.fillCantCliVehi,
-                          "cant_vehicle",
-                          $event.target.value
-                        )
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "cant_vehicle" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.fillCantCliVehi,
+                            "cant_vehicle",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("option", { attrs: { disabled: "", value: "0" } }, [
+                        _vm._v("Seleccione Cantidad")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "100" } }, [_vm._v("100")])
+                    ]
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(2)
+              _c("div", { staticClass: "modal-footer d-block" }, [
+                _c(
+                  "div",
+                  { staticClass: "row align-items-center" },
+                  [
+                    _vm._l(_vm.totalvehiadmin, function(totalvehiadminLocal) {
+                      return _c(
+                        "div",
+                        { key: totalvehiadminLocal.id, staticClass: "col-6" },
+                        [
+                          _c("h6", [
+                            _vm._v(
+                              "Vehiculos asignados: " +
+                                _vm._s(_vm.cantCliVehiAdmin.cant_vehicle)
+                            )
+                          ])
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ],
+                  2
+                )
+              ])
             ])
           ])
         ]
@@ -63532,23 +63568,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th"),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Crear")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Ocupados")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Total")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
+    return _c("div", { staticClass: "col-6 text-right" }, [
       _c(
         "button",
         { staticClass: "btn btn-success", attrs: { type: "submit" } },
@@ -64090,35 +64110,57 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fillCantVehicle.cant_vehicle,
-                        expression: "fillCantVehicle.cant_vehicle"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      required: "",
-                      type: "number",
-                      name: "cant_vehicle"
-                    },
-                    domProps: { value: _vm.fillCantVehicle.cant_vehicle },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c("label", { attrs: { for: "cant_vehicle" } }, [
+                    _vm._v("Vehiculos")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fillCantVehicle.cant_vehicle,
+                          expression: "fillCantVehicle.cant_vehicle"
                         }
-                        _vm.$set(
-                          _vm.fillCantVehicle,
-                          "cant_vehicle",
-                          $event.target.value
-                        )
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "cant_vehicle" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.fillCantVehicle,
+                            "cant_vehicle",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("option", { attrs: { disabled: "", value: "0" } }, [
+                        _vm._v("Seleccione Cantidad")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "100" } }, [_vm._v("100")])
+                    ]
+                  )
                 ])
               ]),
               _vm._v(" "),
@@ -64606,7 +64648,7 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group col-lg-3" }, [
+                        _c("div", { staticClass: "form-group col-lg-2" }, [
                           _c("label", { attrs: { for: "password" } }, [
                             _vm._v("Contraseña")
                           ]),
@@ -64642,40 +64684,69 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group col-lg-1" }, [
+                        _c("div", { staticClass: "form-group col-lg-2" }, [
                           _c("label", { attrs: { for: "cant_vehicle" } }, [
                             _vm._v("Vehiculos")
                           ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.newUser.cant_vehicle,
-                                expression: "newUser.cant_vehicle"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              required: "",
-                              type: "number",
-                              name: "cant_vehicle"
-                            },
-                            domProps: { value: _vm.newUser.cant_vehicle },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.newUser.cant_vehicle,
+                                  expression: "newUser.cant_vehicle"
                                 }
-                                _vm.$set(
-                                  _vm.newUser,
-                                  "cant_vehicle",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { name: "cant_vehicle" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.newUser,
+                                    "cant_vehicle",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
                               }
-                            }
-                          })
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { disabled: "", value: "0" } },
+                                [_vm._v("Seleccione Cantidad")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "10" } }, [
+                                _vm._v("10")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "30" } }, [
+                                _vm._v("30")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "50" } }, [
+                                _vm._v("50")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "100" } }, [
+                                _vm._v("100")
+                              ])
+                            ]
+                          )
                         ]),
                         _vm._v(" "),
                         _vm._m(1)
@@ -64685,34 +64756,6 @@ var render = function() {
                 ])
               ]
             )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _c("div", { staticClass: "card text-white bg-success mt-3" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  _vm._l(_vm.totalvehi, function(totalvehiLocal) {
-                    return _c(
-                      "div",
-                      { key: totalvehiLocal.id, staticClass: "col-12" },
-                      [
-                        _c("h5", { staticClass: "card-title mb-0" }, [
-                          _vm._v(
-                            "Total de vehiculos disponibles: " +
-                              _vm._s(totalvehiLocal)
-                          )
-                        ])
-                      ]
-                    )
-                  }),
-                  0
-                )
-              ])
-            ])
           ])
         ]),
         _vm._v(" "),
@@ -103340,6 +103383,7 @@ var urlCompany = 'companies';
     $("#editCantVehicle").modal('show');
   },
   editUserRoles: function editUserRoles(state, user) {
+    //var roles = [user.role_id]
     var roles = [];
     state.checkedRoles = [];
     state.fillUserRoles.id = user.id;

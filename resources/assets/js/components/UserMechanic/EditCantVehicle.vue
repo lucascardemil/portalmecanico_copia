@@ -11,11 +11,22 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <input required
                                     type="number"
                                     name="cant_vehicle"
                                     class="form-control" v-model="fillCantVehicle.cant_vehicle">
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="cant_vehicle">Vehiculos</label>
+                            <select class="form-control" name="cant_vehicle" v-model="fillCantVehicle.cant_vehicle">
+                                <option disabled value="0">Seleccione Cantidad</option>
+                                <option value="10">10</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
