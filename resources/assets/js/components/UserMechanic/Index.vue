@@ -41,7 +41,7 @@
                                                 class="form-control" v-model="newUser.email">
                                     </div>
 
-                                    <div class="form-group col-lg-2">
+                                    <div class="form-group col-lg-3">
                                         <label for="password">Contraseña</label>
                                         <input required
                                                 type="password"
@@ -57,7 +57,7 @@
                                                 class="form-control" v-model="newUser.cant_vehicle">
                                     </div> -->
 
-                                    <div class="form-group col-lg-2">
+                                    <!-- <div class="form-group col-lg-2">
                                         <label for="cant_vehicle">Vehiculos</label>
                                         <select class="form-control" name="cant_vehicle" v-model="newUser.cant_vehicle">
                                             <option disabled value="0">Seleccione Cantidad</option>
@@ -66,9 +66,9 @@
                                             <option value="50">50</option>
                                             <option value="100">100</option>
                                         </select>
-                                    </div>
+                                    </div> -->
 
-                                    <div class="col-lg-2 mt-2">
+                                    <div class="col-lg-3 mt-2">
                                         <label></label>
                                         <button type="submit" class="btn btn-success form-control">
                                             <i class="fas fa-plus-square"></i> Guardar
@@ -118,13 +118,13 @@
                             <td>{{ userLocal.cant_vehicle }}</td>
                             <td class="text-right">
 
-                                <button class="btn btn-secondary"
+                                <!-- <button class="btn btn-secondary"
                                     @click.prevent="editCantVehicle({ userLocal })"
                                     data-toggle="tooltip"
                                     data-placement="top"
                                     title="Cantidad de vehiculos">
                                     <i class="fas fa-car"></i>
-                                </button>
+                                </button> -->
 
                                 <a href="#" class="btn btn-warning"
                                     @click.prevent="editUser({ userLocal } )"
@@ -136,13 +136,13 @@
 
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td></td>
                             <td></td>
                             <th class="text-right">Total:</th>
                             <td>{{ sumavehi }}</td>
                             <td></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
 

@@ -5,7 +5,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4>Cantidad de vehiculos</h4>
+                        <h4>Editar clientes y vehiculos</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span>&times;</span>
                         </button>
@@ -39,14 +39,22 @@
                                 </table>
                             </div>
                         </div> -->
-                        <!-- <div class="form-group">
+                        <div class="form-group" v-if="fillCantCliVehi.rol == 'mechanic'">
                             <label for="cant_client">Clientes</label>
-                            <input required
+                            <select class="form-control" name="cant_client" v-model="fillCantCliVehi.cant_client">
+                                <option disabled value="0">Seleccione Cantidad</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            <!-- <input required
                                     type="number"
                                     name="cant_client"
-                                    class="form-control" v-model="fillCantCliVehi.cant_client">
+                                    class="form-control" v-model="fillCantCliVehi.cant_client"> -->
                             
-                        </div> -->
+                        </div>
                         <!-- <div class="form-group">
                             <label for="cant_vehicle">Vehiculos</label>
                             <input required
@@ -59,6 +67,7 @@
                             <label for="cant_vehicle">Vehiculos</label>
                             <select class="form-control" name="cant_vehicle" v-model="fillCantCliVehi.cant_vehicle">
                                 <option disabled value="0">Seleccione Cantidad</option>
+                                <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="30">30</option>
                                 <option value="50">50</option>
@@ -68,10 +77,10 @@
                     </div>
                     <div class="modal-footer d-block">
                         <div class="row align-items-center">
-                            <div class="col-6" v-for="totalvehiadminLocal in totalvehiadmin" :key="totalvehiadminLocal.id">
+                            <!-- <div class="col-6" v-for="totalvehiadminLocal in totalvehiadmin" :key="totalvehiadminLocal.id">
                                 <h6>Vehiculos asignados: {{ cantCliVehiAdmin.cant_vehicle }}</h6>
-                            </div>
-                            <div class="col-6 text-right">
+                            </div> -->
+                            <div class="col-12 text-right">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-plus"></i>
                                 </button>

@@ -108,12 +108,9 @@ class VehicleController extends Controller
 
         $vehicles = DB::table('vehicles')->where('user_id', '=', $id)->count();
 
-        $mechanics = DB::table('users')
-            ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
-            ->where('mechanic_client.user_id', '=', $id)
-            ->get();
+        $users = DB::table('users')->where('id', '=', $id)->get();
 
-        if($vehicles >= $mechanics[0]->cant_vehicle){
+        if($vehicles >= $users[0]->cant_vehicle){
             return response()->json('Failure', 422);
         }else{
             $this->validate($request, [

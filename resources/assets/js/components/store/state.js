@@ -854,8 +854,9 @@ export default { //data
     },
     fillCantCliVehi: {
         id: '',
-        //cant_client: 0,
-        cant_vehicle: 0
+        cant_client: 0,
+        cant_vehicle: 0,
+        rol: ''
     },
     fillCantVehicle: {
         id: '',

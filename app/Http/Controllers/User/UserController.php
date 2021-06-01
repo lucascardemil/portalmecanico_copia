@@ -34,7 +34,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::doesntHave('mechanic')->orderBy('id', 'DESC')->with('roles')->paginate(10);
+        //$users = User::doesntHave('mechanic')->orderBy('id', 'DESC')->with('roles')->paginate(10);
+
+        $users = User::orderBy('id', 'DESC')->with('roles')->paginate(10);
+
         return [
             'pagination' => [
                 'total'         => $users->total(),
@@ -81,7 +84,8 @@ class UserController extends Controller
         //$data['password'] = bcrypt(Rut::parse($data['rut'])->format(Rut::FORMAT_ESCAPED));
         $data['password'] = bcrypt( $data['password'] );
         $data['url'] = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
-        $data['cant_vehicle'] = 10; 
+        $data['cant_vehicle'] = 5; 
+        $data['cant_client'] = 5; 
 
         $user = User::create($data);
 
@@ -164,6 +168,9 @@ class UserController extends Controller
         if($mechanics){
             $user = User::findOrFail($id);
             $user->delete();
+        }else{
+            $user = User::findOrFail($id);
+            $user->delete();
         }
         
 
@@ -239,37 +246,38 @@ class UserController extends Controller
     public function storeclient2(Request $request)
     {
         $id = \Auth::user()->id;
-        $data = $request->all();
 
-        $clients = DB::table('users')->where('id', '=', $id)->get();
 
-        $suma_vehicles = DB::table('users')
+        $total_clients = DB::table('users')
                     ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
                     ->where('mechanic_client.mechanic_id', '=', $id)
-                    ->sum('users.cant_vehicle');
+                    ->count();
+
+        $users = DB::table('users')->where('id', '=', $id)->get();
+
         
-        $total = $data['cant_vehicle'] + $suma_vehicles;
-        
-        if($data['cant_vehicle'] == 0){
-            return response()->json('¡La cantidad no puede ser 0!', 422);
+        if($total_clients >= $users[0]->cant_client){
+            return response()->json('¡Supero la cantidad de clientes!', 422);
         }else{
-            if($total > $clients[0]->cant_vehicle){
-                return response()->json('¡No puede crear mas clientes, supero la cantidad de vehiculos!', 422);
-            }else{
-                $data['password'] = bcrypt( $data['password'] );
-                $data['url'] = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
+        
+            $data = $request->all();
 
-                $user = User::create($data);
-                $user->roles()->sync(array(0 => '3'));
+            $data['password'] = bcrypt( $data['password'] );
+            $data['url'] = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
+            $data['cant_vehicle'] = 5;
 
-                DB::table('mechanic_client')->insertOrIgnore(
-                    [
-                        'user_id' => $user->id, 
-                        'mechanic_id' => \Auth::user()->id
-                    ]
-                );
-            }
+            $user = User::create($data);
+            $user->roles()->sync(array(0 => '3'));
+
+            DB::table('mechanic_client')->insertOrIgnore(
+                [
+                    'user_id' => $user->id, 
+                    'mechanic_id' => \Auth::user()->id
+                ]
+            );
         }
+        
+
 
         
         // if($total >= $clients[0]->cant_vehicle){
@@ -361,7 +369,8 @@ class UserController extends Controller
 
         DB::table('users')->where('id', $id)->update(
             [
-                'cant_vehicle' => $data['cant_vehicle']
+                'cant_vehicle' => $data['cant_vehicle'],
+                'cant_client' => $data['cant_client']
             ]
         );
 

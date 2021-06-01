@@ -2008,7 +2008,7 @@ export default { //used for changing the state
         axios.put(url, state.fillCantCliVehi).then(response => {
             state.fillCantCliVehi = {
                 id: '',
-                //cant_client: 0,
+                cant_client: 0,
                 cant_vehicle: 0
             }
             state.errorsLaravel = []
@@ -2184,8 +2184,11 @@ export default { //used for changing the state
     // },
     editCantCliVehi(state, user) {
         state.fillCantCliVehi.id = user.id
-        state.cantCliVehiAdmin.cant_client = user.cant_client
-        state.cantCliVehiAdmin.cant_vehicle = user.cant_vehicle
+        //state.cantCliVehiAdmin.cant_client = user.cant_client
+        //state.cantCliVehiAdmin.cant_vehicle = user.cant_vehicle
+        state.fillCantCliVehi.cant_client = user.cant_client
+        state.fillCantCliVehi.cant_vehicle = user.cant_vehicle
+        state.fillCantCliVehi.rol = user.roles[0].name
         $("#editCantCliVehi").modal('show')
     },
     editCantVehicle(state, user) {
@@ -3213,14 +3216,14 @@ export default { //used for changing the state
             name: state.newUser.name,
             email: state.newUser.email,
             password: state.newUser.password,
-            cant_vehicle: state.newUser.cant_vehicle
+            //cant_vehicle: state.newUser.cant_vehicle
         }).then(response => {
             state.newUser = {
                 id: '',
                 name: '',
                 email: '',
-                password: '',
-                cant_vehicle: ''
+                password: ''
+                //cant_vehicle: ''
             }
             state.errorsLaravel = []
             toastr.success('Usuario generado con éxito')

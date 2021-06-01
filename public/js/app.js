@@ -10522,6 +10522,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63455,6 +63464,76 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
+                _vm.fillCantCliVehi.rol == "mechanic"
+                  ? _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "cant_client" } }, [
+                        _vm._v("Clientes")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fillCantCliVehi.cant_client,
+                              expression: "fillCantCliVehi.cant_client"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { name: "cant_client" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.fillCantCliVehi,
+                                "cant_client",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            { attrs: { disabled: "", value: "0" } },
+                            [_vm._v("Seleccione Cantidad")]
+                          ),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "5" } }, [
+                            _vm._v("5")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("10")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "30" } }, [
+                            _vm._v("30")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "50" } }, [
+                            _vm._v("50")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "100" } }, [
+                            _vm._v("100")
+                          ])
+                        ]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "cant_vehicle" } }, [
                     _vm._v("Vehiculos")
@@ -63498,6 +63577,8 @@ var render = function() {
                         _vm._v("Seleccione Cantidad")
                       ]),
                       _vm._v(" "),
+                      _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+                      _vm._v(" "),
                       _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
                       _vm._v(" "),
                       _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
@@ -63510,31 +63591,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-footer d-block" }, [
-                _c(
-                  "div",
-                  { staticClass: "row align-items-center" },
-                  [
-                    _vm._l(_vm.totalvehiadmin, function(totalvehiadminLocal) {
-                      return _c(
-                        "div",
-                        { key: totalvehiadminLocal.id, staticClass: "col-6" },
-                        [
-                          _c("h6", [
-                            _vm._v(
-                              "Vehiculos asignados: " +
-                                _vm._s(_vm.cantCliVehiAdmin.cant_vehicle)
-                            )
-                          ])
-                        ]
-                      )
-                    }),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ],
-                  2
-                )
-              ])
+              _vm._m(1)
             ])
           ])
         ]
@@ -63548,7 +63605,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
-      _c("h4", [_vm._v("Cantidad de vehiculos")]),
+      _c("h4", [_vm._v("Editar clientes y vehiculos")]),
       _vm._v(" "),
       _c(
         "button",
@@ -63568,12 +63625,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6 text-right" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_c("i", { staticClass: "fas fa-plus" })]
-      )
+    return _c("div", { staticClass: "modal-footer d-block" }, [
+      _c("div", { staticClass: "row align-items-center" }, [
+        _c("div", { staticClass: "col-12 text-right" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-success", attrs: { type: "submit" } },
+            [_c("i", { staticClass: "fas fa-plus" })]
+          )
+        ])
+      ])
     ])
   }
 ]
@@ -64648,7 +64709,7 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group col-lg-2" }, [
+                        _c("div", { staticClass: "form-group col-lg-3" }, [
                           _c("label", { attrs: { for: "password" } }, [
                             _vm._v("Contraseña")
                           ]),
@@ -64684,71 +64745,6 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group col-lg-2" }, [
-                          _c("label", { attrs: { for: "cant_vehicle" } }, [
-                            _vm._v("Vehiculos")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newUser.cant_vehicle,
-                                  expression: "newUser.cant_vehicle"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { name: "cant_vehicle" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.newUser,
-                                    "cant_vehicle",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                { attrs: { disabled: "", value: "0" } },
-                                [_vm._v("Seleccione Cantidad")]
-                              ),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "10" } }, [
-                                _vm._v("10")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "30" } }, [
-                                _vm._v("30")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "50" } }, [
-                                _vm._v("50")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "100" } }, [
-                                _vm._v("100")
-                              ])
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
                         _vm._m(1)
                       ])
                     ]
@@ -64771,77 +64767,42 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                [
-                  _vm._l(_vm.users, function(userLocal) {
-                    return _c("tr", { key: userLocal.id }, [
-                      _c("td", { attrs: { width: "10px" } }, [
-                        _vm._v(_vm._s(userLocal.id))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(userLocal.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(userLocal.email))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(userLocal.cant_vehicle))]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "text-right" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-secondary",
-                            attrs: {
-                              "data-toggle": "tooltip",
-                              "data-placement": "top",
-                              title: "Cantidad de vehiculos"
-                            },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.editCantVehicle({
-                                  userLocal: userLocal
-                                })
-                              }
-                            }
+                _vm._l(_vm.users, function(userLocal) {
+                  return _c("tr", { key: userLocal.id }, [
+                    _c("td", { attrs: { width: "10px" } }, [
+                      _vm._v(_vm._s(userLocal.id))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(userLocal.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(userLocal.email))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(userLocal.cant_vehicle))]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-right" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-warning",
+                          attrs: {
+                            href: "#",
+                            "data-toggle": "tooltip",
+                            "data-placement": "top",
+                            title: "Editar"
                           },
-                          [_c("i", { staticClass: "fas fa-car" })]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-warning",
-                            attrs: {
-                              href: "#",
-                              "data-toggle": "tooltip",
-                              "data-placement": "top",
-                              title: "Editar"
-                            },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.editUser({ userLocal: userLocal })
-                              }
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.editUser({ userLocal: userLocal })
                             }
-                          },
-                          [_c("i", { staticClass: "far fa-edit" })]
-                        )
-                      ])
+                          }
+                        },
+                        [_c("i", { staticClass: "far fa-edit" })]
+                      )
                     ])
-                  }),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("th", { staticClass: "text-right" }, [_vm._v("Total:")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(_vm.sumavehi))]),
-                    _vm._v(" "),
-                    _c("td")
                   ])
-                ],
-                2
+                }),
+                0
               )
             ]
           ),
@@ -65018,7 +64979,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 mt-2" }, [
+    return _c("div", { staticClass: "col-lg-3 mt-2" }, [
       _c("label"),
       _vm._v(" "),
       _c(
@@ -103191,7 +103152,7 @@ var urlCompany = 'companies';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, state.fillCantCliVehi).then(function (response) {
       state.fillCantCliVehi = {
         id: '',
-        //cant_client: 0,
+        cant_client: 0,
         cant_vehicle: 0
       };
       state.errorsLaravel = [];
@@ -103372,9 +103333,12 @@ var urlCompany = 'companies';
   //     });
   // },
   editCantCliVehi: function editCantCliVehi(state, user) {
-    state.fillCantCliVehi.id = user.id;
-    state.cantCliVehiAdmin.cant_client = user.cant_client;
-    state.cantCliVehiAdmin.cant_vehicle = user.cant_vehicle;
+    state.fillCantCliVehi.id = user.id; //state.cantCliVehiAdmin.cant_client = user.cant_client
+    //state.cantCliVehiAdmin.cant_vehicle = user.cant_vehicle
+
+    state.fillCantCliVehi.cant_client = user.cant_client;
+    state.fillCantCliVehi.cant_vehicle = user.cant_vehicle;
+    state.fillCantCliVehi.rol = user.roles[0].name;
     $("#editCantCliVehi").modal('show');
   },
   editCantVehicle: function editCantVehicle(state, user) {
@@ -104237,15 +104201,15 @@ var urlCompany = 'companies';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('mechanic-client2', {
       name: state.newUser.name,
       email: state.newUser.email,
-      password: state.newUser.password,
-      cant_vehicle: state.newUser.cant_vehicle
+      password: state.newUser.password //cant_vehicle: state.newUser.cant_vehicle
+
     }).then(function (response) {
       state.newUser = {
         id: '',
         name: '',
         email: '',
-        password: '',
-        cant_vehicle: ''
+        password: '' //cant_vehicle: ''
+
       };
       state.errorsLaravel = [];
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Usuario generado con éxito');
@@ -105142,8 +105106,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   logo: ''
 }), _defineProperty(_options$optionsUser$, "fillCantCliVehi", {
   id: '',
-  //cant_client: 0,
-  cant_vehicle: 0
+  cant_client: 0,
+  cant_vehicle: 0,
+  rol: ''
 }), _defineProperty(_options$optionsUser$, "fillCantVehicle", {
   id: '',
   cant_vehicle: 0
