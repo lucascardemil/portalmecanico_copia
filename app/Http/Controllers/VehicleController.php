@@ -110,38 +110,42 @@ class VehicleController extends Controller
 
         $users = DB::table('users')->where('id', '=', $id)->get();
 
+        $mechanics = DB::table('users')
+            ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+            ->where('mechanic_client.user_id', '=', $id)
+            ->get();
+
+        $clients = DB::table('users')
+            ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+            ->where('mechanic_client.mechanic_id', '=', $mechanics[0]->mechanic_id)
+            ->select('users.id', 'users.name', 'users.email', 'users.password', 'users.created_at', 'users.updated_at')
+            ->get();
+
+        $client_ids = array();
+
+        foreach ($clients as $client) {
+            array_push($client_ids, $client->id);
+        }
+
+        $total_vehicles = Vehicle::with('user')->whereIn('user_id', $client_ids)->count();
+
+
         if($vehicles >= $users[0]->cant_vehicle){
-            return response()->json('Failure', 422);
+            return response()->json('¡Error, Ya no puede crear mas vehiculos!', 422);
         }else{
-            $this->validate($request, [
-                'patent' => 'required|min:4|max:190',
-                'chasis' => 'required|min:4|max:190',
-                'color' => 'required|min:4|max:190',
-                'km' => 'required|min:1|max:190',
+            if($total_vehicles >= $mechanics[0]->cant_vehicle){
+                return response()->json('¡Error, Ya no puede crear mas vehiculos!', 422);
+            }else{
 
-            ], [
-                'patent.required' => 'El campo patente es obligatorio',
-                'patent.min' => 'El campo patente debe tener al menos 4 caracteres',
-                'patent.max' => 'El campo patente debe tener a lo más 190 caracteres',
-                'chasis.required' => 'El campo chasis es obligatorio',
-                'chasis.min' => 'El campo chasis debe tener al menos 4 caracteres',
-                'chasis.max' => 'El campo chasis debe tener a lo más 190 caracteres',
-                'color.required' => 'El campo color es obligatorio',
-                'color.min' => 'El campo color debe tener al menos 4 caracteres',
-                'color.max' => 'El campo color debe tener a lo más 190 caracteres',
-                'km.required' => 'El campo km es obligatorio',
-                'km.min' => 'El campo km debe tener al menos 1 caracteres',
-                'km.max' => 'El campo km debe tener a lo más 190 caracteres',
-            ]);
+                $data = $request->all();
 
-            $data = $request->all();
+                if($data['user_id'] == '')
+                {
+                    $data['user_id'] = \Auth::user()->id;
+                }
 
-            if($data['user_id'] == '')
-            {
-                $data['user_id'] = \Auth::user()->id;
+                Vehicle::create($data);
             }
-
-            Vehicle::create($data);
         }
         
     }

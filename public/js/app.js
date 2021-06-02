@@ -10886,10 +10886,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillCantVehicle', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])([])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateCantVehicle']))
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['totalvehi', 'fillCantVehicle', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])([])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getTotalVehi']))
 });
 
 /***/ }),
@@ -11207,6 +11229,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -11216,15 +11239,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     EditUser: _EditUser__WEBPACK_IMPORTED_MODULE_2__["default"],
     EditCantVehicle: _EditCantVehicle__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['totalvehi', 'sumavehi', 'users', 'newUser', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getTotalVehi', 'getSumaVehi', 'getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser', 'editCantVehicle'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['users', 'newUser', 'pagination', 'offset', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser', 'editCantVehicle'])),
   created: function created() {
     Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
     this.$store.dispatch('getMechanicClients', {
       page: 1
-    });
-    this.$store.dispatch('getSumaVehi');
-    this.$store.dispatch('getTotalVehi');
+    }); //this.$store.dispatch('getSumaVehi')
+    //this.$store.dispatch('getTotalVehi')
   }
 });
 
@@ -11250,7 +11272,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -63464,7 +63485,8 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _vm.fillCantCliVehi.rol == "mechanic"
+                _vm.fillCantCliVehi.rol == "mechanic" ||
+                _vm.fillCantCliVehi.rol == "admin"
                   ? _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { for: "cant_client" } }, [
                         _vm._v("Clientes")
@@ -63577,15 +63599,25 @@ var render = function() {
                         _vm._v("Seleccione Cantidad")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+                      _c("option", { attrs: { value: "5" } }, [
+                        _vm._v("1 - 5")
+                      ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
+                      _c("option", { attrs: { value: "10" } }, [
+                        _vm._v("1 - 10")
+                      ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+                      _c("option", { attrs: { value: "30" } }, [
+                        _vm._v("1 - 30")
+                      ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+                      _c("option", { attrs: { value: "50" } }, [
+                        _vm._v("1 - 50")
+                      ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "100" } }, [_vm._v("100")])
+                      _c("option", { attrs: { value: "100" } }, [
+                        _vm._v("1 - 100")
+                      ])
                     ]
                   )
                 ])
@@ -64150,86 +64182,47 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "form",
-    {
-      attrs: { action: "POST" },
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.updateCantVehicle({ id: _vm.fillCantVehicle.id })
-        }
-      }
-    },
+    "div",
+    { staticClass: "modal fade", attrs: { id: "editCantVehicle" } },
     [
-      _c(
-        "div",
-        { staticClass: "modal fade", attrs: { id: "editCantVehicle" } },
-        [
-          _c("div", { staticClass: "modal-dialog" }, [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "cant_vehicle" } }, [
-                    _vm._v("Vehiculos")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fillCantVehicle.cant_vehicle,
-                          expression: "fillCantVehicle.cant_vehicle"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { name: "cant_vehicle" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.fillCantVehicle,
-                            "cant_vehicle",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-12" }, [
+                _c(
+                  "table",
+                  {
+                    staticClass:
+                      "table table-striped table-sm text-white bg-dark"
+                  },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("th", [_vm._v("Vehiculos")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _vm._v(
+                            "1 - " + _vm._s(_vm.fillCantVehicle.cant_vehicle)
                           )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { disabled: "", value: "0" } }, [
-                        _vm._v("Seleccione Cantidad")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "100" } }, [_vm._v("100")])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(1)
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _vm._v(_vm._s(_vm.totalvehi))
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ])
             ])
           ])
-        ]
-      )
+        ])
+      ])
     ]
   )
 }
@@ -64239,7 +64232,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
-      _c("h4", [_vm._v("Cantidad de Vehiculos")]),
+      _c("h4", [_vm._v("Detalle")]),
       _vm._v(" "),
       _c(
         "button",
@@ -64259,12 +64252,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_c("i", { staticClass: "fas fa-plus" })]
-      )
+    return _c("thead", [
+      _c("tr", [
+        _c("th"),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Puede crear")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Creados")])
+      ])
     ])
   }
 ]
@@ -64777,9 +64772,33 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(userLocal.email))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(userLocal.cant_vehicle))]),
+                    _c("td", [
+                      _vm._v("1 - " + _vm._s(userLocal.cant_vehicle) + " "),
+                      _c("i", { staticClass: "fas fa-car" })
+                    ]),
                     _vm._v(" "),
                     _c("td", { staticClass: "text-right" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: {
+                            "data-toggle": "tooltip",
+                            "data-placement": "top",
+                            title: "Cantidad de vehiculos"
+                          },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.editCantVehicle({
+                                userLocal: userLocal
+                              })
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-info-circle" })]
+                      ),
+                      _vm._v(" "),
                       _c(
                         "a",
                         {
@@ -65007,7 +65026,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Cantidad de vehiculos")]),
+        _c("th", [_vm._v("Puede crear")]),
         _vm._v(" "),
         _c("th", [_vm._v(" ")])
       ])
@@ -65052,20 +65071,12 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body" },
-              [
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "patente" } }, [_vm._v("Patente")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|min:4|max:190",
-                      expression: "'required|min:4|max:190'"
-                    },
                     {
                       name: "model",
                       rawName: "v-model",
@@ -65074,11 +65085,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: {
-                    input: true,
-                    "is-invalid": _vm.errors.has("patente")
-                  },
-                  attrs: { type: "text", name: "patente" },
+                  attrs: { required: "", type: "text", name: "patente" },
                   domProps: { value: _vm.newVehicle.patent },
                   on: {
                     input: function($event) {
@@ -65088,34 +65095,14 @@ var render = function() {
                       _vm.$set(_vm.newVehicle, "patent", $event.target.value)
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("patente"),
-                        expression: "errors.has('patente')"
-                      }
-                    ],
-                    staticClass: "text-danger"
-                  },
-                  [_vm._v(_vm._s(_vm.errors.first("patente")))]
-                ),
-                _vm._v(" "),
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "patente" } }, [_vm._v("Chasis")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|min:4|max:190",
-                      expression: "'required|min:4|max:190'"
-                    },
                     {
                       name: "model",
                       rawName: "v-model",
@@ -65124,11 +65111,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: {
-                    input: true,
-                    "is-invalid": _vm.errors.has("chasis")
-                  },
-                  attrs: { type: "text", name: "chasis" },
+                  attrs: { required: "", type: "text", name: "chasis" },
                   domProps: { value: _vm.newVehicle.chasis },
                   on: {
                     input: function($event) {
@@ -65138,50 +65121,58 @@ var render = function() {
                       _vm.$set(_vm.newVehicle, "chasis", $event.target.value)
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("chasis"),
-                        expression: "errors.has('chasis')"
-                      }
-                    ],
-                    staticClass: "text-danger"
-                  },
-                  [_vm._v(_vm._s(_vm.errors.first("chasis")))]
-                ),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "marca" } }, [_vm._v("Marca")]),
-                _vm._v(" "),
-                _c("BrandSelector"),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "modelo" } }, [_vm._v("Modelo")]),
-                _vm._v(" "),
-                _c("ModelSelector"),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "anio" } }, [_vm._v("Año")]),
-                _vm._v(" "),
-                _c("YearSelector"),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "engine" } }, [_vm._v("Motor")]),
-                _vm._v(" "),
-                _c("EngineSelector"),
-                _vm._v(" "),
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c("label", { attrs: { for: "marca" } }, [_vm._v("Marca")]),
+                  _vm._v(" "),
+                  _c("BrandSelector")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c("label", { attrs: { for: "modelo" } }, [_vm._v("Modelo")]),
+                  _vm._v(" "),
+                  _c("ModelSelector")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c("label", { attrs: { for: "anio" } }, [_vm._v("Año")]),
+                  _vm._v(" "),
+                  _c("YearSelector")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c("label", { attrs: { for: "engine" } }, [_vm._v("Motor")]),
+                  _vm._v(" "),
+                  _c("EngineSelector")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "color" } }, [_vm._v("Color")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|min:4|max:190",
-                      expression: "'required|min:4|max:190'"
-                    },
                     {
                       name: "model",
                       rawName: "v-model",
@@ -65190,8 +65181,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: { input: true, "is-invalid": _vm.errors.has("color") },
-                  attrs: { type: "text", name: "color" },
+                  attrs: { required: "", type: "text", name: "color" },
                   domProps: { value: _vm.newVehicle.color },
                   on: {
                     input: function($event) {
@@ -65201,34 +65191,14 @@ var render = function() {
                       _vm.$set(_vm.newVehicle, "color", $event.target.value)
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("color"),
-                        expression: "errors.has('color')"
-                      }
-                    ],
-                    staticClass: "text-danger"
-                  },
-                  [_vm._v(_vm._s(_vm.errors.first("color")))]
-                ),
-                _vm._v(" "),
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "km" } }, [_vm._v("Kilometraje")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|min:1|max:190",
-                      expression: "'required|min:1|max:190'"
-                    },
                     {
                       name: "model",
                       rawName: "v-model",
@@ -65237,8 +65207,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: { input: true, "is-invalid": _vm.errors.has("km") },
-                  attrs: { type: "number", name: "km" },
+                  attrs: { required: "", type: "number", name: "km" },
                   domProps: { value: _vm.newVehicle.km },
                   on: {
                     input: function($event) {
@@ -65248,26 +65217,9 @@ var render = function() {
                       _vm.$set(_vm.newVehicle, "km", $event.target.value)
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("km"),
-                        expression: "errors.has('km')"
-                      }
-                    ],
-                    staticClass: "text-danger"
-                  },
-                  [_vm._v(_vm._s(_vm.errors.first("km")))]
-                )
-              ],
-              1
-            ),
+                })
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer" }, [
               _c(
@@ -100861,8 +100813,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     context.commit('createMechanicClient2');
     setTimeout(function () {
       context.commit('getMechanicClients'); //context.commit('getTotalCli')
-
-      context.commit('getTotalVehi');
+      //context.commit('getTotalVehi')
     }, 500);
   },
   getClientVehicles: function getClientVehicles(context) {
@@ -101363,12 +101314,15 @@ var urlCompany = 'companies';
       state.newVehicle.chasis = '';
       state.newVehicle.color = '';
       state.newVehicle.km = '';
+      state.selectedVBrand.label = '';
+      state.selectedVModel.label = '';
+      state.selectedVYear.label = '';
+      state.selectedVEngine.label = '';
       state.errorsLaravel = [];
       $('#create').modal('hide');
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Vehículo generado con éxito');
     })["catch"](function (error) {
-      state.errorsLaravel = error.response.data;
-      toastr__WEBPACK_IMPORTED_MODULE_1___default.a.error("¡Error, Ya no puede crear mas vehiculos!");
+      toastr__WEBPACK_IMPORTED_MODULE_1___default.a.error(error.response.data);
     });
   },
   editVehicle: function editVehicle(state, vehicle) {
@@ -103343,7 +103297,11 @@ var urlCompany = 'companies';
   },
   editCantVehicle: function editCantVehicle(state, user) {
     state.fillCantVehicle.id = user.id;
-    state.fillCantVehicle.cant_vehicle = 0;
+    state.fillCantVehicle.cant_vehicle = user.cant_vehicle;
+    var url = urlTotalVehi + '/' + user.id;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      state.totalvehi = response.data;
+    });
     $("#editCantVehicle").modal('show');
   },
   editUserRoles: function editUserRoles(state, user) {
@@ -104148,7 +104106,7 @@ var urlCompany = 'companies';
     });
   },
   getTotalVehi: function getTotalVehi(state) {
-    var url = urlTotalVehi;
+    var url = urlTotalVehi + '/' + state.fillCantVehicle.id;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.totalvehi = response.data;
     });

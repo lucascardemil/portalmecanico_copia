@@ -12,59 +12,58 @@
                     </div>
                     <div class="modal-body">
 
-                        <label for="patente">Patente</label>
-                        <input v-validate="'required|min:4|max:190'"
-                                :class="{'input': true, 'is-invalid': errors.has('patente') }"
-                                type="text"
-                                name="patente"
-                                class="form-control" v-model="newVehicle.patent">
-                        <p v-show="errors.has('patente')" class="text-danger">{{ errors.first('patente') }}</p>
+                        <div class="form-group">
 
+                            <label for="patente">Patente</label>
+                            <input required
+                                    type="text"
+                                    name="patente"
+                                    class="form-control" v-model="newVehicle.patent">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patente">Chasis</label>
+                            <input required
+                                    type="text"
+                                    name="chasis"
+                                    class="form-control" v-model="newVehicle.chasis">
+                        </div>
                         
-
-                        <label for="patente">Chasis</label>
-                        <input v-validate="'required|min:4|max:190'"
-                                :class="{'input': true, 'is-invalid': errors.has('chasis') }"
-                                type="text"
-                                name="chasis"
-                                class="form-control" v-model="newVehicle.chasis">
-                        <p v-show="errors.has('chasis')" class="text-danger">{{ errors.first('chasis') }}</p>
-
-                       
+                        <div class="form-group">
+                            <label for="marca">Marca</label>
+                            <BrandSelector/>
+                        </div>
                         
-                        <label for="marca">Marca</label>
-                        <BrandSelector/>
-                        <!-- <SelectBrand></SelectBrand> -->
-                        
-                        <label for="modelo">Modelo</label>
-                        <ModelSelector/>
-                        <!-- <SelectModel></SelectModel> -->
+                        <div class="form-group">
+                            <label for="modelo">Modelo</label>
+                            <ModelSelector/>
+                        </div>
 
-                        
-                        <label for="anio">Año</label>
-                        <YearSelector/>
+                        <div class="form-group">
+                            <label for="anio">Año</label>
+                            <YearSelector/>
+                        </div>
 
-                        <label for="engine">Motor</label>
-                        <EngineSelector/>
+                        <div class="form-group">
+                            <label for="engine">Motor</label>
+                            <EngineSelector/>
+                        </div>
 
-                        <label for="color">Color</label>
-                        <input v-validate="'required|min:4|max:190'"
-                                :class="{'input': true, 'is-invalid': errors.has('color') }"
-                                type="text"
-                                name="color"
-                                class="form-control" v-model="newVehicle.color">
-                        <p v-show="errors.has('color')" class="text-danger">{{ errors.first('color') }}</p>
+                        <div class="form-group">
+                            <label for="color">Color</label>
+                            <input required
+                                    type="text"
+                                    name="color"
+                                    class="form-control" v-model="newVehicle.color">
+                        </div>
 
-                        
-
-                        <label for="km">Kilometraje</label>
-                        <input v-validate="'required|min:1|max:190'"
-                                :class="{'input': true, 'is-invalid': errors.has('km') }"
-                                type="number"
-                                name="km"
-                                class="form-control" v-model="newVehicle.km">
-                        <p v-show="errors.has('km')" class="text-danger">{{ errors.first('km') }}</p>
-
+                        <div class="form-group">
+                            <label for="km">Kilometraje</label>
+                            <input required
+                                    type="number"
+                                    name="km"
+                                    class="form-control" v-model="newVehicle.km">
+                        </div>
                         
 
                     </div>

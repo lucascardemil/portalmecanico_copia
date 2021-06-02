@@ -106,7 +106,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
-                            <th>Cantidad de vehiculos</th>
+                            <th>Puede crear</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
@@ -115,16 +115,17 @@
                             <td width="10px">{{ userLocal.id }}</td>
                             <td>{{ userLocal.name }}</td>
                             <td>{{ userLocal.email }}</td>
-                            <td>{{ userLocal.cant_vehicle }}</td>
+                            <td>1 - {{ userLocal.cant_vehicle }} <i class="fas fa-car"></i></td>
+                            
                             <td class="text-right">
 
-                                <!-- <button class="btn btn-secondary"
+                                <button class="btn btn-secondary"
                                     @click.prevent="editCantVehicle({ userLocal })"
                                     data-toggle="tooltip"
                                     data-placement="top"
                                     title="Cantidad de vehiculos">
-                                    <i class="fas fa-car"></i>
-                                </button> -->
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
 
                                 <a href="#" class="btn btn-warning"
                                     @click.prevent="editUser({ userLocal } )"
@@ -200,19 +201,19 @@ import EditCantVehicle from './EditCantVehicle'
 export default {
     components: { EditUser, EditCantVehicle },
     computed:{
-        ...mapState(['totalvehi', 'sumavehi', 'users', 'newUser', 'pagination', 'offset', 'errorsLaravel']),
+        ...mapState(['users', 'newUser', 'pagination', 'offset', 'errorsLaravel']),
         //...mapState(['totalvehi', 'totalcli', 'users', 'newUser', 'pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{
-        ...mapActions(['getTotalVehi', 'getSumaVehi', 'getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser','editCantVehicle'])
+        ...mapActions(['getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser','editCantVehicle'])
         //...mapActions(['getTotalVehi', 'getTotalCli', 'getMechanicClients', 'createMechanicClient2', 'editUser', 'changePageUser','editCantVehicle'])
     },
     created(){
         loadProgressBar()
         this.$store.dispatch('getMechanicClients', { page: 1 })
-        this.$store.dispatch('getSumaVehi')
-        this.$store.dispatch('getTotalVehi')
+        //this.$store.dispatch('getSumaVehi')
+        //this.$store.dispatch('getTotalVehi')
     }
 }
 

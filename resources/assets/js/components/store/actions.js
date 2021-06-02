@@ -1169,7 +1169,7 @@ export default { //methods
         setTimeout(function () {
             context.commit('getMechanicClients')
             //context.commit('getTotalCli')
-            context.commit('getTotalVehi')
+            //context.commit('getTotalVehi')
         }, 500)
     },
 

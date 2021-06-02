@@ -148,12 +148,15 @@ export default { //used for changing the state
             state.newVehicle.chasis = ''
             state.newVehicle.color = ''
             state.newVehicle.km = ''
+            state.selectedVBrand.label = ''
+            state.selectedVModel.label = ''
+            state.selectedVYear.label = ''
+            state.selectedVEngine.label = ''
             state.errorsLaravel = []
             $('#create').modal('hide')
             toastr.success('Vehículo generado con éxito')
         }).catch(error => {
-            state.errorsLaravel = error.response.data
-            toastr.error("¡Error, Ya no puede crear mas vehiculos!")
+            toastr.error(error.response.data)
         })
     },
     editVehicle(state, vehicle) {
@@ -2193,7 +2196,13 @@ export default { //used for changing the state
     },
     editCantVehicle(state, user) {
         state.fillCantVehicle.id = user.id
-        state.fillCantVehicle.cant_vehicle  = 0
+        state.fillCantVehicle.cant_vehicle = user.cant_vehicle
+
+        var url = urlTotalVehi + '/' + user.id
+        axios.get(url).then(response => {
+            state.totalvehi = response.data
+        });
+
         $("#editCantVehicle").modal('show')
     },
     editUserRoles(state, user) {
@@ -3154,7 +3163,7 @@ export default { //used for changing the state
     },
 
     getTotalVehi(state) {
-        var url = urlTotalVehi
+        var url = urlTotalVehi + '/' + state.fillCantVehicle.id
         axios.get(url).then(response => {
             state.totalvehi = response.data
         });

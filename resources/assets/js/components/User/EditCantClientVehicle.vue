@@ -39,7 +39,7 @@
                                 </table>
                             </div>
                         </div> -->
-                        <div class="form-group" v-if="fillCantCliVehi.rol == 'mechanic'">
+                        <div class="form-group" v-if="fillCantCliVehi.rol == 'mechanic' || fillCantCliVehi.rol == 'admin'">
                             <label for="cant_client">Clientes</label>
                             <select class="form-control" name="cant_client" v-model="fillCantCliVehi.cant_client">
                                 <option disabled value="0">Seleccione Cantidad</option>
@@ -67,11 +67,11 @@
                             <label for="cant_vehicle">Vehiculos</label>
                             <select class="form-control" name="cant_vehicle" v-model="fillCantCliVehi.cant_vehicle">
                                 <option disabled value="0">Seleccione Cantidad</option>
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="30">30</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
+                                <option value="5">1 - 5</option>
+                                <option value="10">1 - 10</option>
+                                <option value="30">1 - 30</option>
+                                <option value="50">1 - 50</option>
+                                <option value="100">1 - 100</option>
                             </select>
                         </div>
                     </div>
