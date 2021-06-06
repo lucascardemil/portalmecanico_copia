@@ -110,16 +110,57 @@ class VehicleController extends Controller
 
         $users = DB::table('users')->where('id', '=', $id)->get();
 
+        
+        if($vehicles >= $users[0]->cant_vehicle){
+            return response()->json('¡Error, Ya no puede crear mas vehiculos!', 422);
+        }else{
+
+            $data = $request->all();
+
+            if($data['user_id'] == '')
+            {
+                $data['user_id'] = \Auth::user()->id;
+            }
+
+            Vehicle::create($data);
+        }
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeMechanic(Request $request)
+    {
+
+        $id = \Auth::user()->id;
+
+        $data = $request->all();
+
+        if($data['user_id'] == ''){
+            $user_id = $data['user_id'] = \Auth::user()->id;
+        }else{
+            $user_id = $data['user_id'];
+        }
+
+        $vehicles = DB::table('vehicles')->where('user_id', '=', $user_id)->count();
+
+        $users = DB::table('users')->where('id', '=', $user_id)->get();
+
         $mechanics = DB::table('users')
             ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
-            ->where('mechanic_client.user_id', '=', $id)
+            ->where('mechanic_client.user_id', '=', $user_id)
             ->get();
 
+
         $clients = DB::table('users')
-            ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
-            ->where('mechanic_client.mechanic_id', '=', $mechanics[0]->mechanic_id)
-            ->select('users.id', 'users.name', 'users.email', 'users.password', 'users.created_at', 'users.updated_at')
-            ->get();
+        ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
+        ->where('mechanic_client.mechanic_id', '=', $mechanics[0]->mechanic_id)
+        ->select('users.id', 'users.name', 'users.email', 'users.password', 'users.created_at', 'users.updated_at')
+        ->get();
 
         $client_ids = array();
 
@@ -147,7 +188,7 @@ class VehicleController extends Controller
                 Vehicle::create($data);
             }
         }
-        
+
     }
 
     /**

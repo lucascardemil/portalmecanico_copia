@@ -3164,6 +3164,7 @@ export default { //used for changing the state
 
     getTotalVehi(state) {
         var url = urlTotalVehi + '/' + state.fillCantVehicle.id
+        //var url = urlTotalVehi
         axios.get(url).then(response => {
             state.totalvehi = response.data
         });
@@ -3261,7 +3262,7 @@ export default { //used for changing the state
             //     state.selectedVYear.label = '1'
             //     state.selectedVEngine.label = 'INDEFINIDO'
             // }
-            axios.post('vehicles', {
+            axios.post('vehicles-mechanic', {
                 user_id: id_user,
                 patent: state.newVehicle.patent,
                 chasis: state.newVehicle.chasis,
@@ -3280,7 +3281,7 @@ export default { //used for changing the state
                 $('#create').modal('hide')
                 toastr.success('Vehículo generado con éxito')
             }).catch(error => {
-                state.errorsLaravel = error.response.data
+                toastr.error(error.response.data)
             })
         }
     },

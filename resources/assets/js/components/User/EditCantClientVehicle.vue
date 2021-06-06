@@ -5,7 +5,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4>Editar clientes y vehiculos</h4>
+                        <h4>Editar Vehiculos</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span>&times;</span>
                         </button>
@@ -39,7 +39,7 @@
                                 </table>
                             </div>
                         </div> -->
-                        <div class="form-group" v-if="fillCantCliVehi.rol == 'mechanic' || fillCantCliVehi.rol == 'admin'">
+                        <!-- <div class="form-group" v-if="fillCantCliVehi.rol == 'mechanic' || fillCantCliVehi.rol == 'admin'">
                             <label for="cant_client">Clientes</label>
                             <select class="form-control" name="cant_client" v-model="fillCantCliVehi.cant_client">
                                 <option disabled value="0">Seleccione Cantidad</option>
@@ -49,12 +49,12 @@
                                 <option value="50">50</option>
                                 <option value="100">100</option>
                             </select>
-                            <!-- <input required
+                            <input required
                                     type="number"
                                     name="cant_client"
-                                    class="form-control" v-model="fillCantCliVehi.cant_client"> -->
+                                    class="form-control" v-model="fillCantCliVehi.cant_client">
                             
-                        </div>
+                        </div> -->
                         <!-- <div class="form-group">
                             <label for="cant_vehicle">Vehiculos</label>
                             <input required

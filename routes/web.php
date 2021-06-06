@@ -38,6 +38,7 @@ Route::get('users-all', 'User\UserController@all');
 Route::ApiResource('companies', 'CompanyController');
 
 Route::ApiResource('vehicles', 'VehicleController');
+Route::post('vehicles-mechanic', 'VehicleController@storeMechanic');
 Route::get('vehicles-user', 'VehicleController@indexByUser');
 
 Route::ApiResource('vehiclebrands', 'VehicleBrandController');
@@ -182,6 +183,7 @@ Route::get('storage-link', function(){
 });
 
 Route::get('login/{url?}', 'Auth\LoginController@showLoginForm')->name('login');
+Route::match(['get'], 'input', 'Auth\LoginController@recibir');
 Route::post('login/{url}', 'Auth\LoginController@login');
 Route::post('logout/{url}', 'Auth\LoginController@logout')->name('logout');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

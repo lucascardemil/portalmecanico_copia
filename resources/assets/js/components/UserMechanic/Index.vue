@@ -107,6 +107,7 @@
                             <th>Nombre</th>
                             <th>Email</th>
                             <th>Puede crear</th>
+                            <!-- <th>Vehiculos</th> -->
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
@@ -116,7 +117,8 @@
                             <td>{{ userLocal.name }}</td>
                             <td>{{ userLocal.email }}</td>
                             <td>1 - {{ userLocal.cant_vehicle }} <i class="fas fa-car"></i></td>
-                            
+                            <!-- <td>{{ userLocal.total }}</td> -->
+
                             <td class="text-right">
 
                                 <button class="btn btn-secondary"

@@ -204,8 +204,7 @@ class UserController extends Controller
         $clients = DB::table('users')
             ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
             ->where('mechanic_client.mechanic_id', '=', $user_id)
-            ->select('users.id', 'users.name', 'users.email', 'users.password', 'users.url', 'users.cant_vehicle')
-            ->get();
+            ->select('users.id', 'users.name', 'users.email', 'users.password', 'users.url', 'users.cant_vehicle')->get();
         return $clients;
         
     }
@@ -272,7 +271,7 @@ class UserController extends Controller
         $total_vehicles = Vehicle::with('user')->whereIn('user_id', $client_ids)->count();
 
         
-        if($total_clients >= $users[0]->cant_client){
+        if($total_clients >= $users[0]->cant_vehicle){
             return response()->json('¡Supero la cantidad de clientes!', 422);
         }else{
             if($total_vehicles >= $users[0]->cant_vehicle){
@@ -295,43 +294,6 @@ class UserController extends Controller
                 );
             }
         }
-        
-
-
-        
-        // if($total >= $clients[0]->cant_vehicle){
-        //     return response()->json('¡No se pueden asignar vehiculos a mas clientes!', 422);
-        // }else{
-        //     if($total >= $clients[0]->cant_client){
-        //         return response()->json('¡Supero la cantidad de clientes!', 422);
-        //     }else{
-
-        //         $suma_vehicles = DB::table('users')
-        //             ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
-        //             ->where('mechanic_client.mechanic_id', '=', $id)
-        //             ->sum('users.cant_vehicle');
-
-        //         $total_vehicle = $data['cant_vehicle'] + $suma_vehicles;
-
-        //         if($total_vehicle > $clients[0]->cant_vehicle){
-        //             return response()->json('supero la cantidad de vehiculos', 422);
-        //         }else{
-
-        //             $data['password'] = bcrypt( $data['password'] );
-        //             $data['url'] = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
-
-        //             $user = User::create($data);
-        //             $user->roles()->sync(array(0 => '3'));
-
-        //             DB::table('mechanic_client')->insertOrIgnore(
-        //                 [
-        //                     'user_id' => $user->id, 
-        //                     'mechanic_id' => \Auth::user()->id
-        //                 ]
-        //             );
-        //         }
-        //     }
-        // }
     }
     
     public function updateRole(Request $request, User $user)
@@ -388,8 +350,7 @@ class UserController extends Controller
 
         DB::table('users')->where('id', $id)->update(
             [
-                'cant_vehicle' => $data['cant_vehicle'],
-                'cant_client' => $data['cant_client']
+                'cant_vehicle' => $data['cant_vehicle']
             ]
         );
 
@@ -407,16 +368,6 @@ class UserController extends Controller
 
     public function totalVehi($id)
     {
-        // $mechanic = \Auth::user()->id;
-        // $suma_vehicles = DB::table('users')
-        //             ->join('mechanic_client', 'users.id', '=', 'mechanic_client.user_id')
-        //             ->where('mechanic_client.mechanic_id', '=', $mechanic)
-        //             ->sum('users.cant_vehicle');
-        // $users = DB::table('users')->where('id', '=', $mechanic)->get();
-
-        // $total_vehicles   = ['total_vehicles' => ($users[0]->cant_vehicle - $suma_vehicles)];
-        // return $total_vehicles;
-    
         $vehicles = DB::table('vehicles')->where('user_id', '=', $id)->count();
 
         return $vehicles;

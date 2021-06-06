@@ -11230,6 +11230,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -63485,77 +63487,6 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _vm.fillCantCliVehi.rol == "mechanic" ||
-                _vm.fillCantCliVehi.rol == "admin"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "cant_client" } }, [
-                        _vm._v("Clientes")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.fillCantCliVehi.cant_client,
-                              expression: "fillCantCliVehi.cant_client"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { name: "cant_client" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.fillCantCliVehi,
-                                "cant_client",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { disabled: "", value: "0" } },
-                            [_vm._v("Seleccione Cantidad")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "5" } }, [
-                            _vm._v("5")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "10" } }, [
-                            _vm._v("10")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "30" } }, [
-                            _vm._v("30")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "50" } }, [
-                            _vm._v("50")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "100" } }, [
-                            _vm._v("100")
-                          ])
-                        ]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "cant_vehicle" } }, [
                     _vm._v("Vehiculos")
@@ -63637,7 +63568,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
-      _c("h4", [_vm._v("Editar clientes y vehiculos")]),
+      _c("h4", [_vm._v("Editar Vehiculos")]),
       _vm._v(" "),
       _c(
         "button",
@@ -104106,7 +104037,8 @@ var urlCompany = 'companies';
     });
   },
   getTotalVehi: function getTotalVehi(state) {
-    var url = urlTotalVehi + '/' + state.fillCantVehicle.id;
+    var url = urlTotalVehi + '/' + state.fillCantVehicle.id; //var url = urlTotalVehi
+
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       state.totalvehi = response.data;
     });
@@ -104192,7 +104124,7 @@ var urlCompany = 'companies';
       //     state.selectedVEngine.label = 'INDEFINIDO'
       // }
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('vehicles', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('vehicles-mechanic', {
         user_id: id_user,
         patent: state.newVehicle.patent,
         chasis: state.newVehicle.chasis,
@@ -104211,7 +104143,7 @@ var urlCompany = 'companies';
         $('#create').modal('hide');
         toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Vehículo generado con éxito');
       })["catch"](function (error) {
-        state.errorsLaravel = error.response.data;
+        toastr__WEBPACK_IMPORTED_MODULE_1___default.a.error(error.response.data);
       });
     }
   },
