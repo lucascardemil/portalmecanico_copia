@@ -1,6 +1,7 @@
 export default { //data
     options: [], //arreglo para ser utilizado en el componente v-select para volcar los objetos
     optionsUser: [],
+    optionsPago: [],
     optionsPersonal: [],
     optionsClient: [],
     optionsProduct: [],
@@ -84,6 +85,11 @@ export default { //data
     pendingQuotations: [],
 
     selectedItem: null, //captura el elemento seleccionado
+
+    selectedPago: {
+        label: '',
+        value: ''
+    },
     selectedUser: {
         label: '',
         value: ''
@@ -640,6 +646,7 @@ export default { //data
     /********************************* */
     /************************************ */
     /*** sección componentes de productos */
+    import_file: '',
     products: [],
     product: {
         name: '',
@@ -649,6 +656,16 @@ export default { //data
         name: '',
         detail: '',
         codebar: ''
+    },
+    newTipoPago: {
+        pago: '',
+        utilidad: ''
+    },
+    tipospagos:[],
+    fillTipoPago: {
+        id: '',
+        pago: '',
+        utilidad: ''
     },
     fillProduct: {
         id: '',
@@ -891,7 +908,16 @@ export default { //data
     checkedRoles: [],
     permissions: [],
     checkedSpecialRole: '',
+    checkedSelect1: '',
+    checkedSelect2: [],
     checkedPermissions: [],
+
+
+    newAllUtilidad: {
+        check: [],
+        pago: '',
+        utilidad: ''
+    },
     /***************************************************Seccion Ventas */
     optionsCode: [],
     optionsPrice: [],

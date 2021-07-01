@@ -115,6 +115,11 @@ Route::ApiResource('archiveimports', 'ArchiveimportController');
 Route::ApiResource('details', 'DetailController');
 Route::ApiResource('detailclients', 'DetailclientController');
 
+Route::post('tipodepago', 'ProductController@storeTipoPago');
+Route::get('tipodepago', 'ProductController@listaTiposPagos');
+Route::put('tipodepago/{id}', 'ProductController@updateTiposPagos');
+Route::put('utilidad/{id}', 'ProductController@updateUtilidad');
+Route::get('pagos-all', 'ProductController@allPagos');
 
 Route::ApiResource('clients', 'ClientController');
 Route::get('clients-all', 'ClientController@all');
@@ -122,6 +127,7 @@ Route::get('clients-all', 'ClientController@all');
 Route::ApiResource('activities', 'ActivityController');
 
 Route::ApiResource('products', 'ProductController');
+Route::post('products', 'ProductController@uploadProducts');
 Route::get('products-all', 'ProductController@all');
 
 Route::ApiResource('productimports', 'ProductimportController');
@@ -262,6 +268,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin-cotizacion-express', function () {
         return view('admin.cotizacion-express');
     })->name('admin-cotizacion-express');
+
+    Route::get('admin-utilidad', function () {
+        return view('admin.utilidad');
+    })->name('admin-utilidad');
     
     Route::get('admin-cotizaciones-formales', function () {
         return view('admin.cotizaciones-formales');

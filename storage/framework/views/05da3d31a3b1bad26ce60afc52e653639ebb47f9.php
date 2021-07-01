@@ -135,6 +135,14 @@
             </li>
             <?php endif; ?>
 
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('utility')): ?>
+            <li id="utilidad" class="nav-item">
+                <a class="nav-link" href="<?php echo e(route('admin-utilidad')); ?>">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Formas de Pagos</span></a>
+            </li>
+            <?php endif; ?>
+
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('vehicles')): ?>
             <li id="vehiculos" class="nav-item">
                 <a class="nav-link" href="<?php echo e(route('admin-vehiculos')); ?>">
@@ -178,7 +186,7 @@
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('sales')): ?>
             <li id="ventas" class="nav-item">
                 <a class="nav-link" href="<?php echo e(route('admin-ventas')); ?>">
-                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-shopping-cart"></i>
                     <span>Ventas</span>
                 </a>
             </li>

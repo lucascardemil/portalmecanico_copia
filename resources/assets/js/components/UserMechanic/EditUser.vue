@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="correo">Nombre</label>
+                            <label for="correo">Email</label>
                             <input v-validate="'required|min:6|max:190'"
                                     :class="{'input': true, 'is-invalid': errors.has('correo') }"
                                     type="email"

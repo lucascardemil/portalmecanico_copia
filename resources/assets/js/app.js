@@ -53,6 +53,7 @@ Vue.component('inventario-component', require('./components/Inventario/Index.vue
 
 Vue.component('detalle-usuario-component', require('./components/User/Detalle.vue').default)
 Vue.component('sales-component', require('./components/Sales/Index.vue').default)
+Vue.component('utilidad-component', require('./components/Utilidad/Index.vue').default)
 
 /**
  * Boleta components

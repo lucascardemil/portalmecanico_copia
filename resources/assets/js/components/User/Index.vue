@@ -35,34 +35,47 @@
                                     </div> -->
 
                                     <div class="form-group col-lg-3">
-                                        <label for="nombre">Nombre</label>
+                                        <label for="name">Nombre</label>
                                         <input required
-                                          
+                                                :class="{'input': true, 'is-invalid': errors.has('name') }"
                                                 type="text"
-                                                name="nombre"
+                                                name="name"
                                                 class="form-control" v-model="newUser.name">
-                                       
+                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
+                                            <p>{{ error.name }}</p>
+                                        </div>
                                     </div>
 
                                     <div class="form-group col-lg-3">
-                                        <label for="correo">Email</label>
+                                        <label for="email">Email</label>
                                         <input required
-                                                
+                                                :class="{'input': true, 'is-invalid': errors.has('email') }"
                                                 type="email"
-                                                name="correo"
+                                                name="email"
                                                 class="form-control" v-model="newUser.email">
-                                       
+                                
+                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
+                                            <p>{{ error.email }}</p>
+                                        </div>
                                     </div>
+                                    
 
                                     <div class="form-group col-lg-3">
                                         <label for="password">Contraseña</label>
                                         <input required
-                                                
+                                                :class="{'input': true, 'is-invalid': errors.has('password') }"
                                                 type="password"
                                                 name="password"
                                                 class="form-control" v-model="newUser.password">
-                                        
+                                      
+                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
+                                            <p>{{ error.password }}</p>
+                                        </div>
                                     </div>
+
+
+                                    
+                                    
 
 
                                     <!-- <div class="form-group col-lg-1" v-bind:hidden="newUser.mecanico === true ? false : true">
@@ -256,7 +269,7 @@ export default {
     },
     methods:{
         ...mapActions(['getUsers', 'createUser',
-        'editUser', 'modalDeleteUser', 'deleteUser', 'changePageUser', 'editCantCliVehi', 'editUserRoles', 'changePageUser'])
+        'editUser', 'modalDeleteUser', 'deleteUser', 'editCantCliVehi', 'editUserRoles', 'changePageUser'])
     },
     created(){
         loadProgressBar()

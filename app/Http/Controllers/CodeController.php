@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Code;
 use App\Inventory;
 use App\Atributo;
@@ -16,7 +17,11 @@ class CodeController extends Controller
      */
     public function index()
     {
-        $codes = Code::with('client', 'product', 'inventories')->orderBy('id', 'DESC')->paginate(30);
+        $idUser = Auth::id();
+        $codes = Code::with('client', 'product', 'inventories')
+        ->whereHas('client', function ($query) use($idUser) {
+            $query->where('clients.user_id', '=', $idUser);
+        })->orderBy('id', 'DESC')->paginate(10);
 
         return [
             'pagination' => [

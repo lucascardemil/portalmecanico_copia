@@ -132,6 +132,14 @@
             </li>
             @endcan
 
+            @can('utility')
+            <li id="utilidad" class="nav-item">
+                <a class="nav-link" href="{{ route('admin-utilidad') }}">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Formas de Pagos</span></a>
+            </li>
+            @endcan
+
             @can('vehicles')
             <li id="vehiculos" class="nav-item">
                 <a class="nav-link" href="{{ route('admin-vehiculos') }}">
@@ -175,7 +183,7 @@
             @can('sales')
             <li id="ventas" class="nav-item">
                 <a class="nav-link" href="{{ route('admin-ventas') }}">
-                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-shopping-cart"></i>
                     <span>Ventas</span>
                 </a>
             </li>

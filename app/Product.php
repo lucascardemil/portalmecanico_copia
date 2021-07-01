@@ -13,6 +13,12 @@ class Product extends Model
         return $this->hasMany('App\Code');
     }
 
+    public function productpagos()
+    {
+        return $this->hasOne('App\ProductPago');
+    }
+    
+
     public function scopeName($query)
     {
         $keyword = request('name');

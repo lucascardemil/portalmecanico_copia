@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Product;
+use App\TipoPago;
+use App\ProductPago;
 use App\Code;
+use App\Imports\ProductImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -18,9 +22,11 @@ class ProductController extends Controller
     public function index()
     {
         $idUser = Auth::id();
-        $products = Product::whereHas('codes.client', function ($query) use($idUser) {
-            $query->where('clients.user_id', '=', $idUser);
-        })->name()->orderBy('id', 'DESC')->paginate(10);
+
+        $products = Product::with('productpagos')
+                    ->whereHas('codes.client', function ($query) use($idUser) {
+                        $query->where('clients.user_id', '=', $idUser);
+                    })->name()->orderBy('id', 'DESC')->paginate(10);
 
         return [
             'pagination' => [
@@ -145,4 +151,115 @@ class ProductController extends Controller
         
         return $product;
     }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeTipoPago(Request $request)
+    {
+        $data = $request->all();
+
+        TipoPago::create($data);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listaTiposPagos()
+    {
+        $tipospagos = TipoPago::all();
+
+        return $tipospagos;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function updateTiposPagos(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $productpago = ProductPago::where('product_id', $id)->update([
+            'forma_pago' => $data['pago'],
+            'utilidad' => $data['utilidad']
+        ]);
+
+        if(empty($productpago)){
+            ProductPago::create([
+                'product_id' => $data['id'],
+                'forma_pago' => $data['pago'],
+                'utilidad' => $data['utilidad']
+            ]);
+        }
+
+        return;
+    }
+
+
+    public function allPagos()
+    {
+        $pagos = TipoPago::orderBy('id', 'ASC')->get();
+
+        return $pagos;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function updateUtilidad(Request $request, $id)
+    {
+        TipoPago::find($id)->update($request->all());
+
+        return;
+    }
+
+
+    public function uploadProducts(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xls,xlsx'
+        ]);
+
+        $path = $request->file('import_file');
+        $data = $request->all();
+
+        $import = new ProductImport;
+
+        Excel::import($import, $path);
+
+        foreach($import->products as $product){
+            Code::create([
+                'client_id' => $data['client'],
+                'product_id' => $product->id,
+                'codebar' => $product->detail, 
+                'is_activate' => 1              
+            ]);
+            
+            ProductPago::create([
+                'product_id' => $product->id,
+                'forma_pago' => $data['pago'],
+                'utilidad' => $data['utilidad']
+            ]);
+
+        }
+        
+        return response()->json(['message' => 'uploaded successfully'], 200);
+
+    }
+
+    
 }

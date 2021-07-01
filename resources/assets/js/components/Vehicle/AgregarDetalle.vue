@@ -67,35 +67,6 @@ export default {
 
     methods:{
         ...mapActions(['createDetailVehicle', 'fileChange']),
-        /*fileChange(e){
-            //console.log(e)
-            //let selectedFile = e.target.files[0]
-            this.attachment = []
-            let selectedFiles = e.target.files
-
-            if(!selectedFiles.length){
-                return false
-            }
-
-            for(let i = 0; i < selectedFiles.length; i++ ){
-                this.attachment.push(selectedFiles[i])
-                console.log(selectedFiles[i])
-            }
-        },*/
-        /*uploadFile(){
-            for(let i = 0; i < this.attachment.length; i++ ){
-                this.form.append('pics[]', this.attachment[i])
-            }
-
-            const config = { headers: { 'Content-Type': 'multipart/form-data' } }
-
-            axios.post('upload/', this.form, config).then(response=> {
-                console.log(response.data)
-            })
-            .catch(response => {
-
-            })
-        },*/
     },
 }
 </script>

@@ -222,6 +222,9 @@ export default { //computed propeties
     getUser(state, getters){
         return state.user
     },
+    getPago(state, getters){
+        return state.pago
+    },
     getClient(state, getters){
         return state.client
     },

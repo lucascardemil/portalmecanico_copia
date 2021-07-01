@@ -14,6 +14,7 @@ var urlTotalVehiAdmin = 'total-vehi-admin'
 var urlCantVehicle = 'cant-vehicle-user'
 var urlCantCliVehi = 'cant-cli-vehi-user'
 var urlAllUser = 'users-all'
+var urlAllPago = 'pagos-all'
 var urlRoles = 'roles'
 var urlAllRoles = 'roles-all'
 var urlUserRoles = 'usersRoles'
@@ -92,6 +93,10 @@ var urlActivity = 'activities'
 
 var urlProduct = 'products'
 var urlAllProduct = 'products-all'
+var urlTipoDePago = 'tipodepago'
+var urlProductTipoDePago = 'producttipopago'
+var urlUtilidad = 'utilidad'
+
 
 var urlProductimport = 'productimports'
 var urlAllProductimport = 'productimports-all'
@@ -265,6 +270,30 @@ export default { //used for changing the state
         })
 
     },
+    onFileChange(state, evt) {
+        state.import_file = evt.target.files[0] 
+    },
+    createProductsPagos(state) {
+        let formData = new FormData();
+        formData.append('import_file', state.import_file);
+        formData.append('client', state.selectedClient.value);
+        formData.append('pago', state.selectedPago.label);
+        formData.append('utilidad', state.selectedPago.utilidad);
+
+        var url = urlProduct
+        axios.post(url, formData, {
+            headers: { 'content-type': 'multipart/form-data' }
+        }).then(response => {
+            if(response.status === 200) {
+                $('#createProducts').modal('hide')
+                toastr.success('Los Productos se subieron correctamente!')
+            }
+        }).catch(error => {
+            $('#createProducts').modal('hide')  
+            toastr.error(error.response.data)
+        });
+    },
+
     updateVehicle(state, id) {
         var url = urlVehicle + '/' + id
         axios.put(url, {
@@ -1659,6 +1688,115 @@ export default { //used for changing the state
     /******************************* */
     /****** sección productos **** */
     /******************************* */
+
+    updateProductsUtilidad(state) {
+        var url = urlProduct
+        //state.newAllUtilidad.select = state.checkedSelect2
+        axios.post(url, {
+            check : state.checkedSelect2,
+            pago : state.selectedPago.label,
+            utilidad : state.selectedPago.utilidad
+        }).then(response => {
+            state.newAllUtilidad = {
+                check: [],
+                pago: '',
+                utilidad: ''
+            }
+            state.errorsLaravel = [];
+            toastr.success('Se actualizo la forma de pago')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    updateRole(state, id) {
+        var url = urlRoles + '/' + id
+        state.fillRole.special = state.checkedSpecialRole
+        state.fillRole.permissions = state.checkedPermissions
+        axios.put(url, state.fillRole).then(response => {
+            state.fillRole = {
+                id: '',
+                name: '',
+                description: ''
+            }
+            state.errorsLaravel = [];
+            $('#edit').modal('hide')
+            toastr.success('Rol actualizado con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    createTipoPago(state) {
+        var url = urlTipoDePago
+        axios.post(url, {
+            pago: state.newTipoPago.pago,
+            utilidad: state.newTipoPago.utilidad
+        }).then(response => {
+            state.newTipoPago = {
+                pago: '',
+                utilidad: ''
+            }
+            state.errorsLaravel = []
+            toastr.success('El tipo de pago se creo correctamente')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    getTiposPagos(state) {
+        var url = urlTipoDePago
+        axios.get(url).then(response => {
+            state.tipospagos = response.data
+        });
+    },
+
+    editTiposPagos(state, tipospagos) {
+        state.fillTipoPago.id = tipospagos.id
+        state.fillTipoPago.pago = tipospagos.pago
+        state.fillTipoPago.utilidad = tipospagos.utilidad
+        $("#edit").modal('show')
+    },
+
+    updateTiposPagos(state, id) {
+        var url = urlUtilidad + '/' + id
+        axios.put(url, state.fillTipoPago).then(response => {
+            state.fillTipoPago = {
+                id: '',
+                pago: '',
+                utilidad: ''
+            }
+            state.errorsLaravel = []
+            $('#edit').modal('hide')
+            toastr.success('El Forma de Pago se a actualizado con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    updateUtilidad(state, id) {
+        var url = urlTipoDePago + '/' + id
+        axios.put(url, {
+            id: state.fillTipoPago.id,
+            pago : state.selectedPago.label,
+            utilidad : state.selectedPago.utilidad
+        }).then(response => {
+            state.fillTipoPago = {
+                id: '',
+                pago: '',
+                utilidad: ''
+            }
+            state.errorsLaravel = []
+            $('#editUtilidad').modal('hide')
+            toastr.success('El producto se a actualizado con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    
+   
+
     getProducts(state, page) {
         var url = urlProduct + '?page=' + page + '&name=' + state.searchProduct.name
         axios.get(url).then(response => {
@@ -1666,6 +1804,7 @@ export default { //used for changing the state
             state.pagination = response.data.pagination
         });
     },
+    
     createProduct(state) {
         var url = urlProduct
         axios.post(url, {
@@ -2205,6 +2344,16 @@ export default { //used for changing the state
 
         $("#editCantVehicle").modal('show')
     },
+    editarUtilidad(state, user) {
+        state.fillTipoPago.id = user.id
+        if(user.productpagos != null){
+            state.selectedPago.label = user.productpagos.forma_pago
+        }else{
+            state.selectedPago.label = ""
+        }
+        
+        $("#editUtilidad").modal('show')
+    },
     editUserRoles(state, user) {
         //var roles = [user.role_id]
         var roles = []
@@ -2250,12 +2399,25 @@ export default { //used for changing the state
     setRoles(state, arr) {
         state.checkedRoles = arr
     },
+    setCheckedSelect(state, value) {
+        state.checkedSelect2 = [];
+        if (value) {
+            state.products.forEach(function (product) {
+                state.checkedSelect2.push(product.id);
+            });
+        }
+
+        state.checkedSelect2 = state.checkedSelect2;  
+    },
+    setCheckedSelect2(state, value) {
+        state.checkedSelect2 = value;  
+    },
     setSpecialRole(state, value) {
         if (value === 'no-access') {
             state.checkedPermissions = []
             $('input[name="permission"]').prop('disabled', true)
         }else if(value === 'all-access'){
-            state.checkedPermissions = [1,2,3,4,5,6,7,9,8,10,11,12,13,14,15,16,17]
+            state.checkedPermissions = [1,2,3,4,5,6,7,9,8,10,11,12,13,14,15,16,17,18]
             $('input[name="permission"]').prop('disabled', true)
         }else{
             state.checkedPermissions = []
@@ -2269,6 +2431,22 @@ export default { //used for changing the state
     },
     /****** sección select **** */
     /******************************* */
+    allPagos(state) {
+        var url = urlAllPago
+        axios.get(url).then(response => {
+            state.optionsPago = []
+            response.data.forEach((pago) => {
+                state.optionsPago.push({
+                    label: pago.pago,
+                    value: pago.id,
+                    utilidad: pago.utilidad
+                })
+            });
+        });
+    },
+    setPagos(state, pago) {
+        state.selectedPago = pago
+    },
     allUsers(state) {
         var url = urlAllUser
         axios.get(url).then(response => {

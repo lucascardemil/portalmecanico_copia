@@ -64,6 +64,12 @@ export default { //methods
     createDetailVehicle(context) {
         context.commit('createDetailVehicle')
     },
+    createProductsPagos(context) {
+        context.commit('createProductsPagos')
+        setTimeout(function () {
+            context.commit('getProducts', 1)
+        }, 1000)
+    },
     modalRequestParts(context, data) {
         context.commit('modalRequestParts', data.vehicleLocal)
     },
@@ -196,6 +202,9 @@ export default { //methods
     /********************************** */
     fileChange(context, data) {
         context.commit('fileChange', data.evt)
+    },
+    onFileChange(context, data) {
+        context.commit('onFileChange', data.evt)
     },
     getPhotos(context, data) {
         context.commit('getPhotos', data.id)
@@ -591,11 +600,34 @@ export default { //methods
     },
     changePageClient(context, data) {
         context.commit('paginate', data.page)
-        context.commit('changePageClient', data.page)
+        context.commit('getClients', data.page)
     },
     /******************************** */
     /******************************* */
     /*************seccion de productos***************** */
+
+    createTipoPago(context) {
+        context.commit('createTipoPago')
+    },
+    getTiposPagos(context, data) {
+        context.commit('getTiposPagos', data)
+    },
+    editTiposPagos(context, data) {
+        context.commit('editTiposPagos', data.tipospagosLocal)
+    },
+    updateTiposPagos(context, data) {
+        context.commit('updateTiposPagos', data.id)
+        setTimeout(function () {
+            context.commit('getTiposPagos')
+        }, 500)
+    },
+    updateUtilidad(context, data) {
+        context.commit('updateUtilidad', data.id)
+        setTimeout(function () {
+            context.commit('getTiposPagos')
+            context.commit('getProducts', 1)
+        }, 500)
+    },
     getProducts(context, data) {
         context.commit('getProducts', data.page)
     },
@@ -816,6 +848,10 @@ export default { //methods
         context.commit('updateRole', data.id)
         context.commit('getRoles', 1)
     },
+    updateProductsUtilidad(context, data) {
+        context.commit('updateProductsUtilidad', data)
+        context.commit('getProducts', 1)
+    },
     deleteRole(context, data) {
         context.commit('deleteRole', data.id)
         context.commit('getRoles', 1)
@@ -838,6 +874,9 @@ export default { //methods
     editCantVehicle(context, data) {
         context.commit('editCantVehicle', data.userLocal)
     },
+    editarUtilidad(context, data) {
+        context.commit('editarUtilidad', data.productLocal)
+    },
     editUserRoles(context, data) {
         context.commit('editUserRoles', data.userLocal)
     },
@@ -852,6 +891,12 @@ export default { //methods
         }, 1000)
     },
     /************ Sección de consultar para los selects************* */
+    setPagos(context, data) {
+        context.commit('setPagos', data)
+    },
+    allPagos(context) {
+        context.commit('allPagos')
+    },
     allUsers(context) {
         context.commit('allUsers')
     },
