@@ -5,6 +5,7 @@ export default { //data
     optionsPersonal: [],
     optionsClient: [],
     optionsProduct: [],
+    optionsProductSale: [],
     optionsProductimport: [],
     optionsVehicleBrand: [],
     optionsVehicleModel: [],
@@ -99,6 +100,10 @@ export default { //data
         value: ''
     },
     selectedProduct: {
+        label: '',
+        value: ''
+    },
+    selectedProductSale: {
         label: '',
         value: ''
     },

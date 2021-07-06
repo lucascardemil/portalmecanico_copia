@@ -93,6 +93,7 @@ var urlActivity = 'activities'
 
 var urlProduct = 'products'
 var urlAllProduct = 'products-all'
+var urlAllProductSale = 'products-all-sale'
 var urlTipoDePago = 'tipodepago'
 var urlProductTipoDePago = 'producttipopago'
 var urlUtilidad = 'utilidad'
@@ -2867,6 +2868,51 @@ export default { //used for changing the state
     },
     /******************************************************************************** */
 
+
+    allProductsSale(state) {
+        var url = urlAllProductSale
+        axios.get(url).then(response => {
+            state.optionsProductSale = []
+            response.data.forEach((productsale) => {
+                state.optionsProductSale.push({
+                    label: productsale.name,
+                    value: productsale.id,
+                    price: productsale.price,
+                    code_id: productsale.code_id,
+                    quantity: productsale.quantity
+                })
+            });
+        });
+    },
+    setProductSale(state, productsale) {
+        state.selectedProductSale = productsale
+        if (state.selectedProductSale != null) {
+            state.productForm.product = state.selectedProductSale.label
+            state.productForm.price = state.selectedProductSale.price
+
+            state.productForm.code_id = state.selectedProductSale.code_id
+
+            state.productForm.value = Math.round(
+                parseFloat((parseFloat(state.productForm.price) * parseFloat(state.productForm.quantity)) * parseFloat(state.productForm.utility / 100)) + parseFloat(state.productForm.price)
+            )
+
+            state.productForm.total = Math.round(state.productForm.value * 1.19)
+
+        } else {
+            state.productForm.product = ''
+            state.productForm.price = 0
+            state.productForm.total = 0
+        }
+    },
+
+    sumTotalProductSale(state) {        
+        state.productForm.value = Math.round(
+            parseFloat((parseFloat(state.productForm.price) * parseFloat(state.productForm.quantity)) * parseFloat(state.productForm.utility / 100)) + parseFloat(state.productForm.price)
+        )
+
+        state.productForm.total = Math.round(state.productForm.value * 1.19)
+    },
+
     allProducts(state) {
         var url = urlAllProduct
         axios.get(url).then(response => {
@@ -3147,39 +3193,45 @@ export default { //used for changing the state
     sumTotalImport(state) {},
 
     addToCart(state) {
-        state.cart.push({
-            product: {
-                label: state.selectedProduct.label,
-                value: state.selectedProduct.value
-            },
-            code: {
-                label: state.selectedCode.label,
-                value: state.selectedCode.value
-            },
-            price: {
-                label: state.selectedPrice.label,
-                value: state.selectedPrice.value
-            },
-            utility: state.productForm.utility,
-            quantity: state.productForm.quantity,
-            value: state.productForm.value,
-            total: state.productForm.total
-        })
-        state.cartValue += state.productForm.value
-        state.cartTotal += state.productForm.total
+        if(state.productForm.quantity > state.selectedProductSale.quantity){
+            toastr.error('¡Error, Supera la cantidad disponibles!')
+        }else{
+            state.cart.push({
+                product: {
+                    label: state.selectedProductSale.label,
+                    value: state.selectedProductSale.value,
+                    price: state.selectedProductSale.price,
+                    code_id: state.selectedProductSale.code_id
+                },
+                // code: {
+                //     label: state.selectedCode.label,
+                //     value: state.selectedCode.value
+                // },
+                // price: {
+                //     label: state.selectedPrice.label,
+                //     value: state.selectedPrice.value
+                // },
+                utility: state.productForm.utility,
+                quantity: state.productForm.quantity,
+                value: state.productForm.value,
+                total: state.productForm.total
+            })
+            state.cartValue += state.productForm.value
+            state.cartTotal += state.productForm.total
 
-        state.productForm = {
-            product_id: 0,
-            code_id: 0,
-            inventory_id: 0,
-            price: 0,
-            utility: 35,
-            quantity: 1,
-            value: 0,
-            total: 0,
-            code: '',
-            product: '',
-            max_quantity: 99
+            // state.productForm = {
+            //     product_id: 0,
+            //     code_id: 0,
+            //     inventory_id: 0,
+            //     price: 0,
+            //     utility: 35,
+            //     quantity: 1,
+            //     value: 0,
+            //     total: 0,
+            //     code: '',
+            //     product: '',
+            //     max_quantity: 99
+            // }
         }
     },
 
@@ -3239,8 +3291,8 @@ export default { //used for changing the state
 
     newSale(state) {
         let saleDetails = {
-            client_id: 5, //particular
-            total: state.cartTotal,
+            //client_id: 5, //particular
+            total: state.cartTotal
         }
 
         let sale = {
@@ -3255,9 +3307,10 @@ export default { //used for changing the state
                     state.cartTotal = 0
                     state.cartValue = 0
                     toastr.success('Venta generada con exito!')
+                    $('#create').modal('hide')
                 })
                 .catch(error => {
-                    // console.log(error.response.data)
+                    toastr.error(error.response.data)
                 })
         }
     },
@@ -3282,6 +3335,13 @@ export default { //used for changing the state
             })
 
     },
+
+    // allSales(state) {
+    //     var url = 'all-sales'
+    //     axios.get(url).then(response => {
+    //         state.sales = response.data
+    //     });
+    // },
 
     searchCode(state) {
         if (state.productForm.code !== '') {
@@ -3317,8 +3377,7 @@ export default { //used for changing the state
     },
 
     removeFromCart(state, data) {
-
-        let product = state.cart.find(p => p.product.value === data.id)
+        let product = state.cart.find(p => p.product.label == data.id)
 
         state.cartValue = state.cartValue - product.value
         state.cartTotal = state.cartTotal - product.total

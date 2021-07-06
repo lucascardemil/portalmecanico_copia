@@ -35,41 +35,54 @@
                                     </div> -->
 
                                     <div class="form-group col-lg-3">
-                                        <label for="name">Nombre</label>
-                                        <input required
-                                                :class="{'input': true, 'is-invalid': errors.has('name') }"
+                                        <label for="nombre">Nombre</label>
+                                        <input v-validate="'required|min:4|max:190'"
+                                                :class="{'input': true, 'is-invalid': errors.has('nombre') }"
                                                 type="text"
-                                                name="name"
+                                                name="nombre"
                                                 class="form-control" v-model="newUser.name">
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.name }}</p>
+            
+                                        <div v-for="(error, key) in errorsLaravel" class="text-danger" :key="key['errors']">
+                                            <div v-for="(errorItem, index) in error" :key="index">
+                                                <div v-if="index === 'name'">
+                                                    {{ errorItem[0] }}
+                                                </div>
+                                            </div> 
                                         </div>
                                     </div>
 
                                     <div class="form-group col-lg-3">
                                         <label for="email">Email</label>
-                                        <input required
+                                        <input v-validate="'required'"
                                                 :class="{'input': true, 'is-invalid': errors.has('email') }"
                                                 type="email"
                                                 name="email"
                                                 class="form-control" v-model="newUser.email">
                                 
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.email }}</p>
+                                        <div v-for="(error, key) in errorsLaravel" class="text-danger" :key="key['errors']">
+                                            <div v-for="(errorItem, index) in error" :key="index">
+                                                <div v-if="index === 'email'">
+                                                    {{ errorItem[0] }}
+                                                </div>
+                                            </div> 
                                         </div>
                                     </div>
                                     
 
                                     <div class="form-group col-lg-3">
                                         <label for="password">Contraseña</label>
-                                        <input required
+                                        <input v-validate="'required'"
                                                 :class="{'input': true, 'is-invalid': errors.has('password') }"
                                                 type="password"
                                                 name="password"
                                                 class="form-control" v-model="newUser.password">
                                       
-                                        <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">
-                                            <p>{{ error.password }}</p>
+                                        <div v-for="(error, key) in errorsLaravel" class="text-danger" :key="key['errors']">
+                                            <div v-for="(errorItem, index) in error" :key="index">
+                                                <div v-if="index === 'password'">
+                                                    {{ errorItem[0] }}
+                                                </div>
+                                            </div> 
                                         </div>
                                     </div>
 

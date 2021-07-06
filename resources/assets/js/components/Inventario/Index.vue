@@ -28,7 +28,7 @@
                     <td>{{ codeLocal.product.name }}</td>
                     <td>{{ codeLocal.codebar }}</td>
                     <td>{{ codeLocal.client.name }}</td>
-                    <td>{{ codeLocal.fecha_fact }}</td>
+                    <td></td>
                     <!-- <td>{{ codeLocal.inventories[0].price | currency('$', 0, { thousandsSeparator: '.' })}}</td>
                     <td>{{ codeLocal.inventories[0].quantity }}</td>
                     <td>{{ totalInventario(codeLocal.inventories[0]) | currency('$', 0, { thousandsSeparator: '.' })}}</td> -->
@@ -41,7 +41,11 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>{{ inventario.fecha_fact }}</td>
+                    <!-- <td>{{ inventario.fecha_fact }}</td> -->
+                    <td v-if="inventario.fecha_fact != null">{{ inventario.fecha_fact }}</td>
+                    <td v-else></td>
+
+
                     <td>{{ inventario.price | currency('$', 1) }}</td>
                     <td>{{ inventario.quantity }}</td>
                     <td>{{ totalInventario(inventario) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>

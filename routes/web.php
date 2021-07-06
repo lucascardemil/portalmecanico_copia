@@ -155,6 +155,8 @@ Route::get('productss', 'ProductController@products');
 Route::post('sale', 'SaleController@sale');
 Route::get('all-sales', 'SaleController@index');
 Route::get('sale-products/{sale}', 'SaleController@products');
+Route::get('products-all-sale', 'SaleController@all');
+
 Route::get('code-search/{code}', 'CodeController@search');
 Route::get('product-search/{code}', 'CodeController@product');
 Route::get('mechanic-clients', 'User\UserController@clients');

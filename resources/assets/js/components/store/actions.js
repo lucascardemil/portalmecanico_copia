@@ -1068,6 +1068,12 @@ export default { //methods
         // context.commit('setCode', { label:'', value:'' })
         // context.commit('allCodes')
     },
+    allProductsSale(context) {
+        context.commit('allProductsSale')
+    },
+    setProductSale(context, data) {
+        context.commit('setProductSale', data)
+    },
     allProductimports(context) {
         context.commit('allProductimports')
     },
@@ -1092,6 +1098,9 @@ export default { //methods
     },
     sumTotalProduct(context) {
         context.commit('sumTotalProduct')
+    },
+    sumTotalProductSale(context) {
+        context.commit('sumTotalProductSale')
     },
     sumTotalEditProduct(context) {
         context.commit('sumTotalEditProduct')
@@ -1158,6 +1167,7 @@ export default { //methods
             context.commit('allSales')
         }, 1000)
     },
+    
 
     allSales(context) {
         context.commit('allSales')

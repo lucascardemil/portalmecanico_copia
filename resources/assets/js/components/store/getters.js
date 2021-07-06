@@ -231,6 +231,9 @@ export default { //computed propeties
     getProduct(state, getters){
         return state.product
     },
+    getProductSale(state, getters){
+        return state.productsale
+    },
     /*******seccion de roles ************/
     /************************************ */
     completeRoleCreate(state, getters){
