@@ -680,6 +680,12 @@ export default { //data
     searchProduct: {
         name: ''
     },
+    search:{
+        name: ''
+    },
+    calendar: {
+        search: ''
+    },
     /*********************************** */
     /************************************ */
     /*** sección componentes de codigos */

@@ -22,8 +22,37 @@ class SaleController extends Controller
 
     public function index()
     {
-        // $sale = ProductSale::with('sale', 'codes')->get();
-        $sale = Sale::with('client', 'products')->get();
+        $idUser = Auth::id();
+        $search = request('calendar');
+
+        
+
+        if($search == "null" || $search == null){
+            $sale = Sale::with('client', 'products')->where('user_id', '=', $idUser)->get();
+        }else{
+            $sale = Sale::with('client', 'products')->where('user_id', '=', $idUser)->whereRaw("DATE_FORMAT(updated_at, '%Y-%m-%d') = ?", [$search])->get();
+        }
+        
+
+
+        // if($search == null){
+        //     $sale = DB::table('sales')
+        //     ->join('clients', 'clients.id', '=', 'sales.client_id')
+        //     ->join('productsales', 'sales.id', '=', 'productsales.sale_id')
+        //     ->select('sales.*', 'productsales.*')
+        //     ->where('sales.user_id', '=', $idUser)
+        //     ->get();
+
+        // }else{
+        //     $sale = DB::table('sales')
+        //     ->join('clients', 'clients.id', '=', 'sales.client_id')
+        //     ->join('productsales', 'sales.id', '=', 'productsales.sale_id')
+        //     ->select('sales.*', 'productsales.*')
+        //     ->where('sales.user_id', '=', $idUser)
+        //     ->where(DB::raw("(DATE_FORMAT(sales.updated_at, '%Y-%m-%d'))"), $search)
+        //     ->get();
+
+        // }
 
         return $sale;
     }
@@ -51,7 +80,7 @@ class SaleController extends Controller
                 'quantity' => $productsData[$i]['quantity']
             ]);
 
-            $inv = Inventory::where('price', $productsData[$i]['product']['price'])->get('quantity');
+            $inv = Inventory::where('id', $productsData[$i]['product']['inventory_id'])->get('quantity');
 
             Inventory::where('price', $productsData[$i]['product']['price'])->update([
                 'quantity' => $inv[0]->quantity - $productsData[$i]['quantity']
@@ -139,7 +168,7 @@ class SaleController extends Controller
             ->join('codes', 'clients.id', '=', 'codes.client_id')
             ->join('products', 'codes.product_id', '=', 'products.id')
             ->join('inventories', 'codes.id', '=', 'inventories.code_id')
-            ->select(DB::raw('max(inventories.fecha_fact)'), 'products.name', 'inventories.price', 'codes.id as code_id', 'inventories.quantity')
+            ->select(DB::raw('max(inventories.fecha_fact)'), 'products.name', 'inventories.price', 'codes.id as code_id', 'inventories.id as inventory_id', 'inventories.quantity')
             ->where('clients.user_id', '=', $idUser)
             ->where('inventories.quantity', '>', 0)
             ->groupBy('inventories.code_id')

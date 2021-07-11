@@ -1102,8 +1102,8 @@ export default { //methods
     sumTotalProductSale(context) {
         context.commit('sumTotalProductSale')
     },
-    sumTotalEditProduct(context) {
-        context.commit('sumTotalEditProduct')
+    sumTotalProductSale(context) {
+        context.commit('sumTotalProductSale')
     },
     distributionImport(context) {
         context.commit('distributionImport')
@@ -1164,14 +1164,22 @@ export default { //methods
     newSale(context, data) {
         context.commit('newSale', data)
         setTimeout(function () {
-            context.commit('allSales')
+            context.commit('allSalesCalendar')
         }, 1000)
     },
     
 
+    allSalesCalendar(context) {
+        context.commit('allSalesCalendar')
+    },
+    
     allSales(context) {
         context.commit('allSales')
     },
+
+    calendar(context) {
+        context.commit('calendar')
+    },    
 
     searchCode(context) {
         context.commit('searchCode')

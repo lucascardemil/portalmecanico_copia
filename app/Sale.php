@@ -10,6 +10,8 @@ class Sale extends Model
     protected $fillable = ['user_id', 'client_id', 'total'];
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    
+
     // public function codes() {
     //     return $this->hasManyThrough('App\ProductSale', 'App\Code', 'id', 'code_id', 'sale_id', 'id');
     // }

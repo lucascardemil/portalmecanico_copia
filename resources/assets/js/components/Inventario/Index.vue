@@ -6,7 +6,7 @@
         </h5>
         <div class="row mt-3">
             <div class="col-lg-3">
-                <input type="text" v-model="search" class="form-control" placeholder="Filtrar Producto...">
+                <input type="text" v-model="search.name" @keyup="getCodes" class="form-control" placeholder="Filtrar Producto...">
             </div>
         </div>
         <table class="table table-borderless table-dark table-hover table-striped mt-3 table-sm">
@@ -105,7 +105,7 @@ import Agregar from './Agregar'
 export default {
     data() {
         return {
-            search: '',
+            //search: '',
             sortMethod: 'asc'
         }
     },
@@ -121,11 +121,11 @@ export default {
                 if(this.totalInventario(a.inventories[0]) > this.totalInventario(b.inventories[0])) return 1 * modifier;
                 return 0;
             })
-            .filter(code => {
-                return code.product.name.toLowerCase().includes(this.search.toLowerCase())
-            })
+            // .filter(code => {
+            //     return code.product.name.toLowerCase().includes(this.search.toLowerCase())
+            // })
         },
-        ...mapState(['codes', 'pagination', 'offset', 'errorsLaravel', 'allInventory']),
+        ...mapState(['codes', 'search','pagination', 'offset', 'errorsLaravel', 'allInventory']),
         ...mapGetters(['isActived', 'pagesNumber'])
     },
     methods:{

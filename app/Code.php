@@ -28,4 +28,6 @@ class Code extends Model
         return $this->belongsToMany('App\ProductSale', 'sale_id')
             ->withPivot('code_id', 'price', 'utility', 'quantity');
     }
+
+    
 }

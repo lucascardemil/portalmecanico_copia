@@ -1874,12 +1874,13 @@ export default { //used for changing the state
     /****** sección codigos **** */
     /******************************* */
     getCodes(state, page) {
-        var url = urlCode + '?page=' + page
+        var url = urlCode + '?page=' + page + '&name=' + state.search.name
         axios.get(url).then(response => {
             state.codes = response.data.codes.data
             state.pagination = response.data.pagination
         });
     },
+    
     createCode(state) {
         var url = urlCode
         state.newCode.client_id = state.selectedClient.value
@@ -2879,7 +2880,8 @@ export default { //used for changing the state
                     value: productsale.id,
                     price: productsale.price,
                     code_id: productsale.code_id,
-                    quantity: productsale.quantity
+                    quantity: productsale.quantity,
+                    inventory_id: productsale.inventory_id
                 })
             });
         });
@@ -2891,10 +2893,14 @@ export default { //used for changing the state
             state.productForm.price = state.selectedProductSale.price
 
             state.productForm.code_id = state.selectedProductSale.code_id
+            state.productForm.inventory_id = state.selectedProductSale.inventory_id
 
-            state.productForm.value = Math.round(
-                parseFloat((parseFloat(state.productForm.price) * parseFloat(state.productForm.quantity)) * parseFloat(state.productForm.utility / 100)) + parseFloat(state.productForm.price)
-            )
+
+            var total = Math.round(parseFloat(state.productForm.price) * parseFloat(state.productForm.quantity))
+
+            var total_utilidad = Math.round( total * parseFloat(state.productForm.utility / 100))
+
+            state.productForm.value = Math.round(total + total_utilidad)
 
             state.productForm.total = Math.round(state.productForm.value * 1.19)
 
@@ -2906,9 +2912,11 @@ export default { //used for changing the state
     },
 
     sumTotalProductSale(state) {        
-        state.productForm.value = Math.round(
-            parseFloat((parseFloat(state.productForm.price) * parseFloat(state.productForm.quantity)) * parseFloat(state.productForm.utility / 100)) + parseFloat(state.productForm.price)
-        )
+        var total = Math.round(parseFloat(state.productForm.price) * parseFloat(state.productForm.quantity))
+
+        var total_utilidad = Math.round( total * parseFloat(state.productForm.utility / 100))
+
+        state.productForm.value = Math.round(total + total_utilidad)
 
         state.productForm.total = Math.round(state.productForm.value * 1.19)
     },
@@ -3000,6 +3008,8 @@ export default { //used for changing the state
             state.newDetailimport.detail = ''
         }
     },*/
+
+    
     /****** sección paginacion **** */
     /******************************* */
     paginate(state, page) {
@@ -3201,7 +3211,8 @@ export default { //used for changing the state
                     label: state.selectedProductSale.label,
                     value: state.selectedProductSale.value,
                     price: state.selectedProductSale.price,
-                    code_id: state.selectedProductSale.code_id
+                    code_id: state.selectedProductSale.code_id,
+                    inventory_id: state.selectedProductSale.inventory_id
                 },
                 // code: {
                 //     label: state.selectedCode.label,
@@ -3219,19 +3230,19 @@ export default { //used for changing the state
             state.cartValue += state.productForm.value
             state.cartTotal += state.productForm.total
 
-            // state.productForm = {
-            //     product_id: 0,
-            //     code_id: 0,
-            //     inventory_id: 0,
-            //     price: 0,
-            //     utility: 35,
-            //     quantity: 1,
-            //     value: 0,
-            //     total: 0,
-            //     code: '',
-            //     product: '',
-            //     max_quantity: 99
-            // }
+            state.productForm = {
+                product_id: 0,
+                code_id: 0,
+                inventory_id: 0,
+                price: 0,
+                utility: 35,
+                quantity: 1,
+                value: 0,
+                total: 0,
+                code: '',
+                product: '',
+                max_quantity: 99
+            }
         }
     },
 
@@ -3315,8 +3326,8 @@ export default { //used for changing the state
         }
     },
 
-    allSales(state) {
-        axios.get('all-sales')
+    allSalesCalendar(state) {
+        axios.get('all-sales?calendar=' + state.calendar.search)
             .then(response => {
                 state.sales = response.data
                 //esto se debe arreglar
@@ -3335,6 +3346,29 @@ export default { //used for changing the state
             })
 
     },
+
+    allSales(state) {
+        state.calendar.search = ''
+        axios.get('all-sales?calendar=')
+            .then(response => {
+                state.sales = response.data
+                //esto se debe arreglar
+                //encontrar una forma de guardar los nombres de los productos en el query de ventas
+                state.sales.forEach(sale => {
+                    sale.products.forEach(product => {
+                        axios.get('product-search/' + product.code_id)
+                            .then(response => {
+                                product.code_id = response.data.name
+                            })
+                    })
+                })
+            })
+            .catch(error => {
+                //console.log(error.response.data)
+            })
+
+    },
+
 
     // allSales(state) {
     //     var url = 'all-sales'

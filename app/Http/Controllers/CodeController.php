@@ -18,10 +18,34 @@ class CodeController extends Controller
     public function index()
     {
         $idUser = Auth::id();
+        // $codes = Code::with('client', 'product', 'inventories')
+        // ->whereHas('client', function ($query) use($idUser) {
+        //     $query->where('clients.user_id', '=', $idUser);
+        // })->orderBy('id', 'DESC')->paginate(10);
+
+        // return [
+        //     'pagination' => [
+        //         'total'         => $codes->total(),
+        //         'current_page'  => $codes->currentPage(),
+        //         'per_page'      => $codes->perPage(),
+        //         'last_page'     => $codes->lastPage(),
+        //         'from'          => $codes->firstItem(),
+        //         'to'            => $codes->lastItem(),
+        //     ],
+        //     'codes' => $codes
+        // ];
+
+
+
+        $search = request('name');
+
         $codes = Code::with('client', 'product', 'inventories')
         ->whereHas('client', function ($query) use($idUser) {
             $query->where('clients.user_id', '=', $idUser);
-        })->orderBy('id', 'DESC')->paginate(10);
+        })
+        ->WhereHas('product', function ($query) use($search) {
+            $query->where('products.name', 'LIKE', '%'.$search.'%');
+        })->orderBy('id', 'DESC')->paginate(20);
 
         return [
             'pagination' => [
