@@ -80,6 +80,7 @@ var urlDetailclient = 'detailclients'
 var urlQuotationclientPdf = 'quotationclient-pdf'
 var urlQuotationclientPdfIva = 'quotationclient-pdf-iva'
 var urlQuotationShippingPdf = 'quotationshipping-pdf'
+var urlGenerarReciboSales = 'generar-recibo-sale'
 
 var urlImport = 'imports'
 var urlImportDetails = 'import-details'
@@ -1147,6 +1148,7 @@ export default { //used for changing the state
         var url = urlQuotationclientPdfIva + '/' + state.idQuotationclient
         window.location.href = url;
     },
+    
     /******************************* */
     /****** sección detalles de cotizaciones de clientes**** */
     /******************************* */
@@ -3326,10 +3328,11 @@ export default { //used for changing the state
         }
     },
 
-    allSalesCalendar(state) {
-        axios.get('all-sales?calendar=' + state.calendar.search)
+    allSalesCalendar(state, page) {
+        axios.get('all-sales?page=' + page + '&calendar=' + state.calendar.search)
             .then(response => {
-                state.sales = response.data
+                state.sales = response.data.sales.data
+                state.pagination = response.data.pagination
                 //esto se debe arreglar
                 //encontrar una forma de guardar los nombres de los productos en el query de ventas
                 state.sales.forEach(sale => {
@@ -3347,11 +3350,13 @@ export default { //used for changing the state
 
     },
 
-    allSales(state) {
+
+    allSales(state, page) {
         state.calendar.search = ''
-        axios.get('all-sales?calendar=')
+        axios.get('all-sales?page=' +  page  + '&calendar=')
             .then(response => {
-                state.sales = response.data
+                state.sales = response.data.sales.data
+                state.pagination = response.data.pagination
                 //esto se debe arreglar
                 //encontrar una forma de guardar los nombres de los productos en el query de ventas
                 state.sales.forEach(sale => {
@@ -3367,6 +3372,11 @@ export default { //used for changing the state
                 //console.log(error.response.data)
             })
 
+    },
+
+    generarRecibo(state,id) {
+        var url = urlGenerarReciboSales + '/' + id
+        window.location.href = url;
     },
 
 

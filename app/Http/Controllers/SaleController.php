@@ -11,6 +11,7 @@ use App\Client;
 use App\ProductSale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class SaleController extends Controller
 {
@@ -28,33 +29,22 @@ class SaleController extends Controller
         
 
         if($search == "null" || $search == null){
-            $sale = Sale::with('client', 'products')->where('user_id', '=', $idUser)->get();
+            $sales = Sale::with('client', 'products')->where('user_id', '=', $idUser)->paginate(10);
         }else{
-            $sale = Sale::with('client', 'products')->where('user_id', '=', $idUser)->whereRaw("DATE_FORMAT(updated_at, '%Y-%m-%d') = ?", [$search])->get();
+            $sales = Sale::with('client', 'products')->where('user_id', '=', $idUser)->whereRaw("DATE_FORMAT(updated_at, '%Y-%m-%d') = ?", [$search])->paginate(10);
         }
-        
 
-
-        // if($search == null){
-        //     $sale = DB::table('sales')
-        //     ->join('clients', 'clients.id', '=', 'sales.client_id')
-        //     ->join('productsales', 'sales.id', '=', 'productsales.sale_id')
-        //     ->select('sales.*', 'productsales.*')
-        //     ->where('sales.user_id', '=', $idUser)
-        //     ->get();
-
-        // }else{
-        //     $sale = DB::table('sales')
-        //     ->join('clients', 'clients.id', '=', 'sales.client_id')
-        //     ->join('productsales', 'sales.id', '=', 'productsales.sale_id')
-        //     ->select('sales.*', 'productsales.*')
-        //     ->where('sales.user_id', '=', $idUser)
-        //     ->where(DB::raw("(DATE_FORMAT(sales.updated_at, '%Y-%m-%d'))"), $search)
-        //     ->get();
-
-        // }
-
-        return $sale;
+        return [
+            'pagination' => [
+                'total'         => $sales->total(),
+                'current_page'  => $sales->currentPage(),
+                'per_page'      => $sales->perPage(),
+                'last_page'     => $sales->lastPage(),
+                'from'          => $sales->firstItem(),
+                'to'            => $sales->lastItem(),
+            ],
+            'sales' => $sales
+        ];
     }
 
     public function sale(Request $request) {
@@ -176,5 +166,23 @@ class SaleController extends Controller
             
         
         return $product;
+    }
+
+    public function generarRecibo($id)
+    {
+        
+        $sales = Sale::find($id);
+        $product_sales = Sale::findOrFail($id)->products;
+        $client = Sale::find($id)->client;
+
+        foreach ($product_sales as $product_sale) {
+            $codes = Code::find($product_sale->code_id);
+            $products = Product::find($codes->product_id);
+        }
+
+        $pdf = PDF::loadView('pdf.sales-recibo', compact(['client', 'sales', 'product_sales' , 'products']) );
+
+        //return $pdf->download('cotizacion N° '.$id.'.pdf');
+        return $pdf->download('Recibo N° '.$id.'.pdf');
     }
 }

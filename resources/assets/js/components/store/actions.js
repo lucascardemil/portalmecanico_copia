@@ -342,6 +342,9 @@ export default { //methods
             context.commit('getQuotationShipping', 1)
         }, 1000)
     },
+    generarRecibo(context, data) {
+        context.commit('generarRecibo' , data.id)
+    },
     pdfQuotationclient(context) {
         context.commit('pdfQuotationclient')
     },
@@ -358,6 +361,10 @@ export default { //methods
     changePageQuotationclientForm(context, data) {
         context.commit('paginate', data.page)
         context.commit('getQuotationclientsform', data.page)
+    },
+    changePageSales(context, data) {
+        context.commit('paginate', data.page)
+        context.commit('allSalesCalendar', data.page)
     },
     /******************************** */
     /******************************* */
@@ -1169,12 +1176,12 @@ export default { //methods
     },
     
 
-    allSalesCalendar(context) {
-        context.commit('allSalesCalendar')
+    allSalesCalendar(context, data) {
+        context.commit('allSalesCalendar', data.page)
     },
     
-    allSales(context) {
-        context.commit('allSales')
+    allSales(context, data) {
+        context.commit('allSales', data.page)
     },
 
     calendar(context) {

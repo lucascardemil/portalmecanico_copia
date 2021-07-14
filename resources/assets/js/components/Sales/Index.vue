@@ -9,51 +9,122 @@
 		<div class="row mt-3">
 			<div class="col-2">
 				
-					<Datepicker valueType="format" :inline="true" v-model="calendar.search"/>
-					<div class="row">
-						<div class="col-6 pr-0">
-							<button class="btn btn-success btn-block" style="border-radius: 0;" @click.prevent="allSalesCalendar"><i class="fas fa-search"></i></button>
-						</div>
-						<div class="col-6 pl-0">
-							<button class="btn btn-danger btn-block" style="border-radius: 0;" @click.prevent="allSales"><i class="fas fa-times"></i></button>
-				        </div>	
+				<Datepicker valueType="format" :inline="true" v-model="calendar.search"/>
+				<div class="row">
+					<div class="col-6 pr-0">
+						<button class="btn btn-success btn-block" style="border-radius: 0;" @click.prevent="allSalesCalendar({page: 1})"><i class="fas fa-search"></i></button>
 					</div>
+					<div class="col-6 pl-0">
+						<button class="btn btn-danger btn-block" style="border-radius: 0;" @click.prevent="allSales({page: 1})"><i class="fas fa-times"></i></button>
+					</div>	
+				</div>
 				
 			</div>
 			<div class="col-10">
-				<table class="table table-borderless table-dark table-hover table-striped">
-					<thead>
-						<tr>
-							<th>Producto</th>
-							<th>Precio</th>
-							<th>Cantidad</th>
-							<th>Utilidad</th>
-							<th>Neto</th>
-							<th>Total</th>
-							<th>Fecha</th>
-						</tr>
-					</thead>
-					<tbody v-for="sale in sales" :key="sale.id">
-						<tr class="accordion-toggle" data-toggle="collapse" :data-target="'#sale'+sale.id">
-							<td style="width: 25%"></td>
-							<td style="width: 10%"></td>
-							<td style="width: 10%"></td>
-							<td style="width: 10%"></td>
-							<td style="width: 10%"></td>
-							<td style="width: 10%">{{ sale.total | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-							<td>{{ sale.updated_at }}</td>
-						</tr>
-						<tr v-for="product in sale.products" :key="product.id" :id="'sale'+sale.id" class="accordian-body collapse">
-							<td style="width: 25%">{{ product.code_id }}</td>
-							<td style="width: 10%">{{ product.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-							<td style="width: 10%">{{ product.quantity }}</td>
-							<td style="width: 10%">{{ parseInt( product.utility*100)+'%' }}</td>
-							<td style="width: 10%">{{ Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-							<td style="width: 10%">{{ Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) | currency('$', 0, { thousandsSeparator: '.' })}}</td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
+				<div v-if="!sales.length">
+					<table class="table table-borderless table-dark table-hover table-striped">
+						<thead>
+							<tr>
+								<th>Producto</th>
+								<th>Precio</th>
+								<th>Cantidad</th>
+								<th>Utilidad</th>
+								<th>Neto</th>
+								<th>Total</th>
+								<th>Fecha</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="7">
+									<h4 class="text-center text-white">¡NO HAY RESULTADOS!</h4>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div v-else>
+					<table class="table table-borderless table-dark table-hover table-striped">
+						<thead>
+							<tr>
+								<th>Producto</th>
+								<th>Precio</th>
+								<th>Cantidad</th>
+								<th>Utilidad</th>
+								<th>Neto</th>
+								<th>Total</th>
+								<th>Fecha</th>
+							</tr>
+						</thead>
+						<tbody v-for="sale in sales" :key="sale.id">
+							<tr class="accordion-toggle" data-toggle="collapse" :data-target="'#sale'+sale.id">
+								<td style="width: 25%"></td>
+								<td style="width: 10%"></td>
+								<td style="width: 10%"></td>
+								<td style="width: 10%"></td>
+								<td style="width: 10%"></td>
+								<td style="width: 10%">{{ sale.total | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td>{{ sale.updated_at }}</td>
+								<td>
+									<a href="#" class="btn btn-danger btn-sm"
+										@click.prevent="generarRecibo({ id: sale.id })"
+										role="button">
+										<i class="fas fa-file-invoice-dollar"></i> Recibo
+									</a>
+								</td>
+							</tr>
+							<tr v-for="product in sale.products" :key="product.id" :id="'sale'+sale.id" class="accordian-body collapse">
+								<td style="width: 25%">{{ product.code_id }}</td>
+								<td style="width: 10%">{{ product.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td style="width: 10%">{{ product.quantity }}</td>
+								<td style="width: 10%">{{ parseInt( product.utility*100)+'%' }}</td>
+								<td style="width: 10%">{{ Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td style="width: 10%">{{ Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) | currency('$', 0, { thousandsSeparator: '.' })}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<nav>
+					<ul class="pagination">
+						<li class="page-item" v-if="pagination.current_page > 1">
+							<a class="page-link border-light bg-dark" href="#"
+							@click.prevent="changePageSales({page: 1})">
+								<span>Primera</span>
+							</a>
+						</li>
+
+						<li class="page-item" v-if="pagination.current_page > 1">
+							<a class="page-link border-light bg-dark" href="#"
+							@click.prevent="changePageSales({page: pagination.current_page - 1})">
+								<span>Atrás</span>
+							</a>
+						</li>
+
+						<li class="page-item" v-for="page in pagesNumber"
+							v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
+							<a class="page-link border-light bg-dark" href="#"
+							@click.prevent="changePageSales({page})">
+								{{ page }}
+							</a>
+						</li>
+
+						<li class="page-item" v-if="pagination.current_page < pagination.last_page">
+							<a class="page-link border-light bg-dark" href="#"
+							@click.prevent="changePageSales({page: pagination.current_page + 1})">
+								<span>Siguiente</span>
+							</a>
+						</li>
+
+						<li class="page-item" v-if="pagination.current_page < pagination.last_page">
+							<a class="page-link border-light bg-dark" href="#"
+							@click.prevent="changePageSales({page:pagination.last_page})">
+								<span>Última</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
@@ -74,13 +145,14 @@ import NewSale from './NewSale'
 export default {
 	components : { NewCode, ReadCode, NewSale, Datepicker},
 	computed: {
-		...mapState(['cart', 'calendar', 'cartValue', 'cartTotal', 'sales', 'productSales']),
+		...mapState(['cart', 'calendar', 'cartValue', 'cartTotal', 'sales', 'productSales', 'pagination', 'offset']),
+		...mapGetters(['isActived', 'pagesNumber'])
 	},
 	methods: {
-		...mapActions(['newSale', 'allSalesCalendar', 'allSales', 'removeFromCart'])
+		...mapActions(['newSale', 'allSalesCalendar', 'allSales', 'removeFromCart', 'changePageSales', 'generarRecibo'])
 	},
 	created() {
-		this.$store.dispatch('allSalesCalendar')
+		this.$store.dispatch('allSalesCalendar', { page: 1 })
 	},
 	
 }

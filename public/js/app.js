@@ -9588,6 +9588,77 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  //import Datepicker from 'vuejs-datetimepicker'
 
 
@@ -9603,10 +9674,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     NewSale: _NewSale__WEBPACK_IMPORTED_MODULE_6__["default"],
     Datepicker: vue2_datepicker__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'calendar', 'cartValue', 'cartTotal', 'sales', 'productSales'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['newSale', 'allSalesCalendar', 'allSales', 'removeFromCart'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'calendar', 'cartValue', 'cartTotal', 'sales', 'productSales', 'pagination', 'offset'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isActived', 'pagesNumber'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['newSale', 'allSalesCalendar', 'allSales', 'removeFromCart', 'changePageSales', 'generarRecibo'])),
   created: function created() {
-    this.$store.dispatch('allSalesCalendar');
+    this.$store.dispatch('allSalesCalendar', {
+      page: 1
+    });
   }
 });
 
@@ -62716,7 +62789,7 @@ var render = function() {
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        return _vm.allSalesCalendar($event)
+                        return _vm.allSalesCalendar({ page: 1 })
                       }
                     }
                   },
@@ -62733,7 +62806,7 @@ var render = function() {
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        return _vm.allSales($event)
+                        return _vm.allSales({ page: 1 })
                       }
                     }
                   },
@@ -62746,141 +62819,298 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("div", { staticClass: "col-10" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "table table-borderless table-dark table-hover table-striped"
-            },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._l(_vm.sales, function(sale) {
-                return _c(
-                  "tbody",
-                  { key: sale.id },
+          !_vm.sales.length
+            ? _c("div", [_vm._m(1)])
+            : _c("div", [
+                _c(
+                  "table",
+                  {
+                    staticClass:
+                      "table table-borderless table-dark table-hover table-striped"
+                  },
                   [
-                    _c(
-                      "tr",
-                      {
-                        staticClass: "accordion-toggle",
-                        attrs: {
-                          "data-toggle": "collapse",
-                          "data-target": "#sale" + sale.id
-                        }
-                      },
-                      [
-                        _c("td", { staticStyle: { width: "25%" } }),
-                        _vm._v(" "),
-                        _c("td", { staticStyle: { width: "10%" } }),
-                        _vm._v(" "),
-                        _c("td", { staticStyle: { width: "10%" } }),
-                        _vm._v(" "),
-                        _c("td", { staticStyle: { width: "10%" } }),
-                        _vm._v(" "),
-                        _c("td", { staticStyle: { width: "10%" } }),
-                        _vm._v(" "),
-                        _c("td", { staticStyle: { width: "10%" } }, [
-                          _vm._v(
-                            _vm._s(
-                              _vm._f("currency")(sale.total, "$", 0, {
-                                thousandsSeparator: "."
-                              })
-                            )
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(sale.updated_at))])
-                      ]
-                    ),
+                    _vm._m(2),
                     _vm._v(" "),
-                    _vm._l(sale.products, function(product) {
+                    _vm._l(_vm.sales, function(sale) {
                       return _c(
-                        "tr",
-                        {
-                          key: product.id,
-                          staticClass: "accordian-body collapse",
-                          attrs: { id: "sale" + sale.id }
-                        },
+                        "tbody",
+                        { key: sale.id },
                         [
-                          _c("td", { staticStyle: { width: "25%" } }, [
-                            _vm._v(_vm._s(product.code_id))
-                          ]),
+                          _c(
+                            "tr",
+                            {
+                              staticClass: "accordion-toggle",
+                              attrs: {
+                                "data-toggle": "collapse",
+                                "data-target": "#sale" + sale.id
+                              }
+                            },
+                            [
+                              _c("td", { staticStyle: { width: "25%" } }),
+                              _vm._v(" "),
+                              _c("td", { staticStyle: { width: "10%" } }),
+                              _vm._v(" "),
+                              _c("td", { staticStyle: { width: "10%" } }),
+                              _vm._v(" "),
+                              _c("td", { staticStyle: { width: "10%" } }),
+                              _vm._v(" "),
+                              _c("td", { staticStyle: { width: "10%" } }),
+                              _vm._v(" "),
+                              _c("td", { staticStyle: { width: "10%" } }, [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm._f("currency")(sale.total, "$", 0, {
+                                      thousandsSeparator: "."
+                                    })
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(sale.updated_at))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-danger btn-sm",
+                                    attrs: { href: "#", role: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.generarRecibo({
+                                          id: sale.id
+                                        })
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-file-invoice-dollar"
+                                    }),
+                                    _vm._v(" Recibo\n\t\t\t\t\t\t\t\t")
+                                  ]
+                                )
+                              ])
+                            ]
+                          ),
                           _vm._v(" "),
-                          _c("td", { staticStyle: { width: "10%" } }, [
-                            _vm._v(
-                              _vm._s(
-                                _vm._f("currency")(product.price, "$", 0, {
-                                  thousandsSeparator: "."
-                                })
-                              )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticStyle: { width: "10%" } }, [
-                            _vm._v(_vm._s(product.quantity))
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticStyle: { width: "10%" } }, [
-                            _vm._v(
-                              _vm._s(parseInt(product.utility * 100) + "%")
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticStyle: { width: "10%" } }, [
-                            _vm._v(
-                              _vm._s(
-                                _vm._f("currency")(
-                                  Math.round(
-                                    parseFloat(
-                                      product.price * product.quantity
-                                    ) *
-                                      parseFloat(product.utility) +
-                                      parseFloat(
-                                        product.price * product.quantity
+                          _vm._l(sale.products, function(product) {
+                            return _c(
+                              "tr",
+                              {
+                                key: product.id,
+                                staticClass: "accordian-body collapse",
+                                attrs: { id: "sale" + sale.id }
+                              },
+                              [
+                                _c("td", { staticStyle: { width: "25%" } }, [
+                                  _vm._v(_vm._s(product.code_id))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticStyle: { width: "10%" } }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("currency")(
+                                        product.price,
+                                        "$",
+                                        0,
+                                        { thousandsSeparator: "." }
                                       )
-                                  ),
-                                  "$",
-                                  0,
-                                  { thousandsSeparator: "." }
-                                )
-                              )
+                                    )
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticStyle: { width: "10%" } }, [
+                                  _vm._v(_vm._s(product.quantity))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticStyle: { width: "10%" } }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      parseInt(product.utility * 100) + "%"
+                                    )
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticStyle: { width: "10%" } }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("currency")(
+                                        Math.round(
+                                          parseFloat(
+                                            product.price * product.quantity
+                                          ) *
+                                            parseFloat(product.utility) +
+                                            parseFloat(
+                                              product.price * product.quantity
+                                            )
+                                        ),
+                                        "$",
+                                        0,
+                                        { thousandsSeparator: "." }
+                                      )
+                                    )
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticStyle: { width: "10%" } }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("currency")(
+                                        Math.round(
+                                          (parseFloat(
+                                            product.price * product.quantity
+                                          ) *
+                                            parseFloat(product.utility) +
+                                            parseFloat(
+                                              product.price * product.quantity
+                                            )) *
+                                            1.19
+                                        ),
+                                        "$",
+                                        0,
+                                        { thousandsSeparator: "." }
+                                      )
+                                    )
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td"),
+                                _vm._v(" "),
+                                _c("td")
+                              ]
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticStyle: { width: "10%" } }, [
-                            _vm._v(
-                              _vm._s(
-                                _vm._f("currency")(
-                                  Math.round(
-                                    (parseFloat(
-                                      product.price * product.quantity
-                                    ) *
-                                      parseFloat(product.utility) +
-                                      parseFloat(
-                                        product.price * product.quantity
-                                      )) *
-                                      1.19
-                                  ),
-                                  "$",
-                                  0,
-                                  { thousandsSeparator: "." }
-                                )
-                              )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td")
-                        ]
+                          })
+                        ],
+                        2
                       )
                     })
                   ],
                   2
                 )
-              })
-            ],
-            2
-          )
+              ]),
+          _vm._v(" "),
+          _c("nav", [
+            _c(
+              "ul",
+              { staticClass: "pagination" },
+              [
+                _vm.pagination.current_page > 1
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link border-light bg-dark",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageSales({ page: 1 })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Primera")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.pagination.current_page > 1
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link border-light bg-dark",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageSales({
+                                page: _vm.pagination.current_page - 1
+                              })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Atrás")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(_vm.pagesNumber, function(page) {
+                  return _c(
+                    "li",
+                    {
+                      key: page,
+                      staticClass: "page-item",
+                      class: [page == _vm.isActived ? "active" : ""]
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link border-light bg-dark",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageSales({ page: page })
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t" + _vm._s(page) + "\n\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _vm.pagination.current_page < _vm.pagination.last_page
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link border-light bg-dark",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageSales({
+                                page: _vm.pagination.current_page + 1
+                              })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Siguiente")])]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.pagination.current_page < _vm.pagination.last_page
+                  ? _c("li", { staticClass: "page-item" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link border-light bg-dark",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.changePageSales({
+                                page: _vm.pagination.last_page
+                              })
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Última")])]
+                      )
+                    ])
+                  : _vm._e()
+              ],
+              2
+            )
+          ])
         ])
       ])
     ],
@@ -62908,6 +63138,47 @@ var staticRenderFns = [
         [_c("i", { staticClass: "fas fa-plus-circle" })]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "table",
+      {
+        staticClass:
+          "table table-borderless table-dark table-hover table-striped"
+      },
+      [
+        _c("thead", [
+          _c("tr", [
+            _c("th", [_vm._v("Producto")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Precio")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Cantidad")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Utilidad")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Neto")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Total")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Fecha")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("td", { attrs: { colspan: "7" } }, [
+              _c("h4", { staticClass: "text-center text-white" }, [
+                _vm._v("¡NO HAY RESULTADOS!")
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -107590,6 +107861,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       context.commit('getQuotationShipping', 1);
     }, 1000);
   },
+  generarRecibo: function generarRecibo(context, data) {
+    context.commit('generarRecibo', data.id);
+  },
   pdfQuotationclient: function pdfQuotationclient(context) {
     context.commit('pdfQuotationclient');
   },
@@ -107606,6 +107880,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   changePageQuotationclientForm: function changePageQuotationclientForm(context, data) {
     context.commit('paginate', data.page);
     context.commit('getQuotationclientsform', data.page);
+  },
+  changePageSales: function changePageSales(context, data) {
+    context.commit('paginate', data.page);
+    context.commit('allSalesCalendar', data.page);
   },
 
   /******************************** */
@@ -108422,10 +108700,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   setTimeout(function () {
     context.commit('allSalesCalendar');
   }, 1000);
-}), _defineProperty(_getVehicles$getVehic, "allSalesCalendar", function allSalesCalendar(context) {
-  context.commit('allSalesCalendar');
-}), _defineProperty(_getVehicles$getVehic, "allSales", function allSales(context) {
-  context.commit('allSales');
+}), _defineProperty(_getVehicles$getVehic, "allSalesCalendar", function allSalesCalendar(context, data) {
+  context.commit('allSalesCalendar', data.page);
+}), _defineProperty(_getVehicles$getVehic, "allSales", function allSales(context, data) {
+  context.commit('allSales', data.page);
 }), _defineProperty(_getVehicles$getVehic, "calendar", function calendar(context) {
   context.commit('calendar');
 }), _defineProperty(_getVehicles$getVehic, "searchCode", function searchCode(context) {
@@ -108900,6 +109178,7 @@ var urlDetailclient = 'detailclients';
 var urlQuotationclientPdf = 'quotationclient-pdf';
 var urlQuotationclientPdfIva = 'quotationclient-pdf-iva';
 var urlQuotationShippingPdf = 'quotationshipping-pdf';
+var urlGenerarReciboSales = 'generar-recibo-sale';
 var urlImport = 'imports';
 var urlImportDetails = 'import-details';
 var urlDetailimport = 'detailimports';
@@ -111793,9 +112072,10 @@ var urlCompany = 'companies';
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.error(error.response.data);
     });
   }
-}), _defineProperty(_getVehicles$getVehic, "allSalesCalendar", function allSalesCalendar(state) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('all-sales?calendar=' + state.calendar.search).then(function (response) {
-    state.sales = response.data; //esto se debe arreglar
+}), _defineProperty(_getVehicles$getVehic, "allSalesCalendar", function allSalesCalendar(state, page) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('all-sales?page=' + page + '&calendar=' + state.calendar.search).then(function (response) {
+    state.sales = response.data.sales.data;
+    state.pagination = response.data.pagination; //esto se debe arreglar
     //encontrar una forma de guardar los nombres de los productos en el query de ventas
 
     state.sales.forEach(function (sale) {
@@ -111807,10 +112087,11 @@ var urlCompany = 'companies';
     });
   })["catch"](function (error) {//console.log(error.response.data)
   });
-}), _defineProperty(_getVehicles$getVehic, "allSales", function allSales(state) {
+}), _defineProperty(_getVehicles$getVehic, "allSales", function allSales(state, page) {
   state.calendar.search = '';
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('all-sales?calendar=').then(function (response) {
-    state.sales = response.data; //esto se debe arreglar
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('all-sales?page=' + page + '&calendar=').then(function (response) {
+    state.sales = response.data.sales.data;
+    state.pagination = response.data.pagination; //esto se debe arreglar
     //encontrar una forma de guardar los nombres de los productos en el query de ventas
 
     state.sales.forEach(function (sale) {
@@ -111822,6 +112103,9 @@ var urlCompany = 'companies';
     });
   })["catch"](function (error) {//console.log(error.response.data)
   });
+}), _defineProperty(_getVehicles$getVehic, "generarRecibo", function generarRecibo(state, id) {
+  var url = urlGenerarReciboSales + '/' + id;
+  window.location.href = url;
 }), _defineProperty(_getVehicles$getVehic, "searchCode", function searchCode(state) {
   if (state.productForm.code !== '') {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('code-search/' + state.productForm.code).then(function (response) {

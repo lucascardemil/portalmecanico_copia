@@ -105,6 +105,7 @@ Route::get('quotation-pdf/{id}', 'QuotationController@pdf');
 Route::get('quotationclient-pdf/{id}', 'QuotationclientController@pdf');
 Route::get('quotationclient-pdf-iva/{id}', 'QuotationclientController@pdfIva');
 
+
 Route::get('vehicleclients-all', 'QuotationclientController@all');
 
 Route::ApiResource('imports', 'ImportController');
@@ -156,6 +157,7 @@ Route::post('sale', 'SaleController@sale');
 Route::get('all-sales', 'SaleController@index');
 Route::get('sale-products/{sale}', 'SaleController@products');
 Route::get('products-all-sale', 'SaleController@all');
+Route::get('generar-recibo-sale/{id}', 'SaleController@generarRecibo');
 
 Route::get('code-search/{code}', 'CodeController@search');
 Route::get('product-search/{code}', 'CodeController@product');
