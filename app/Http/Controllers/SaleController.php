@@ -170,21 +170,28 @@ class SaleController extends Controller
 
     public function generarRecibo($id)
     {
+
+        $products = DB::table('products')
+            ->join('codes', 'products.id', '=', 'codes.product_id')
+            ->join('productsales', 'codes.id', '=', 'productsales.code_id')
+            ->where('productsales.sale_id', '=', $id)
+            ->get();
         
-        $sales = Sale::find($id);
-        $product_sales = Sale::findOrFail($id)->products;
-        $client = Sale::find($id)->client;
-        $user = Sale::find($id)->user;
+        $clients = DB::table('sales')
+            ->join('users', 'sales.user_id', '=', 'users.id')
+            ->join('clients', 'sales.client_id', '=', 'clients.id')
+            ->select('users.name as user_name', 
+                     'sales.id as sale_id',
+                     'sales.updated_at as sale_updated_at',  
+                     'clients.address as client_address', 
+                     'clients.phone as client_phone',
+                     'clients.razonSocial as client_razonSocial')
+            ->where('sales.id', '=', $id)
+            ->get();
 
-
-        foreach ($product_sales as $product_sale) {
-            $codes = Code::find($product_sale->code_id);
-            $products = Product::find($codes->product_id);
-        }
-
-        $pdf = PDF::loadView('pdf.sales-recibo', compact(['client','user','sales', 'product_sales' , 'products']) );
-
-        //return $pdf->download('cotizacion N° '.$id.'.pdf');
+       
+        $pdf = PDF::loadView('pdf.sales-recibo', compact(['products','clients']) );
         return $pdf->stream('Recibo N° '.$id.'.pdf');
+
     }
 }

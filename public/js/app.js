@@ -112113,7 +112113,17 @@ var urlCompany = 'companies';
   });
 }), _defineProperty(_getVehicles$getVehic, "generarRecibo", function generarRecibo(state, id) {
   var url = urlGenerarReciboSales + '/' + id;
-  window.location.href = url;
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(urlGenerarReciboSales).then(function (response) {
+    state.sales = response.data.sales.data;
+    state.sales.forEach(function (sale) {
+      sale.products.forEach(function (product) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('product-search/' + product.code_id).then(function (response) {
+          product.code_id = response.data.name;
+        });
+      });
+    });
+  })["catch"](function (error) {//console.log(error.response.data)
+  });
 }), _defineProperty(_getVehicles$getVehic, "searchCode", function searchCode(state) {
   if (state.productForm.code !== '') {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('code-search/' + state.productForm.code).then(function (response) {

@@ -3376,9 +3376,25 @@ export default { //used for changing the state
 
     },
 
-    generarRecibo(state,id) {
+    generarRecibo(state, id) {
         var url = urlGenerarReciboSales + '/' + id
-        window.location.href = url;
+
+        axios.get(urlGenerarReciboSales)
+            .then(response => {
+                state.sales = response.data.sales.data
+                
+                state.sales.forEach(sale => {
+                    sale.products.forEach(product => {
+                        axios.get('product-search/' + product.code_id)
+                            .then(response => {
+                                product.code_id = response.data.name
+                            })
+                    })
+                })
+            })
+            .catch(error => {
+                //console.log(error.response.data)
+            })
     },
 
 

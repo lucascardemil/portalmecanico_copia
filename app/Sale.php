@@ -13,7 +13,7 @@ class Sale extends Model
     
 
     // public function codes() {
-    //     return $this->hasManyThrough('App\ProductSale', 'App\Code', 'id', 'code_id', 'sale_id', 'id');
+    //     return $this->hasManyThrough('App\ProductSale', 'App\Code', 'id', 'code_id', 'id', 'id');
     // }
 
     // public function codes() {
@@ -23,6 +23,7 @@ class Sale extends Model
     public function products() {
         return $this->hasMany('App\ProductSale');
     }
+
 
     public function client() {
         return $this->belongsTo('App\Client');
