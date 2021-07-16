@@ -76,6 +76,7 @@
                         <select class="form-control" v-model="fillClient.type">
                             <option>Cliente</option>
                             <option>Proveedor</option>
+                            <option>Empresa</option>
                         </select>
 
                         <div v-for="(error, index) in errorsLaravel" class="text-danger" :key="index">

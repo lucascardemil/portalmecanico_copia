@@ -155,6 +155,7 @@
                                         <select class="form-control" v-model="newClient.type">
                                             <option>Cliente</option>
                                             <option>Proveedor</option>
+                                            <option>Empresa</option>
                                         </select>
                                     </div>
 

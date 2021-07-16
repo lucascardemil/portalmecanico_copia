@@ -2991,6 +2991,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillClient', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])([])),
@@ -3020,6 +3021,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -47526,7 +47528,9 @@ var render = function() {
                   [
                     _c("option", [_vm._v("Cliente")]),
                     _vm._v(" "),
-                    _c("option", [_vm._v("Proveedor")])
+                    _c("option", [_vm._v("Proveedor")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Empresa")])
                   ]
                 ),
                 _vm._v(" "),
@@ -48265,7 +48269,9 @@ var render = function() {
                             [
                               _c("option", [_vm._v("Cliente")]),
                               _vm._v(" "),
-                              _c("option", [_vm._v("Proveedor")])
+                              _c("option", [_vm._v("Proveedor")]),
+                              _vm._v(" "),
+                              _c("option", [_vm._v("Empresa")])
                             ]
                           )
                         ]),
@@ -109960,6 +109966,7 @@ var urlCompany = 'companies';
   },
   editClient: function editClient(state, client) {
     state.fillClient.id = client.id;
+    state.fillClient.user_id = client.user_id;
     state.fillClient.name = client.name;
     state.fillClient.rut = client.rut;
     state.fillClient.razonSocial = client.razonSocial;
@@ -109976,6 +109983,7 @@ var urlCompany = 'companies';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, state.fillClient).then(function (response) {
       state.fillUser = {
         id: '',
+        user_id: '',
         name: '',
         rut: '',
         razonSocial: '',

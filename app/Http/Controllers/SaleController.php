@@ -50,7 +50,7 @@ class SaleController extends Controller
     public function sale(Request $request) {
 
         $saleData = $request->sale;
-        $clients = Client::where('user_id', '=', Auth::user()->id)->where('type', '=', 'Cliente Particular')->get();
+        $clients = Client::where('user_id', '=', Auth::user()->id)->where('type', '=', 'Empresa')->get();
 
         $sale = Sale::create([
             'user_id' => Auth::user()->id,
@@ -174,15 +174,17 @@ class SaleController extends Controller
         $sales = Sale::find($id);
         $product_sales = Sale::findOrFail($id)->products;
         $client = Sale::find($id)->client;
+        $user = Sale::find($id)->user;
+
 
         foreach ($product_sales as $product_sale) {
             $codes = Code::find($product_sale->code_id);
             $products = Product::find($codes->product_id);
         }
 
-        $pdf = PDF::loadView('pdf.sales-recibo', compact(['client', 'sales', 'product_sales' , 'products']) );
+        $pdf = PDF::loadView('pdf.sales-recibo', compact(['client','user','sales', 'product_sales' , 'products']) );
 
         //return $pdf->download('cotizacion N° '.$id.'.pdf');
-        return $pdf->download('Recibo N° '.$id.'.pdf');
+        return $pdf->stream('Recibo N° '.$id.'.pdf');
     }
 }

@@ -902,6 +902,7 @@ export default { //used for changing the state
     },
     editClient(state, client) {
         state.fillClient.id = client.id
+        state.fillClient.user_id = client.user_id
         state.fillClient.name = client.name
         state.fillClient.rut = client.rut
         state.fillClient.razonSocial = client.razonSocial
@@ -918,6 +919,7 @@ export default { //used for changing the state
         axios.put(url, state.fillClient).then(response => {
             state.fillUser = {
                 id: '',
+                user_id: '',
                 name: '',
                 rut: '',
                 razonSocial: '',
