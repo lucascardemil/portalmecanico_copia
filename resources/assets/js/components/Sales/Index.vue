@@ -86,45 +86,52 @@
 						</tbody>
 					</table>
 				</div>
-				<nav>
-					<ul class="pagination">
-						<li class="page-item" v-if="pagination.current_page > 1">
-							<a class="page-link border-light bg-dark" href="#"
-							@click.prevent="changePageSales({page: 1})">
-								<span>Primera</span>
-							</a>
-						</li>
+				<div class="row">
+					<div class="col-10">
+						<nav>
+							<ul class="pagination">
+								<li class="page-item" v-if="pagination.current_page > 1">
+									<a class="page-link border-light bg-dark" href="#"
+									@click.prevent="changePageSales({page: 1})">
+										<span>Primera</span>
+									</a>
+								</li>
 
-						<li class="page-item" v-if="pagination.current_page > 1">
-							<a class="page-link border-light bg-dark" href="#"
-							@click.prevent="changePageSales({page: pagination.current_page - 1})">
-								<span>Atrás</span>
-							</a>
-						</li>
+								<li class="page-item" v-if="pagination.current_page > 1">
+									<a class="page-link border-light bg-dark" href="#"
+									@click.prevent="changePageSales({page: pagination.current_page - 1})">
+										<span>Atrás</span>
+									</a>
+								</li>
 
-						<li class="page-item" v-for="page in pagesNumber"
-							v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
-							<a class="page-link border-light bg-dark" href="#"
-							@click.prevent="changePageSales({page})">
-								{{ page }}
-							</a>
-						</li>
+								<li class="page-item" v-for="page in pagesNumber"
+									v-bind:class="[ page == isActived ? 'active' : '' ]" :key="page">
+									<a class="page-link border-light bg-dark" href="#"
+									@click.prevent="changePageSales({page})">
+										{{ page }}
+									</a>
+								</li>
 
-						<li class="page-item" v-if="pagination.current_page < pagination.last_page">
-							<a class="page-link border-light bg-dark" href="#"
-							@click.prevent="changePageSales({page: pagination.current_page + 1})">
-								<span>Siguiente</span>
-							</a>
-						</li>
+								<li class="page-item" v-if="pagination.current_page < pagination.last_page">
+									<a class="page-link border-light bg-dark" href="#"
+									@click.prevent="changePageSales({page: pagination.current_page + 1})">
+										<span>Siguiente</span>
+									</a>
+								</li>
 
-						<li class="page-item" v-if="pagination.current_page < pagination.last_page">
-							<a class="page-link border-light bg-dark" href="#"
-							@click.prevent="changePageSales({page:pagination.last_page})">
-								<span>Última</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
+								<li class="page-item" v-if="pagination.current_page < pagination.last_page">
+									<a class="page-link border-light bg-dark" href="#"
+									@click.prevent="changePageSales({page:pagination.last_page})">
+										<span>Última</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="col-2" >
+						<button class="btn btn-danger btn-block" @click.prevent="cierreCajaZ()"><i class="fas fa-file-invoice-dollar"></i> Cierre de caja Z</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -145,11 +152,11 @@ import NewSale from './NewSale'
 export default {
 	components : { NewCode, ReadCode, NewSale, Datepicker},
 	computed: {
-		...mapState(['cart', 'calendar', 'cartValue', 'cartTotal', 'sales', 'productSales', 'pagination', 'offset']),
+		...mapState(['cart', 'calendar', 'cartValue', 'cartTotal', 'sales', 'searchFecha','productSales', 'pagination', 'offset']),
 		...mapGetters(['isActived', 'pagesNumber'])
 	},
 	methods: {
-		...mapActions(['newSale', 'allSalesCalendar', 'allSales', 'removeFromCart', 'changePageSales', 'generarRecibo'])
+		...mapActions(['newSale', 'allSalesCalendar', 'cierreCajaZ','allSales', 'removeFromCart', 'changePageSales', 'generarRecibo'])
 	},
 	created() {
 		this.$store.dispatch('allSalesCalendar', { page: 1 })

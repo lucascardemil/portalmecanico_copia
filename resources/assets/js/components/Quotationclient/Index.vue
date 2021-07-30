@@ -62,11 +62,12 @@
 
                                     <div class="col-12 mb-3">
                                         <label for="pago">Forma de Pago</label>
-                                        <input required
+                                        <!-- <input required
                                                 
                                                 type="text"
                                                 name="pago"
-                                                class="form-control" v-model="newQuotationclient.payment">
+                                                class="form-control" v-model="newQuotationclient.payment"> -->
+                                        <SelectTiposPagos/>
                                         
                                         
                                     </div>
@@ -320,9 +321,10 @@ import BrandSelector from '../Quotationuser/BrandSelector'
 import ModelSelector from '../Quotationuser/ModelSelector'
 import YearSelector from '../Quotationuser/YearSelector'
 import EngineSelector from '../Quotationuser/EngineSelector'
+import SelectTiposPagos from '../Utilidad/SelectTiposPagos'
 
 export default {
-    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, DetalleEditarCM, EliminarCotizacionCliente, CreateUser, CreateUserMechanic, DetalleMechanic, DetalleClienteMechanic, ListarClientesForm, ListarQuotationShipping },
+    components: { SelectClient, BrandSelector, ModelSelector, YearSelector, EngineSelector , DetalleCliente, Detalle, DetalleEditarC, DetalleEditarCM, EliminarCotizacionCliente, CreateUser, CreateUserMechanic, DetalleMechanic, DetalleClienteMechanic, ListarClientesForm, ListarQuotationShipping, SelectTiposPagos },
     computed:{
         ...mapState(['quotationRoles','quotationclients','quotationclientsform' ,'newQuotationclient', 'searchQuotationClient','pagination', 'offset', 'errorsLaravel']),
         ...mapGetters(['isActived', 'pagesNumber'])

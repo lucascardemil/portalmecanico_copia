@@ -23,6 +23,11 @@ class Code extends Model
         return $this->hasMany('App\Inventory');
     }
 
+    public function productpagos()
+    {
+        return $this->hasOne('App\ProductPago', 'product_id', 'product_id');
+    }
+    
     public function sales()
     {
         return $this->belongsToMany('App\ProductSale', 'sale_id')

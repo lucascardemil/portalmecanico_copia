@@ -662,6 +662,9 @@ export default { //data
         detail: '',
         codebar: ''
     },
+    newUtilidad:{
+        utilidad: ''
+    },
     newTipoPago: {
         pago: '',
         utilidad: ''
@@ -703,7 +706,8 @@ export default { //data
         product_id: '',
         codebar: '',
         atributo: 0,
-        is_activate: 1
+        is_activate: 1,
+        utilidad: 0
     },
     searchCode: {
         codebar: ''
@@ -957,6 +961,7 @@ export default { //data
     cartValue: 0,
     cartTotal: 0,
     sales: [],
+    searchFecha: [],
     productSearch: [],
     productSales: [],
     optionsMechanicClient: [],

@@ -34,6 +34,13 @@
                             name="atributo"
                             class="form-control" v-model="fillCode.atributo">
                         </div>
+                        <div class="form-group">
+                            <label for="utilidad">%Utilidad</label>
+                            <input required
+                            type="number"
+                            name="utilidad"
+                            class="form-control" v-model="fillCode.utilidad">
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -52,9 +59,10 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 import SelectProduct from './SelectProduct'
 import SelectProvider from './SelectProvider'
+import SelectTiposPagos from '../Utilidad/SelectTiposPagos'
 
 export default {
-    components: { SelectProduct, SelectProvider },
+    components: { SelectProduct, SelectProvider, SelectTiposPagos },
     computed:{
         ...mapState(['fillCode', 'errorsLaravel'])
     },

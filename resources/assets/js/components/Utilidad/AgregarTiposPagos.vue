@@ -2,7 +2,7 @@
 
     <form action="POST" v-on:submit.prevent="createTipoPago">
         <div id="create" class="modal fade">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4>Crear Formas de Pagos</h4>
@@ -29,13 +29,11 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success">
-                                <i class="fas fa-plus-square"></i> Guardar
-                            </button>
+                            
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="table-responsive">
+                        <!-- <div class="table-responsive">
                             <table class="table table-sm text-white bg-dark mt-3">
                                 <thead>
                                     <tr>
@@ -63,7 +61,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        <EditTiposPagos></EditTiposPagos>
+                        <EditTiposPagos></EditTiposPagos> -->
+                        <button type="submit" class="btn btn-success">
+                                <i class="fas fa-plus-square"></i> Guardar
+                            </button>
                         
                     </div>
                 </div>
@@ -77,20 +78,16 @@
 
 import { loadProgressBar } from 'axios-progress-bar'
 import { mapState, mapActions, mapGetters } from 'vuex'
-import EditTiposPagos from './EditTiposPagos'
+//import EditTiposPagos from './EditTiposPagos'
 
 export default {
-    components: { EditTiposPagos },
+    components: {},
     computed:{
-        ...mapState(['tipospagos','newTipoPago']),
+        ...mapState(['newTipoPago']),
         ...mapGetters([])
     },
     methods:{
-        ...mapActions(['getTiposPagos','createTipoPago','editTiposPagos'])
-    },
-    created(){
-        loadProgressBar();
-        this.$store.dispatch('getTiposPagos')
+        ...mapActions(['createTipoPago'])
     }
 }
 

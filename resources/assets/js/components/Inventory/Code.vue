@@ -3,14 +3,17 @@
 <div>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Producto Existente</a>
+            <a class="nav-link active" id="pills-product-exist-tab" data-toggle="pill" href="#pills-product-exist" role="tab" aria-controls="pills-product-exist" aria-selected="true">Producto Existente</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Nuevo Producto</a>
+            <a class="nav-link" id="pills-new-product-tab" data-toggle="pill" href="#pills-new-product" role="tab" aria-controls="pills-new-product" aria-selected="false">Nuevo Producto</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-utility-tab" data-toggle="pill" href="#pills-utility" role="tab" aria-controls="pills-utility" aria-selected="false">Utilidad Por Defecto</a>
         </li>
     </ul>
     <div class="tab-content bg-white p-3" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="tab-pane fade show active" id="pills-product-exist" role="tabpanel" aria-labelledby="pills-product-exist-tab">
             <form action="POST" v-on:submit.prevent="createCode">
                 <div class="form-row">
                     <div class="form-group col-lg-6">
@@ -43,7 +46,7 @@
                 </button>
             </form>
         </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="tab-pane fade" id="pills-new-product" role="tabpanel" aria-labelledby="pills-new-product-tab">
             <form action="POST" v-on:submit.prevent="createProduct">
                 <div class="form-row">
                     <div class="form-group col-lg-6">
@@ -79,6 +82,34 @@
                 </button>
             </form>
         </div>
+        
+        <div class="tab-pane fade" id="pills-utility" role="tabpanel" aria-labelledby="pills-utility-tab">
+            <form action="POST" v-on:submit.prevent="updateUtilidadDefect">
+                <div class="form-row">
+                    <!-- <div class="form-group">
+                        <input type="file" class="form-control"  id="input-file-import" name="file_import" ref="import_file" accept=".xlsx, .xls" @change="onFileChange({ evt: $event})">
+                        <input required id="files" type="file" name="import_file" class="form-control" accept=".xlsx, .xls" @change="onFileChange({ evt: $event})">
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <SelectProvider></SelectProvider>
+                    </div> -->
+                    <div class="form-group col-lg-6">
+                        <label for="utilidad">Utilidad</label>
+                        <UtilidadDefect></UtilidadDefect>
+                        
+                    </div>
+
+                </div>
+            
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-plus-square"></i> Guardar
+                </button>
+                            
+                        
+            </form>
+        </div>
+        
     </div>
     <div class="row mt-3">
         <div class="col-lg-6">
@@ -95,6 +126,7 @@
                     <th>Cliente</th>
                     <th>Código</th>
                     <th>Fecha</th>
+                    <th>%Utilidad</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -106,6 +138,8 @@
                     <td>{{ codeLocal.client.name }}</td>
                     <td>{{ codeLocal.codebar }}</td>
                     <td>{{ codeLocal.created_at | moment('DD/MM/YYYY') }}</td>
+                    <td v-if="codeLocal.productpagos != null">{{ codeLocal.productpagos.utilidad }}%</td>
+                    <td v-else></td>
                     <td width="150px">
                         <a href="#" class="btn btn-warning btn-sm"
                         @click.prevent="editCode( { codeLocal } )"
@@ -169,6 +203,7 @@ import EditarCode from './EditarCode'
 import EliminarCode from './EliminarCode'
 import Inventory from './Inventory'
 import EliminarInventory from './EliminarInventory'
+import UtilidadDefect from '../Utilidad/UtilidadDefect'
 
 export default {
   data() {
@@ -176,18 +211,18 @@ export default {
       search: ''
     }
   },
-  components: { SelectProduct, SelectProvider, EditarCode, EliminarCode, Inventory, EliminarInventory },
+  components: { SelectProduct, SelectProvider, EditarCode, EliminarCode, Inventory, EliminarInventory, UtilidadDefect},
   computed:{
       rows() {
         return this.codes.filter(code => {
           return code.product.name.toLowerCase().includes(this.search.toLowerCase())
         })
       },
-      ...mapState(['codes', 'newProduct', 'newCode', 'pagination', 'offset', 'errorsLaravel', 'allInventory']),
+      ...mapState(['codes', 'selectedPago','newProduct', 'newCode', 'pagination', 'offset', 'errorsLaravel', 'allInventory']),
       ...mapGetters(['isActived', 'pagesNumber'])
   },
   methods:{
-      ...mapActions(['createProduct', 'getCodes', 'createCode', 'editCode', 'modalDeleteCode', 'modalInventory', 'changePageCode'])
+      ...mapActions(['updateUtilidadDefect','createProduct', 'getCodes', 'createCode', 'editCode','modalDeleteCode', 'modalInventory', 'changePageCode'])
   },
   created(){
       loadProgressBar()

@@ -19,6 +19,11 @@ class Product extends Model
     }
     
 
+    public function client()
+    {
+        return $this->belongsToMany(Client::class, 'codes', 'product_id', 'client_id');
+    }
+
     public function scopeName($query)
     {
         $keyword = request('name');

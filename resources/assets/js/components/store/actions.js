@@ -70,6 +70,7 @@ export default { //methods
             context.commit('getProducts', 1)
         }, 1000)
     },
+    
     modalRequestParts(context, data) {
         context.commit('modalRequestParts', data.vehicleLocal)
     },
@@ -615,6 +616,7 @@ export default { //methods
 
     createTipoPago(context) {
         context.commit('createTipoPago')
+        context.commit('getTiposPagos')
     },
     getTiposPagos(context, data) {
         context.commit('getTiposPagos', data)
@@ -705,6 +707,12 @@ export default { //methods
     },
     getCodeInventories(context) {
         context.commit('getCodeInventories')
+    },
+    updateUtilidadDefect(context) {
+        context.commit('updateUtilidadDefect')
+        setTimeout(function () {
+            context.commit('getCodes', 1)
+        }, 500)
     },
 
     /************************************************* */
@@ -903,6 +911,9 @@ export default { //methods
     },
     allPagos(context) {
         context.commit('allPagos')
+    },
+    utilidadDefect(context) {
+        context.commit('utilidadDefect')
     },
     allUsers(context) {
         context.commit('allUsers')
@@ -1178,6 +1189,11 @@ export default { //methods
 
     allSalesCalendar(context, data) {
         context.commit('allSalesCalendar', data.page)
+        
+    },
+
+    cierreCajaZ(context) {
+        context.commit('cierreCajaZ')
     },
     
     allSales(context, data) {

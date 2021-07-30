@@ -128,7 +128,7 @@ Route::get('clients-all', 'ClientController@all');
 Route::ApiResource('activities', 'ActivityController');
 
 Route::ApiResource('products', 'ProductController');
-Route::post('products', 'ProductController@uploadProducts');
+//Route::post('products', 'ProductController@uploadProducts');
 Route::get('products-all', 'ProductController@all');
 
 Route::ApiResource('productimports', 'ProductimportController');
@@ -136,6 +136,8 @@ Route::get('productimports-all', 'ProductimportController@all');
 
 Route::ApiResource('codes', 'CodeController');
 Route::get('code-inventories/{id}', 'CodeController@inventories');
+Route::put('update-utilidad-defect', 'CodeController@updateUtilidadDefect');
+Route::get('utilidad-defect', 'CodeController@utilidadDefect');
 
 Route::ApiResource('inventories', 'InventoryController');
 Route::get('all-inventories', 'InventoryController@all');
@@ -158,6 +160,7 @@ Route::get('all-sales', 'SaleController@index');
 Route::get('sale-products/{sale}', 'SaleController@products');
 Route::get('products-all-sale', 'SaleController@all');
 Route::get('generar-recibo-sale/{id}', 'SaleController@generarRecibo');
+Route::get('cierre-caja-z/{fecha}', 'SaleController@cierreCajaZ');
 
 Route::get('code-search/{code}', 'CodeController@search');
 Route::get('product-search/{code}', 'CodeController@product');

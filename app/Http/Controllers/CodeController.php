@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Code;
 use App\Inventory;
+use App\TipoPago;
 use App\Atributo;
+use App\ProductPago;
 use Illuminate\Http\Request;
 
 class CodeController extends Controller
@@ -39,7 +41,7 @@ class CodeController extends Controller
 
         $search = request('name');
 
-        $codes = Code::with('client', 'product', 'inventories')
+        $codes = Code::with('client', 'product', 'inventories', 'productpagos')
         ->whereHas('client', function ($query) use($idUser) {
             $query->where('clients.user_id', '=', $idUser);
         })
@@ -132,6 +134,13 @@ class CodeController extends Controller
         //     'atributo' => $request->atributo
         // ]);
 
+        if($request->utilidad > 0){
+            ProductPago::where('product_id', $code->product_id)->update([
+                'forma_pago' => 'DEFECTO',
+                'utilidad' => $request->utilidad
+            ]);
+        }
+
 
         if($request->atributo > 0){
             $inventorys = Inventory::where('code_id', $code->id)->get();
@@ -171,5 +180,23 @@ class CodeController extends Controller
 
         return $inventories;
     }
+
+
+    public function updateUtilidadDefect(Request $request)
+    {
+        TipoPago::where('pago', 'DEFECTO')->update([
+            'utilidad' => $request->utilidad
+        ]);
+
+        return;
+    }
+
+    public function utilidadDefect()
+    {
+        $utilidad = TipoPago::orderBy('id', 'ASC')->where('pago', 'DEFECTO')->get();
+
+        return $utilidad;
+    }
+    
 
 }

@@ -44,6 +44,7 @@ class SaleController extends Controller
                 'to'            => $sales->lastItem(),
             ],
             'sales' => $sales
+            
         ];
     }
 
@@ -158,7 +159,8 @@ class SaleController extends Controller
             ->join('codes', 'clients.id', '=', 'codes.client_id')
             ->join('products', 'codes.product_id', '=', 'products.id')
             ->join('inventories', 'codes.id', '=', 'inventories.code_id')
-            ->select(DB::raw('max(inventories.fecha_fact)'), 'products.name', 'inventories.price', 'codes.id as code_id', 'inventories.id as inventory_id', 'inventories.quantity')
+            ->join('product_pagos', 'products.id', '=', 'product_pagos.product_id')
+            ->select(DB::raw('max(inventories.fecha_fact)'), 'products.name', 'inventories.price', 'codes.id as code_id', 'inventories.id as inventory_id', 'inventories.quantity', 'product_pagos.utilidad')
             ->where('clients.user_id', '=', $idUser)
             ->where('inventories.quantity', '>', 0)
             ->groupBy('inventories.code_id')
@@ -190,8 +192,37 @@ class SaleController extends Controller
             ->get();
 
        
-        $pdf = PDF::loadView('pdf.sales-recibo', compact(['products','clients']) );
-        return $pdf->stream('Recibo N° '.$id.'.pdf');
+        $pdf = PDF::loadView('pdf.sales-recibo', compact(['products','clients']) )->setPaper([ 0 , 0 , 226.772 , 141.732 ], 'landscape');
+        return $pdf->download('Recibo N° '.$id.'.pdf');
+
+    }
+
+    public function cierreCajaZ($fecha)
+    {
+        $idUser = Auth::id();
+        $products = DB::table('products')
+            ->join('codes', 'products.id', '=', 'codes.product_id')
+            ->join('productsales', 'codes.id', '=', 'productsales.code_id')
+            ->join('sales', 'productsales.sale_id', '=', 'sales.id')
+            ->where('sales.user_id', '=', $idUser)
+            ->whereDate('sales.created_at', $fecha)
+            ->get();
+        
+        $clients = DB::table('sales')
+            ->join('users', 'sales.user_id', '=', 'users.id')
+            ->join('clients', 'sales.client_id', '=', 'clients.id')
+            ->select('users.name as user_name', 
+                     'sales.id as sale_id',
+                     'sales.updated_at as sale_updated_at',  
+                     'clients.address as client_address', 
+                     'clients.phone as client_phone',
+                     'clients.razonSocial as client_razonSocial')
+            ->where('sales.user_id', '=', $idUser)
+            ->whereDate('sales.created_at', $fecha)
+            ->get();
+
+        $pdf = PDF::loadView('pdf.cierre-cajaz', compact(['products','clients','fecha']));
+        return $pdf->stream('CajaZ-'.$fecha.'.pdf');
 
     }
 }

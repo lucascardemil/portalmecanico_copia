@@ -8,6 +8,8 @@ use App\Client;
 use App\Http\Requests\InvoiceRequest;
 use App\Inventory;
 use App\Product;
+use App\TipoPago;
+use App\ProductPago;
 use DateTime;
 use Illuminate\Http\Request;
 use Services\InvoiceGenerateService;
@@ -541,7 +543,14 @@ class BillController extends Controller
                             'quantity' => $producto->QtyItem,
                             'fecha_fact' => $xml->DTE->Documento->Encabezado->IdDoc[0]->FchEmis
                         ]);
-                        
+                    
+                    $tipospagos =  TipoPago::select('utilidad')->where('pago', 'DEFECTO')->get();
+    
+                    ProductPago::create([
+                        'product_id' => $product->id,
+                        'forma_pago' => 'DEFECTO',
+                        'utilidad' => $tipospagos[0]->utilidad
+                    ]);
                     
                     
                     

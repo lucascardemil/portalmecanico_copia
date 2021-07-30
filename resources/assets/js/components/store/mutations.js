@@ -81,6 +81,7 @@ var urlQuotationclientPdf = 'quotationclient-pdf'
 var urlQuotationclientPdfIva = 'quotationclient-pdf-iva'
 var urlQuotationShippingPdf = 'quotationshipping-pdf'
 var urlGenerarReciboSales = 'generar-recibo-sale'
+var urlCierreCajaZ = 'cierre-caja-z'
 
 var urlImport = 'imports'
 var urlImportDetails = 'import-details'
@@ -113,7 +114,8 @@ var urlImages = 'images'
 
 var urlUserId = 'user-id'
 var urlCompany = 'companies'
-
+var urlUpdateUtilidadDefect = 'update-utilidad-defect'
+var urlUtilidadDefect = 'utilidad-defect'
 
 export default { //used for changing the state
     /******************************* */
@@ -1070,7 +1072,7 @@ export default { //used for changing the state
         axios.post(url, {
             client_id: state.selectedClient.value,
             state: 'Pendiente',
-            payment: state.newQuotationclient.payment,
+            payment: state.selectedPago.value,
             client_text: state.newQuotationclient.client_text,
             cliente_part: state.newQuotationclient.cliente_part,
             url: state.newQuotationclient.url,
@@ -1929,6 +1931,9 @@ export default { //used for changing the state
         state.fillCode.codebar = code.codebar
         state.fillCode.atributo = code.atributo
         state.fillCode.is_activate = code.is_activate
+        state.fillCode.utilidad = code.productpagos.utilidad
+
+        
 
         state.optionsProduct.forEach(product => {
             if (product.value == state.fillCode.product_id) {
@@ -1943,6 +1948,8 @@ export default { //used for changing the state
                 state.selectedClientCode.label = client.label
             }
         })
+
+       
 
         $("#edit").modal('show')
     },
@@ -1959,7 +1966,8 @@ export default { //used for changing the state
                 product_id: '',
                 codebar: '',
                 atributo: 0,
-                is_activate: 1
+                is_activate: 1,
+                utilidad: 0
             }
             state.errorsLaravel = []
             $('#edit').modal('hide')
@@ -1992,6 +2000,16 @@ export default { //used for changing the state
         })
     },
 
+    updateUtilidadDefect(state) {
+        var url = urlUpdateUtilidadDefect
+
+        axios.put(url, state.newUtilidad).then(response => {
+            state.errorsLaravel = []
+            toastr.success('Utilidad por defecto a sido actualizado con éxito')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
     /******************************* */
     /****** sección inventariado **** */
     /******************************* */
@@ -2453,6 +2471,16 @@ export default { //used for changing the state
     setPagos(state, pago) {
         state.selectedPago = pago
     },
+
+    utilidadDefect(state) {
+        var url = urlUtilidadDefect
+        axios.get(url).then(response => {
+            response.data.forEach((pago) => {
+                state.newUtilidad.utilidad = pago.utilidad
+            });
+        });
+    },
+    
     allUsers(state) {
         var url = urlAllUser
         axios.get(url).then(response => {
@@ -2885,7 +2913,8 @@ export default { //used for changing the state
                     price: productsale.price,
                     code_id: productsale.code_id,
                     quantity: productsale.quantity,
-                    inventory_id: productsale.inventory_id
+                    inventory_id: productsale.inventory_id,
+                    utilidad: productsale.utilidad
                 })
             });
         });
@@ -2898,6 +2927,8 @@ export default { //used for changing the state
 
             state.productForm.code_id = state.selectedProductSale.code_id
             state.productForm.inventory_id = state.selectedProductSale.inventory_id
+
+            state.productForm.utility = state.selectedProductSale.utilidad
 
 
             var total = Math.round(parseFloat(state.productForm.price) * parseFloat(state.productForm.quantity))
@@ -2933,7 +2964,8 @@ export default { //used for changing the state
                 state.optionsProduct.push({
                     label: product.name,
                     value: product.id,
-                    price: product.price
+                    price: product.price,
+                    utilidad: product.utilidad
                 })
             });
         });
@@ -2945,6 +2977,7 @@ export default { //used for changing the state
             state.productForm.product = state.selectedProduct.label
             state.newDetailclient.price = state.selectedProduct.price
 
+            state.newDetailclient.percentage = state.selectedProduct.utilidad
 
             state.newDetailclient.utility = Math.round(parseFloat((parseFloat(state.newDetailclient.price) *
                 ((parseFloat(state.newDetailclient.percentage) / 100) + 1) +
@@ -3349,7 +3382,13 @@ export default { //used for changing the state
             .catch(error => {
                 //console.log(error.response.data)
             })
+    },
 
+    cierreCajaZ(state){
+        if(state.calendar.search){
+            var url = urlCierreCajaZ + '/' + state.calendar.search
+            window.location.href = url;
+        }
     },
 
 
@@ -3378,23 +3417,7 @@ export default { //used for changing the state
 
     generarRecibo(state, id) {
         var url = urlGenerarReciboSales + '/' + id
-
-        axios.get(urlGenerarReciboSales)
-            .then(response => {
-                state.sales = response.data.sales.data
-                
-                state.sales.forEach(sale => {
-                    sale.products.forEach(product => {
-                        axios.get('product-search/' + product.code_id)
-                            .then(response => {
-                                product.code_id = response.data.name
-                            })
-                    })
-                })
-            })
-            .catch(error => {
-                //console.log(error.response.data)
-            })
+        window.location.href = url;
     },
 
 

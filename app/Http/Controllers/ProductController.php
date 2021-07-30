@@ -23,7 +23,7 @@ class ProductController extends Controller
     {
         $idUser = Auth::id();
 
-        $products = Product::with('productpagos')
+        $products = Product::with('productpagos', 'codes', 'client')
                     ->whereHas('codes.client', function ($query) use($idUser) {
                         $query->where('clients.user_id', '=', $idUser);
                     })->name()->orderBy('id', 'DESC')->paginate(10);
@@ -75,8 +75,16 @@ class ProductController extends Controller
                 'codebar' => $data['codebar'], 
                 'is_activate' => 1              
             ]);
+
+        $tipospagos =  TipoPago::select('utilidad')->where('pago', 'DEFECTO')->get();
         
-        return $product;
+        ProductPago::create([
+            'product_id' => $product,
+            'forma_pago' => 'Venta',
+            'utilidad' => $tipospagos[0]->utilidad
+        ]);
+        
+        return $tipospagos;
     }
 
     /**
@@ -138,13 +146,17 @@ class ProductController extends Controller
         // return $product;
 
 
+        
+
         $product = DB::table('clients')
             
             ->join('codes', 'clients.id', '=', 'codes.client_id')
             ->join('products', 'codes.product_id', '=', 'products.id')
             ->join('inventories', 'codes.id', '=', 'inventories.code_id')
-            ->select(DB::raw('max(inventories.fecha_fact)'), 'products.name', 'inventories.price')
+            ->join('product_pagos', 'products.id', '=', 'product_pagos.product_id')
+            ->select(DB::raw('max(inventories.fecha_fact)'), 'products.name', 'inventories.price', 'codes.id as code_id', 'inventories.id as inventory_id', 'inventories.quantity', 'product_pagos.utilidad')
             ->where('clients.user_id', '=', $idUser)
+            ->where('inventories.quantity', '>', 0)
             ->groupBy('inventories.code_id')
             ->get();
             
@@ -173,7 +185,7 @@ class ProductController extends Controller
      */
     public function listaTiposPagos()
     {
-        $tipospagos = TipoPago::all();
+        $tipospagos = TipoPago::where('pago' , '<>', 'DEFECTO')->get();
 
         return $tipospagos;
     }
@@ -208,7 +220,7 @@ class ProductController extends Controller
 
     public function allPagos()
     {
-        $pagos = TipoPago::orderBy('id', 'ASC')->get();
+        $pagos = TipoPago::where('pago' , '<>', 'DEFECTO')->orderBy('id', 'ASC')->get();
 
         return $pagos;
     }
@@ -227,39 +239,38 @@ class ProductController extends Controller
         return;
     }
 
+    // public function uploadProducts(Request $request)
+    // {
+    //     $request->validate([
+    //         'import_file' => 'required|file|mimes:xls,xlsx'
+    //     ]);
 
-    public function uploadProducts(Request $request)
-    {
-        $request->validate([
-            'import_file' => 'required|file|mimes:xls,xlsx'
-        ]);
+    //     $path = $request->file('import_file');
+    //     $data = $request->all();
 
-        $path = $request->file('import_file');
-        $data = $request->all();
+    //     $import = new ProductImport;
 
-        $import = new ProductImport;
+    //     Excel::import($import, $path);
 
-        Excel::import($import, $path);
-
-        foreach($import->products as $product){
-            Code::create([
-                'client_id' => $data['client'],
-                'product_id' => $product->id,
-                'codebar' => $product->detail, 
-                'is_activate' => 1              
-            ]);
+    //     foreach($import->products as $product){
+    //         Code::create([
+    //             'client_id' => $data['client'],
+    //             'product_id' => $product->id,
+    //             'codebar' => $product->detail, 
+    //             'is_activate' => 1              
+    //         ]);
             
-            ProductPago::create([
-                'product_id' => $product->id,
-                'forma_pago' => $data['pago'],
-                'utilidad' => $data['utilidad']
-            ]);
+    //         ProductPago::create([
+    //             'product_id' => $product->id,
+    //             'forma_pago' => $data['pago'],
+    //             'utilidad' => $data['utilidad']
+    //         ]);
 
-        }
+    //     }
         
-        return response()->json(['message' => 'uploaded successfully'], 200);
+    //     return response()->json(['message' => 'uploaded successfully'], 200);
 
-    }
+    // }
 
     
 }
