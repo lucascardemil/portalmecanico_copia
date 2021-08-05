@@ -184,9 +184,27 @@ class CodeController extends Controller
 
     public function updateUtilidadDefect(Request $request)
     {
+        $idUser = Auth::id();
+        
         TipoPago::where('pago', 'DEFECTO')->update([
             'utilidad' => $request->utilidad
         ]);
+
+        $codes = Code::with('client', 'product')
+        ->whereHas('client', function ($query) use($idUser) {
+            $query->where('clients.user_id', '=', $idUser);
+        })->get();
+
+        foreach($codes as $code){
+
+            ProductPago::where('product_id', $code->product_id)->update([
+                'forma_pago' => 'DEFECTO',
+                'utilidad' => $request->utilidad
+            ]);
+
+        }
+
+        
 
         return;
     }

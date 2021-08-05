@@ -6,6 +6,7 @@ use Auth;
 use App\Product;
 use App\TipoPago;
 use App\ProductPago;
+use App\Descuento;
 use App\Code;
 use App\Imports\ProductImport;
 use Illuminate\Http\Request;
@@ -174,8 +175,13 @@ class ProductController extends Controller
     public function storeTipoPago(Request $request)
     {
         $data = $request->all();
+        $idUser = Auth::id();
 
-        TipoPago::create($data);
+        TipoPago::create([
+            'user_id' => $idUser,
+            'pago' => $data['pago'],
+            'utilidad' => 0
+        ]);
     }
 
     /**
@@ -271,6 +277,40 @@ class ProductController extends Controller
     //     return response()->json(['message' => 'uploaded successfully'], 200);
 
     // }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeDescuento(Request $request)
+    {
+        $data = $request->all();
+        $idUser = Auth::id();
+
+        $descuentos = Descuento::where('user_id', $idUser)->count();
+
+        if($descuentos > 0){
+            Descuento::where('user_id', $idUser)->update($request->all());
+        }else{
+            Descuento::create([
+                'user_id' => $idUser,
+                'descuento' => $data['descuento']
+            ]);
+        }
+
+        
+    }
+
+    public function descuentoDefect()
+    {
+        $idUser = Auth::id();
+        $descuento = Descuento::where('user_id', $idUser)->get();
+
+        return $descuento;
+    }
 
     
 }

@@ -29,9 +29,48 @@ class SaleController extends Controller
         
 
         if($search == "null" || $search == null){
-            $sales = Sale::with('client', 'products')->where('user_id', '=', $idUser)->paginate(10);
+            //$sales = Sale::with('client', 'products')->where('user_id', '=', $idUser)->paginate(10);
+
+
+
+            $sales = DB::table('sales')
+            ->join('clients', 'sales.client_id', '=', 'clients.id')
+            ->join('productsales', 'sales.id', '=', 'productsales.sale_id')
+            ->join('codes', 'productsales.code_id', '=', 'codes.id')
+            ->join('products', 'codes.product_id', '=', 'products.id')
+            ->select('clients.*',
+                     'productsales.*',
+                     'codes.*',
+                     'products.*',
+                     'sales.id as sale_id',
+                     'sales.total',
+                     'sales.forma_pago',
+                     'sales.descuento',
+                     'sales.created_at as fecha_sale_create',
+                     'sales.updated_at as fecha_sale_update')
+            ->where('sales.user_id', '=', $idUser)
+            ->paginate(10);
         }else{
-            $sales = Sale::with('client', 'products')->where('user_id', '=', $idUser)->whereRaw("DATE_FORMAT(updated_at, '%Y-%m-%d') = ?", [$search])->paginate(10);
+            // $sales = Sale::with('client', 'products')->where('user_id', '=', $idUser)->whereRaw("DATE_FORMAT(updated_at, '%Y-%m-%d') = ?", [$search])->paginate(10);
+
+            $sales = DB::table('sales')
+            ->join('clients', 'sales.client_id', '=', 'clients.id')
+            ->join('productsales', 'sales.id', '=', 'productsales.sale_id')
+            ->join('codes', 'productsales.code_id', '=', 'codes.id')
+            ->join('products', 'codes.product_id', '=', 'products.id')
+            ->select('clients.*',
+                     'productsales.*',
+                     'codes.*',
+                     'products.*',
+                     'sales.id as sale_id',
+                     'sales.total',
+                     'sales.forma_pago',
+                     'sales.descuento',
+                     'sales.created_at as fecha_sale_create',
+                     'sales.updated_at as fecha_sale_update')
+            ->where('sales.user_id', '=', $idUser)
+            ->whereRaw("DATE_FORMAT(sales.updated_at, '%Y-%m-%d') = ?", [$search])
+            ->paginate(10);
         }
 
         return [
@@ -51,12 +90,15 @@ class SaleController extends Controller
     public function sale(Request $request) {
 
         $saleData = $request->sale;
+
         $clients = Client::where('user_id', '=', Auth::user()->id)->where('type', '=', 'Empresa')->get();
 
         $sale = Sale::create([
             'user_id' => Auth::user()->id,
             'client_id' => $clients[0]->id,
-            'total' => $saleData['total']
+            'total' => $saleData['total'],
+            'forma_pago' => $saleData['formapago'],
+            'descuento' => floatval($saleData['descuento']/100)
         ]);
 
         $productsData = $request->products;
@@ -77,6 +119,27 @@ class SaleController extends Controller
                 'quantity' => $inv[0]->quantity - $productsData[$i]['quantity']
             ]);
             
+        }
+    }
+
+    public function anularSale($id)
+    {
+        $products = ProductSale::where('sale_id', $id)->get();
+        $total = ProductSale::where('sale_id', $id)->sum('quantity');
+
+        for ($i=0; $i<count($products); $i++){
+            $inventorys = Inventory::where('code_id', $products[$i]['code_id'])->get();
+
+            for ($i=0; $i<count($inventorys); $i++){
+                Inventory::where('id', $inventorys[$i]['id'])->update([
+                    'quantity' => $inventorys[$i]['quantity'] + $total
+                ]);
+
+                $productSale = ProductSale::where('sale_id', $id)->delete();
+                if($productSale){
+                    Sale::where('id', $id)->delete();
+                }
+            }
         }
     }
 
@@ -110,17 +173,7 @@ class SaleController extends Controller
         return response()->json($sale, 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Sale $sale)
-    {
-        //
-    }
-
+    
 
     /**
      * Update the specified resource in storage.
@@ -136,18 +189,7 @@ class SaleController extends Controller
         return response()->json($sale, 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Sale $sale)
-    {
-        $sale->delete();
-
-        return response()->json(null, 204);
-    }
+   
 
 
 
@@ -184,7 +226,8 @@ class SaleController extends Controller
             ->join('clients', 'sales.client_id', '=', 'clients.id')
             ->select('users.name as user_name', 
                      'sales.id as sale_id',
-                     'sales.updated_at as sale_updated_at',  
+                     'sales.updated_at as sale_updated_at',
+                     'sales.descuento as descuento',  
                      'clients.address as client_address', 
                      'clients.phone as client_phone',
                      'clients.razonSocial as client_razonSocial')
@@ -192,8 +235,9 @@ class SaleController extends Controller
             ->get();
 
        
-        $pdf = PDF::loadView('pdf.sales-recibo', compact(['products','clients']) )->setPaper([ 0 , 0 , 226.772 , 141.732 ], 'landscape');
-        return $pdf->download('Recibo N° '.$id.'.pdf');
+        // $pdf = PDF::loadView('pdf.sales-recibo', compact(['products','clients']) )->setPaper([ 0 , 0 , 226.772 , 141.732 ], 'landscape');
+        $pdf = PDF::loadView('pdf.sales-recibo', compact(['products','clients']) )->setPaper('B8', 'portrait');
+        return $pdf->stream('Recibo N° '.$id.'.pdf');
 
     }
 
@@ -214,6 +258,7 @@ class SaleController extends Controller
             ->select('users.name as user_name', 
                      'sales.id as sale_id',
                      'sales.updated_at as sale_updated_at',  
+                     'sales.descuento as descuento', 
                      'clients.address as client_address', 
                      'clients.phone as client_phone',
                      'clients.razonSocial as client_razonSocial')

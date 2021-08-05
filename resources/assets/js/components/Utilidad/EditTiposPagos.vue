@@ -21,13 +21,13 @@
                             
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="utilidad">% Utilidad</label>
                             <input required
                                     type="number"
                                     name="utilidad"
                                     class="form-control" v-model="fillTipoPago.utilidad">
-                        </div>
+                        </div> -->
 
 
                     </div>

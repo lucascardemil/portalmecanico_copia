@@ -49,10 +49,19 @@
             </tr>
             
             <tr>
-                <td style="border: 0px;">{{ $product->quantity }} X ${{ number_format($product->price, 0,',','.') }}</td>
+                
+                @if ($client->descuento > 0)
+                <td style="border: 0px;">{{ $product->quantity }} X ${{ round((($product->price * $product->utility) + $product->price) - ((($product->price * $product->utility) + $product->price) * $client->descuento)) }}</td>
+                @else
+                <td style="border: 0px;">{{ $product->quantity }} X ${{ round(($product->price * $product->utility) + $product->price) }}</td>
+                @endif
                 <td style="border: 0px;" width="50px"></td>
-                <td style="border: 0px;" width="50px">${{ number_format(round(((floatval($product->price * $product->quantity)) * floatval($product->utility)) + floatval($product->price * $product->quantity)), 0,',','.') }}</td>
-                <?php $totalServicio += round(((floatval($product->price * $product->quantity)) * floatval($product->utility)) + floatval($product->price * $product->quantity)) ?>
+                @if ($client->descuento > 0)
+                <td style="border: 0px;" width="50px">${{ round(((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) - (((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) * $client->descuento)) }}</td>
+                @else
+                <td style="border: 0px;" width="50px">${{ round((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) }}</td>
+                @endif
+                <?php $totalServicio += round((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) ?>
             </tr>
         @endforeach
     </tbody>
@@ -66,19 +75,31 @@
             
             <th style="border: 0px;">NETO</th>
             <td style="border: 0px;" width="50px"></td>
-            <th style="border: 0px;" width="50px">${{ number_format($totalServicio,0,',','.') }}</th>
+            @if ($client->descuento > 0)
+            <th style="border: 0px;" width="50px">${{ number_format($totalServicio - ($totalServicio * $client->descuento),0,',','.') }}</th>
+            @else
+            <th style="border: 0px;" width="50px">${{ number_format($totalServicio ,0,',','.') }}</th>
+            @endif
         </tr>
         <tr>
             
             <th style="border: 0px;">IVA</th>
             <td style="border: 0px;" width="50px"></td>
+            @if ($client->descuento > 0)
+            <th style="border: 0px;" width="50px">${{ number_format(($totalServicio * 0.19) - (($totalServicio * 0.19) * $client->descuento),0,',','.') }}</th>
+            @else
             <th style="border: 0px;" width="50px">${{ number_format($totalServicio * 0.19,0,',','.') }}</th>
+            @endif
         </tr>
         <tr>
         
             <th style="border: 0px;">TOTAL</th>
             <td style="border: 0px;" width="50px"></td>
+            @if ($client->descuento > 0)
+            <th style="border: 0px;" width="50px">${{ number_format(($totalServicio * 1.19) - (($totalServicio * 1.19) * $client->descuento),0,',','.') }}</th>
+            @else
             <th style="border: 0px;" width="50px">${{ number_format($totalServicio * 1.19,0,',','.') }}</th>
+            @endif
         </tr>
     </tbody>
 </table>

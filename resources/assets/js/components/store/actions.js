@@ -346,6 +346,12 @@ export default { //methods
     generarRecibo(context, data) {
         context.commit('generarRecibo' , data.id)
     },
+    eliminarVenta(context, data) {
+        context.commit('eliminarVenta' , data.id)
+        setTimeout(function () {
+            context.commit('allSalesCalendar')
+        }, 1000)
+    },
     pdfQuotationclient(context) {
         context.commit('pdfQuotationclient')
     },
@@ -613,6 +619,11 @@ export default { //methods
     /******************************** */
     /******************************* */
     /*************seccion de productos***************** */
+    createDescuento(context) {
+        context.commit('createDescuento')
+        context.commit('descuentoDefect')
+    },
+    
 
     createTipoPago(context) {
         context.commit('createTipoPago')
@@ -915,6 +926,9 @@ export default { //methods
     utilidadDefect(context) {
         context.commit('utilidadDefect')
     },
+    descuentoDefect(context) {
+        context.commit('descuentoDefect')
+    },
     allUsers(context) {
         context.commit('allUsers')
     },
@@ -1185,6 +1199,13 @@ export default { //methods
             context.commit('allSalesCalendar')
         }, 1000)
     },
+
+    aplicarDescuento(context, data) {
+        context.commit('aplicarDescuento', data)
+    },
+    agregarFormaPago(context, data) {
+        context.commit('agregarFormaPago', data)
+    },
     
 
     allSalesCalendar(context, data) {
@@ -1217,6 +1238,9 @@ export default { //methods
 
     removeFromCart(context, data) {
         context.commit('removeFromCart', data)
+    },
+    removeDescuento(context, data) {
+        context.commit('removeDescuento', data)
     },
 
     getMechanicClients(context) {

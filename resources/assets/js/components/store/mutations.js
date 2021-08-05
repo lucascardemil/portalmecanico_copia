@@ -81,6 +81,7 @@ var urlQuotationclientPdf = 'quotationclient-pdf'
 var urlQuotationclientPdfIva = 'quotationclient-pdf-iva'
 var urlQuotationShippingPdf = 'quotationshipping-pdf'
 var urlGenerarReciboSales = 'generar-recibo-sale'
+var urlAnularSale = 'anular-sale'
 var urlCierreCajaZ = 'cierre-caja-z'
 
 var urlImport = 'imports'
@@ -97,6 +98,7 @@ var urlProduct = 'products'
 var urlAllProduct = 'products-all'
 var urlAllProductSale = 'products-all-sale'
 var urlTipoDePago = 'tipodepago'
+var urlDescuento = 'descuento'
 var urlProductTipoDePago = 'producttipopago'
 var urlUtilidad = 'utilidad'
 
@@ -116,6 +118,7 @@ var urlUserId = 'user-id'
 var urlCompany = 'companies'
 var urlUpdateUtilidadDefect = 'update-utilidad-defect'
 var urlUtilidadDefect = 'utilidad-defect'
+var urlDescuentoDefect = 'descuento-defect'
 
 export default { //used for changing the state
     /******************************* */
@@ -1734,6 +1737,26 @@ export default { //used for changing the state
         })
     },
 
+    createDescuento(state) {
+        var url = urlDescuento
+        axios.post(url, {
+            descuento: state.newDescuento.descuento
+        }).then(response => {
+            state.newDescuento = {
+                descuento: 0
+            }
+            state.errorsLaravel = []
+            toastr.success('El Descuento se creo correctamente')
+            $('#createDescuento').modal('hide')
+        }).catch(error => {
+            state.errorsLaravel = error.response.data
+        })
+    },
+
+    descuento(state, detailimport) {
+        state.fillDetailimport.id = detailimport.id
+    },
+
     createTipoPago(state) {
         var url = urlTipoDePago
         axios.post(url, {
@@ -2477,6 +2500,15 @@ export default { //used for changing the state
         axios.get(url).then(response => {
             response.data.forEach((pago) => {
                 state.newUtilidad.utilidad = pago.utilidad
+            });
+        });
+    },
+
+    descuentoDefect(state) {
+        var url = urlDescuentoDefect
+        axios.get(url).then(response => {
+            response.data.forEach((descuento) => {
+                state.newDescuento.descuento = descuento.descuento
             });
         });
     },
@@ -3267,6 +3299,8 @@ export default { //used for changing the state
             state.cartValue += state.productForm.value
             state.cartTotal += state.productForm.total
 
+            state.aplicardescuento = 0
+
             state.productForm = {
                 product_id: 0,
                 code_id: 0,
@@ -3281,6 +3315,16 @@ export default { //used for changing the state
                 max_quantity: 99
             }
         }
+    },
+
+
+    agregarFormaPago(state) {
+        state.formapago = state.selectedPago.label
+        $('#formaPago').modal('hide')
+    },
+
+    aplicarDescuento(state) {
+        state.aplicardescuento = state.newDescuento.descuento
     },
 
     allCodes(state) {
@@ -3340,7 +3384,9 @@ export default { //used for changing the state
     newSale(state) {
         let saleDetails = {
             //client_id: 5, //particular
-            total: state.cartTotal
+            total: state.cartTotal,
+            formapago: state.formapago,
+            descuento: state.aplicardescuento
         }
 
         let sale = {
@@ -3368,16 +3414,16 @@ export default { //used for changing the state
             .then(response => {
                 state.sales = response.data.sales.data
                 state.pagination = response.data.pagination
-                //esto se debe arreglar
-                //encontrar una forma de guardar los nombres de los productos en el query de ventas
-                state.sales.forEach(sale => {
-                    sale.products.forEach(product => {
-                        axios.get('product-search/' + product.code_id)
-                            .then(response => {
-                                product.code_id = response.data.name
-                            })
-                    })
-                })
+                // //esto se debe arreglar
+                // //encontrar una forma de guardar los nombres de los productos en el query de ventas
+                // state.sales.forEach(sale => {
+                //     sale.products.forEach(product => {
+                //         axios.get('product-search/' + product.code_id)
+                //             .then(response => {
+                //                 product.code_id = response.data.name
+                //             })
+                //     })
+                // })
             })
             .catch(error => {
                 //console.log(error.response.data)
@@ -3418,6 +3464,13 @@ export default { //used for changing the state
     generarRecibo(state, id) {
         var url = urlGenerarReciboSales + '/' + id
         window.location.href = url;
+    },
+
+    eliminarVenta(state, id) {
+        var url = urlAnularSale + '/' + id
+        axios.delete(url).then(response => {
+            toastr.success('La Venta fue anulada con éxito')
+        })
     },
 
 
@@ -3468,6 +3521,10 @@ export default { //used for changing the state
         state.cartTotal = state.cartTotal - product.total
 
         state.cart.splice(state.cart.indexOf(data.id))
+    },
+
+    removeDescuento(state) {
+        state.aplicardescuento = 0
     },
 
     getMechanicClients(state) {

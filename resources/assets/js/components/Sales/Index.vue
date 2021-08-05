@@ -3,8 +3,12 @@
 		<h5 class="text-white">
 			Ventas
 			<a href="#" class="btn btn-success pull-right btn-sm" data-toggle="modal" data-target="#create" title="Agregar"><i class="fas fa-plus-circle"></i></a>
+			<a href="#" class="btn btn-success pull-right btn-sm" data-toggle="modal" data-target="#createTiposPagos" title="Agregar"><i class="fas fa-money-bill-wave"></i> Formas de Pago</a>
+			<a href="#" class="btn btn-success pull-right btn-sm" data-toggle="modal"  data-target="#createDescuento" title="Agregar"><i class="fas fa-tags"></i> Descuento</a>
 		</h5>
 		<NewSale></NewSale>
+		<AgregarTiposPagos></AgregarTiposPagos>
+		<AgregarDescuento></AgregarDescuento>
 
 		<div class="row mt-3">
 			<div class="col-2">
@@ -48,6 +52,8 @@
 						<thead>
 							<tr>
 								<th>Producto</th>
+								<th>Forma de Pago</th>
+								<th>Descuento</th>
 								<th>Precio</th>
 								<th>Cantidad</th>
 								<th>Utilidad</th>
@@ -56,33 +62,96 @@
 								<th>Fecha</th>
 							</tr>
 						</thead>
-						<tbody v-for="sale in sales" :key="sale.id">
-							<tr class="accordion-toggle" data-toggle="collapse" :data-target="'#sale'+sale.id">
+						<tbody v-for="sale in sales" :key="sale.sale_id">
+							<tr class="accordion-toggle" data-toggle="collapse" :data-target="'#sale'+sale.sale_id">
 								<td style="width: 25%"></td>
 								<td style="width: 10%"></td>
-								<td style="width: 10%"></td>
-								<td style="width: 10%"></td>
-								<td style="width: 10%"></td>
-								<td style="width: 10%">{{ sale.total | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-								<td>{{ sale.updated_at }}</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td v-if="sale.descuento > 0">{{ sale.total - (sale.total * sale.descuento) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td v-else>{{ sale.total | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td>{{ sale.fecha_sale_create }}</td>
 								<td>
-									<a href="#" class="btn btn-danger btn-sm"
-										@click.prevent="generarRecibo({ id: sale.id })"
+									<a href="#" class="btn btn-primary btn-sm"
+										@click.prevent="generarRecibo({ id: sale.sale_id })"
 										role="button">
 										<i class="fas fa-file-invoice-dollar"></i> Recibo
 									</a>
+
+									<a href="#" class="btn btn-danger btn-sm"
+										@click.prevent="eliminarVenta({ id: sale.sale_id })"
+										role="button">
+										<i class="fas fa-trash-alt"></i>
+									</a>
 								</td>
 							</tr>
-							<tr v-for="product in sale.products" :key="product.id" :id="'sale'+sale.id" class="accordian-body collapse">
-								<td style="width: 25%">{{ product.code_id }}</td>
-								<td style="width: 10%">{{ product.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-								<td style="width: 10%">{{ product.quantity }}</td>
-								<td style="width: 10%">{{ parseInt( product.utility*100)+'%' }}</td>
-								<td style="width: 10%">{{ Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-								<td style="width: 10%">{{ Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) | currency('$', 0, { thousandsSeparator: '.' })}}</td>
+							<tr :id="'sale'+sale.sale_id" class="accordian-body collapse">
+								<td style="width: 25%">{{ sale.name }}</td>
+								<td style="width: 10%">{{ sale.forma_pago }}</td>
+								<td>{{ sale.descuento * 100 }}%</td>
+								<td>{{ sale.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td>{{ sale.quantity }}</td>
+								<td>{{ parseInt( sale.utility*100)+'%' }}</td>
+								<td v-if="sale.descuento > 0">
+									{{ 
+										Math.round(((parseFloat(sale.price * sale.quantity)) * parseFloat(sale.utility)) + parseFloat(sale.price * sale.quantity)) -
+										(Math.round(((parseFloat(sale.price * sale.quantity)) * parseFloat(sale.utility)) + parseFloat(sale.price * sale.quantity)) * sale.descuento) | currency('$', 0, { thousandsSeparator: '.' })
+									}}
+								</td>
+								<td v-else>
+									{{ 
+										Math.round(((parseFloat(sale.price * sale.quantity)) * parseFloat(sale.utility)) + parseFloat(sale.price * sale.quantity)) | currency('$', 0, { thousandsSeparator: '.' })
+									}}
+								</td>
+								<td v-if="sale.descuento > 0">
+									{{ 
+										Math.round((((parseFloat(sale.price * sale.quantity)) * parseFloat(sale.utility)) + parseFloat(sale.price * sale.quantity)) * 1.19) -
+										(Math.round((((parseFloat(sale.price * sale.quantity)) * parseFloat(sale.utility)) + parseFloat(sale.price * sale.quantity)) * 1.19) * sale.descuento) | currency('$', 0, { thousandsSeparator: '.' })
+									}}
+								</td>
+								<td v-else >
+									{{ 
+										Math.round((((parseFloat(sale.price * sale.quantity)) * parseFloat(sale.utility)) + parseFloat(sale.price * sale.quantity)) * 1.19) | currency('$', 0, { thousandsSeparator: '.' })
+									}}
+								</td>
 								<td></td>
 								<td></td>
 							</tr>
+							<!-- <tr v-for="product in sale.products" :key="product.id" :id="'sale'+sale.id" class="accordian-body collapse">
+								<td style="width: 25%">{{ product.code_id }}</td>
+								<td style="width: 10%">{{ sale.forma_pago }}</td>
+								<td>{{ sale.descuento * 100 }}%</td>
+								<td>{{ product.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td>{{ product.quantity }}</td>
+								<td>{{ parseInt( product.utility*100)+'%' }}</td>
+								<td v-if="sale.descuento > 0">
+									{{ 
+										Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) -
+										(Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * sale.descuento) | currency('$', 0, { thousandsSeparator: '.' })
+									}}
+								</td>
+								<td v-else>
+									{{ 
+										Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) | currency('$', 0, { thousandsSeparator: '.' })
+									}}
+								</td>
+								<td v-if="sale.descuento > 0">
+									{{ 
+										Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) -
+										(Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) * sale.descuento) | currency('$', 0, { thousandsSeparator: '.' })
+									}}
+								</td>
+								<td v-else >
+									{{ 
+										Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) | currency('$', 0, { thousandsSeparator: '.' })
+									}}
+								</td>
+								<td></td>
+								<td></td>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>
@@ -129,7 +198,7 @@
 						</nav>
 					</div>
 					<div class="col-2" >
-						<button class="btn btn-danger btn-block" @click.prevent="cierreCajaZ()"><i class="fas fa-file-invoice-dollar"></i> Cierre de caja Z</button>
+						<button class="btn btn-primary btn-block" @click.prevent="cierreCajaZ()"><i class="fas fa-file-invoice-dollar"></i> Cierre de caja Z</button>
 					</div>
 				</div>
 			</div>
@@ -146,17 +215,19 @@ import 'vue2-datepicker/locale/es';
 import NewCode from './NewCode'
 import ReadCode from './ReadCode'
 import NewSale from './NewSale'
+import AgregarTiposPagos from '../Utilidad/AgregarTiposPagos'
+import AgregarDescuento from '../Utilidad/Descuentos'
 
 
 
 export default {
-	components : { NewCode, ReadCode, NewSale, Datepicker},
+	components : { NewCode, ReadCode, NewSale, Datepicker, AgregarTiposPagos, AgregarDescuento},
 	computed: {
 		...mapState(['cart', 'calendar', 'cartValue', 'cartTotal', 'sales', 'searchFecha','productSales', 'pagination', 'offset']),
 		...mapGetters(['isActived', 'pagesNumber'])
 	},
 	methods: {
-		...mapActions(['newSale', 'allSalesCalendar', 'cierreCajaZ','allSales', 'removeFromCart', 'changePageSales', 'generarRecibo'])
+		...mapActions(['newSale', 'allSalesCalendar', 'cierreCajaZ','allSales', 'removeFromCart', 'changePageSales', 'generarRecibo', 'eliminarVenta','createTipoPago'])
 	},
 	created() {
 		this.$store.dispatch('allSalesCalendar', { page: 1 })

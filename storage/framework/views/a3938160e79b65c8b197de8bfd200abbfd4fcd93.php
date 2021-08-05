@@ -36,16 +36,46 @@
 
 <table>
     <tbody>
-        <?php $totalServicio = 0; ?>
+        <?php $neto = 0; ?>
+        <?php $iva = 0; ?>
+        <?php $total = 0; ?>
         <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <td style="border: 0px;" colspan="2"><?php echo e($product->name); ?></td>
             </tr>
             
             <tr>
-                <td style="border: 0px;" width="600px"><?php echo e($product->quantity); ?> X $<?php echo e(number_format($product->price, 0,',','.')); ?></td>
-                <td style="border: 0px;">$<?php echo e(number_format(round(((floatval($product->price * $product->quantity)) * floatval($product->utility)) + floatval($product->price * $product->quantity)), 0,',','.')); ?></td>
-                <?php $totalServicio += round(((floatval($product->price * $product->quantity)) * floatval($product->utility)) + floatval($product->price * $product->quantity)) ?>
+                <?php if($product->descuento > 0): ?>
+                <td style="border: 0px;" width="600px"><?php echo e($product->quantity); ?> X $<?php echo e(round((($product->price * $product->utility) + $product->price) - ((($product->price * $product->utility) + $product->price) * $product->descuento))); ?></td>
+                <?php else: ?>
+                <td style="border: 0px;" width="600px"><?php echo e($product->quantity); ?> X $<?php echo e(round(($product->price * $product->utility) + $product->price)); ?></td>
+                <?php endif; ?>
+                <?php if($product->descuento > 0): ?>
+                <td style="border: 0px;">$<?php echo e(round(((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) - (((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) * $product->descuento))); ?></td>
+                <?php else: ?>
+                <td style="border: 0px;">$<?php echo e(round((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity))); ?></td>
+                <?php endif; ?>
+
+                <?php if($product->descuento > 0): ?>
+                <?php $neto += round((($product->price * $product->utility) + $product->price) - ((($product->price * $product->utility) + $product->price) * $product->descuento)) ?>
+                <?php else: ?>
+                <?php $neto += round(($product->price * $product->utility) + $product->price) ?>
+                <?php endif; ?>
+
+                <?php if($product->descuento > 0): ?>
+                <?php $iva += round(((($product->price * $product->utility) + $product->price) * 0.19) - (((($product->price * $product->utility) + $product->price) * 0.19) * $product->descuento)) ?>
+                <?php else: ?>
+                <?php $iva += round((($product->price * $product->utility) + $product->price) * 0.19) ?>
+                <?php endif; ?>
+
+
+                <?php if($product->descuento > 0): ?>
+                <?php $total += round(((($product->price * $product->utility) + $product->price) * 1.19) - (((($product->price * $product->utility) + $product->price) * 1.19) * $product->descuento)) ?>
+                <?php else: ?>
+                <?php $total += round((($product->price * $product->utility) + $product->price) * 1.19) ?>
+                <?php endif; ?>
+                
+                
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
@@ -55,21 +85,24 @@
 
 <table>
     <tbody>
-        <tr>
-            
-            <th style="border: 0px;" width="600px">NETO</th>
-            <th style="border: 0px;">$<?php echo e(number_format($totalServicio,0,',','.')); ?></th>
-        </tr>
-        <tr>
-            
-            <th style="border: 0px;" width="600px">IVA</th>
-            <th style="border: 0px;">$<?php echo e(number_format($totalServicio * 0.19,0,',','.')); ?></th>
-        </tr>
-        <tr>
         
-            <th style="border: 0px;" width="600px">TOTAL</th>
-            <th style="border: 0px;">$<?php echo e(number_format($totalServicio * 1.19,0,',','.')); ?></th>
+        <tr>
+            <th style="border: 0px;" width="600px">NETO</th>
+            <th style="border: 0px;">$<?php echo e(number_format($neto,0,',','.')); ?></th>
         </tr>
+
+        <tr>
+            <th style="border: 0px;" width="600px">IVA</th>
+            <th style="border: 0px;">$<?php echo e(number_format($iva,0,',','.')); ?></th>
+        </tr>
+
+
+        <tr>
+            <th style="border: 0px;" width="600px">TOTAL</th>
+            <th style="border: 0px;">$<?php echo e(number_format($total,0,',','.')); ?></th>
+        </tr>
+        
+       
     </tbody>
 </table>
 

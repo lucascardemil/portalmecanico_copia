@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sale extends Model
 {
     public $table = "sales";
-    protected $fillable = ['user_id', 'client_id', 'total'];
+    protected $fillable = ['user_id', 'client_id', 'total', 'descuento', 'forma_pago'];
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     

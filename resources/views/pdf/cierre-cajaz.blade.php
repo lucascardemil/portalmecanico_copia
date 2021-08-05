@@ -38,16 +38,46 @@
 
 <table>
     <tbody>
-        <?php $totalServicio = 0; ?>
+        <?php $neto = 0; ?>
+        <?php $iva = 0; ?>
+        <?php $total = 0; ?>
         @foreach ($products as $product)
             <tr>
                 <td style="border: 0px;" colspan="2">{{ $product->name }}</td>
             </tr>
             
             <tr>
-                <td style="border: 0px;" width="600px">{{ $product->quantity }} X ${{ number_format($product->price, 0,',','.') }}</td>
-                <td style="border: 0px;">${{ number_format(round(((floatval($product->price * $product->quantity)) * floatval($product->utility)) + floatval($product->price * $product->quantity)), 0,',','.') }}</td>
-                <?php $totalServicio += round(((floatval($product->price * $product->quantity)) * floatval($product->utility)) + floatval($product->price * $product->quantity)) ?>
+                @if ($product->descuento > 0)
+                <td style="border: 0px;" width="600px">{{ $product->quantity }} X ${{ round((($product->price * $product->utility) + $product->price) - ((($product->price * $product->utility) + $product->price) * $product->descuento)) }}</td>
+                @else
+                <td style="border: 0px;" width="600px">{{ $product->quantity }} X ${{ round(($product->price * $product->utility) + $product->price) }}</td>
+                @endif
+                @if ($product->descuento > 0)
+                <td style="border: 0px;">${{ round(((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) - (((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) * $product->descuento)) }}</td>
+                @else
+                <td style="border: 0px;">${{ round((($product->price * $product->quantity) * $product->utility) + ($product->price * $product->quantity)) }}</td>
+                @endif
+
+                @if ($product->descuento > 0)
+                <?php $neto += round((($product->price * $product->utility) + $product->price) - ((($product->price * $product->utility) + $product->price) * $product->descuento)) ?>
+                @else
+                <?php $neto += round(($product->price * $product->utility) + $product->price) ?>
+                @endif
+
+                @if ($product->descuento > 0)
+                <?php $iva += round(((($product->price * $product->utility) + $product->price) * 0.19) - (((($product->price * $product->utility) + $product->price) * 0.19) * $product->descuento)) ?>
+                @else
+                <?php $iva += round((($product->price * $product->utility) + $product->price) * 0.19) ?>
+                @endif
+
+
+                @if ($product->descuento > 0)
+                <?php $total += round(((($product->price * $product->utility) + $product->price) * 1.19) - (((($product->price * $product->utility) + $product->price) * 1.19) * $product->descuento)) ?>
+                @else
+                <?php $total += round((($product->price * $product->utility) + $product->price) * 1.19) ?>
+                @endif
+                
+                
             </tr>
         @endforeach
     </tbody>
@@ -57,21 +87,24 @@
 
 <table>
     <tbody>
-        <tr>
-            
-            <th style="border: 0px;" width="600px">NETO</th>
-            <th style="border: 0px;">${{ number_format($totalServicio,0,',','.') }}</th>
-        </tr>
-        <tr>
-            
-            <th style="border: 0px;" width="600px">IVA</th>
-            <th style="border: 0px;">${{ number_format($totalServicio * 0.19,0,',','.') }}</th>
-        </tr>
-        <tr>
         
-            <th style="border: 0px;" width="600px">TOTAL</th>
-            <th style="border: 0px;">${{ number_format($totalServicio * 1.19,0,',','.') }}</th>
+        <tr>
+            <th style="border: 0px;" width="600px">NETO</th>
+            <th style="border: 0px;">${{ number_format($neto,0,',','.') }}</th>
         </tr>
+
+        <tr>
+            <th style="border: 0px;" width="600px">IVA</th>
+            <th style="border: 0px;">${{ number_format($iva,0,',','.') }}</th>
+        </tr>
+
+
+        <tr>
+            <th style="border: 0px;" width="600px">TOTAL</th>
+            <th style="border: 0px;">${{ number_format($total,0,',','.') }}</th>
+        </tr>
+        
+       
     </tbody>
 </table>
 

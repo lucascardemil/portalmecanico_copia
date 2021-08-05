@@ -669,6 +669,9 @@ export default { //data
         pago: '',
         utilidad: ''
     },
+    newDescuento: {
+        descuento: 0
+    },
     tipospagos:[],
     fillTipoPago: {
         id: '',
@@ -937,6 +940,8 @@ export default { //data
     optionsCode: [],
     optionsPrice: [],
     cart: [],
+    formapago: '',
+    aplicardescuento: 0,
     selectedCode: {
         label: '',
         value: ''

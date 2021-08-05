@@ -33,6 +33,11 @@ Route::get('total-cli', 'User\UserController@totalCli');
 Route::get('total-cli-admin/{id}', 'User\UserController@totalCliAdmin');
 Route::get('total-vehi-admin/{id}', 'User\UserController@totalVehiAdmin');
 Route::get('users-all', 'User\UserController@all');
+Route::get('export-users', 'User\UserController@export');
+Route::get('mechanic-clients', 'User\UserController@clients');
+Route::get('suma-vehi', 'User\UserController@sumavehi');
+Route::post('mechanic-client/{id?}', 'User\UserController@storeclient');
+Route::post('mechanic-client2', 'User\UserController@storeclient2');
 
 
 Route::ApiResource('companies', 'CompanyController');
@@ -40,31 +45,42 @@ Route::ApiResource('companies', 'CompanyController');
 Route::ApiResource('vehicles', 'VehicleController');
 Route::post('vehicles-mechanic', 'VehicleController@storeMechanic');
 Route::get('vehicles-user', 'VehicleController@indexByUser');
+Route::get('client-vehicles', 'VehicleController@clientvehicles');
 
 Route::ApiResource('vehiclebrands', 'VehicleBrandController');
 Route::post('newvehiclebrand', 'VehicleBrandController@store');
-Route::ApiResource('vehiculotipos', 'VehiculoTipoController');
-Route::ApiResource('vehicleyears', 'VehicleYearController');
-Route::ApiResource('vehiclemotors', 'VehicleEngineController');
 Route::get('vehiclebrands-all', 'VehicleBrandController@all');
-Route::get('vehiculotipos-all', 'VehiculoTipoController@all');
-Route::get('vehicleyears-all', 'VehicleYearController@all_year');
-Route::get('vehiclemotors-all', 'VehicleEngineController@all_motors');
-
-Route::get('select-tipos', 'VehiculoTipoController@selectTipos');
 Route::get('select-marcas', 'VehicleBrandController@selectMarcas');
-Route::get('select-motor', 'VehicleEngineController@selectMotores');
-Route::get('select-year', 'VehicleYearController@selectYears');
-
 Route::get('vbr-all', 'VehicleBrandController@vbr');
-Route::get('vmr-all/{brand}', 'VehicleModelController@vmr');
 
-Route::get('mm-all', 'VehicleModelController@mm');
+Route::ApiResource('vehiculotipos', 'VehiculoTipoController');
+Route::get('vehiculotipos-all', 'VehiculoTipoController@all');
+Route::get('select-tipos', 'VehiculoTipoController@selectTipos');
+Route::post('newvehiculotipo', 'VehiculoTipoController@store');
+
+Route::ApiResource('vehicleyears', 'VehicleYearController');
+Route::get('vehicleyears-all', 'VehicleYearController@all_year');
+Route::get('select-year', 'VehicleYearController@selectYears');
 Route::get('ym-all/{model}', 'VehicleYearController@ym');
+Route::post('newvehicleyear', 'VehicleYearController@store');
+Route::ApiResource('vyears', 'VehicleYearController');
+Route::get('vyears-all/{model}', 'VehicleYearController@all');
 
 
+Route::ApiResource('vehiclemotors', 'VehicleEngineController');
+Route::get('vehiclemotors-all', 'VehicleEngineController@all_motors');
+Route::get('select-motor', 'VehicleEngineController@selectMotores');
+Route::post('newvehiclemotor', 'VehicleEngineController@store');
+Route::ApiResource('vengines', 'VehicleEngineController');
+Route::get('vengines-all/{year}', 'VehicleEngineController@all');
+
+
+Route::get('vmr-all/{brand}', 'VehicleModelController@vmr');
+Route::get('mm-all', 'VehicleModelController@mm');
 Route::ApiResource('vehiclemodels', 'VehicleModelController');
 Route::get('vehiclemodels-all', 'VehicleModelController@all');
+Route::post('newvehiclemodelo', 'VehicleModelController@store');
+
 
 Route::ApiResource('vbrands', 'VehicleBrandModelController');
 Route::get('vbrands-all', 'VehicleBrandModelController@brands');
@@ -72,18 +88,13 @@ Route::ApiResource('vmodels', 'VehicleBrandModelController');
 Route::get('vmodels-all/{brand}', 'VehicleBrandModelController@models');
 Route::get('brands-models', 'VehicleBrandModelController@all');
 Route::post('newbrandmodel', 'VehicleBrandModelController@store');
-Route::post('newvehiculotipo', 'VehiculoTipoController@store');
-Route::post('newvehiclemodelo', 'VehicleModelController@store');
-Route::post('newvehicleyear', 'VehicleYearController@store');
-Route::post('newvehiclemotor', 'VehicleEngineController@store');
-Route::ApiResource('vyears', 'VehicleYearController');
-Route::get('vyears-all/{model}', 'VehicleYearController@all');
-Route::ApiResource('vengines', 'VehicleEngineController');
-Route::get('vengines-all/{year}', 'VehicleEngineController@all');
+
 Route::ApiResource('quotationuser', 'QuotationUserController');
 Route::post('quotationuserexpress', 'QuotationUserController@storeUserExpress');
 Route::post('quotation-mechanic', 'QuotationUserController@storeMechanic');
 Route::ApiResource('pendingquotations', 'QuotationUserController');
+Route::get('/cotizar', 'QuotationUserController@cotizar');
+Route::get('cotizar-express', 'QuotationUserController@cotizar_express');
 
 Route::ApiResource('detailvehicles', 'DetailVehicleController');
 
@@ -91,25 +102,26 @@ Route::ApiResource('notes', 'NoteController');
 
 Route::ApiResource('quotations', 'QuotationController');
 Route::get('quotation-details/{id}', 'QuotationController@details');
+Route::get('quotation-pdf/{id}', 'QuotationController@pdf');
+
 
 Route::ApiResource('quotationclients', 'QuotationclientController');
 Route::get('quotationclientsform', 'QuotationclientController@clientsform');
 Route::get('quotationclient-details/{id}', 'QuotationclientController@details');
 Route::get('quotationforms/{id}', 'QuotationclientController@forms');
 Route::get('quotationusers/{id}', 'QuotationclientController@forms');
+Route::get('quotationclient-pdf/{id}', 'QuotationclientController@pdf');
+Route::get('quotationclient-pdf-iva/{id}', 'QuotationclientController@pdfIva');
+Route::get('vehicleclients-all', 'QuotationclientController@all');
+
 
 Route::ApiResource('quotationimports', 'QuotationimportController');
 Route::get('quotationimport-pdf/{id}', 'QuotationimportController@pdf');
 
-Route::get('quotation-pdf/{id}', 'QuotationController@pdf');
-Route::get('quotationclient-pdf/{id}', 'QuotationclientController@pdf');
-Route::get('quotationclient-pdf-iva/{id}', 'QuotationclientController@pdfIva');
-
-
-Route::get('vehicleclients-all', 'QuotationclientController@all');
-
 Route::ApiResource('imports', 'ImportController');
 Route::get('import-details/{id}', 'ImportController@details');
+Route::get('export-import/{id}', 'ImportController@export');
+
 Route::ApiResource('detailimports', 'DetailimportController');
 Route::ApiResource('archiveimports', 'ArchiveimportController');
 
@@ -117,19 +129,24 @@ Route::ApiResource('details', 'DetailController');
 Route::ApiResource('detailclients', 'DetailclientController');
 
 Route::post('tipodepago', 'ProductController@storeTipoPago');
+Route::post('descuento', 'ProductController@storeDescuento');
 Route::get('tipodepago', 'ProductController@listaTiposPagos');
 Route::put('tipodepago/{id}', 'ProductController@updateTiposPagos');
 Route::put('utilidad/{id}', 'ProductController@updateUtilidad');
 Route::get('pagos-all', 'ProductController@allPagos');
+Route::get('descuento-defect', 'ProductController@descuentoDefect');
+Route::get('product-codes/{product}', 'ProductController@codes');
+Route::get('productss', 'ProductController@products');
+Route::ApiResource('products', 'ProductController');
+//Route::post('products', 'ProductController@uploadProducts');
+Route::get('products-all', 'ProductController@all');
 
 Route::ApiResource('clients', 'ClientController');
 Route::get('clients-all', 'ClientController@all');
 
 Route::ApiResource('activities', 'ActivityController');
 
-Route::ApiResource('products', 'ProductController');
-//Route::post('products', 'ProductController@uploadProducts');
-Route::get('products-all', 'ProductController@all');
+
 
 Route::ApiResource('productimports', 'ProductimportController');
 Route::get('productimports-all', 'ProductimportController@all');
@@ -138,6 +155,9 @@ Route::ApiResource('codes', 'CodeController');
 Route::get('code-inventories/{id}', 'CodeController@inventories');
 Route::put('update-utilidad-defect', 'CodeController@updateUtilidadDefect');
 Route::get('utilidad-defect', 'CodeController@utilidadDefect');
+Route::get('code-search/{code}', 'CodeController@search');
+Route::get('product-search/{code}', 'CodeController@product');
+
 
 Route::ApiResource('inventories', 'InventoryController');
 Route::get('all-inventories', 'InventoryController@all');
@@ -145,30 +165,22 @@ Route::get('all-inventories', 'InventoryController@all');
 Route::ApiResource('images', 'ImageController');
 
 ///sección de excel
-Route::get('export-users', 'User\UserController@export');
-Route::get('export-import/{id}', 'ImportController@export');
 
 Route::ApiResource('bill', 'BillController');
 Route::post('bill', 'BillController@upload');
 Route::get('test', 'BillController@test');
 Route::get('all', 'BillController@all');
 
-Route::get('product-codes/{product}', 'ProductController@codes');
-Route::get('productss', 'ProductController@products');
+
 Route::post('sale', 'SaleController@sale');
 Route::get('all-sales', 'SaleController@index');
 Route::get('sale-products/{sale}', 'SaleController@products');
 Route::get('products-all-sale', 'SaleController@all');
 Route::get('generar-recibo-sale/{id}', 'SaleController@generarRecibo');
 Route::get('cierre-caja-z/{fecha}', 'SaleController@cierreCajaZ');
+Route::delete('anular-sale/{id}', 'SaleController@anularSale');
 
-Route::get('code-search/{code}', 'CodeController@search');
-Route::get('product-search/{code}', 'CodeController@product');
-Route::get('mechanic-clients', 'User\UserController@clients');
-Route::get('suma-vehi', 'User\UserController@sumavehi');
-Route::post('mechanic-client/{id?}', 'User\UserController@storeclient');
-Route::post('mechanic-client2', 'User\UserController@storeclient2');
-Route::get('client-vehicles', 'VehicleController@clientvehicles');
+
 
 Route::get('{id}/ciudad-all', 'QuotationShippingController@ciudades');
 Route::post('{id}/quotationshipping', 'QuotationShippingController@store');
@@ -179,8 +191,7 @@ Route::get('/cotizar-envio/{id}', 'QuotationShippingController@cotizar_envio');
 Route::get('quotationshipping-pdf/{id}', 'QuotationShippingController@pdf');
 
 //seccion cotizacion
-Route::get('/cotizar', 'QuotationUserController@cotizar');
-Route::get('cotizar-express', 'QuotationUserController@cotizar_express');
+
 Route::post('/upload', 'ImageController@upload');
 
 Route::get('storage-link', function(){

@@ -9509,6 +9509,76 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Utilidad_SelectTiposPagos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Utilidad/SelectTiposPagos */ "./resources/assets/js/components/Utilidad/SelectTiposPagos.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    SelectTiposPagos: _Utilidad_SelectTiposPagos__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['selectedPago', 'errorsLaravel'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['agregarFormaPago']))
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Sales/CodeSelect.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Sales/CodeSelect.vue?vue&type=script&lang=js& ***!
@@ -9574,12 +9644,83 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NewCode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NewCode */ "./resources/assets/js/components/Sales/NewCode.vue");
 /* harmony import */ var _ReadCode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ReadCode */ "./resources/assets/js/components/Sales/ReadCode.vue");
 /* harmony import */ var _NewSale__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NewSale */ "./resources/assets/js/components/Sales/NewSale.vue");
+/* harmony import */ var _Utilidad_AgregarTiposPagos__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Utilidad/AgregarTiposPagos */ "./resources/assets/js/components/Utilidad/AgregarTiposPagos.vue");
+/* harmony import */ var _Utilidad_Descuentos__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Utilidad/Descuentos */ "./resources/assets/js/components/Utilidad/Descuentos.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9727,15 +9868,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     NewCode: _NewCode__WEBPACK_IMPORTED_MODULE_4__["default"],
     ReadCode: _ReadCode__WEBPACK_IMPORTED_MODULE_5__["default"],
     NewSale: _NewSale__WEBPACK_IMPORTED_MODULE_6__["default"],
-    Datepicker: vue2_datepicker__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Datepicker: vue2_datepicker__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AgregarTiposPagos: _Utilidad_AgregarTiposPagos__WEBPACK_IMPORTED_MODULE_7__["default"],
+    AgregarDescuento: _Utilidad_Descuentos__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['cart', 'calendar', 'cartValue', 'cartTotal', 'sales', 'searchFecha', 'productSales', 'pagination', 'offset'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isActived', 'pagesNumber'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['newSale', 'allSalesCalendar', 'cierreCajaZ', 'allSales', 'removeFromCart', 'changePageSales', 'generarRecibo'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['newSale', 'allSalesCalendar', 'cierreCajaZ', 'allSales', 'removeFromCart', 'changePageSales', 'generarRecibo', 'eliminarVenta', 'createTipoPago'])),
   created: function created() {
     this.$store.dispatch('allSalesCalendar', {
       page: 1
@@ -9841,6 +9986,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _SelectProductSale__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectProductSale */ "./resources/assets/js/components/Sales/SelectProductSale.vue");
+/* harmony import */ var _AgregarFormaPago__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AgregarFormaPago */ "./resources/assets/js/components/Sales/AgregarFormaPago.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -9963,15 +10109,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SelectProductSale: _SelectProductSale__WEBPACK_IMPORTED_MODULE_2__["default"]
+    SelectProductSale: _SelectProductSale__WEBPACK_IMPORTED_MODULE_2__["default"],
+    AgregarFormaPago: _AgregarFormaPago__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['productForm', 'cartValue', 'cartTotal', 'cart'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['newSale', 'sumTotalProductSale', 'addToCart', 'removeFromCart']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['productForm', 'cartValue', 'cartTotal', 'formapago', 'aplicardescuento', 'cart'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['newSale', 'aplicarDescuento', 'sumTotalProductSale', 'addToCart', 'removeFromCart', 'removeDescuento']))
 });
 
 /***/ }),
@@ -11357,6 +11537,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios-progress-bar */ "./node_modules/axios-progress-bar/dist/index.js");
 /* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _EditTiposPagos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditTiposPagos */ "./resources/assets/js/components/Utilidad/EditTiposPagos.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -11438,14 +11619,80 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    EditTiposPagos: _EditTiposPagos__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['newTipoPago', 'tipospagos'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])([])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getTiposPagos', 'createTipoPago', 'editTiposPagos'])),
+  created: function created() {
+    Object(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__["loadProgressBar"])();
+    this.$store.dispatch('getTiposPagos');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios-progress-bar */ "./node_modules/axios-progress-bar/dist/index.js");
+/* harmony import */ var axios_progress_bar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_progress_bar__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 
- //import EditTiposPagos from './EditTiposPagos'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['newTipoPago'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])([])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['createTipoPago']))
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['newDescuento'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])([])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['createDescuento'])),
+  created: function created() {
+    this.$store.dispatch('descuentoDefect');
+  }
 });
 
 /***/ }),
@@ -62581,6 +62828,106 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=template&id=56469c71&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=template&id=56469c71& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: { action: "POST" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.agregarFormaPago($event)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "modal fade", attrs: { id: "formaPago" } }, [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "form-group" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c("label", { attrs: { for: "utilidad" } }, [
+                    _vm._v("Forma de Pago")
+                  ]),
+                  _vm._v(" "),
+                  _c("SelectTiposPagos")
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", [_vm._v("Seleccione la forma de Pago")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [
+          _c("i", { staticClass: "fas fa-plus-square" }),
+          _vm._v(" Guardar\n                    ")
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Sales/CodeSelect.vue?vue&type=template&id=7419d283&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Sales/CodeSelect.vue?vue&type=template&id=7419d283& ***!
@@ -62643,6 +62990,10 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("NewSale"),
+      _vm._v(" "),
+      _c("AgregarTiposPagos"),
+      _vm._v(" "),
+      _c("AgregarDescuento"),
       _vm._v(" "),
       _c("div", { staticClass: "row mt-3" }, [
         _c(
@@ -62713,158 +63064,256 @@ var render = function() {
                     _vm._m(2),
                     _vm._v(" "),
                     _vm._l(_vm.sales, function(sale) {
-                      return _c(
-                        "tbody",
-                        { key: sale.id },
-                        [
-                          _c(
-                            "tr",
-                            {
-                              staticClass: "accordion-toggle",
-                              attrs: {
-                                "data-toggle": "collapse",
-                                "data-target": "#sale" + sale.id
-                              }
-                            },
-                            [
-                              _c("td", { staticStyle: { width: "25%" } }),
-                              _vm._v(" "),
-                              _c("td", { staticStyle: { width: "10%" } }),
-                              _vm._v(" "),
-                              _c("td", { staticStyle: { width: "10%" } }),
-                              _vm._v(" "),
-                              _c("td", { staticStyle: { width: "10%" } }),
-                              _vm._v(" "),
-                              _c("td", { staticStyle: { width: "10%" } }),
-                              _vm._v(" "),
-                              _c("td", { staticStyle: { width: "10%" } }, [
-                                _vm._v(
-                                  _vm._s(
-                                    _vm._f("currency")(sale.total, "$", 0, {
-                                      thousandsSeparator: "."
-                                    })
+                      return _c("tbody", { key: sale.sale_id }, [
+                        _c(
+                          "tr",
+                          {
+                            staticClass: "accordion-toggle",
+                            attrs: {
+                              "data-toggle": "collapse",
+                              "data-target": "#sale" + sale.sale_id
+                            }
+                          },
+                          [
+                            _c("td", { staticStyle: { width: "25%" } }),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "10%" } }),
+                            _vm._v(" "),
+                            _c("td"),
+                            _vm._v(" "),
+                            _c("td"),
+                            _vm._v(" "),
+                            _c("td"),
+                            _vm._v(" "),
+                            _c("td"),
+                            _vm._v(" "),
+                            _c("td"),
+                            _vm._v(" "),
+                            sale.descuento > 0
+                              ? _c("td", [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("currency")(
+                                        sale.total -
+                                          sale.total * sale.descuento,
+                                        "$",
+                                        0,
+                                        { thousandsSeparator: "." }
+                                      )
+                                    )
                                   )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(sale.updated_at))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "btn btn-danger btn-sm",
-                                    attrs: { href: "#", role: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        $event.preventDefault()
-                                        return _vm.generarRecibo({
-                                          id: sale.id
-                                        })
-                                      }
+                                ])
+                              : _c("td", [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("currency")(sale.total, "$", 0, {
+                                        thousandsSeparator: "."
+                                      })
+                                    )
+                                  )
+                                ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(sale.fecha_sale_create))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-primary btn-sm",
+                                  attrs: { href: "#", role: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.generarRecibo({
+                                        id: sale.sale_id
+                                      })
                                     }
-                                  },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fas fa-file-invoice-dollar"
-                                    }),
-                                    _vm._v(" Recibo\n\t\t\t\t\t\t\t\t")
-                                  ]
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-file-invoice-dollar"
+                                  }),
+                                  _vm._v(" Recibo\n\t\t\t\t\t\t\t\t")
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-danger btn-sm",
+                                  attrs: { href: "#", role: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.eliminarVenta({
+                                        id: sale.sale_id
+                                      })
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-trash-alt" })]
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "tr",
+                          {
+                            staticClass: "accordian-body collapse",
+                            attrs: { id: "sale" + sale.sale_id }
+                          },
+                          [
+                            _c("td", { staticStyle: { width: "25%" } }, [
+                              _vm._v(_vm._s(sale.name))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "10%" } }, [
+                              _vm._v(_vm._s(sale.forma_pago))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(sale.descuento * 100) + "%")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm._f("currency")(sale.price, "$", 0, {
+                                    thousandsSeparator: "."
+                                  })
                                 )
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm._l(sale.products, function(product) {
-                            return _c(
-                              "tr",
-                              {
-                                key: product.id,
-                                staticClass: "accordian-body collapse",
-                                attrs: { id: "sale" + sale.id }
-                              },
-                              [
-                                _c("td", { staticStyle: { width: "25%" } }, [
-                                  _vm._v(_vm._s(product.code_id))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticStyle: { width: "10%" } }, [
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(sale.quantity))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(parseInt(sale.utility * 100) + "%"))
+                            ]),
+                            _vm._v(" "),
+                            sale.descuento > 0
+                              ? _c("td", [
                                   _vm._v(
-                                    _vm._s(
-                                      _vm._f("currency")(
-                                        product.price,
-                                        "$",
-                                        0,
-                                        { thousandsSeparator: "." }
-                                      )
-                                    )
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticStyle: { width: "10%" } }, [
-                                  _vm._v(_vm._s(product.quantity))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticStyle: { width: "10%" } }, [
-                                  _vm._v(
-                                    _vm._s(
-                                      parseInt(product.utility * 100) + "%"
-                                    )
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticStyle: { width: "10%" } }, [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm._f("currency")(
-                                        Math.round(
-                                          parseFloat(
-                                            product.price * product.quantity
-                                          ) *
-                                            parseFloat(product.utility) +
+                                    "\n\t\t\t\t\t\t\t\t" +
+                                      _vm._s(
+                                        _vm._f("currency")(
+                                          Math.round(
                                             parseFloat(
-                                              product.price * product.quantity
-                                            )
-                                        ),
-                                        "$",
-                                        0,
-                                        { thousandsSeparator: "." }
-                                      )
-                                    )
+                                              sale.price * sale.quantity
+                                            ) *
+                                              parseFloat(sale.utility) +
+                                              parseFloat(
+                                                sale.price * sale.quantity
+                                              )
+                                          ) -
+                                            Math.round(
+                                              parseFloat(
+                                                sale.price * sale.quantity
+                                              ) *
+                                                parseFloat(sale.utility) +
+                                                parseFloat(
+                                                  sale.price * sale.quantity
+                                                )
+                                            ) *
+                                              sale.descuento,
+                                          "$",
+                                          0,
+                                          { thousandsSeparator: "." }
+                                        )
+                                      ) +
+                                      "\n\t\t\t\t\t\t\t"
                                   )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticStyle: { width: "10%" } }, [
+                                ])
+                              : _c("td", [
                                   _vm._v(
-                                    _vm._s(
-                                      _vm._f("currency")(
-                                        Math.round(
-                                          (parseFloat(
-                                            product.price * product.quantity
-                                          ) *
-                                            parseFloat(product.utility) +
+                                    "\n\t\t\t\t\t\t\t\t" +
+                                      _vm._s(
+                                        _vm._f("currency")(
+                                          Math.round(
                                             parseFloat(
-                                              product.price * product.quantity
-                                            )) *
-                                            1.19
-                                        ),
-                                        "$",
-                                        0,
-                                        { thousandsSeparator: "." }
-                                      )
-                                    )
+                                              sale.price * sale.quantity
+                                            ) *
+                                              parseFloat(sale.utility) +
+                                              parseFloat(
+                                                sale.price * sale.quantity
+                                              )
+                                          ),
+                                          "$",
+                                          0,
+                                          { thousandsSeparator: "." }
+                                        )
+                                      ) +
+                                      "\n\t\t\t\t\t\t\t"
                                   )
                                 ]),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td")
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
+                            _vm._v(" "),
+                            sale.descuento > 0
+                              ? _c("td", [
+                                  _vm._v(
+                                    "\n\t\t\t\t\t\t\t\t" +
+                                      _vm._s(
+                                        _vm._f("currency")(
+                                          Math.round(
+                                            (parseFloat(
+                                              sale.price * sale.quantity
+                                            ) *
+                                              parseFloat(sale.utility) +
+                                              parseFloat(
+                                                sale.price * sale.quantity
+                                              )) *
+                                              1.19
+                                          ) -
+                                            Math.round(
+                                              (parseFloat(
+                                                sale.price * sale.quantity
+                                              ) *
+                                                parseFloat(sale.utility) +
+                                                parseFloat(
+                                                  sale.price * sale.quantity
+                                                )) *
+                                                1.19
+                                            ) *
+                                              sale.descuento,
+                                          "$",
+                                          0,
+                                          { thousandsSeparator: "." }
+                                        )
+                                      ) +
+                                      "\n\t\t\t\t\t\t\t"
+                                  )
+                                ])
+                              : _c("td", [
+                                  _vm._v(
+                                    "\n\t\t\t\t\t\t\t\t" +
+                                      _vm._s(
+                                        _vm._f("currency")(
+                                          Math.round(
+                                            (parseFloat(
+                                              sale.price * sale.quantity
+                                            ) *
+                                              parseFloat(sale.utility) +
+                                              parseFloat(
+                                                sale.price * sale.quantity
+                                              )) *
+                                              1.19
+                                          ),
+                                          "$",
+                                          0,
+                                          { thousandsSeparator: "." }
+                                        )
+                                      ) +
+                                      "\n\t\t\t\t\t\t\t"
+                                  )
+                                ]),
+                            _vm._v(" "),
+                            _c("td"),
+                            _vm._v(" "),
+                            _c("td")
+                          ]
+                        )
+                      ])
                     })
                   ],
                   2
@@ -63002,7 +63451,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-danger btn-block",
+                  staticClass: "btn btn-primary btn-block",
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -63042,6 +63491,37 @@ var staticRenderFns = [
           }
         },
         [_c("i", { staticClass: "fas fa-plus-circle" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-success pull-right btn-sm",
+          attrs: {
+            href: "#",
+            "data-toggle": "modal",
+            "data-target": "#createTiposPagos",
+            title: "Agregar"
+          }
+        },
+        [
+          _c("i", { staticClass: "fas fa-money-bill-wave" }),
+          _vm._v(" Formas de Pago")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-success pull-right btn-sm",
+          attrs: {
+            href: "#",
+            "data-toggle": "modal",
+            "data-target": "#createDescuento",
+            title: "Agregar"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-tags" }), _vm._v(" Descuento")]
       )
     ])
   },
@@ -63093,6 +63573,10 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("Producto")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Forma de Pago")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Descuento")]),
         _vm._v(" "),
         _c("th", [_vm._v("Precio")]),
         _vm._v(" "),
@@ -63790,6 +64274,60 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("td")
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("td"),
+                                  _vm._v(" "),
+                                  _c("td"),
+                                  _vm._v(" "),
+                                  _c("td"),
+                                  _vm._v(" "),
+                                  _c("td"),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("Forma de Pago:")]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(_vm.formapago))]),
+                                  _vm._v(" "),
+                                  _c("td")
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("td"),
+                                  _vm._v(" "),
+                                  _c("td"),
+                                  _vm._v(" "),
+                                  _c("td"),
+                                  _vm._v(" "),
+                                  _c("td"),
+                                  _vm._v(" "),
+                                  _c("th", [_vm._v("Descuento:")]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(_vm.aplicardescuento) + "%")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "btn btn-danger btn-sm",
+                                        attrs: {
+                                          href: "#",
+                                          "data-toggle": "tooltip",
+                                          "data-placement": "top",
+                                          title: "Eliminar"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.removeDescuento()
+                                          }
+                                        }
+                                      },
+                                      [_c("i", { staticClass: "fas fa-ban" })]
+                                    )
+                                  ])
                                 ])
                               ],
                               2
@@ -63807,6 +64345,36 @@ var render = function() {
                   "button",
                   {
                     staticClass: "col-lg-1 btn btn-success form-control",
+                    attrs: {
+                      href: "#",
+                      disabled: _vm.cartValue === 0,
+                      "data-toggle": "modal",
+                      "data-target": "#formaPago"
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-money-bill-wave" }),
+                    _vm._v(" Forma de Pago")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "col-lg-2 btn btn-success form-control",
+                    attrs: { disabled: _vm.cartValue === 0 },
+                    on: { click: _vm.aplicarDescuento }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-tags" }),
+                    _vm._v(" Aplicar Descuento")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "col-lg-1 btn btn-success form-control",
                     attrs: { disabled: _vm.cartValue === 0 },
                     on: { click: _vm.newSale }
                   },
@@ -63816,8 +64384,11 @@ var render = function() {
             ])
           ])
         ]
-      )
-    ]
+      ),
+      _vm._v(" "),
+      _c("AgregarFormaPago")
+    ],
+    1
   )
 }
 var staticRenderFns = [
@@ -66886,75 +67457,108 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "modal fade", attrs: { id: "create" } }, [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "pago" } }, [
-                  _vm._v("Tipo de Pago")
+      _c(
+        "div",
+        { staticClass: "modal fade", attrs: { id: "createTiposPagos" } },
+        [
+          _c("div", { staticClass: "modal-dialog modal-lg" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "pago" } }, [
+                    _vm._v("Tipo de Pago")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newTipoPago.pago,
+                        expression: "newTipoPago.pago"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { required: "", type: "text", name: "pago" },
+                    domProps: { value: _vm.newTipoPago.pago },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newTipoPago, "pago", $event.target.value)
+                      }
+                    }
+                  })
                 ]),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.newTipoPago.pago,
-                      expression: "newTipoPago.pago"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { required: "", type: "text", name: "pago" },
-                  domProps: { value: _vm.newTipoPago.pago },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.newTipoPago, "pago", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "codigo" } }, [
-                  _vm._v("% Utilidad")
-                ]),
+                _vm._m(1),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.newTipoPago.utilidad,
-                      expression: "newTipoPago.utilidad"
-                    }
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("div", { staticClass: "table-responsive" }, [
+                      _c(
+                        "table",
+                        {
+                          staticClass:
+                            "table table-striped mt-3 table-sm text-white bg-dark"
+                        },
+                        [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.tipospagos, function(tipospagosLocal) {
+                              return _c("tr", { key: tipospagosLocal.id }, [
+                                _c("td", [_vm._v(_vm._s(tipospagosLocal.id))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(tipospagosLocal.pago))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-right" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-warning",
+                                      attrs: {
+                                        "data-toggle": "tooltip",
+                                        "data-placement": "top",
+                                        title: "Editar Tipo de pago"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.editTiposPagos({
+                                            tipospagosLocal: tipospagosLocal
+                                          })
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "far fa-edit" })]
+                                  )
+                                ])
+                              ])
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("EditTiposPagos")
                   ],
-                  staticClass: "form-control",
-                  attrs: { required: "", type: "number", name: "utilidad" },
-                  domProps: { value: _vm.newTipoPago.utilidad },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.newTipoPago, "utilidad", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" })
-            ]),
-            _vm._v(" "),
-            _vm._m(1)
+                  1
+                )
+              ])
+            ])
           ])
-        ])
-      ])
+        ]
+      )
     ]
   )
 }
@@ -66980,6 +67584,118 @@ var staticRenderFns = [
       )
     ])
   },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [
+          _c("i", { staticClass: "fas fa-plus-square" }),
+          _vm._v(" Guardar\n                        ")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tipo de Pago")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" ")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=template&id=cabe079a&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=template&id=cabe079a& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: { action: "POST" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.createDescuento($event)
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "modal fade", attrs: { id: "createDescuento" } },
+        [
+          _c("div", { staticClass: "modal-dialog modal-lg" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "pago" } }, [
+                    _vm._v("Descuento")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newDescuento.descuento,
+                        expression: "newDescuento.descuento"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { required: "", type: "number", name: "descuento" },
+                    domProps: { value: _vm.newDescuento.descuento },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.newDescuento,
+                          "descuento",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -67058,38 +67774,6 @@ var render = function() {
                         return
                       }
                       _vm.$set(_vm.fillTipoPago, "pago", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "utilidad" } }, [
-                  _vm._v("% Utilidad")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fillTipoPago.utilidad,
-                      expression: "fillTipoPago.utilidad"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { required: "", type: "number", name: "utilidad" },
-                  domProps: { value: _vm.fillTipoPago.utilidad },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fillTipoPago,
-                        "utilidad",
-                        $event.target.value
-                      )
                     }
                   }
                 })
@@ -102893,6 +103577,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Sales/AgregarFormaPago.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/assets/js/components/Sales/AgregarFormaPago.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AgregarFormaPago_vue_vue_type_template_id_56469c71___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AgregarFormaPago.vue?vue&type=template&id=56469c71& */ "./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=template&id=56469c71&");
+/* harmony import */ var _AgregarFormaPago_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AgregarFormaPago.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AgregarFormaPago_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AgregarFormaPago_vue_vue_type_template_id_56469c71___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AgregarFormaPago_vue_vue_type_template_id_56469c71___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/Sales/AgregarFormaPago.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarFormaPago_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarFormaPago.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarFormaPago_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=template&id=56469c71&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=template&id=56469c71& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarFormaPago_vue_vue_type_template_id_56469c71___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarFormaPago.vue?vue&type=template&id=56469c71& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Sales/AgregarFormaPago.vue?vue&type=template&id=56469c71&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarFormaPago_vue_vue_type_template_id_56469c71___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarFormaPago_vue_vue_type_template_id_56469c71___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/Sales/CodeSelect.vue":
 /*!*************************************************************!*\
   !*** ./resources/assets/js/components/Sales/CodeSelect.vue ***!
@@ -104010,6 +104763,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarTiposPagos_vue_vue_type_template_id_6e98bc42___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarTiposPagos_vue_vue_type_template_id_6e98bc42___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Utilidad/Descuentos.vue":
+/*!****************************************************************!*\
+  !*** ./resources/assets/js/components/Utilidad/Descuentos.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Descuentos_vue_vue_type_template_id_cabe079a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Descuentos.vue?vue&type=template&id=cabe079a& */ "./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=template&id=cabe079a&");
+/* harmony import */ var _Descuentos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Descuentos.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Descuentos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Descuentos_vue_vue_type_template_id_cabe079a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Descuentos_vue_vue_type_template_id_cabe079a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/Utilidad/Descuentos.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Descuentos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Descuentos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Descuentos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=template&id=cabe079a&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=template&id=cabe079a& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Descuentos_vue_vue_type_template_id_cabe079a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Descuentos.vue?vue&type=template&id=cabe079a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Utilidad/Descuentos.vue?vue&type=template&id=cabe079a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Descuentos_vue_vue_type_template_id_cabe079a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Descuentos_vue_vue_type_template_id_cabe079a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -106736,6 +107558,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   generarRecibo: function generarRecibo(context, data) {
     context.commit('generarRecibo', data.id);
   },
+  eliminarVenta: function eliminarVenta(context, data) {
+    context.commit('eliminarVenta', data.id);
+    setTimeout(function () {
+      context.commit('allSalesCalendar');
+    }, 1000);
+  },
   pdfQuotationclient: function pdfQuotationclient(context) {
     context.commit('pdfQuotationclient');
   },
@@ -107023,6 +107851,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   /******************************* */
 
   /*************seccion de productos***************** */
+  createDescuento: function createDescuento(context) {
+    context.commit('createDescuento');
+    context.commit('descuentoDefect');
+  },
   createTipoPago: function createTipoPago(context) {
     context.commit('createTipoPago');
     context.commit('getTiposPagos');
@@ -107333,6 +108165,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   utilidadDefect: function utilidadDefect(context) {
     context.commit('utilidadDefect');
   },
+  descuentoDefect: function descuentoDefect(context) {
+    context.commit('descuentoDefect');
+  },
   allUsers: function allUsers(context) {
     context.commit('allUsers');
   },
@@ -107582,6 +108417,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   setTimeout(function () {
     context.commit('allSalesCalendar');
   }, 1000);
+}), _defineProperty(_getVehicles$getVehic, "aplicarDescuento", function aplicarDescuento(context, data) {
+  context.commit('aplicarDescuento', data);
+}), _defineProperty(_getVehicles$getVehic, "agregarFormaPago", function agregarFormaPago(context, data) {
+  context.commit('agregarFormaPago', data);
 }), _defineProperty(_getVehicles$getVehic, "allSalesCalendar", function allSalesCalendar(context, data) {
   context.commit('allSalesCalendar', data.page);
 }), _defineProperty(_getVehicles$getVehic, "cierreCajaZ", function cierreCajaZ(context) {
@@ -107599,6 +108438,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   context.commit('updateCodeFields');
 }), _defineProperty(_getVehicles$getVehic, "removeFromCart", function removeFromCart(context, data) {
   context.commit('removeFromCart', data);
+}), _defineProperty(_getVehicles$getVehic, "removeDescuento", function removeDescuento(context, data) {
+  context.commit('removeDescuento', data);
 }), _defineProperty(_getVehicles$getVehic, "getMechanicClients", function getMechanicClients(context) {
   context.commit('getMechanicClients');
 }), _defineProperty(_getVehicles$getVehic, "getTotalVehi", function getTotalVehi(context) {
@@ -108063,6 +108904,7 @@ var urlQuotationclientPdf = 'quotationclient-pdf';
 var urlQuotationclientPdfIva = 'quotationclient-pdf-iva';
 var urlQuotationShippingPdf = 'quotationshipping-pdf';
 var urlGenerarReciboSales = 'generar-recibo-sale';
+var urlAnularSale = 'anular-sale';
 var urlCierreCajaZ = 'cierre-caja-z';
 var urlImport = 'imports';
 var urlImportDetails = 'import-details';
@@ -108076,6 +108918,7 @@ var urlProduct = 'products';
 var urlAllProduct = 'products-all';
 var urlAllProductSale = 'products-all-sale';
 var urlTipoDePago = 'tipodepago';
+var urlDescuento = 'descuento';
 var urlProductTipoDePago = 'producttipopago';
 var urlUtilidad = 'utilidad';
 var urlProductimport = 'productimports';
@@ -108089,6 +108932,7 @@ var urlUserId = 'user-id';
 var urlCompany = 'companies';
 var urlUpdateUtilidadDefect = 'update-utilidad-defect';
 var urlUtilidadDefect = 'utilidad-defect';
+var urlDescuentoDefect = 'descuento-defect';
 /* harmony default export */ __webpack_exports__["default"] = (_getVehicles$getVehic = {
   //used for changing the state
 
@@ -109649,6 +110493,24 @@ var urlUtilidadDefect = 'utilidad-defect';
       state.errorsLaravel = error.response.data;
     });
   },
+  createDescuento: function createDescuento(state) {
+    var url = urlDescuento;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
+      descuento: state.newDescuento.descuento
+    }).then(function (response) {
+      state.newDescuento = {
+        descuento: 0
+      };
+      state.errorsLaravel = [];
+      toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('El Descuento se creo correctamente');
+      $('#createDescuento').modal('hide');
+    })["catch"](function (error) {
+      state.errorsLaravel = error.response.data;
+    });
+  },
+  descuento: function descuento(state, detailimport) {
+    state.fillDetailimport.id = detailimport.id;
+  },
   createTipoPago: function createTipoPago(state) {
     var url = urlTipoDePago;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
@@ -110345,6 +111207,13 @@ var urlUtilidadDefect = 'utilidad-defect';
       state.newUtilidad.utilidad = pago.utilidad;
     });
   });
+}), _defineProperty(_getVehicles$getVehic, "descuentoDefect", function descuentoDefect(state) {
+  var url = urlDescuentoDefect;
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+    response.data.forEach(function (descuento) {
+      state.newDescuento.descuento = descuento.descuento;
+    });
+  });
 }), _defineProperty(_getVehicles$getVehic, "allUsers", function allUsers(state) {
   var url = urlAllUser;
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
@@ -110912,6 +111781,7 @@ var urlUtilidadDefect = 'utilidad-defect';
     });
     state.cartValue += state.productForm.value;
     state.cartTotal += state.productForm.total;
+    state.aplicardescuento = 0;
     state.productForm = {
       product_id: 0,
       code_id: 0,
@@ -110926,6 +111796,11 @@ var urlUtilidadDefect = 'utilidad-defect';
       max_quantity: 99
     };
   }
+}), _defineProperty(_getVehicles$getVehic, "agregarFormaPago", function agregarFormaPago(state) {
+  state.formapago = state.selectedPago.label;
+  $('#formaPago').modal('hide');
+}), _defineProperty(_getVehicles$getVehic, "aplicarDescuento", function aplicarDescuento(state) {
+  state.aplicardescuento = state.newDescuento.descuento;
 }), _defineProperty(_getVehicles$getVehic, "allCodes", function allCodes(state) {
   if (state.selectedProduct.label != '') {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('product-codes/' + state.selectedProduct.value).then(function (response) {
@@ -110965,7 +111840,9 @@ var urlUtilidadDefect = 'utilidad-defect';
 }), _defineProperty(_getVehicles$getVehic, "newSale", function newSale(state) {
   var saleDetails = {
     //client_id: 5, //particular
-    total: state.cartTotal
+    total: state.cartTotal,
+    formapago: state.formapago,
+    descuento: state.aplicardescuento
   };
   var sale = {
     sale: saleDetails,
@@ -110986,16 +111863,16 @@ var urlUtilidadDefect = 'utilidad-defect';
 }), _defineProperty(_getVehicles$getVehic, "allSalesCalendar", function allSalesCalendar(state, page) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('all-sales?page=' + page + '&calendar=' + state.calendar.search).then(function (response) {
     state.sales = response.data.sales.data;
-    state.pagination = response.data.pagination; //esto se debe arreglar
-    //encontrar una forma de guardar los nombres de los productos en el query de ventas
-
-    state.sales.forEach(function (sale) {
-      sale.products.forEach(function (product) {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('product-search/' + product.code_id).then(function (response) {
-          product.code_id = response.data.name;
-        });
-      });
-    });
+    state.pagination = response.data.pagination; // //esto se debe arreglar
+    // //encontrar una forma de guardar los nombres de los productos en el query de ventas
+    // state.sales.forEach(sale => {
+    //     sale.products.forEach(product => {
+    //         axios.get('product-search/' + product.code_id)
+    //             .then(response => {
+    //                 product.code_id = response.data.name
+    //             })
+    //     })
+    // })
   })["catch"](function (error) {//console.log(error.response.data)
   });
 }), _defineProperty(_getVehicles$getVehic, "cierreCajaZ", function cierreCajaZ(state) {
@@ -111022,6 +111899,11 @@ var urlUtilidadDefect = 'utilidad-defect';
 }), _defineProperty(_getVehicles$getVehic, "generarRecibo", function generarRecibo(state, id) {
   var url = urlGenerarReciboSales + '/' + id;
   window.location.href = url;
+}), _defineProperty(_getVehicles$getVehic, "eliminarVenta", function eliminarVenta(state, id) {
+  var url = urlAnularSale + '/' + id;
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](url).then(function (response) {
+    toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('La Venta fue anulada con éxito');
+  });
 }), _defineProperty(_getVehicles$getVehic, "searchCode", function searchCode(state) {
   if (state.productForm.code !== '') {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('code-search/' + state.productForm.code).then(function (response) {
@@ -111048,6 +111930,8 @@ var urlUtilidadDefect = 'utilidad-defect';
   state.cartValue = state.cartValue - product.value;
   state.cartTotal = state.cartTotal - product.total;
   state.cart.splice(state.cart.indexOf(data.id));
+}), _defineProperty(_getVehicles$getVehic, "removeDescuento", function removeDescuento(state) {
+  state.aplicardescuento = 0;
 }), _defineProperty(_getVehicles$getVehic, "getMechanicClients", function getMechanicClients(state) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('mechanic-clients').then(function (response) {
     state.users = response.data;
@@ -111887,6 +112771,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 }), _defineProperty(_options$optionsUser$, "newTipoPago", {
   pago: '',
   utilidad: ''
+}), _defineProperty(_options$optionsUser$, "newDescuento", {
+  descuento: 0
 }), _defineProperty(_options$optionsUser$, "tipospagos", []), _defineProperty(_options$optionsUser$, "fillTipoPago", {
   id: '',
   pago: '',
@@ -112054,7 +112940,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   check: [],
   pago: '',
   utilidad: ''
-}), _defineProperty(_options$optionsUser$, "optionsCode", []), _defineProperty(_options$optionsUser$, "optionsPrice", []), _defineProperty(_options$optionsUser$, "cart", []), _defineProperty(_options$optionsUser$, "selectedCode", {
+}), _defineProperty(_options$optionsUser$, "optionsCode", []), _defineProperty(_options$optionsUser$, "optionsPrice", []), _defineProperty(_options$optionsUser$, "cart", []), _defineProperty(_options$optionsUser$, "formapago", ''), _defineProperty(_options$optionsUser$, "aplicardescuento", 0), _defineProperty(_options$optionsUser$, "selectedCode", {
   label: '',
   value: ''
 }), _defineProperty(_options$optionsUser$, "selectedPrice", {
