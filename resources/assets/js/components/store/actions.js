@@ -1131,6 +1131,9 @@ export default { //methods
     sumTotalProduct(context) {
         context.commit('sumTotalProduct')
     },
+    sumTotalEditProduct(context) {
+        context.commit('sumTotalEditProduct')
+    },
     sumTotalProductSale(context) {
         context.commit('sumTotalProductSale')
     },

@@ -110,13 +110,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nombre_edit' => 'required',
-            'detalle_edit' => 'required'
-        ], [
-            'nombre_edit.required' => 'El campo nombre es obligatorio',
-            'detalle_edit.required' => 'El campo detalle electrónico es obligatorio'
-        ]);
+        
 
         Product::find($id)->update($request->all());
 

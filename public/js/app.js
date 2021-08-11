@@ -5844,15 +5844,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['fillProduct', 'errorsLaravel'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])([])),
@@ -54538,20 +54529,12 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body" },
-              [
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "nombre" } }, [_vm._v("Nombre")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|min:1",
-                      expression: "'required|min:1'"
-                    },
                     {
                       name: "model",
                       rawName: "v-model",
@@ -54560,11 +54543,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: {
-                    input: true,
-                    "is-invalid": _vm.errors.has("nombre_edit")
-                  },
-                  attrs: { type: "text", name: "nombre" },
+                  attrs: { required: "", type: "text", name: "nombre" },
                   domProps: { value: _vm.fillProduct.name },
                   on: {
                     input: function($event) {
@@ -54574,40 +54553,14 @@ var render = function() {
                       _vm.$set(_vm.fillProduct, "name", $event.target.value)
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("nombre_edit"),
-                        expression: "errors.has('nombre_edit')"
-                      }
-                    ],
-                    staticClass: "text-danger"
-                  },
-                  [_vm._v(_vm._s(_vm.errors.first("nombre_edit")))]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.errorsLaravel, function(error, index) {
-                  return _c("div", { key: index, staticClass: "text-danger" }, [
-                    _c("p", [_vm._v(_vm._s(error.nombre_edit))])
-                  ])
-                }),
-                _vm._v(" "),
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "detalle" } }, [_vm._v("Detalle")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|min:1",
-                      expression: "'required|min:1'"
-                    },
                     {
                       name: "model",
                       rawName: "v-model",
@@ -54616,11 +54569,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: {
-                    input: true,
-                    "is-invalid": _vm.errors.has("detalle_edit")
-                  },
-                  attrs: { name: "detalle" },
+                  attrs: { required: "", name: "detalle" },
                   domProps: { value: _vm.fillProduct.detail },
                   on: {
                     input: function($event) {
@@ -54630,32 +54579,9 @@ var render = function() {
                       _vm.$set(_vm.fillProduct, "detail", $event.target.value)
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("detalle_edit"),
-                        expression: "errors.has('detalle_edit')"
-                      }
-                    ],
-                    staticClass: "text-danger"
-                  },
-                  [_vm._v(_vm._s(_vm.errors.first("detalle_edit")))]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.errorsLaravel, function(error, index) {
-                  return _c("div", { key: index, staticClass: "text-danger" }, [
-                    _c("p", [_vm._v(_vm._s(error.detalle_edit))])
-                  ])
                 })
-              ],
-              2
-            ),
+              ])
+            ]),
             _vm._v(" "),
             _vm._m(1)
           ])
@@ -108368,6 +108294,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   sumTotalProduct: function sumTotalProduct(context) {
     context.commit('sumTotalProduct');
+  },
+  sumTotalEditProduct: function sumTotalEditProduct(context) {
+    context.commit('sumTotalEditProduct');
   },
   sumTotalProductSale: function sumTotalProductSale(context) {
     context.commit('sumTotalProductSale');
