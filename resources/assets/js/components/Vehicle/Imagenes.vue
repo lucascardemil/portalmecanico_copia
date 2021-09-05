@@ -13,9 +13,9 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 mb-2" v-for="imageLocal in images" :key="imageLocal.id">
-                                <button class="btn btn-danger btn-lg btn-block"
+                                <!-- <button class="btn btn-danger btn-lg btn-block"
                                     @click.prevent="deleteImage( { id: imageLocal.id } )">Eliminar Imagen
-                                </button>
+                                </button> -->
                                 <div class="mt-2">
                                     <img :src="imageLocal.url" width="100%">
                                 </div>

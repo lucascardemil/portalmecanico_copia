@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Vehicle;
+use App\DetailVehicle;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -199,7 +200,10 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
-        $vehicle = Vehicle::findOrFail($id)->detail_vehicles;
+        // $vehicle = Vehicle::findOrFail($id)->detail_vehicles;
+
+        $vehicle = DetailVehicle::where('vehicle_id', '=', $id)->with('vehicle','images')->get();
+        
 
         return $vehicle;
     }

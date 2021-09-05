@@ -62,8 +62,8 @@
 								<th>Fecha</th>
 							</tr>
 						</thead>
-						<tbody v-for="sale in sales" :key="sale.sale_id">
-							<tr class="accordion-toggle" data-toggle="collapse" :data-target="'#sale'+sale.sale_id">
+						<tbody>
+							<tr class="accordion-toggle" data-toggle="collapse" :data-target="'#sale'+sales[0].sale_id">
 								<td style="width: 25%"></td>
 								<td style="width: 10%"></td>
 								<td></td>
@@ -71,24 +71,24 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td v-if="sale.descuento > 0">{{ sale.total - (sale.total * sale.descuento) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-								<td v-else>{{ sale.total | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-								<td>{{ sale.fecha_sale_create }}</td>
+								<td v-if="sales[0].descuento > 0">{{ sales[0].total - (sales[0].total * sales[0].descuento) | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td v-else>{{ sales[0].total | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
+								<td>{{ sales[0].fecha_sale_create }}</td>
 								<td>
 									<a href="#" class="btn btn-primary btn-sm"
-										@click.prevent="generarRecibo({ id: sale.sale_id })"
+										@click.prevent="generarRecibo({ id: sales[0].sale_id })"
 										role="button">
 										<i class="fas fa-file-invoice-dollar"></i> Recibo
 									</a>
 
 									<a href="#" class="btn btn-danger btn-sm"
-										@click.prevent="eliminarVenta({ id: sale.sale_id })"
+										@click.prevent="eliminarVenta({ id: sales[0].sale_id })"
 										role="button">
 										<i class="fas fa-trash-alt"></i>
 									</a>
 								</td>
 							</tr>
-							<tr :id="'sale'+sale.sale_id" class="accordian-body collapse">
+							<tr v-for="sale in sales" :key="sale.sale_id" :id="'sale'+sale.sale_id" class="accordian-body collapse">
 								<td style="width: 25%">{{ sale.name }}</td>
 								<td style="width: 10%">{{ sale.forma_pago }}</td>
 								<td>{{ sale.descuento * 100 }}%</td>
@@ -120,38 +120,7 @@
 								<td></td>
 								<td></td>
 							</tr>
-							<!-- <tr v-for="product in sale.products" :key="product.id" :id="'sale'+sale.id" class="accordian-body collapse">
-								<td style="width: 25%">{{ product.code_id }}</td>
-								<td style="width: 10%">{{ sale.forma_pago }}</td>
-								<td>{{ sale.descuento * 100 }}%</td>
-								<td>{{ product.price | currency('$', 0, { thousandsSeparator: '.' }) }}</td>
-								<td>{{ product.quantity }}</td>
-								<td>{{ parseInt( product.utility*100)+'%' }}</td>
-								<td v-if="sale.descuento > 0">
-									{{ 
-										Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) -
-										(Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * sale.descuento) | currency('$', 0, { thousandsSeparator: '.' })
-									}}
-								</td>
-								<td v-else>
-									{{ 
-										Math.round(((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) | currency('$', 0, { thousandsSeparator: '.' })
-									}}
-								</td>
-								<td v-if="sale.descuento > 0">
-									{{ 
-										Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) -
-										(Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) * sale.descuento) | currency('$', 0, { thousandsSeparator: '.' })
-									}}
-								</td>
-								<td v-else >
-									{{ 
-										Math.round((((parseFloat(product.price * product.quantity)) * parseFloat(product.utility)) + parseFloat(product.price * product.quantity)) * 1.19) | currency('$', 0, { thousandsSeparator: '.' })
-									}}
-								</td>
-								<td></td>
-								<td></td>
-							</tr> -->
+							
 						</tbody>
 					</table>
 				</div>

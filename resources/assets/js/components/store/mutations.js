@@ -390,6 +390,7 @@ export default { //used for changing the state
         var url = urlImages + '/' + id
         axios.delete(url).then(response => {
             toastr.success('Imagen eliminada con éxito')
+            $('#photo').modal('hide')
         })
     },
     getVehiculoTipos(state, page_tipo) {
@@ -1450,9 +1451,13 @@ export default { //used for changing the state
 
         var adicional = parseFloat(state.newDetailimport.aditional) * parseFloat(state.detailImport.dolar)
 
-        var usa = parseFloat(state.newDetailimport.usa / 100) /* + 1*/
+        // var usa = parseFloat(state.newDetailimport.usa / 100) /* + 1*/
 
-        var seguro = parseFloat(state.newDetailimport.seguro / 100) /* + 1*/
+        // var seguro = parseFloat(state.newDetailimport.seguro / 100) /* + 1*/
+
+        var usa = (parseFloat(state.newDetailimport.price) * parseFloat(state.detailImport.dolar)) * parseFloat(state.newDetailimport.usa / 100)
+
+        var seguro = ((parseFloat(state.newDetailimport.price) * parseFloat(state.detailImport.dolar)) + usa) * parseFloat(state.newDetailimport.usa / 100)
 
         var precio = parseFloat(state.newDetailimport.price) /** parseFloat(state.detailImport.dolar)*/ /* usa * seguro*/
         /* + adicional*/

@@ -9820,37 +9820,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
  //import Datepicker from 'vuejs-datetimepicker'
 
 
@@ -62989,15 +62958,16 @@ var render = function() {
                   [
                     _vm._m(2),
                     _vm._v(" "),
-                    _vm._l(_vm.sales, function(sale) {
-                      return _c("tbody", { key: sale.sale_id }, [
+                    _c(
+                      "tbody",
+                      [
                         _c(
                           "tr",
                           {
                             staticClass: "accordion-toggle",
                             attrs: {
                               "data-toggle": "collapse",
-                              "data-target": "#sale" + sale.sale_id
+                              "data-target": "#sale" + _vm.sales[0].sale_id
                             }
                           },
                           [
@@ -63015,13 +62985,14 @@ var render = function() {
                             _vm._v(" "),
                             _c("td"),
                             _vm._v(" "),
-                            sale.descuento > 0
+                            _vm.sales[0].descuento > 0
                               ? _c("td", [
                                   _vm._v(
                                     _vm._s(
                                       _vm._f("currency")(
-                                        sale.total -
-                                          sale.total * sale.descuento,
+                                        _vm.sales[0].total -
+                                          _vm.sales[0].total *
+                                            _vm.sales[0].descuento,
                                         "$",
                                         0,
                                         { thousandsSeparator: "." }
@@ -63032,14 +63003,19 @@ var render = function() {
                               : _c("td", [
                                   _vm._v(
                                     _vm._s(
-                                      _vm._f("currency")(sale.total, "$", 0, {
-                                        thousandsSeparator: "."
-                                      })
+                                      _vm._f("currency")(
+                                        _vm.sales[0].total,
+                                        "$",
+                                        0,
+                                        { thousandsSeparator: "." }
+                                      )
                                     )
                                   )
                                 ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(sale.fecha_sale_create))]),
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.sales[0].fecha_sale_create))
+                            ]),
                             _vm._v(" "),
                             _c("td", [
                               _c(
@@ -63051,7 +63027,7 @@ var render = function() {
                                     click: function($event) {
                                       $event.preventDefault()
                                       return _vm.generarRecibo({
-                                        id: sale.sale_id
+                                        id: _vm.sales[0].sale_id
                                       })
                                     }
                                   }
@@ -63073,7 +63049,7 @@ var render = function() {
                                     click: function($event) {
                                       $event.preventDefault()
                                       return _vm.eliminarVenta({
-                                        id: sale.sale_id
+                                        id: _vm.sales[0].sale_id
                                       })
                                     }
                                   }
@@ -63084,56 +63060,51 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "tr",
-                          {
-                            staticClass: "accordian-body collapse",
-                            attrs: { id: "sale" + sale.sale_id }
-                          },
-                          [
-                            _c("td", { staticStyle: { width: "25%" } }, [
-                              _vm._v(_vm._s(sale.name))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticStyle: { width: "10%" } }, [
-                              _vm._v(_vm._s(sale.forma_pago))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(sale.descuento * 100) + "%")
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(
-                                  _vm._f("currency")(sale.price, "$", 0, {
-                                    thousandsSeparator: "."
-                                  })
+                        _vm._l(_vm.sales, function(sale) {
+                          return _c(
+                            "tr",
+                            {
+                              key: sale.sale_id,
+                              staticClass: "accordian-body collapse",
+                              attrs: { id: "sale" + sale.sale_id }
+                            },
+                            [
+                              _c("td", { staticStyle: { width: "25%" } }, [
+                                _vm._v(_vm._s(sale.name))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticStyle: { width: "10%" } }, [
+                                _vm._v(_vm._s(sale.forma_pago))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(sale.descuento * 100) + "%")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm._f("currency")(sale.price, "$", 0, {
+                                      thousandsSeparator: "."
+                                    })
+                                  )
                                 )
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(sale.quantity))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(parseInt(sale.utility * 100) + "%"))
-                            ]),
-                            _vm._v(" "),
-                            sale.descuento > 0
-                              ? _c("td", [
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t" +
-                                      _vm._s(
-                                        _vm._f("currency")(
-                                          Math.round(
-                                            parseFloat(
-                                              sale.price * sale.quantity
-                                            ) *
-                                              parseFloat(sale.utility) +
-                                              parseFloat(
-                                                sale.price * sale.quantity
-                                              )
-                                          ) -
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(sale.quantity))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  _vm._s(parseInt(sale.utility * 100) + "%")
+                                )
+                              ]),
+                              _vm._v(" "),
+                              sale.descuento > 0
+                                ? _c("td", [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t" +
+                                        _vm._s(
+                                          _vm._f("currency")(
                                             Math.round(
                                               parseFloat(
                                                 sale.price * sale.quantity
@@ -63142,55 +63113,54 @@ var render = function() {
                                                 parseFloat(
                                                   sale.price * sale.quantity
                                                 )
-                                            ) *
-                                              sale.descuento,
-                                          "$",
-                                          0,
-                                          { thousandsSeparator: "." }
-                                        )
-                                      ) +
-                                      "\n\t\t\t\t\t\t\t"
-                                  )
-                                ])
-                              : _c("td", [
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t" +
-                                      _vm._s(
-                                        _vm._f("currency")(
-                                          Math.round(
-                                            parseFloat(
-                                              sale.price * sale.quantity
-                                            ) *
-                                              parseFloat(sale.utility) +
+                                            ) -
+                                              Math.round(
+                                                parseFloat(
+                                                  sale.price * sale.quantity
+                                                ) *
+                                                  parseFloat(sale.utility) +
+                                                  parseFloat(
+                                                    sale.price * sale.quantity
+                                                  )
+                                              ) *
+                                                sale.descuento,
+                                            "$",
+                                            0,
+                                            { thousandsSeparator: "." }
+                                          )
+                                        ) +
+                                        "\n\t\t\t\t\t\t\t"
+                                    )
+                                  ])
+                                : _c("td", [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t" +
+                                        _vm._s(
+                                          _vm._f("currency")(
+                                            Math.round(
                                               parseFloat(
                                                 sale.price * sale.quantity
-                                              )
-                                          ),
-                                          "$",
-                                          0,
-                                          { thousandsSeparator: "." }
-                                        )
-                                      ) +
-                                      "\n\t\t\t\t\t\t\t"
-                                  )
-                                ]),
-                            _vm._v(" "),
-                            sale.descuento > 0
-                              ? _c("td", [
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t" +
-                                      _vm._s(
-                                        _vm._f("currency")(
-                                          Math.round(
-                                            (parseFloat(
-                                              sale.price * sale.quantity
-                                            ) *
-                                              parseFloat(sale.utility) +
-                                              parseFloat(
-                                                sale.price * sale.quantity
-                                              )) *
-                                              1.19
-                                          ) -
+                                              ) *
+                                                parseFloat(sale.utility) +
+                                                parseFloat(
+                                                  sale.price * sale.quantity
+                                                )
+                                            ),
+                                            "$",
+                                            0,
+                                            { thousandsSeparator: "." }
+                                          )
+                                        ) +
+                                        "\n\t\t\t\t\t\t\t"
+                                    )
+                                  ]),
+                              _vm._v(" "),
+                              sale.descuento > 0
+                                ? _c("td", [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t" +
+                                        _vm._s(
+                                          _vm._f("currency")(
                                             Math.round(
                                               (parseFloat(
                                                 sale.price * sale.quantity
@@ -63200,49 +63170,60 @@ var render = function() {
                                                   sale.price * sale.quantity
                                                 )) *
                                                 1.19
-                                            ) *
-                                              sale.descuento,
-                                          "$",
-                                          0,
-                                          { thousandsSeparator: "." }
-                                        )
-                                      ) +
-                                      "\n\t\t\t\t\t\t\t"
-                                  )
-                                ])
-                              : _c("td", [
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t" +
-                                      _vm._s(
-                                        _vm._f("currency")(
-                                          Math.round(
-                                            (parseFloat(
-                                              sale.price * sale.quantity
-                                            ) *
-                                              parseFloat(sale.utility) +
-                                              parseFloat(
+                                            ) -
+                                              Math.round(
+                                                (parseFloat(
+                                                  sale.price * sale.quantity
+                                                ) *
+                                                  parseFloat(sale.utility) +
+                                                  parseFloat(
+                                                    sale.price * sale.quantity
+                                                  )) *
+                                                  1.19
+                                              ) *
+                                                sale.descuento,
+                                            "$",
+                                            0,
+                                            { thousandsSeparator: "." }
+                                          )
+                                        ) +
+                                        "\n\t\t\t\t\t\t\t"
+                                    )
+                                  ])
+                                : _c("td", [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t" +
+                                        _vm._s(
+                                          _vm._f("currency")(
+                                            Math.round(
+                                              (parseFloat(
                                                 sale.price * sale.quantity
-                                              )) *
-                                              1.19
-                                          ),
-                                          "$",
-                                          0,
-                                          { thousandsSeparator: "." }
-                                        )
-                                      ) +
-                                      "\n\t\t\t\t\t\t\t"
-                                  )
-                                ]),
-                            _vm._v(" "),
-                            _c("td"),
-                            _vm._v(" "),
-                            _c("td")
-                          ]
-                        )
-                      ])
-                    })
-                  ],
-                  2
+                                              ) *
+                                                parseFloat(sale.utility) +
+                                                parseFloat(
+                                                  sale.price * sale.quantity
+                                                )) *
+                                                1.19
+                                            ),
+                                            "$",
+                                            0,
+                                            { thousandsSeparator: "." }
+                                          )
+                                        ) +
+                                        "\n\t\t\t\t\t\t\t"
+                                    )
+                                  ]),
+                              _vm._v(" "),
+                              _c("td"),
+                              _vm._v(" "),
+                              _c("td")
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]
                 )
               ]),
           _vm._v(" "),
@@ -68869,24 +68850,6 @@ var render = function() {
                       staticClass: "col-lg-12 col-sm-12 mb-2"
                     },
                     [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger btn-lg btn-block",
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.deleteImage({ id: imageLocal.id })
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "Eliminar Imagen\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
                       _c("div", { staticClass: "mt-2" }, [
                         _c("img", {
                           attrs: { src: imageLocal.url, width: "100%" }
@@ -109110,6 +109073,7 @@ var urlDescuentoDefect = 'descuento-defect';
     var url = urlImages + '/' + id;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](url).then(function (response) {
       toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Imagen eliminada con éxito');
+      $('#photo').modal('hide');
     });
   },
   getVehiculoTipos: function getVehiculoTipos(state, page_tipo) {
@@ -110144,13 +110108,11 @@ var urlDescuentoDefect = 'descuento-defect';
   createDetailimport: function createDetailimport(state) {
     //state.newDetailimport.price = state.newDetailimport.price.replace('.', ',')
     var url = urlDetailimport;
-    var adicional = parseFloat(state.newDetailimport.aditional) * parseFloat(state.detailImport.dolar);
-    var usa = parseFloat(state.newDetailimport.usa / 100);
-    /* + 1*/
+    var adicional = parseFloat(state.newDetailimport.aditional) * parseFloat(state.detailImport.dolar); // var usa = parseFloat(state.newDetailimport.usa / 100) /* + 1*/
+    // var seguro = parseFloat(state.newDetailimport.seguro / 100) /* + 1*/
 
-    var seguro = parseFloat(state.newDetailimport.seguro / 100);
-    /* + 1*/
-
+    var usa = parseFloat(state.newDetailimport.price) * parseFloat(state.detailImport.dolar) * parseFloat(state.newDetailimport.usa / 100);
+    var seguro = (parseFloat(state.newDetailimport.price) * parseFloat(state.detailImport.dolar) + usa) * parseFloat(state.newDetailimport.usa / 100);
     var precio = parseFloat(state.newDetailimport.price);
     /** parseFloat(state.detailImport.dolar)*/
 

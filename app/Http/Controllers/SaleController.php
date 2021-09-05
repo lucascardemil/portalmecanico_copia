@@ -31,8 +31,6 @@ class SaleController extends Controller
         if($search == "null" || $search == null){
             //$sales = Sale::with('client', 'products')->where('user_id', '=', $idUser)->paginate(10);
 
-
-
             $sales = DB::table('sales')
             ->join('clients', 'sales.client_id', '=', 'clients.id')
             ->join('productsales', 'sales.id', '=', 'productsales.sale_id')
@@ -49,7 +47,9 @@ class SaleController extends Controller
                      'sales.created_at as fecha_sale_create',
                      'sales.updated_at as fecha_sale_update')
             ->where('sales.user_id', '=', $idUser)
+            
             ->paginate(10);
+
         }else{
             // $sales = Sale::with('client', 'products')->where('user_id', '=', $idUser)->whereRaw("DATE_FORMAT(updated_at, '%Y-%m-%d') = ?", [$search])->paginate(10);
 
@@ -71,6 +71,7 @@ class SaleController extends Controller
             ->where('sales.user_id', '=', $idUser)
             ->whereRaw("DATE_FORMAT(sales.updated_at, '%Y-%m-%d') = ?", [$search])
             ->paginate(10);
+            
         }
 
         return [
@@ -115,7 +116,7 @@ class SaleController extends Controller
 
             $inv = Inventory::where('id', $productsData[$i]['product']['inventory_id'])->get('quantity');
 
-            Inventory::where('price', $productsData[$i]['product']['price'])->update([
+            Inventory::where('id', $productsData[$i]['product']['inventory_id'])->update([
                 'quantity' => $inv[0]->quantity - $productsData[$i]['quantity']
             ]);
             
@@ -125,16 +126,16 @@ class SaleController extends Controller
     public function anularSale($id)
     {
         $products = ProductSale::where('sale_id', $id)->get();
-        $total = ProductSale::where('sale_id', $id)->sum('quantity');
 
         for ($i=0; $i<count($products); $i++){
             $inventorys = Inventory::where('code_id', $products[$i]['code_id'])->get();
 
-            for ($i=0; $i<count($inventorys); $i++){
-                Inventory::where('id', $inventorys[$i]['id'])->update([
-                    'quantity' => $inventorys[$i]['quantity'] + $total
-                ]);
+            for ($y=0; $y<count($inventorys); $y++){
 
+                Inventory::where('id', $inventorys[$y]['id'])->update([
+                        'quantity' => $products[$i]['quantity'] + $inventorys[$y]['quantity']
+                    ]);
+                
                 $productSale = ProductSale::where('sale_id', $id)->delete();
                 if($productSale){
                     Sale::where('id', $id)->delete();
