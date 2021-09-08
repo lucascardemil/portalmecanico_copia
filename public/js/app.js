@@ -6542,6 +6542,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -111409,12 +111410,7 @@ var urlDescuentoDefect = 'descuento-defect';
 }), _defineProperty(_getVehicles$getVehic, "createQuotationEnvio", function createQuotationEnvio(state) {
   var url = urlCreateQuotationShipping;
   var cadena = window.location.href;
-  var id = cadena.split("/"); // if (state.formQuotationShipping.direccion != '') {
-  //     state.formQuotationShipping.direccion
-  // }else{
-  //     state.formQuotationShipping.direccion = 'Sin Envio'
-  // }
-
+  var id = cadena.split("/");
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
     id: id[4],
     nombre: state.formQuotationShipping.nombre,
@@ -111432,9 +111428,9 @@ var urlDescuentoDefect = 'descuento-defect';
       ciudad: '',
       // direccion: '',
       sucursal: ''
-    }, state.errorsLaravel = [];
-    toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Se envio la solicitud de envio');
-    return true;
+    };
+    state.errorsLaravel = [];
+    window.location.href = 'enviado/' + response.data.numero_envio;
   })["catch"](function (error) {
     state.errorsLaravel = [];
 
@@ -111729,27 +111725,31 @@ var urlDescuentoDefect = 'descuento-defect';
   state.productForm.value = Math.round(parseFloat(state.selectedPrice.label) * parseFloat(state.productForm.utility / 100 + 1) * parseFloat(state.productForm.quantity));
   state.productForm.total = Math.round(state.productForm.value * 1.19);
 }), _defineProperty(_getVehicles$getVehic, "newSale", function newSale(state) {
-  var saleDetails = {
-    //client_id: 5, //particular
-    total: state.cartTotal,
-    formapago: state.formapago,
-    descuento: state.aplicardescuento
-  };
-  var sale = {
-    sale: saleDetails,
-    products: state.cart
-  };
+  if (state.formapago == '') {
+    toastr__WEBPACK_IMPORTED_MODULE_1___default.a.error('¡Error, Selecione la forma de pago!');
+  } else {
+    var saleDetails = {
+      //client_id: 5, //particular
+      total: state.cartTotal,
+      formapago: state.formapago,
+      descuento: state.aplicardescuento
+    };
+    var sale = {
+      sale: saleDetails,
+      products: state.cart
+    };
 
-  if (state.cartValue > 0) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('sale', sale).then(function (response) {
-      state.cart = [];
-      state.cartTotal = 0;
-      state.cartValue = 0;
-      toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Venta generada con exito!');
-      $('#create').modal('hide');
-    })["catch"](function (error) {
-      toastr__WEBPACK_IMPORTED_MODULE_1___default.a.error(error.response.data);
-    });
+    if (state.cartValue > 0) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('sale', sale).then(function (response) {
+        state.cart = [];
+        state.cartTotal = 0;
+        state.cartValue = 0;
+        toastr__WEBPACK_IMPORTED_MODULE_1___default.a.success('Venta generada con exito!');
+        $('#create').modal('hide');
+      })["catch"](function (error) {
+        toastr__WEBPACK_IMPORTED_MODULE_1___default.a.error(error.response.data);
+      });
+    }
   }
 }), _defineProperty(_getVehicles$getVehic, "allSalesCalendar", function allSalesCalendar(state, page) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('all-sales?page=' + page + '&calendar=' + state.calendar.search).then(function (response) {

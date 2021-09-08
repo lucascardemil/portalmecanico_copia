@@ -64,7 +64,7 @@ class QuotationShippingController extends Controller
         // $direccion = $data['direccion'];
         $sucursal = $data['sucursal'];
         
-        QuotationShipping::create([
+        $id = QuotationShipping::create([
             'user_id' => $user_id_logeado, //usuario alvaro por defecto
             'nombre' => $nombre,
             'rut' => $rut,
@@ -72,14 +72,11 @@ class QuotationShippingController extends Controller
             'ciudad' => $ciudad,
             // 'direccion' => $direccion,
             'sucursal' => $sucursal
-        ]);
+        ])->id;
     
 
         return response()->json([
-            'valid'=> true,
-            'data' => [
-                'message' => 'Cotizacion ingresada correctamente!'
-            ]
+            'numero_envio' => $id
         ], 200);
     }
 

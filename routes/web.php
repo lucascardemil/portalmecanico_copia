@@ -190,6 +190,11 @@ Route::ApiResource('quotationshipping', 'QuotationShippingController');
 Route::get('/cotizar-envio/{id}', 'QuotationShippingController@cotizar_envio');
 Route::get('quotationshipping-pdf/{id}', 'QuotationShippingController@pdf');
 
+Route::get('/cotizar-envio/enviado/{id}', function () {
+    return view('quotationshipping_enviado');
+});
+
+
 //seccion cotizacion
 
 Route::post('/upload', 'ImageController@upload');

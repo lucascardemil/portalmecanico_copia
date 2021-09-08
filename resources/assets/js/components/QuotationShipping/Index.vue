@@ -86,6 +86,7 @@
                 </div>
             </div>
         </div>
+       
     </div>
 </template>
 
@@ -93,6 +94,7 @@
 import { loadProgressBar } from 'axios-progress-bar'
 import { mapState, mapActions, mapGetters } from 'vuex'
 import CiudadSelector from './CiudadSelector'
+
 
 export default {
     components: { CiudadSelector },

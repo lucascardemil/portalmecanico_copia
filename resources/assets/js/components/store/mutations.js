@@ -2880,11 +2880,7 @@ export default { //used for changing the state
         var cadena = window.location.href
         var id = cadena.split("/")
 
-        // if (state.formQuotationShipping.direccion != '') {
-        //     state.formQuotationShipping.direccion
-        // }else{
-        //     state.formQuotationShipping.direccion = 'Sin Envio'
-        // }
+        
 
         axios.post(url, {
             id: id[4],
@@ -2903,10 +2899,9 @@ export default { //used for changing the state
                 ciudad: '',
                 // direccion: '',
                 sucursal: ''
-            },
+            }
             state.errorsLaravel = []
-            toastr.success('Se envio la solicitud de envio')
-            return true
+            window.location.href = 'enviado/' + response.data.numero_envio;
         }).catch(error => {
             state.errorsLaravel = []
             if (error.response.status === 422) {
@@ -3387,30 +3382,34 @@ export default { //used for changing the state
     },
 
     newSale(state) {
-        let saleDetails = {
-            //client_id: 5, //particular
-            total: state.cartTotal,
-            formapago: state.formapago,
-            descuento: state.aplicardescuento
-        }
+        if(state.formapago == ''){
+            toastr.error('¡Error, Selecione la forma de pago!')
+        }else{
+            let saleDetails = {
+                //client_id: 5, //particular
+                total: state.cartTotal,
+                formapago: state.formapago,
+                descuento: state.aplicardescuento
+            }
 
-        let sale = {
-            sale: saleDetails,
-            products: state.cart
-        }
+            let sale = {
+                sale: saleDetails,
+                products: state.cart
+            }
 
-        if (state.cartValue > 0) {
-            axios.post('sale', sale)
-                .then(response => {
-                    state.cart = []
-                    state.cartTotal = 0
-                    state.cartValue = 0
-                    toastr.success('Venta generada con exito!')
-                    $('#create').modal('hide')
-                })
-                .catch(error => {
-                    toastr.error(error.response.data)
-                })
+            if (state.cartValue > 0) {
+                axios.post('sale', sale)
+                    .then(response => {
+                        state.cart = []
+                        state.cartTotal = 0
+                        state.cartValue = 0
+                        toastr.success('Venta generada con exito!')
+                        $('#create').modal('hide')
+                    })
+                    .catch(error => {
+                        toastr.error(error.response.data)
+                    })
+            }
         }
     },
 
