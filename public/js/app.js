@@ -8410,8 +8410,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     EliminarShipping: _QuotationShipping_EliminarShipping__WEBPACK_IMPORTED_MODULE_0__["default"],
     EnvioShipping: _QuotationShipping_EnvioShipping__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(['quotationshipping', 'linkenvio', 'errorsLaravel'])),
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(['getQuotationShipping', 'pdfQuotationShipping', 'showdeleteQuotationShipping', 'showQuotationShipping'])), {}, {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(['quotationshipping', 'linkenvio', 'errorsLaravel', 'pagination_shipping', 'offset_shipping'])), Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapGetters"])(['isActived_shipping', 'pagesNumber_shipping'])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(['getQuotationShipping', 'pdfQuotationShipping', 'showdeleteQuotationShipping', 'showQuotationShipping', 'changePageQuotationShipping'])), {}, {
     copyTestingCode: function copyTestingCode() {
       var testingCodeToCopy = document.querySelector('#testing-code');
       testingCodeToCopy.setAttribute('type', 'text'); // 不是 hidden 才能複製
@@ -8433,6 +8433,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   created: function created() {
+    // this.$store.dispatch('getQuotationShipping', { page: 1 }),
     this.$store.dispatch('getQuotationShipping'), this.$store.dispatch('getQuotationlinkenvio');
   }
 });
@@ -56034,7 +56035,7 @@ var render = function() {
                   { staticClass: "form-group" },
                   [
                     _c("label", { staticClass: "font-weight-light" }, [
-                      _vm._v("Ciudad*")
+                      _vm._v("Localidad*")
                     ]),
                     _vm._v(" "),
                     _c("CiudadSelector")
@@ -60386,7 +60387,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(quotationshippingLocal.ciudad))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(quotationshippingLocal.direccion))]),
+                  _c("td", { attrs: { width: "15%" } }, [
+                    _vm._v(_vm._s(quotationshippingLocal.direccion))
+                  ]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(quotationshippingLocal.sucursal))]),
                   _vm._v(" "),
@@ -107406,6 +107409,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   getQuotationlinkenvio: function getQuotationlinkenvio(context, data) {
     context.commit('getQuotationlinkenvio', data);
   },
+  // getQuotationShipping(context, data) {
+  //     context.commit('getQuotationShipping', data.page)
+  // },
   getQuotationShipping: function getQuotationShipping(context, data) {
     context.commit('getQuotationShipping', data);
   },
@@ -107466,6 +107472,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   changePageQuotationclient: function changePageQuotationclient(context, data) {
     context.commit('paginate', data.page);
     context.commit('getQuotationclients', data.page);
+  },
+  changePageQuotationShipping: function changePageQuotationShipping(context, data) {
+    context.commit('paginate', data.page);
+    context.commit('getQuotationShipping', data.page);
   },
   changePageQuotationclientForm: function changePageQuotationclientForm(context, data) {
     context.commit('paginate', data.page);
@@ -108565,13 +108575,13 @@ __webpack_require__.r(__webpack_exports__);
       return [];
     }
 
-    var from = state.pagination_motor.current_page - state.offset_year;
+    var from = state.pagination_motor.current_page - state.offset_motor;
 
     if (from < 1) {
       from = 1;
     }
 
-    var to = from + state.offset_year * 2;
+    var to = from + state.offset_motor * 2;
 
     if (to >= state.pagination_motor.last_page) {
       to = state.pagination_motor.last_page;
@@ -108600,10 +108610,39 @@ __webpack_require__.r(__webpack_exports__);
       from = 1;
     }
 
-    var to = from + state.offset_year * 2;
+    var to = from + state.offset_form * 2;
 
     if (to >= state.pagination_form.last_page) {
       to = state.pagination_form.last_page;
+    }
+
+    var pagesArray = [];
+
+    while (from <= to) {
+      pagesArray.push(from);
+      from++;
+    }
+
+    return pagesArray;
+  },
+  isActived_shipping: function isActived_shipping(state, getters) {
+    return state.pagination_shipping.current_page;
+  },
+  pagesNumber_shipping: function pagesNumber_shipping(state, getters) {
+    if (!state.pagination_shipping.to) {
+      return [];
+    }
+
+    var from = state.pagination_shipping.current_page - state.offset_shipping;
+
+    if (from < 1) {
+      from = 1;
+    }
+
+    var to = from + state.offset_shipping * 2;
+
+    if (to >= state.pagination_shipping.last_page) {
+      to = state.pagination_shipping.last_page;
     }
 
     var pagesArray = [];
@@ -109671,6 +109710,13 @@ var urlDescuentoDefect = 'descuento-defect';
       state.linkenvio.url = window.location.host + "/cotizar-envio/" + response.data;
     });
   },
+  // getQuotationShipping(state, page) {
+  //     var url = 'quotationshipping?page=' + page
+  //     axios.get(url).then(response => {
+  //         state.quotationshipping = response.data.quotationshipping.data
+  //         state.pagination_shipping = response.data.pagination_shipping
+  //     });
+  // },
   getQuotationShipping: function getQuotationShipping(state) {
     var url = 'quotationshipping';
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
@@ -112737,7 +112783,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   'last_page': 0,
   'from': 0,
   'to': 0
-}), _defineProperty(_options$optionsUser$, "offset", 2), _defineProperty(_options$optionsUser$, "pagination_form", {
+}), _defineProperty(_options$optionsUser$, "offset", 2), _defineProperty(_options$optionsUser$, "pagination_shipping", {
+  'total': 0,
+  'current_page': 0,
+  'per_page': 0,
+  'last_page': 0,
+  'from': 0,
+  'to': 0
+}), _defineProperty(_options$optionsUser$, "offset_shipping", 2), _defineProperty(_options$optionsUser$, "pagination_form", {
   'total': 0,
   'current_page': 0,
   'per_page': 0,

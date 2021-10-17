@@ -302,6 +302,10 @@ export default { //methods
         context.commit('getQuotationlinkenvio', data)
     },
 
+    // getQuotationShipping(context, data) {
+    //     context.commit('getQuotationShipping', data.page)
+    // },
+
     getQuotationShipping(context, data) {
         context.commit('getQuotationShipping', data)
     },
@@ -364,6 +368,10 @@ export default { //methods
     changePageQuotationclient(context, data) {
         context.commit('paginate', data.page)
         context.commit('getQuotationclients', data.page)
+    },
+    changePageQuotationShipping(context, data) {
+        context.commit('paginate', data.page)
+        context.commit('getQuotationShipping', data.page)
     },
     changePageQuotationclientForm(context, data) {
         context.commit('paginate', data.page)

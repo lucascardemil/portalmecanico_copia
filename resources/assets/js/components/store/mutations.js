@@ -1002,12 +1002,22 @@ export default { //used for changing the state
     },
 
 
+    // getQuotationShipping(state, page) {
+    //     var url = 'quotationshipping?page=' + page
+    //     axios.get(url).then(response => {
+    //         state.quotationshipping = response.data.quotationshipping.data
+    //         state.pagination_shipping = response.data.pagination_shipping
+    //     });
+    // },
+
+
     getQuotationShipping(state) {
-        var url = 'quotationshipping' 
+        var url = 'quotationshipping'
         axios.get(url).then(response => {
             state.quotationshipping = response.data
         });
     },
+
 
 
     showModalDetail(state, id) {
@@ -2901,7 +2911,7 @@ export default { //used for changing the state
                 sucursal: ''
             }
             state.errorsLaravel = []
-            window.location.href = 'enviado/' + response.data.numero_envio;
+            window.location.href = 'enviado/' + response.data.numero_envio
         }).catch(error => {
             state.errorsLaravel = []
             if (error.response.status === 422) {

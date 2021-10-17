@@ -780,6 +780,16 @@ export default { //data
     },
     offset: 2,
 
+    pagination_shipping: {
+        'total': 0,
+        'current_page': 0,
+        'per_page': 0,
+        'last_page': 0,
+        'from': 0,
+        'to': 0,
+    },
+    offset_shipping: 2,
+
     pagination_form: {
         'total': 0,
         'current_page': 0,

@@ -65,7 +65,7 @@
                     <td>{{ quotationshippingLocal.rut }}</td>
                     <td>{{ quotationshippingLocal.telefono }}</td>
                     <td>{{ quotationshippingLocal.ciudad }}</td>
-                    <td>{{ quotationshippingLocal.direccion }}</td>
+                    <td width="15%">{{ quotationshippingLocal.direccion }}</td>
                     <td>{{ quotationshippingLocal.sucursal }}</td>
                     <td class="text-right">
                         <a class="btn btn-success btn-sm" href="#" role="button"
@@ -85,38 +85,38 @@
 
         <!-- <nav>
             <ul class="pagination">
-                <li class="page-item" v-if="pagination_form.current_page > 1">
+                <li class="page-item" v-if="pagination_shipping.current_page > 1">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclientForm({page: 1})">
+                    @click.prevent="changePageQuotationShipping({page: 1})">
                         <span>Primera</span>
                     </a>
                 </li>
 
-                <li class="page-item" v-if="pagination_form.current_page > 1">
+                <li class="page-item" v-if="pagination_shipping.current_page > 1">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclientForm({page: pagination_form.current_page - 1})">
+                    @click.prevent="changePageQuotationShipping({page: pagination_shipping.current_page - 1})">
                         <span>Atrás</span>
                     </a>
                 </li>
 
-                <li class="page-item" v-for="page in pagesNumber_form"
-                    v-bind:class="[ page == isActived_form ? 'active' : '' ]" :key="page">
+                <li class="page-item" v-for="page in pagesNumber_shipping"
+                    v-bind:class="[ page == isActived_shipping ? 'active' : '' ]" :key="page">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclientForm({page})">
+                    @click.prevent="changePageQuotationShipping({page})">
                         {{ page }}
                     </a>
                 </li>
 
-                <li class="page-item" v-if="pagination_form.current_page < pagination_form.last_page">
+                <li class="page-item" v-if="pagination_shipping.current_page < pagination_shipping.last_page">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclientForm({page: pagination_form.current_page + 1})">
+                    @click.prevent="changePageQuotationShipping({ page: pagination_shipping.current_page + 1})">
                         <span>Siguiente</span>
                     </a>
                 </li>
 
-                <li class="page-item" v-if="pagination_form.current_page < pagination_form.last_page">
+                <li class="page-item" v-if="pagination_shipping.current_page < pagination_shipping.last_page">
                     <a class="page-link border-light bg-dark" href="#"
-                    @click.prevent="changePageQuotationclientForm({page:pagination_form.last_page})">
+                    @click.prevent="changePageQuotationShipping({ page:pagination_shipping.last_page})">
                         <span>Última</span>
                     </a>
                 </li>
@@ -138,10 +138,11 @@ import toastr from 'toastr'
 export default {
     components: { EliminarShipping, EnvioShipping },
     computed:{
-        ...mapState(['quotationshipping','linkenvio','errorsLaravel']),
+        ...mapState(['quotationshipping','linkenvio','errorsLaravel', 'pagination_shipping', 'offset_shipping']),
+        ...mapGetters(['isActived_shipping', 'pagesNumber_shipping'])
     },
     methods:{
-        ...mapActions(['getQuotationShipping','pdfQuotationShipping','showdeleteQuotationShipping', 'showQuotationShipping']),
+        ...mapActions(['getQuotationShipping','pdfQuotationShipping','showdeleteQuotationShipping', 'showQuotationShipping', 'changePageQuotationShipping']),
         copyTestingCode () {
           let testingCodeToCopy = document.querySelector('#testing-code')
           testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
@@ -161,6 +162,7 @@ export default {
         },
     },
     created(){
+        // this.$store.dispatch('getQuotationShipping', { page: 1 }),
         this.$store.dispatch('getQuotationShipping'),
         this.$store.dispatch('getQuotationlinkenvio')
     }

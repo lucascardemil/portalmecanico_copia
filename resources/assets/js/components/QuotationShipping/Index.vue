@@ -48,7 +48,7 @@
                                 <p v-show="errors.has('telefono')" class="text-danger">{{ errors.first('telefono') }}</p>
                             </div>
                             <div class="form-group">
-                                <label class="font-weight-light">Ciudad*</label>
+                                <label class="font-weight-light">Localidad*</label>
                                 <CiudadSelector></CiudadSelector>        
                             </div>
                             <div class="form-group">

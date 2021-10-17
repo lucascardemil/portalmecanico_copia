@@ -79,7 +79,7 @@
 
     </nav>
 
-    <div id="wrapper" style="background-image: url('https://sites.google.com/site/tuningcentarpetargajski/_/rsrc/1468876179712/home/tuning.jpg')">
+    <div id="wrapper" style="background-image: url('img/background.jpg')">
 
         <ul class="sidebar navbar-nav toggled">
 

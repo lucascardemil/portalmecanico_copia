@@ -49,6 +49,18 @@ class QuotationShippingController extends Controller
                                     )
                                     ->orderBy('quotation_shippings.id', 'DESC')->get();
 
+        // return [
+        //     'pagination_shipping' => [
+        //         'total'         => $quotationshipping->total(),
+        //         'current_page'  => $quotationshipping->currentPage(),
+        //         'per_page'      => $quotationshipping->perPage(),
+        //         'last_page'     => $quotationshipping->lastPage(),
+        //         'from'          => $quotationshipping->firstItem(),
+        //         'to'            => $quotationshipping->lastItem(),
+        //     ],
+        //     'quotationshipping' => $quotationshipping
+        // ];
+
         return $quotationshipping;
     }
     
